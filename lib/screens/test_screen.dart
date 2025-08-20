@@ -26,11 +26,7 @@ class _TestScreenState extends State<TestScreen> {
 
   Future<void> _fetchData() async {
     try {
-      developer.log('Attempting to load .env from assets/.env');
       await dotenv.load(fileName: "assets/.env"); // Load .env file
-      developer.log(
-        'Successfully loaded .env, API key: ${dotenv.env['POKEMON_API_KEY']}',
-      );
       final tcgService = PokemonTcgService();
       final cards = await tcgService.searchCards(
         page: 1,
@@ -39,6 +35,7 @@ class _TestScreenState extends State<TestScreen> {
         orderBy: '-set.releaseDate',
       );
       final card = await tcgService.getCard('xy1-1');
+      developer.log('getCard result for xy1-1: $card');
 
       if (!mounted) return; // Prevent state update if widget is disposed
 
@@ -77,8 +74,23 @@ class _TestScreenState extends State<TestScreen> {
                     itemBuilder: (context, index) {
                       final card = _cards![index];
                       return ListTile(
+                        leading: card.images?.small != null
+                            ? Image.network(
+                                card.images!.small!,
+                                width: 50,
+                                height: 70,
+                                fit: BoxFit.cover,
+                              )
+                            : const Icon(Icons.image_not_supported, size: 50),
                         title: Text(card.name ?? 'No Name'),
-                        subtitle: Text('Rarity: ${card.rarity ?? 'Unknown'}'),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Rarity: ${card.rarity ?? 'Unknown'}, HP: ${card.hp ?? 'N/A'}',
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
