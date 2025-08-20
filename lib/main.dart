@@ -1,10 +1,12 @@
+import 'package:api_trial/services/catalog_apitcg_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/test_screen_pokemon.dart';
 import 'screens/test_screen_magic.dart';
+import 'screens/test_screen_apitcg.dart';
 
 void main() async {
-  await dotenv.load(fileName: "assets/.env"); // Load .env here
+  await dotenv.load(fileName: "assets/.env");
   runApp(const MainApp());
 }
 
@@ -16,11 +18,19 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int _selectedScreenIndex = 0; // 0 for Pokémon, 1 for Magic
+  int _selectedScreenIndex = 0;
 
-  final List<Widget> _screens = [const TestScreen(), const TestScreenMagic()];
+  final List<Widget> _screens = [
+    const TestScreen(),
+    const TestScreenMagic(),
+    const TestScreenApiTcg(),
+  ];
 
-  final List<String> _screenTitles = ['Pokémon TCG', 'Magic: The Gathering'];
+  final List<String> _screenTitles = [
+    'Pokémon TCG',
+    'Magic: The Gathering',
+    'API TCG',
+  ];
 
   void _onScreenSelected(int index) {
     setState(() {
@@ -39,13 +49,23 @@ class _MainAppState extends State<MainApp> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () => _onScreenSelected(0),
-                  child: Text(_screenTitles[0]),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => _onScreenSelected(0),
+                    child: Text(_screenTitles[0]),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () => _onScreenSelected(1),
-                  child: Text(_screenTitles[1]),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => _onScreenSelected(1),
+                    child: Text(_screenTitles[1]),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => _onScreenSelected(2),
+                    child: Text(_screenTitles[2]),
+                  ),
                 ),
               ],
             ),

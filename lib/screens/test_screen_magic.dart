@@ -13,8 +13,8 @@ class TestScreenMagic extends StatefulWidget {
 }
 
 class _TestScreenMagicState extends State<TestScreenMagic> {
-  List<model.Card>? _cards; // List of cards from fixed search
-  model.Card? _singleCard; // Single card fetched by ID
+  List<model.Card>? _cards;
+  model.Card? _singleCard;
   bool _isLoading = true;
   String? _errorMessage;
 
@@ -31,15 +31,10 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
     });
 
     try {
-      await dotenv.load(fileName: "assets/.env"); // Load .env if needed
+      await dotenv.load(fileName: "assets/.env");
       final tcgService = MagicTcgService();
-      // Fixed search for multiple cards (e.g., page 1, 10 cards, name "Dragon")
-      final cards = await tcgService.getCards(
-        pageSize: 20,
-        language: null, // Optional, set to null for default
-      );
+      final cards = await tcgService.getCards(pageSize: 20, language: null);
       stderr.writeln('Cards fetched: ${cards.length}');
-      // Fixed search for a single card (e.g., example ID)
       final card = await tcgService.getCard('386616');
       stderr.writeln('Card fetched: $card');
 

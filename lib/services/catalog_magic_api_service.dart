@@ -9,18 +9,13 @@ class MagicTcgService {
       'https://api.magicthegathering.io/v1/cards';
   static const String baseSetsUrl = 'https://api.magicthegathering.io/v1/sets';
 
-  /// Fetch a list of cards with optional filters and pagination
-  ///
-  /// - Use `name` for partial match (e.g., 'avacyn') or exact match (e.g., '"Archangel Avacyn"').
-  /// - Use `name` with `language` for foreign name search (e.g., 'Arcángel Avacyn' with language='spanish').
   Future<List<Card>> getCards({
     int? page,
     int? pageSize,
-    String?
-    name, // Partial (e.g., 'avacyn') or exact (e.g., '"Archangel Avacyn"')
+    String? name,
     String? layout,
     int? cmc,
-    String? colors, // e.g., "red,white" or "red|white|blue"
+    String? colors,
     String? colorIdentity,
     String? type,
     String? supertypes,
@@ -35,7 +30,7 @@ class MagicTcgService {
     String? power,
     String? toughness,
     String? loyalty,
-    String? language, // For foreign name search (e.g., 'spanish')
+    String? language,
     String? gameFormat,
     String? legality,
     String? orderBy,
@@ -95,7 +90,6 @@ class MagicTcgService {
     }
   }
 
-  /// Fetch a specific card by ID or multiverseid
   Future<Card?> getCard(String idOrMultiverseid) async {
     try {
       final uri = Uri.parse('$baseCardsUrl/$idOrMultiverseid');
@@ -104,9 +98,7 @@ class MagicTcgService {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        final cardJson =
-            data['card']
-                as Map<String, dynamic>?; // Changed from 'cards' to 'card'
+        final cardJson = data['card'] as Map<String, dynamic>?;
         return cardJson != null ? Card.fromJson(cardJson) : null;
       } else {
         throw Exception(
@@ -119,11 +111,10 @@ class MagicTcgService {
     }
   }
 
-  /// Fetch all sets with optional filters and pagination
   Future<List<Map<String, dynamic>>> getSets({
     int? page,
     int? pageSize,
-    String? name, // e.g., "khans|origins"
+    String? name,
     String? block,
   }) async {
     try {
@@ -151,7 +142,6 @@ class MagicTcgService {
     }
   }
 
-  /// Fetch a specific set by set code
   Future<Map<String, dynamic>?> getSet(String setCode) async {
     try {
       final uri = Uri.parse('$baseSetsUrl/$setCode');
