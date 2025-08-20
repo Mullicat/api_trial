@@ -30,8 +30,8 @@ class _TestScreenState extends State<TestScreen> {
       final tcgService = PokemonTcgService();
       final cards = await tcgService.searchCards(
         page: 1,
-        pageSize: 5,
-        q: 'set.name:generations subtypes:mega',
+        pageSize: 14,
+        q: 'set.name:generations',
         orderBy: '-set.releaseDate',
       );
       final card = await tcgService.getCard('xy1-1');
@@ -59,7 +59,6 @@ class _TestScreenState extends State<TestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Pokémon TCG API Test')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _errorMessage != null
