@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+//Functional
 class CardmarketPrices {
   final double? averageSellPrice;
   final double? lowPrice;
