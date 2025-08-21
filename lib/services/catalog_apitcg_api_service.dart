@@ -79,7 +79,7 @@ class TcgService {
 
       final uri = Uri.parse(
         '$_baseUrl/${gameType.apiPath}/cards',
-      ).replace(queryParameters: queryParams);
+      ).replace(queryParameters: queryParams); //Posible area de error
       final response = await http.get(uri, headers: {'x-api-key': apiKey});
       developer.log('API Request: $uri');
       developer.log(

@@ -1,4 +1,3 @@
-import 'package:api_trial/services/catalog_apitcg_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/test_screen_pokemon.dart';

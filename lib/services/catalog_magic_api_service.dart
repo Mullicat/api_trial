@@ -71,7 +71,9 @@ class MagicTcgService {
         if (multiverseid != null) 'multiverseid': multiverseid.toString(),
       };
 
-      final uri = Uri.parse(baseCardsUrl).replace(queryParameters: queryParams);
+      final uri = Uri.parse(
+        baseCardsUrl,
+      ).replace(queryParameters: queryParams); //Posible area de error
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {

@@ -31,7 +31,7 @@ class PokemonTcgService {
 
     final uri = Uri.parse(
       'https://api.pokemontcg.io/v2/cards',
-    ).replace(queryParameters: queryParams);
+    ).replace(queryParameters: queryParams); //Posible area de error
 
     try {
       final response = await http.get(uri, headers: {'X-Api-Key': apiKey});
