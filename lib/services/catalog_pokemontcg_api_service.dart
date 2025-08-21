@@ -1,22 +1,19 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import '../models/card_model_pokemon.dart'; // Updated to match your file name
+import '../models/card_model_pokemon.dart';
 
+//Functional
 class PokemonTcgService {
   static Future<void> _loadEnv() async {
     await dotenv.load(fileName: "assets/.env");
   }
 
-  // Search cards with query parameters
   Future<List<Card>> searchCards({
     int? page,
     int? pageSize,
-    String?
-    q, // Query for filtering (e.g., 'set.name:generations subtypes:mega name: Charizard',
-    //'!name:charizard', 'hp:[* TO 100] / nationalPokedexNumbers: [1 TO 151]')
-    //'?orderBy=number'
-    String? orderBy, // e.g., '-set.releaseDate' for descending
+    String? q,
+    String? orderBy,
   }) async {
     await _loadEnv();
 
@@ -34,7 +31,7 @@ class PokemonTcgService {
 
     final uri = Uri.parse(
       'https://api.pokemontcg.io/v2/cards',
-    ).replace(queryParameters: queryParams);
+    ).replace(queryParameters: queryParams); //Posible area de error
 
     try {
       final response = await http.get(uri, headers: {'X-Api-Key': apiKey});
@@ -184,7 +181,6 @@ class PokemonTcgService {
     }
   }
 
-  // Get a specific card by ID
   Future<Card?> getCard(String cardId) async {
     await _loadEnv();
 

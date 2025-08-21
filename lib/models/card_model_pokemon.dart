@@ -3,14 +3,8 @@ class CardmarketPrices {
   final double? averageSellPrice;
   final double? lowPrice;
   final double? trendPrice;
-  // Add other fields like avg1, avg7, etc. as double?
 
-  CardmarketPrices({
-    this.averageSellPrice,
-    this.lowPrice,
-    this.trendPrice,
-    // Initialize other fields
-  });
+  CardmarketPrices({this.averageSellPrice, this.lowPrice, this.trendPrice});
 }
 
 class Cardmarket {
@@ -27,16 +21,8 @@ class TcgplayerPrices {
   final double? high;
   final double? market;
   final double? directLow;
-  // Add reverseHolofoil fields as needed
 
-  TcgplayerPrices({
-    this.low,
-    this.mid,
-    this.high,
-    this.market,
-    this.directLow,
-    // Initialize reverseHolofoil fields
-  });
+  TcgplayerPrices({this.low, this.mid, this.high, this.market, this.directLow});
 }
 
 class Tcgplayer {

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:developer' as developer;
 import '../services/catalog_pokemontcg_api_service.dart';
-import '../models/card_model_pokemon.dart'
-    as model; // Updated import with prefix
+import '../models/card_model_pokemon.dart' as model;
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -13,8 +12,8 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  List<model.Card>? _cards; // Use aliased Card
-  model.Card? _singleCard; // Use aliased Card
+  List<model.Card>? _cards;
+  model.Card? _singleCard;
   bool _isLoading = true;
   String? _errorMessage;
 
@@ -26,7 +25,7 @@ class _TestScreenState extends State<TestScreen> {
 
   Future<void> _fetchData() async {
     try {
-      await dotenv.load(fileName: "assets/.env"); // Load .env file
+      await dotenv.load(fileName: "assets/.env");
       final tcgService = PokemonTcgService();
       final cards = await tcgService.searchCards(
         page: 1,
@@ -37,7 +36,7 @@ class _TestScreenState extends State<TestScreen> {
       final card = await tcgService.getCard('xy1-1');
       developer.log('getCard result for xy1-1: $card');
 
-      if (!mounted) return; // Prevent state update if widget is disposed
+      if (!mounted) return;
 
       setState(() {
         _cards = cards;
