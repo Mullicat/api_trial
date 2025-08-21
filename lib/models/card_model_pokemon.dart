@@ -1,156 +1,150 @@
-//Functional
-class CardmarketPrices {
-  final double? averageSellPrice;
-  final double? lowPrice;
-  final double? trendPrice;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  CardmarketPrices({this.averageSellPrice, this.lowPrice, this.trendPrice});
+part 'card_model_pokemon.freezed.dart';
+part 'card_model_pokemon.g.dart';
+
+@freezed
+class Card with _$Card {
+  const factory Card({
+    String? id,
+    String? name,
+    String? supertype,
+    List<String>? subtypes,
+    String? hp,
+    List<String>? types,
+    String? evolvesFrom,
+    List<Ability>? abilities,
+    List<Attack>? attacks,
+    List<Weakness>? weaknesses,
+    List<String>? retreatCost,
+    int? convertedRetreatCost,
+    Set? set,
+    String? number,
+    String? artist,
+    String? rarity,
+    String? flavorText,
+    List<int>? nationalPokedexNumbers,
+    Legalities? legalities,
+    Images? images,
+    Tcgplayer? tcgplayer,
+    Cardmarket? cardmarket,
+  }) = _Card;
+
+  factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
 }
 
-class Cardmarket {
-  final String? url;
-  final String? updatedAt;
-  final CardmarketPrices? prices;
+@freezed
+class Set with _$Set {
+  const factory Set({
+    String? id,
+    String? name,
+    String? series,
+    int? printedTotal,
+    int? total,
+    Legalities? legalities,
+    String? ptcgoCode,
+    String? releaseDate,
+    String? updatedAt,
+    Images? images,
+  }) = _Set;
 
-  Cardmarket({this.url, this.updatedAt, this.prices});
+  factory Set.fromJson(Map<String, dynamic> json) => _$SetFromJson(json);
 }
 
-class TcgplayerPrices {
-  final double? low;
-  final double? mid;
-  final double? high;
-  final double? market;
-  final double? directLow;
+@freezed
+class Ability with _$Ability {
+  const factory Ability({String? name, String? text, String? type}) = _Ability;
 
-  TcgplayerPrices({this.low, this.mid, this.high, this.market, this.directLow});
+  factory Ability.fromJson(Map<String, dynamic> json) =>
+      _$AbilityFromJson(json);
 }
 
-class Tcgplayer {
-  final String? url;
-  final String? updatedAt;
-  final TcgplayerPrices? prices;
+@freezed
+class Attack with _$Attack {
+  const factory Attack({
+    String? name,
+    String? text,
+    List<String>? cost,
+    int? convertedEnergyCost,
+    String? damage,
+  }) = _Attack;
 
-  Tcgplayer({this.url, this.updatedAt, this.prices});
+  factory Attack.fromJson(Map<String, dynamic> json) => _$AttackFromJson(json);
 }
 
-class Images {
-  final String? small;
-  final String? large;
+@freezed
+class Weakness with _$Weakness {
+  const factory Weakness({String? type, String? value}) = _Weakness;
 
-  Images({this.small, this.large});
+  factory Weakness.fromJson(Map<String, dynamic> json) =>
+      _$WeaknessFromJson(json);
 }
 
-class Legalities {
-  final String? unlimited;
-  final String? standard;
-  final String? expanded;
+@freezed
+class Legalities with _$Legalities {
+  const factory Legalities({
+    String? unlimited,
+    String? standard,
+    String? expanded,
+  }) = _Legalities;
 
-  Legalities({this.unlimited, this.standard, this.expanded});
+  factory Legalities.fromJson(Map<String, dynamic> json) =>
+      _$LegalitiesFromJson(json);
 }
 
-class Weakness {
-  final String? type;
-  final String? value;
+@freezed
+class Images with _$Images {
+  const factory Images({String? small, String? large}) = _Images;
 
-  Weakness({this.type, this.value});
+  factory Images.fromJson(Map<String, dynamic> json) => _$ImagesFromJson(json);
 }
 
-class Attack {
-  final String? name;
-  final String? text;
-  final List<String>? cost;
-  final int? convertedEnergyCost;
-  final String? damage;
+@freezed
+class Tcgplayer with _$Tcgplayer {
+  const factory Tcgplayer({
+    String? url,
+    String? updatedAt,
+    TcgplayerPrices? prices,
+  }) = _Tcgplayer;
 
-  Attack({
-    this.name,
-    this.text,
-    this.cost,
-    this.convertedEnergyCost,
-    this.damage,
-  });
+  factory Tcgplayer.fromJson(Map<String, dynamic> json) =>
+      _$TcgplayerFromJson(json);
 }
 
-class Ability {
-  final String? name;
-  final String? text;
-  final String? type;
+@freezed
+class TcgplayerPrices with _$TcgplayerPrices {
+  const factory TcgplayerPrices({
+    double? low,
+    double? mid,
+    double? high,
+    double? market,
+    double? directLow,
+  }) = _TcgplayerPrices;
 
-  Ability({this.name, this.text, this.type});
+  factory TcgplayerPrices.fromJson(Map<String, dynamic> json) =>
+      _$TcgplayerPricesFromJson(json);
 }
 
-class Set {
-  final String? id;
-  final String? name;
-  final String? series;
-  final int? printedTotal;
-  final int? total;
-  final Legalities? legalities;
-  final String? ptcgoCode;
-  final String? releaseDate;
-  final String? updatedAt;
-  final Images? images;
+@freezed
+class Cardmarket with _$Cardmarket {
+  const factory Cardmarket({
+    String? url,
+    String? updatedAt,
+    CardmarketPrices? prices,
+  }) = _Cardmarket;
 
-  Set({
-    this.id,
-    this.name,
-    this.series,
-    this.printedTotal,
-    this.total,
-    this.legalities,
-    this.ptcgoCode,
-    this.releaseDate,
-    this.updatedAt,
-    this.images,
-  });
+  factory Cardmarket.fromJson(Map<String, dynamic> json) =>
+      _$CardmarketFromJson(json);
 }
 
-class Card {
-  final String? id;
-  final String? name;
-  final String? supertype;
-  final List<String>? subtypes;
-  final String? hp;
-  final List<String>? types;
-  final String? evolvesFrom;
-  final List<Ability>? abilities;
-  final List<Attack>? attacks;
-  final List<Weakness>? weaknesses;
-  final List<String>? retreatCost;
-  final int? convertedRetreatCost;
-  final Set? set;
-  final String? number;
-  final String? artist;
-  final String? rarity;
-  final String? flavorText;
-  final List<int>? nationalPokedexNumbers;
-  final Legalities? legalities;
-  final Images? images;
-  final Tcgplayer? tcgplayer;
-  final Cardmarket? cardmarket;
+@freezed
+class CardmarketPrices with _$CardmarketPrices {
+  const factory CardmarketPrices({
+    double? averageSellPrice,
+    double? lowPrice,
+    double? trendPrice,
+  }) = _CardmarketPrices;
 
-  Card({
-    this.id,
-    this.name,
-    this.supertype,
-    this.subtypes,
-    this.hp,
-    this.types,
-    this.evolvesFrom,
-    this.abilities,
-    this.attacks,
-    this.weaknesses,
-    this.retreatCost,
-    this.convertedRetreatCost,
-    this.set,
-    this.number,
-    this.artist,
-    this.rarity,
-    this.flavorText,
-    this.nationalPokedexNumbers,
-    this.legalities,
-    this.images,
-    this.tcgplayer,
-    this.cardmarket,
-  });
+  factory CardmarketPrices.fromJson(Map<String, dynamic> json) =>
+      _$CardmarketPricesFromJson(json);
 }
