@@ -10,8 +10,7 @@ enum GameType {
   dragonBall('dragon-ball-fusion'),
   digimon('digimon'),
   unionArena('union-arena'),
-  gundam('gundam'),
-  magic('magic');
+  gundam('gundam');
 
   final String apiPath;
   const GameType(this.apiPath);
@@ -40,7 +39,6 @@ class TcgService {
     GameType.digimon: {'name': 'gallantmon'},
     GameType.unionArena: {'name': 'gon'},
     GameType.gundam: {'name': 'strike'},
-    GameType.magic: {'name': 'jace'},
   };
 
   Future<List<T>> getCards<T>({
@@ -59,7 +57,6 @@ class TcgService {
       }
 
       final queryParams = <String, String>{};
-
       if (property == null || value == null) {
         final defaultFilter = _defaultFilters[gameType];
         if (defaultFilter != null) {
@@ -79,28 +76,38 @@ class TcgService {
 
       final uri = Uri.parse(
         '$_baseUrl/${gameType.apiPath}/cards',
-      ).replace(queryParameters: queryParams); //Posible area de error
+      ).replace(queryParameters: queryParams);
       final response = await http.get(uri, headers: {'x-api-key': apiKey});
       developer.log('API Request: $uri');
       developer.log(
-        'API Response for getCards: ${response.statusCode} - ${response.body}',
+        'API Response for getCards: ${response.statusCode} - ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
       );
-      developer.log('Response Headers: ${response.headers}');
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
-        final cardsJson = json['data'];
-        if (cardsJson is List<dynamic>) {
-          developer.log(
-            'Cards returned for ${gameType.name}: ${cardsJson.length}',
-          );
-          return cardsJson
-              .map((card) => _parseCard<T>(card, gameType))
-              .toList();
-        } else {
-          developer.log('No cards found in response: ${json.toString()}');
-          return [];
-        }
+        final cardsJson = (json['data'] as List<dynamic>?) ?? [];
+        developer.log(
+          'Cards returned for ${gameType.name}: ${cardsJson.length}',
+        );
+        return cardsJson.map((card) {
+          try {
+            final cardJson = card as Map<String, dynamic>;
+            // Log int fields for debugging
+            if (gameType == GameType.onePiece) {
+              developer.log(
+                'Parsing OnePieceCard: name=${cardJson['name']}, cost=${cardJson['cost']?.runtimeType}:${cardJson['cost']}, power=${cardJson['power']?.runtimeType}:${cardJson['power']}',
+              );
+            } else if (gameType == GameType.pokemon) {
+              developer.log(
+                'Parsing PokemonCard: name=${cardJson['name']}, convertedRetreatCost=${cardJson['convertedRetreatCost']?.runtimeType}:${cardJson['convertedRetreatCost']}',
+              );
+            }
+            return _parseCard<T>(cardJson, gameType);
+          } catch (e) {
+            developer.log('Error parsing card JSON: $card, Error: $e');
+            rethrow;
+          }
+        }).toList();
       } else {
         String errorMessage =
             'Failed to load cards: ${response.statusCode} - ${response.body}';
@@ -134,17 +141,31 @@ class TcgService {
 
       developer.log('API Request (getCard): $uri');
       developer.log(
-        'API Response for getCard: ${response.statusCode} - ${response.body}',
+        'API Response for getCard: ${response.statusCode} - ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
       );
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
-        final cardJson = json['data'];
-        if (cardJson is Map<String, dynamic>) {
-          return _parseCard<T>(cardJson, gameType);
-        } else {
+        final cardJson = json['data'] as Map<String, dynamic>?;
+        if (cardJson == null) {
           developer.log('No card data found in response: ${json.toString()}');
           return null;
+        }
+        try {
+          // Log int fields for debugging
+          if (gameType == GameType.onePiece) {
+            developer.log(
+              'Parsing OnePieceCard: name=${cardJson['name']}, cost=${cardJson['cost']?.runtimeType}:${cardJson['cost']}, power=${cardJson['power']?.runtimeType}:${cardJson['power']}',
+            );
+          } else if (gameType == GameType.pokemon) {
+            developer.log(
+              'Parsing PokemonCard: name=${cardJson['name']}, convertedRetreatCost=${cardJson['convertedRetreatCost']?.runtimeType}:${cardJson['convertedRetreatCost']}',
+            );
+          }
+          return _parseCard<T>(cardJson, gameType);
+        } catch (e) {
+          developer.log('Error parsing card JSON: $cardJson, Error: $e');
+          rethrow;
         }
       } else {
         String errorMessage =
@@ -176,8 +197,6 @@ class TcgService {
         return UnionArenaCard.fromJson(json) as T;
       case GameType.gundam:
         return GundamCard.fromJson(json) as T;
-      case GameType.magic:
-        return MagicCard.fromJson(json) as T;
     }
   }
 }
