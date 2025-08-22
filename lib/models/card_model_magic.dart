@@ -1,130 +1,89 @@
 // lib/models/card_model_magic.dart
-class Card {
-  final String? name;
-  final List<String>? names;
-  final String? manaCost;
-  final num? cmc;
-  final List<String>? colors;
-  final List<String>? colorIdentity;
-  final String? type;
-  final List<String>? supertypes;
-  final List<String>? types;
-  final List<String>? subtypes;
-  final String? rarity;
-  final String? set;
-  final String? text;
-  final String? artist;
-  final String? number;
-  final String? power;
-  final String? toughness;
-  final String? layout;
-  final num? multiverseid;
-  final String? imageUrl;
-  final List<Ruling>? rulings;
-  final List<ForeignName>? foreignNames;
-  final List<String>? printings;
-  final String? originalText;
-  final String? originalType;
-  final String? id;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'dart:developer' as developer;
 
-  Card({
-    this.name,
-    this.names,
-    this.manaCost,
-    this.cmc,
-    this.colors,
-    this.colorIdentity,
-    this.type,
-    this.supertypes,
-    this.types,
-    this.subtypes,
-    this.rarity,
-    this.set,
-    this.text,
-    this.artist,
-    this.number,
-    this.power,
-    this.toughness,
-    this.layout,
-    this.multiverseid,
-    this.imageUrl,
-    this.rulings,
-    this.foreignNames,
-    this.printings,
-    this.originalText,
-    this.originalType,
-    this.id,
-  });
+part 'card_model_magic.freezed.dart';
+part 'card_model_magic.g.dart';
 
-  factory Card.fromJson(Map<String, dynamic> json) {
-    return Card(
-      name: json['name'] as String?,
-      names: (json['names'] as List<dynamic>?)?.cast<String>(),
-      manaCost: json['manaCost'] as String?,
-      cmc: _parseNum(json['cmc']),
-      colors: (json['colors'] as List<dynamic>?)?.cast<String>(),
-      colorIdentity: (json['colorIdentity'] as List<dynamic>?)?.cast<String>(),
-      type: json['type'] as String?,
-      supertypes: (json['supertypes'] as List<dynamic>?)?.cast<String>(),
-      types: (json['types'] as List<dynamic>?)?.cast<String>(),
-      subtypes: (json['subtypes'] as List<dynamic>?)?.cast<String>(),
-      rarity: json['rarity'] as String?,
-      set: json['set'] as String?,
-      text: json['text'] as String?,
-      artist: json['artist'] as String?,
-      number: json['number'] as String?,
-      power: json['power'] as String?,
-      toughness: json['toughness'] as String?,
-      layout: json['layout'] as String?,
-      multiverseid: _parseNum(json['multiverseid']),
-      imageUrl: json['imageUrl'] as String?,
-      rulings: (json['rulings'] as List<dynamic>?)
-          ?.map((r) => Ruling.fromJson(r as Map<String, dynamic>))
-          .toList(),
-      foreignNames: (json['foreignNames'] as List<dynamic>?)
-          ?.map((f) => ForeignName.fromJson(f as Map<String, dynamic>))
-          .toList(),
-      printings: (json['printings'] as List<dynamic>?)?.cast<String>(),
-      originalText: json['originalText'] as String?,
-      originalType: json['originalType'] as String?,
-      id: json['id'] as String?,
+class StringToIntConverter implements JsonConverter<int?, dynamic> {
+  const StringToIntConverter();
+
+  @override
+  int? fromJson(dynamic value) {
+    if (value == null) return null;
+    if (value is int) return value;
+    if (value is double) return value.toInt();
+    if (value is String) {
+      final parsed = int.tryParse(value);
+      if (parsed == null) {
+        developer.log('Failed to parse int from string: $value');
+        return null;
+      }
+      return parsed;
+    }
+    developer.log(
+      'Unsupported type for conversion: ${value.runtimeType}, value: $value',
     );
+    return null;
+  }
+
+  @override
+  String? toJson(int? value) {
+    return value?.toString();
   }
 }
 
-num? _parseNum(dynamic value) {
-  if (value == null) return null;
-  if (value is num) return value;
-  if (value is String) {
-    final parsed = double.tryParse(value);
-    return parsed != null ? parsed : null;
-  }
-  return null;
+@freezed
+class MagicCard with _$MagicCard {
+  const factory MagicCard({
+    String? name,
+    List<String>? names,
+    String? manaCost,
+    @StringToIntConverter() int? cmc, // Use updated converter
+    List<String>? colors,
+    List<String>? colorIdentity,
+    String? type,
+    List<String>? supertypes,
+    List<String>? types,
+    List<String>? subtypes,
+    String? rarity,
+    String? set,
+    String? setName,
+    String? text,
+    String? artist,
+    String? number,
+    String? power,
+    String? toughness,
+    String? layout,
+    @StringToIntConverter() int? multiverseid, // Use updated converter
+    String? imageUrl,
+    List<Ruling>? rulings,
+    List<ForeignName>? foreignNames,
+    List<String>? printings,
+    String? originalText,
+    String? originalType,
+    String? id,
+  }) = _MagicCard;
+
+  factory MagicCard.fromJson(Map<String, dynamic> json) =>
+      _$MagicCardFromJson(json);
 }
 
-class Ruling {
-  final String? date;
-  final String? text;
+@freezed
+class Ruling with _$Ruling {
+  const factory Ruling({String? date, String? text}) = _Ruling;
 
-  Ruling({this.date, this.text});
-
-  factory Ruling.fromJson(Map<String, dynamic> json) {
-    return Ruling(date: json['date'] as String?, text: json['text'] as String?);
-  }
+  factory Ruling.fromJson(Map<String, dynamic> json) => _$RulingFromJson(json);
 }
 
-class ForeignName {
-  final String? name;
-  final String? language;
-  final num? multiverseid;
+@freezed
+class ForeignName with _$ForeignName {
+  const factory ForeignName({
+    String? name,
+    String? language,
+    @StringToIntConverter() int? multiverseid, // Use updated converter
+  }) = _ForeignName;
 
-  ForeignName({this.name, this.language, this.multiverseid});
-
-  factory ForeignName.fromJson(Map<String, dynamic> json) {
-    return ForeignName(
-      name: json['name'] as String?,
-      language: json['language'] as String?,
-      multiverseid: _parseNum(json['multiverseid']),
-    );
-  }
+  factory ForeignName.fromJson(Map<String, dynamic> json) =>
+      _$ForeignNameFromJson(json);
 }
