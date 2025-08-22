@@ -22,19 +22,9 @@ class TcgService {
     }
   }
 
-  static const Map<GameType, Map<String, String>> _defaultFilters = {
-    GameType.onePiece: {'name': 'luffy'},
-    GameType.pokemon: {'name': 'snivy'},
-    GameType.dragonBall: {'name': 'goku'},
-    GameType.digimon: {'name': 'gallantmon'},
-    GameType.unionArena: {'name': 'gon'},
-    GameType.gundam: {'name': 'strike'},
-  };
-
   Future<List<T>> getCards<T>({
     required GameType gameType,
-    String? property,
-    String? value,
+    Map<String, String> filters = const {},
     int page = 1,
     int pageSize = 25,
   }) async {
@@ -53,18 +43,13 @@ class TcgService {
       }
 
       final queryParams = <String, String>{};
-      if (property == null || value == null) {
-        final defaultFilter = _defaultFilters[gameType];
-        if (defaultFilter != null) {
-          queryParams.addAll(defaultFilter);
-          developer.log(
-            'Applied default filter for ${gameType.name}: $defaultFilter',
-          );
-        }
+      if (filters.isNotEmpty) {
+        queryParams.addAll(filters);
+        developer.log('Applied filters for ${gameType.name}: $filters');
       } else {
-        queryParams[property] = value;
+        queryParams['name'] = ''; // Empty query to fetch all cards
         developer.log(
-          'Applied custom filter for ${gameType.name}: $property=$value',
+          'No filters applied for ${gameType.name}, fetching all cards',
         );
       }
       queryParams['page'] = page.toString();
@@ -176,7 +161,7 @@ class TcgService {
       }
     } catch (e) {
       developer.log('Error fetching single card for ${gameType.name}: $e');
-      return null; // Return null for all errors to simplify UI handling
+      return null;
     }
   }
 
@@ -200,7 +185,7 @@ class TcgService {
       case GameType.gundam:
         return GundamCard.fromJson(json) as T;
       case GameType.magic:
-        throw UnimplementedError(); // Unreachable due to prior check
+        throw UnimplementedError();
     }
   }
 }

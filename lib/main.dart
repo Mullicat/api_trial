@@ -22,7 +22,7 @@ class _MainAppState extends State<MainApp> {
   final List<Widget> _screens = [
     const TestScreen(),
     const TestScreenMagic(),
-    const TestScreenApiTcg(), // Change this to the correct class name if different, e.g., TestScreenApiTcg or TestScreenApiTcgScreen
+    const TestScreenApiTcg(),
   ];
 
   final List<String> _screenTitles = [

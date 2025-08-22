@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 import './test_screen_single.dart';
 import 'package:api_trial/models/card_model_magic.dart';
-// Make sure that the above import points to the file where MagicCard is defined.
 
 class TestScreenApiTcg extends StatefulWidget {
   final GameType gameType;
@@ -24,6 +23,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
+  final Map<String, String> _filters = {};
 
   @override
   void initState() {
@@ -47,25 +47,13 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
       _isLoading = true;
       _errorMessage = null;
       _cards = null;
+      _filters.clear();
+      _searchController.clear();
     });
-
-    try {
-      await _fetchCards();
-      if (!mounted) return;
-      setState(() {
-        _isLoading = false;
-      });
-    } catch (e) {
-      if (!mounted) return;
-      setState(() {
-        _isLoading = false;
-        _errorMessage = 'Error fetching data: $e';
-        developer.log('Error fetching data: $e');
-      });
-    }
+    await _fetchCards();
   }
 
-  Future<void> _fetchCards({String? name}) async {
+  Future<void> _fetchCards() async {
     setState(() {
       _isLoading = true;
       _errorMessage = null;
@@ -74,62 +62,59 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
 
     try {
       developer.log(
-        'Fetching cards for ${_selectedGameType.name} with name: $name',
+        'Fetching cards for ${_selectedGameType.name} with filters: $_filters',
       );
+      final filters = Map<String, String>.from(_filters);
+      if (_searchController.text.isNotEmpty) {
+        filters['name'] = _searchController.text;
+      }
       switch (_selectedGameType) {
         case GameType.onePiece:
           _cards = await _service.getCards<OnePieceCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.pokemon:
           _cards = await _service.getCards<PokemonCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.dragonBall:
           _cards = await _service.getCards<DragonBallCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.digimon:
           _cards = await _service.getCards<DigimonCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.unionArena:
           _cards = await _service.getCards<UnionArenaCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.gundam:
           _cards = await _service.getCards<GundamCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.magic:
           _cards = await _service.getCards<MagicCard>(
             gameType: _selectedGameType,
-            property: name != null ? 'name' : null,
-            value: name,
+            filters: filters,
             pageSize: 5,
           );
           break;
@@ -185,9 +170,220 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     setState(() {
       _selectedGameType = gameType;
       _cards = null;
+      _filters.clear();
       _searchController.clear();
     });
     _fetchInitialData();
+  }
+
+  // Game-specific filter options
+  final Map<GameType, Map<String, List<String>>> _parameterOptions = {
+    GameType.onePiece: {
+      'rarity': ['None', 'C', 'R', 'SR', 'SEC', 'L'],
+      'type': ['None', 'CHARACTER', 'EVENT', 'STAGE', 'LEADER'],
+      'color': ['None', 'Red', 'Green', 'Blue', 'Purple', 'Black'],
+      'family': ['None', 'Straw Hat Crew', 'Water Seven', 'Donquixote Pirates'],
+    },
+    GameType.pokemon: {
+      'rarity': [
+        'None',
+        'Common',
+        'Uncommon',
+        'Rare',
+        'Rare Holo',
+        'Rare Ultra',
+      ],
+      'types': [
+        'None',
+        'Grass',
+        'Fire',
+        'Water',
+        'Lightning',
+        'Psychic',
+        'Fighting',
+      ],
+      'subtypes': ['None', 'Basic', 'Stage 1', 'Stage 2', 'V', 'VMAX', 'EX'],
+      'hp': ['None', '[* TO 50]', '[50 TO 100]', '[100 TO 150]', '[150 TO *]'],
+    },
+    GameType.dragonBall: {
+      'rarity': ['None', 'C', 'UC', 'R', 'SR', 'SCR', 'L'],
+      'cardType': ['None', 'LEADER', 'BATTLE', 'EXTRA'],
+      'color': ['None', 'Red', 'Blue', 'Green', 'Yellow', 'Black'],
+      'features': ['None', 'Saiyan', 'Universe 7', 'Frieza Clan'],
+    },
+    GameType.digimon: {
+      'rarity': ['None', 'C', 'U', 'R', 'SR', 'SEC'],
+      'cardType': ['None', 'Digimon', 'Digi-Egg', 'Tamer', 'Option'],
+      'colors': ['None', 'Red', 'Blue', 'Yellow', 'Green', 'Black', 'Purple'],
+      'form': ['None', 'Rookie', 'Champion', 'Ultimate', 'Mega'],
+    },
+    GameType.unionArena: {
+      'rarity': ['None', 'C', 'U', 'R', 'SR', 'PR'],
+      'type': ['None', 'Character', 'Event', 'Field'],
+      'needEnergy.value': ['None', 'Blue-', 'Red-', 'Green-', 'Yellow-'],
+    },
+    GameType.gundam: {
+      'rarity': ['None', 'C', 'R', 'SR', 'LR'],
+      'cardType': ['None', 'UNIT', 'PILOT', 'COMMAND'],
+      'color': ['None', 'White', 'Red', 'Blue', 'Green'],
+      'zone': ['None', 'Space', 'Earth', 'Space / Earth'],
+    },
+    GameType.magic: {}, // Empty since Magic uses MagicTcgService
+  };
+
+  // Game-specific free-text parameters
+  final Map<GameType, List<String>> _freeTextParams = {
+    GameType.onePiece: ['ability'],
+    GameType.pokemon: ['text', 'flavor', 'artist', 'number'],
+    GameType.dragonBall: ['effect'],
+    GameType.digimon: ['effect'],
+    GameType.unionArena: ['effect'],
+    GameType.gundam: ['effect'],
+    GameType.magic: [], // Empty since Magic uses MagicTcgService
+  };
+
+  // Build filter bar with dropdown buttons and free-text buttons
+  Widget _buildFilterBar() {
+    final params = _parameterOptions[_selectedGameType] ?? {};
+    final freeTextParams = _freeTextParams[_selectedGameType] ?? [];
+    return Row(
+      children: [
+        Flexible(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                // Dropdown buttons for non-free-text parameters
+                ...params.keys.map((param) {
+                  final isActive =
+                      _filters.containsKey(param) && _filters[param] != 'None';
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: PopupMenuButton<String>(
+                      onSelected: (value) async {
+                        setState(() {
+                          if (value == 'None') {
+                            _filters.remove(param);
+                          } else {
+                            _filters[param] = value;
+                          }
+                        });
+                        await _fetchCards();
+                      },
+                      itemBuilder: (context) => params[param]!
+                          .map(
+                            (option) => PopupMenuItem<String>(
+                              value: option,
+                              child: Text(option),
+                            ),
+                          )
+                          .toList(),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                        child: Text(
+                          param,
+                          style: TextStyle(
+                            color: isActive ? Colors.blue : Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+                // Buttons for free-text parameters
+                ...freeTextParams.map((param) {
+                  final isActive =
+                      _filters.containsKey(param) &&
+                      _filters[param]!.isNotEmpty;
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: GestureDetector(
+                      onTap: () => _showTextInputDialog(param),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                        child: Text(
+                          param,
+                          style: TextStyle(
+                            color: isActive ? Colors.blue : Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: TextButton(
+            onPressed: () {
+              setState(() {
+                _filters.clear();
+                _searchController.clear();
+              });
+              _fetchCards();
+            },
+            child: const Text('Clear Filters'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Show dialog for free-text parameters
+  Future<void> _showTextInputDialog(String param) async {
+    final controller = TextEditingController(text: _filters[param] ?? '');
+    final result = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Enter $param'),
+        content: TextField(
+          controller: controller,
+          decoration: InputDecoration(hintText: 'Enter $param value'),
+          maxLines: 3,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, controller.text),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+
+    if (result != null && result.isNotEmpty) {
+      setState(() {
+        _filters[param] = result;
+      });
+      await _fetchCards();
+    } else if (result != null) {
+      setState(() {
+        _filters.remove(param);
+      });
+      await _fetchCards();
+    }
   }
 
   @override
@@ -204,13 +400,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: _isLoading
-                ? null
-                : () => _fetchCards(
-                    name: _searchController.text.isEmpty
-                        ? null
-                        : _searchController.text,
-                  ),
+            onPressed: _isLoading ? null : () => _fetchCards(),
             tooltip: 'Refresh Cards',
           ),
           PopupMenuButton<GameType>(
@@ -240,19 +430,20 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
-                  onPressed: _isLoading
-                      ? null
-                      : () => _fetchCards(
-                          name: _searchController.text.isEmpty
-                              ? null
-                              : _searchController.text,
-                        ),
+                  onPressed: _isLoading ? null : () => _fetchCards(),
                 ),
               ),
-              onSubmitted: (value) =>
-                  _fetchCards(name: value.isEmpty ? null : value),
+              onSubmitted: (value) => _fetchCards(),
             ),
           ),
+          if (_selectedGameType != GameType.magic)
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+                vertical: 4.0,
+              ),
+              child: _buildFilterBar(),
+            ),
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -271,11 +462,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton(
-                          onPressed: () => _fetchCards(
-                            name: _searchController.text.isEmpty
-                                ? null
-                                : _searchController.text,
-                          ),
+                          onPressed: () => _fetchCards(),
                           child: const Text('Retry'),
                         ),
                       ],
@@ -284,7 +471,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                 : _cards == null || _cards.isEmpty
                 ? const Center(
                     child: Text(
-                      'No cards found. Try adjusting your search.',
+                      'No cards found. Try adjusting your search or filters.',
                       style: TextStyle(fontSize: 16),
                     ),
                   )
