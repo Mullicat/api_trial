@@ -1,27 +1,17 @@
+// lib/services/catalog_apitcg_api_service.dart
 import 'dart:convert';
 import 'dart:developer' as developer;
 import 'package:api_trial/models/card_model_api_apitcg.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-
-enum GameType {
-  onePiece('one-piece'),
-  pokemon('pokemon'),
-  dragonBall('dragon-ball-fusion'),
-  digimon('digimon'),
-  unionArena('union-arena'),
-  gundam('gundam');
-
-  final String apiPath;
-  const GameType(this.apiPath);
-}
+import 'package:api_trial/enums/game_type.dart';
 
 class TcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
 
   static Future<void> _loadEnv() async {
     try {
-      await dotenv.load(fileName: "assets/.env");
+      await dotenv.load(fileName: 'assets/.env');
       developer.log('Successfully loaded assets/.env');
       developer.log(
         'API_TCG_KEY present: ${dotenv.env['API_TCG_KEY'] != null}',
@@ -34,7 +24,7 @@ class TcgService {
 
   static const Map<GameType, Map<String, String>> _defaultFilters = {
     GameType.onePiece: {'name': 'luffy'},
-    GameType.pokemon: {'name': 'charizard'},
+    GameType.pokemon: {'name': 'snivy'},
     GameType.dragonBall: {'name': 'goku'},
     GameType.digimon: {'name': 'gallantmon'},
     GameType.unionArena: {'name': 'gon'},
@@ -48,6 +38,12 @@ class TcgService {
     int page = 1,
     int pageSize = 25,
   }) async {
+    if (gameType == GameType.magic) {
+      throw Exception(
+        'Magic: The Gathering not supported in TcgService. Use MagicTcgService.',
+      );
+    }
+
     try {
       await _loadEnv();
       final apiKey = dotenv.env['API_TCG_KEY'];
@@ -92,16 +88,9 @@ class TcgService {
         return cardsJson.map((card) {
           try {
             final cardJson = card as Map<String, dynamic>;
-            // Log int fields for debugging
-            if (gameType == GameType.onePiece) {
-              developer.log(
-                'Parsing OnePieceCard: name=${cardJson['name']}, cost=${cardJson['cost']?.runtimeType}:${cardJson['cost']}, power=${cardJson['power']?.runtimeType}:${cardJson['power']}',
-              );
-            } else if (gameType == GameType.pokemon) {
-              developer.log(
-                'Parsing PokemonCard: name=${cardJson['name']}, convertedRetreatCost=${cardJson['convertedRetreatCost']?.runtimeType}:${cardJson['convertedRetreatCost']}',
-              );
-            }
+            developer.log(
+              'Parsing ${gameType.name} card: name=${cardJson['name']}, id=${cardJson['id']}',
+            );
             return _parseCard<T>(cardJson, gameType);
           } catch (e) {
             developer.log('Error parsing card JSON: $card, Error: $e');
@@ -128,6 +117,12 @@ class TcgService {
     required GameType gameType,
     required String id,
   }) async {
+    if (gameType == GameType.magic) {
+      throw Exception(
+        'Magic: The Gathering not supported in TcgService. Use MagicTcgService.',
+      );
+    }
+
     try {
       await _loadEnv();
       final apiKey = dotenv.env['API_TCG_KEY'];
@@ -136,37 +131,39 @@ class TcgService {
         throw Exception('API_TCG_KEY not found in assets/.env');
       }
 
-      final uri = Uri.parse('$_baseUrl/${gameType.apiPath}/cards/$id');
+      final uri = Uri.parse(
+        '$_baseUrl/${gameType.apiPath}/cards',
+      ).replace(queryParameters: {'id': id, 'limit': '1'});
       final response = await http.get(uri, headers: {'x-api-key': apiKey});
 
       developer.log('API Request (getCard): $uri');
       developer.log(
-        'API Response for getCard: ${response.statusCode} - ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
+        'API Response for getCard: ${response.statusCode} - ${response.body}',
       );
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
-        final cardJson = json['data'] as Map<String, dynamic>?;
-        if (cardJson == null) {
-          developer.log('No card data found in response: ${json.toString()}');
+        final cardsJson = (json['data'] as List<dynamic>?) ?? [];
+        if (cardsJson.isEmpty) {
+          developer.log('No card found for ID: $id in ${gameType.name}');
           return null;
         }
         try {
-          // Log int fields for debugging
-          if (gameType == GameType.onePiece) {
-            developer.log(
-              'Parsing OnePieceCard: name=${cardJson['name']}, cost=${cardJson['cost']?.runtimeType}:${cardJson['cost']}, power=${cardJson['power']?.runtimeType}:${cardJson['power']}',
-            );
-          } else if (gameType == GameType.pokemon) {
-            developer.log(
-              'Parsing PokemonCard: name=${cardJson['name']}, convertedRetreatCost=${cardJson['convertedRetreatCost']?.runtimeType}:${cardJson['convertedRetreatCost']}',
-            );
-          }
+          final cardJson = cardsJson.first as Map<String, dynamic>;
+          developer.log(
+            'Parsing ${gameType.name} card: name=${cardJson['name']}, id=${cardJson['id']}, rarity=${cardJson['rarity']}',
+          );
           return _parseCard<T>(cardJson, gameType);
         } catch (e) {
-          developer.log('Error parsing card JSON: $cardJson, Error: $e');
+          developer.log(
+            'Error parsing card JSON: ${cardsJson.first}, Error: $e',
+          );
           rethrow;
         }
+      } else if (response.statusCode == 500 &&
+          response.body.contains('Datos no encontrados')) {
+        developer.log('Card not found for ID: $id in ${gameType.name}');
+        return null;
       } else {
         String errorMessage =
             'Failed to load card: ${response.statusCode} - ${response.body}';
@@ -179,11 +176,16 @@ class TcgService {
       }
     } catch (e) {
       developer.log('Error fetching single card for ${gameType.name}: $e');
-      throw Exception('Error fetching card: $e');
+      return null; // Return null for all errors to simplify UI handling
     }
   }
 
   T _parseCard<T>(Map<String, dynamic> json, GameType gameType) {
+    if (gameType == GameType.magic) {
+      throw Exception(
+        'Magic: The Gathering not supported in TcgService. Use MagicTcgService.',
+      );
+    }
     switch (gameType) {
       case GameType.onePiece:
         return OnePieceCard.fromJson(json) as T;
@@ -197,6 +199,8 @@ class TcgService {
         return UnionArenaCard.fromJson(json) as T;
       case GameType.gundam:
         return GundamCard.fromJson(json) as T;
+      case GameType.magic:
+        throw UnimplementedError(); // Unreachable due to prior check
     }
   }
 }

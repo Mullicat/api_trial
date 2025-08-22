@@ -1,8 +1,11 @@
+// lib/screens/test_screen_magic.dart
+import 'package:api_trial/enums/game_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:developer' as developer;
 import '../services/catalog_magic_api_service.dart';
 import '../models/card_model_magic.dart' as model;
+import './test_screen_single.dart';
 
 class TestScreenMagic extends StatefulWidget {
   const TestScreenMagic({super.key});
@@ -12,8 +15,7 @@ class TestScreenMagic extends StatefulWidget {
 }
 
 class _TestScreenMagicState extends State<TestScreenMagic> {
-  List<model.Card>? _cards;
-  model.Card? _singleCard;
+  List<model.MagicCard>? _cards;
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
@@ -32,7 +34,6 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
 
   Future<void> _fetchInitialData() async {
     await _fetchCards(name: null);
-    await _fetchSingleCard('386616');
   }
 
   Future<void> _fetchCards({String? name}) async {
@@ -65,23 +66,31 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
   }
 
   Future<void> _fetchSingleCard(String multiverseid) async {
-    try {
-      final tcgService = MagicTcgService();
-      final card = await tcgService.getCard(multiverseid);
-      developer.log('Single card fetched: ${card?.name ?? 'None'}');
-
-      if (!mounted) return;
-
+    if (multiverseid.isEmpty) {
       setState(() {
-        _singleCard = card;
+        _errorMessage = 'Invalid card ID';
       });
+      developer.log('Error: multiverseid is empty');
+      return;
+    }
+
+    try {
+      developer.log(
+        'Navigating to TestScreenMagicSingle with multiverseid: $multiverseid',
+      );
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              TestScreenSingle(id: multiverseid, gameType: GameType.magic),
+        ),
+      );
     } catch (e) {
       if (!mounted) return;
-
       setState(() {
-        _errorMessage = 'Error fetching single card: $e';
+        _errorMessage = 'Error navigating to card details: $e';
       });
-      developer.log('Error fetching single card: $e');
+      developer.log('Error navigating to card details: $e');
     }
   }
 
@@ -202,39 +211,6 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
                     },
                   ),
           ),
-          if (_singleCard != null)
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Single Card: ${_singleCard!.name ?? 'No Name'}',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text('Rarity: ${_singleCard!.rarity ?? 'Unknown'}'),
-                      Text('CMC: ${_singleCard!.cmc?.toString() ?? 'N/A'}'),
-                      Text('Type: ${_singleCard!.type ?? 'Unknown'}'),
-                      if (_singleCard!.imageUrl != null)
-                        Image.network(
-                          _singleCard!.imageUrl!,
-                          height: 100,
-                          fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Text('Image unavailable'),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );

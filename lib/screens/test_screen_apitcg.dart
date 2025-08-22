@@ -1,8 +1,12 @@
 // lib/test_screen_api_tcg.dart
+import 'package:api_trial/enums/game_type.dart';
 import 'package:api_trial/models/card_model_api_apitcg.dart';
 import 'package:api_trial/services/catalog_apitcg_api_service.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
+import './test_screen_single.dart';
+import 'package:api_trial/models/card_model_magic.dart';
+// Make sure that the above import points to the file where MagicCard is defined.
 
 class TestScreenApiTcg extends StatefulWidget {
   final GameType gameType;
@@ -17,7 +21,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
   final TcgService _service = TcgService();
   GameType _selectedGameType = GameType.onePiece;
   dynamic _cards;
-  dynamic _singleCard;
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
@@ -44,7 +47,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
       _isLoading = true;
       _errorMessage = null;
       _cards = null;
-      _singleCard = null;
     });
 
     try {
@@ -68,7 +70,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
       _isLoading = true;
       _errorMessage = null;
       _cards = null;
-      _singleCard = null;
     });
 
     try {
@@ -124,6 +125,14 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
             pageSize: 5,
           );
           break;
+        case GameType.magic:
+          _cards = await _service.getCards<MagicCard>(
+            gameType: _selectedGameType,
+            property: name != null ? 'name' : null,
+            value: name,
+            pageSize: 5,
+          );
+          break;
       }
       developer.log(
         'Cards fetched for ${_selectedGameType.name}: ${_cards?.length ?? 0}',
@@ -143,66 +152,30 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
   }
 
   Future<void> _fetchSingleCard(String id) async {
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
+    if (id.isEmpty) {
+      setState(() {
+        _errorMessage = 'Invalid card ID';
+      });
+      developer.log('Error: cardId is empty');
+      return;
+    }
 
     try {
       developer.log(
-        'Fetching single card for ${_selectedGameType.name}: id=$id',
+        'Navigating to TestScreenSingle with cardId: $id, gameType: ${_selectedGameType.name}',
       );
-      switch (_selectedGameType) {
-        case GameType.onePiece:
-          _singleCard = await _service.getCard<OnePieceCard>(
-            gameType: _selectedGameType,
-            id: id,
-          );
-          break;
-        case GameType.pokemon:
-          _singleCard = await _service.getCard<PokemonCard>(
-            gameType: _selectedGameType,
-            id: id,
-          );
-          break;
-        case GameType.dragonBall:
-          _singleCard = await _service.getCard<DragonBallCard>(
-            gameType: _selectedGameType,
-            id: id,
-          );
-          break;
-        case GameType.digimon:
-          _singleCard = await _service.getCard<DigimonCard>(
-            gameType: _selectedGameType,
-            id: id,
-          );
-          break;
-        case GameType.unionArena:
-          _singleCard = await _service.getCard<UnionArenaCard>(
-            gameType: _selectedGameType,
-            id: id,
-          );
-          break;
-        case GameType.gundam:
-          _singleCard = await _service.getCard<GundamCard>(
-            gameType: _selectedGameType,
-            id: id,
-          );
-          break;
-      }
-      developer.log(
-        'Single card fetched for ${_selectedGameType.name}: ${_singleCard?.name ?? 'None'}',
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              TestScreenSingle(id: id, gameType: _selectedGameType),
+        ),
       );
-      if (!mounted) return;
-      setState(() {
-        _isLoading = false;
-      });
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _isLoading = false;
-        _errorMessage = 'Error fetching single card: $e';
-        developer.log('Error fetching single card: $e');
+        _errorMessage = 'Error navigating to card details: $e';
+        developer.log('Error navigating to card details: $e');
       });
     }
   }
@@ -212,7 +185,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     setState(() {
       _selectedGameType = gameType;
       _cards = null;
-      _singleCard = null;
       _searchController.clear();
     });
     _fetchInitialData();
@@ -309,7 +281,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                       ],
                     ),
                   )
-                : _cards == null || _cards!.isEmpty
+                : _cards == null || _cards.isEmpty
                 ? const Center(
                     child: Text(
                       'No cards found. Try adjusting your search.',
@@ -322,7 +294,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          'Cards (${_cards!.length}):',
+                          'Cards (${_cards.length}):',
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -331,9 +303,9 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                       ),
                       Expanded(
                         child: ListView.builder(
-                          itemCount: _cards!.length,
+                          itemCount: _cards.length,
                           itemBuilder: (context, index) {
-                            final card = _cards![index];
+                            final card = _cards[index];
                             developer.log('Rendering card: ${card.name}');
                             String typeText;
                             String rarityText;
@@ -367,6 +339,11 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                                 final c = card as GundamCard;
                                 typeText = c.cardType;
                                 rarityText = c.rarity;
+                                break;
+                              case GameType.magic:
+                                final c = card as MagicCard;
+                                typeText = c.type!;
+                                rarityText = c.rarity!;
                                 break;
                             }
                             return Card(
@@ -406,63 +383,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                           },
                         ),
                       ),
-                      if (_singleCard != null)
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Single Card: ${_singleCard!.name}',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  switch (_selectedGameType) {
-                                    GameType.onePiece => Text(
-                                      'Cost: ${(_singleCard as OnePieceCard).cost}',
-                                    ),
-                                    GameType.pokemon => Text(
-                                      'HP: ${(_singleCard as PokemonCard).hp}',
-                                    ),
-                                    GameType.dragonBall => Text(
-                                      'Power: ${(_singleCard as DragonBallCard).power}',
-                                    ),
-                                    GameType.digimon => Text(
-                                      'DP: ${(_singleCard as DigimonCard).dp}',
-                                    ),
-                                    GameType.unionArena => Text(
-                                      'AP: ${(_singleCard as UnionArenaCard).ap}',
-                                    ),
-                                    GameType.gundam => Text(
-                                      'HP: ${(_singleCard as GundamCard).hp}',
-                                    ),
-                                  },
-                                  Text(
-                                    'Rarity: ${_singleCard!.rarity ?? 'Unknown'}',
-                                  ),
-                                  Text(
-                                    'Types: ${_selectedGameType == GameType.pokemon ? (_singleCard as PokemonCard).types.join(', ') ?? 'Unknown' : 'N/A'}',
-                                  ),
-                                  if (_singleCard!.images['small'] != null)
-                                    Image.network(
-                                      _singleCard!.images['small']!,
-                                      height: 100,
-                                      fit: BoxFit.contain,
-                                      errorBuilder:
-                                          (context, error, stackTrace) =>
-                                              const Text('Image unavailable'),
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
                     ],
                   ),
           ),

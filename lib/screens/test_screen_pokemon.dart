@@ -4,6 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:developer' as developer;
 import '../services/catalog_pokemontcg_api_service.dart';
 import '../models/card_model_pokemon.dart' as model;
+import './test_screen_single.dart';
+import '../enums/game_type.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -14,7 +16,6 @@ class TestScreen extends StatefulWidget {
 
 class _TestScreenState extends State<TestScreen> {
   List<model.Card>? _cards;
-  model.Card? _singleCard;
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
@@ -33,7 +34,6 @@ class _TestScreenState extends State<TestScreen> {
 
   Future<void> _fetchInitialData() async {
     await _fetchCards();
-    await _fetchSingleCard('xy1-1');
   }
 
   Future<void> _fetchCards({String? name}) async {
@@ -43,7 +43,7 @@ class _TestScreenState extends State<TestScreen> {
     });
 
     try {
-      await dotenv.load(fileName: "assets/.env");
+      await dotenv.load(fileName: 'assets/.env');
       final tcgService = PokemonTcgService();
       final cards = await tcgService.searchCards(
         page: 1,
@@ -71,23 +71,29 @@ class _TestScreenState extends State<TestScreen> {
   }
 
   Future<void> _fetchSingleCard(String cardId) async {
-    try {
-      final tcgService = PokemonTcgService();
-      final card = await tcgService.getCard(cardId);
-      developer.log('Single card fetched: ${card?.name ?? 'None'}');
-
-      if (!mounted) return;
-
+    if (cardId.isEmpty) {
       setState(() {
-        _singleCard = card;
+        _errorMessage = 'Invalid card ID';
       });
+      developer.log('Error: cardId is empty');
+      return;
+    }
+
+    try {
+      developer.log('Navigating to TestScreenSingle with cardId: $cardId');
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              TestScreenSingle(id: cardId, gameType: GameType.pokemon),
+        ),
+      );
     } catch (e) {
       if (!mounted) return;
-
       setState(() {
-        _errorMessage = 'Error fetching single card: $e';
+        _errorMessage = 'Error navigating to card details: $e';
       });
-      developer.log('Error fetching single card: $e');
+      developer.log('Error navigating to card details: $e');
     }
   }
 
@@ -208,41 +214,6 @@ class _TestScreenState extends State<TestScreen> {
                     },
                   ),
           ),
-          if (_singleCard != null)
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Single Card: ${_singleCard!.name ?? 'No Name'}',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text('Rarity: ${_singleCard!.rarity ?? 'Unknown'}'),
-                      Text('HP: ${_singleCard!.hp ?? 'N/A'}'),
-                      Text(
-                        'Types: ${_singleCard!.types?.join(', ') ?? 'Unknown'}',
-                      ),
-                      if (_singleCard!.images?.small != null)
-                        Image.network(
-                          _singleCard!.images!.small!,
-                          height: 100,
-                          fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Text('Image unavailable'),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );

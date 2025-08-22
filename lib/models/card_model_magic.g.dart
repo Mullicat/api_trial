@@ -6,7 +6,9 @@ part of 'card_model_magic.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
+_$MagicCardImpl _$$MagicCardImplFromJson(
+  Map<String, dynamic> json,
+) => _$MagicCardImpl(
   name: json['name'] as String?,
   names: (json['names'] as List<dynamic>?)?.map((e) => e as String).toList(),
   manaCost: json['manaCost'] as String?,
@@ -48,8 +50,8 @@ _$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
   id: json['id'] as String?,
 );
 
-Map<String, dynamic> _$$CardImplToJson(
-  _$CardImpl instance,
+Map<String, dynamic> _$$MagicCardImplToJson(
+  _$MagicCardImpl instance,
 ) => <String, dynamic>{
   'name': instance.name,
   'names': instance.names,

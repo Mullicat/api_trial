@@ -9,7 +9,7 @@ class MagicTcgService {
       'https://api.magicthegathering.io/v1/cards';
   static const String baseSetsUrl = 'https://api.magicthegathering.io/v1/sets';
 
-  Future<List<Card>> getCards({
+  Future<List<MagicCard>> getCards({
     int? page,
     int? pageSize,
     String? name,
@@ -81,7 +81,7 @@ class MagicTcgService {
         return cardsJson.map((json) {
           try {
             final cardJson = json as Map<String, dynamic>;
-            return Card.fromJson(cardJson);
+            return MagicCard.fromJson(cardJson);
           } catch (e) {
             developer.log('Error parsing card JSON: $json, Error: $e');
             rethrow;
@@ -101,7 +101,7 @@ class MagicTcgService {
     }
   }
 
-  Future<Card?> getCard(String multiverseid) async {
+  Future<MagicCard?> getCard(String multiverseid) async {
     try {
       final uri = Uri.parse('$baseCardsUrl/$multiverseid');
       developer.log('API Request: $uri');
@@ -122,7 +122,7 @@ class MagicTcgService {
           developer.log(
             'Parsing card: name=${cardJson['name']}, cmc=${cardJson['cmc']}, multiverseid=${cardJson['multiverseid']}',
           );
-          return Card.fromJson(cardJson);
+          return MagicCard.fromJson(cardJson);
         } catch (e) {
           developer.log('Error parsing card JSON: $cardJson, Error: $e');
           rethrow;

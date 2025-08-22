@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
   'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
 );
 
-Card _$CardFromJson(Map<String, dynamic> json) {
-  return _Card.fromJson(json);
+MagicCard _$MagicCardFromJson(Map<String, dynamic> json) {
+  return _MagicCard.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Card {
+mixin _$MagicCard {
   String? get name => throw _privateConstructorUsedError;
   List<String>? get names => throw _privateConstructorUsedError;
   String? get manaCost => throw _privateConstructorUsedError;
@@ -51,19 +51,20 @@ mixin _$Card {
   String? get originalType => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
-  /// Serializes this Card to a JSON map.
+  /// Serializes this MagicCard to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Card
+  /// Create a copy of MagicCard
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CardCopyWith<Card> get copyWith => throw _privateConstructorUsedError;
+  $MagicCardCopyWith<MagicCard> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CardCopyWith<$Res> {
-  factory $CardCopyWith(Card value, $Res Function(Card) then) =
-      _$CardCopyWithImpl<$Res, Card>;
+abstract class $MagicCardCopyWith<$Res> {
+  factory $MagicCardCopyWith(MagicCard value, $Res Function(MagicCard) then) =
+      _$MagicCardCopyWithImpl<$Res, MagicCard>;
   @useResult
   $Res call({
     String? name,
@@ -97,16 +98,16 @@ abstract class $CardCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CardCopyWithImpl<$Res, $Val extends Card>
-    implements $CardCopyWith<$Res> {
-  _$CardCopyWithImpl(this._value, this._then);
+class _$MagicCardCopyWithImpl<$Res, $Val extends MagicCard>
+    implements $MagicCardCopyWith<$Res> {
+  _$MagicCardCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Card
+  /// Create a copy of MagicCard
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -256,11 +257,12 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
 }
 
 /// @nodoc
-abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
-  factory _$$CardImplCopyWith(
-    _$CardImpl value,
-    $Res Function(_$CardImpl) then,
-  ) = __$$CardImplCopyWithImpl<$Res>;
+abstract class _$$MagicCardImplCopyWith<$Res>
+    implements $MagicCardCopyWith<$Res> {
+  factory _$$MagicCardImplCopyWith(
+    _$MagicCardImpl value,
+    $Res Function(_$MagicCardImpl) then,
+  ) = __$$MagicCardImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
@@ -295,13 +297,15 @@ abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CardImplCopyWithImpl<$Res>
-    extends _$CardCopyWithImpl<$Res, _$CardImpl>
-    implements _$$CardImplCopyWith<$Res> {
-  __$$CardImplCopyWithImpl(_$CardImpl _value, $Res Function(_$CardImpl) _then)
-    : super(_value, _then);
+class __$$MagicCardImplCopyWithImpl<$Res>
+    extends _$MagicCardCopyWithImpl<$Res, _$MagicCardImpl>
+    implements _$$MagicCardImplCopyWith<$Res> {
+  __$$MagicCardImplCopyWithImpl(
+    _$MagicCardImpl _value,
+    $Res Function(_$MagicCardImpl) _then,
+  ) : super(_value, _then);
 
-  /// Create a copy of Card
+  /// Create a copy of MagicCard
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -335,7 +339,7 @@ class __$$CardImplCopyWithImpl<$Res>
     Object? id = freezed,
   }) {
     return _then(
-      _$CardImpl(
+      _$MagicCardImpl(
         name: freezed == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
@@ -451,8 +455,8 @@ class __$$CardImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CardImpl implements _Card {
-  const _$CardImpl({
+class _$MagicCardImpl implements _MagicCard {
+  const _$MagicCardImpl({
     this.name,
     final List<String>? names,
     this.manaCost,
@@ -490,8 +494,8 @@ class _$CardImpl implements _Card {
        _foreignNames = foreignNames,
        _printings = printings;
 
-  factory _$CardImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardImplFromJson(json);
+  factory _$MagicCardImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MagicCardImplFromJson(json);
 
   @override
   final String? name;
@@ -627,14 +631,14 @@ class _$CardImpl implements _Card {
 
   @override
   String toString() {
-    return 'Card(name: $name, names: $names, manaCost: $manaCost, cmc: $cmc, colors: $colors, colorIdentity: $colorIdentity, type: $type, supertypes: $supertypes, types: $types, subtypes: $subtypes, rarity: $rarity, set: $set, setName: $setName, text: $text, artist: $artist, number: $number, power: $power, toughness: $toughness, layout: $layout, multiverseid: $multiverseid, imageUrl: $imageUrl, rulings: $rulings, foreignNames: $foreignNames, printings: $printings, originalText: $originalText, originalType: $originalType, id: $id)';
+    return 'MagicCard(name: $name, names: $names, manaCost: $manaCost, cmc: $cmc, colors: $colors, colorIdentity: $colorIdentity, type: $type, supertypes: $supertypes, types: $types, subtypes: $subtypes, rarity: $rarity, set: $set, setName: $setName, text: $text, artist: $artist, number: $number, power: $power, toughness: $toughness, layout: $layout, multiverseid: $multiverseid, imageUrl: $imageUrl, rulings: $rulings, foreignNames: $foreignNames, printings: $printings, originalText: $originalText, originalType: $originalType, id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardImpl &&
+            other is _$MagicCardImpl &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._names, _names) &&
             (identical(other.manaCost, manaCost) ||
@@ -715,22 +719,22 @@ class _$CardImpl implements _Card {
     id,
   ]);
 
-  /// Create a copy of Card
+  /// Create a copy of MagicCard
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
-      __$$CardImplCopyWithImpl<_$CardImpl>(this, _$identity);
+  _$$MagicCardImplCopyWith<_$MagicCardImpl> get copyWith =>
+      __$$MagicCardImplCopyWithImpl<_$MagicCardImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CardImplToJson(this);
+    return _$$MagicCardImplToJson(this);
   }
 }
 
-abstract class _Card implements Card {
-  const factory _Card({
+abstract class _MagicCard implements MagicCard {
+  const factory _MagicCard({
     final String? name,
     final List<String>? names,
     final String? manaCost,
@@ -758,9 +762,10 @@ abstract class _Card implements Card {
     final String? originalText,
     final String? originalType,
     final String? id,
-  }) = _$CardImpl;
+  }) = _$MagicCardImpl;
 
-  factory _Card.fromJson(Map<String, dynamic> json) = _$CardImpl.fromJson;
+  factory _MagicCard.fromJson(Map<String, dynamic> json) =
+      _$MagicCardImpl.fromJson;
 
   @override
   String? get name;
@@ -819,11 +824,11 @@ abstract class _Card implements Card {
   @override
   String? get id;
 
-  /// Create a copy of Card
+  /// Create a copy of MagicCard
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
+  _$$MagicCardImplCopyWith<_$MagicCardImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -34,8 +34,8 @@ class StringToIntConverter implements JsonConverter<int?, dynamic> {
 }
 
 @freezed
-class Card with _$Card {
-  const factory Card({
+class MagicCard with _$MagicCard {
+  const factory MagicCard({
     String? name,
     List<String>? names,
     String? manaCost,
@@ -63,9 +63,10 @@ class Card with _$Card {
     String? originalText,
     String? originalType,
     String? id,
-  }) = _Card;
+  }) = _MagicCard;
 
-  factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
+  factory MagicCard.fromJson(Map<String, dynamic> json) =>
+      _$MagicCardFromJson(json);
 }
 
 @freezed
