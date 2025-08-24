@@ -105,6 +105,28 @@ class CardPrice {
   };
 }
 
+class BanlistInfo {
+  final String? banTcg;
+  final String? banOcg;
+  final String? banGoat;
+
+  BanlistInfo({this.banTcg, this.banOcg, this.banGoat});
+
+  factory BanlistInfo.fromJson(Map<String, dynamic> json) {
+    return BanlistInfo(
+      banTcg: json['ban_tcg'] as String?,
+      banOcg: json['ban_ocg'] as String?,
+      banGoat: json['ban_goat'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'ban_tcg': banTcg,
+    'ban_ocg': banOcg,
+    'ban_goat': banGoat,
+  };
+}
+
 class Card {
   final int? id;
   final String? name;
@@ -116,6 +138,14 @@ class Card {
   final int? level;
   final String? race;
   final String? attribute;
+  final String? archetype;
+  final List<String>? typeline;
+  final String? humanReadableCardType;
+  final String? ygoprodeckUrl;
+  final int? scale;
+  final int? linkval;
+  final List<String>? linkmarkers;
+  final BanlistInfo? banlistInfo;
   final List<CardSet> cardSets;
   final List<CardImage> cardImages;
   final List<CardPrice> cardPrices;
@@ -131,6 +161,14 @@ class Card {
     this.level,
     this.race,
     this.attribute,
+    this.archetype,
+    this.typeline = const [],
+    this.humanReadableCardType,
+    this.ygoprodeckUrl,
+    this.scale,
+    this.linkval,
+    this.linkmarkers = const [],
+    this.banlistInfo,
     this.cardSets = const [],
     this.cardImages = const [],
     this.cardPrices = const [],
@@ -148,6 +186,16 @@ class Card {
       level: json['level'] as int?,
       race: json['race'] as String?,
       attribute: json['attribute'] as String?,
+      archetype: json['archetype'] as String?,
+      scale: json['scale'] as int?,
+      linkval: json['linkval'] as int?,
+      linkmarkers: (json['linkmarkers'] as List?)?.cast<String>() ?? const [],
+      typeline: (json['typeline'] as List?)?.cast<String>() ?? const [],
+      humanReadableCardType: json['humanReadableCardType'] as String?,
+      ygoprodeckUrl: json['ygoprodeck_url'] as String?,
+      banlistInfo: json['banlist_info'] == null
+          ? null
+          : BanlistInfo.fromJson(json['banlist_info'] as Map<String, dynamic>),
       cardSets:
           (json['card_sets'] as List<dynamic>?)
               ?.map((e) => CardSet.fromJson(e as Map<String, dynamic>))
@@ -177,6 +225,14 @@ class Card {
     'level': level,
     'race': race,
     'attribute': attribute,
+    'archetype': archetype,
+    'scale': scale,
+    'linkval': linkval,
+    'linkmarkers': linkmarkers,
+    'typeline': typeline,
+    'humanReadableCardType': humanReadableCardType,
+    'ygoprodeck_url': ygoprodeckUrl,
+    'banlist_info': banlistInfo?.toJson(),
     'card_sets': cardSets.map((e) => e.toJson()).toList(),
     'card_images': cardImages.map((e) => e.toJson()).toList(),
     'card_prices': cardPrices.map((e) => e.toJson()).toList(),
