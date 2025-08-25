@@ -9,7 +9,7 @@ class MagicTcgService {
       'https://api.magicthegathering.io/v1/cards';
   static const String baseSetsUrl = 'https://api.magicthegathering.io/v1/sets';
 
-  Future<List<Card>> getCards({
+  Future<List<MagicCard>> getCards({
     int? page,
     int? pageSize,
     String? name,
@@ -71,38 +71,66 @@ class MagicTcgService {
         if (multiverseid != null) 'multiverseid': multiverseid.toString(),
       };
 
-      final uri = Uri.parse(
-        baseCardsUrl,
-      ).replace(queryParameters: queryParams); //Posible area de error
+      final uri = Uri.parse(baseCardsUrl).replace(queryParameters: queryParams);
+      developer.log('API Request: $uri with params: $queryParams');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final cardsJson = data['cards'] as List<dynamic>? ?? [];
-        return cardsJson
-            .map((json) => Card.fromJson(json as Map<String, dynamic>))
-            .toList();
+        return cardsJson.map((json) {
+          try {
+            final cardJson = json as Map<String, dynamic>;
+            return MagicCard.fromJson(cardJson);
+          } catch (e) {
+            developer.log('Error parsing card JSON: $json, Error: $e');
+            rethrow;
+          }
+        }).toList();
       } else {
+        developer.log(
+          'Failed API Response: ${response.statusCode} - ${response.body}',
+        );
         throw Exception(
           'Failed to load cards: ${response.statusCode} - ${response.body}',
         );
       }
     } catch (e) {
+      developer.log('Error fetching cards: $e');
       throw Exception('Error fetching cards: $e');
     }
   }
 
-  Future<Card?> getCard(String idOrMultiverseid) async {
+  Future<MagicCard?> getCard(String multiverseid) async {
     try {
-      final uri = Uri.parse('$baseCardsUrl/$idOrMultiverseid');
+      final uri = Uri.parse('$baseCardsUrl/$multiverseid');
+      developer.log('API Request: $uri');
       final response = await http.get(uri);
-      developer.log('API Response for getCard: ${response.body}');
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        developer.log(
+          'API Response: ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
+        );
         final cardJson = data['card'] as Map<String, dynamic>?;
-        return cardJson != null ? Card.fromJson(cardJson) : null;
+        if (cardJson == null) {
+          developer.log('No card data found for multiverseid: $multiverseid');
+          return null;
+        }
+        try {
+          // Log specific fields that might cause issues
+          developer.log(
+            'Parsing card: name=${cardJson['name']}, cmc=${cardJson['cmc']}, multiverseid=${cardJson['multiverseid']}',
+          );
+          return MagicCard.fromJson(cardJson);
+        } catch (e) {
+          developer.log('Error parsing card JSON: $cardJson, Error: $e');
+          rethrow;
+        }
       } else {
+        developer.log(
+          'Failed API Response: ${response.statusCode} - ${response.body}',
+        );
         throw Exception(
           'Failed to load card: ${response.statusCode} - ${response.body}',
         );
@@ -128,18 +156,26 @@ class MagicTcgService {
       };
 
       final uri = Uri.parse(baseSetsUrl).replace(queryParameters: queryParams);
+      developer.log('API Request: $uri with params: $queryParams');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        developer.log(
+          'API Response: ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
+        ); // Log first 500 chars
         final setsJson = data['sets'] as List<dynamic>? ?? [];
         return setsJson.cast<Map<String, dynamic>>();
       } else {
+        developer.log(
+          'Failed API Response: ${response.statusCode} - ${response.body}',
+        );
         throw Exception(
           'Failed to load sets: ${response.statusCode} - ${response.body}',
         );
       }
     } catch (e) {
+      developer.log('Error fetching sets: $e');
       throw Exception('Error fetching sets: $e');
     }
   }
@@ -147,17 +183,25 @@ class MagicTcgService {
   Future<Map<String, dynamic>?> getSet(String setCode) async {
     try {
       final uri = Uri.parse('$baseSetsUrl/$setCode');
+      developer.log('API Request: $uri');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        developer.log(
+          'API Response: ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
+        ); // Log first 500 chars
         return data['set'] as Map<String, dynamic>?;
       } else {
+        developer.log(
+          'Failed API Response: ${response.statusCode} - ${response.body}',
+        );
         throw Exception(
           'Failed to load set: ${response.statusCode} - ${response.body}',
         );
       }
     } catch (e) {
+      developer.log('Error fetching set: $e');
       throw Exception('Error fetching set: $e');
     }
   }
