@@ -1,3 +1,4 @@
+// lib/services/catalog_pokemontcg_api_service.dart
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -21,7 +22,7 @@ class PokemonTcgService {
   Future<List<Card>> searchCards({
     int? page,
     int? pageSize,
-    String? q,
+    Map<String, String> filters = const {},
     String? orderBy,
   }) async {
     await _loadEnv();
@@ -29,6 +30,31 @@ class PokemonTcgService {
     final apiKey = dotenv.env['POKEMON_TCG_API_KEY'];
     if (apiKey == null) {
       throw Exception('POKEMON_TCG_API_KEY not found in .env');
+    }
+
+    // Construct Lucene-like query from filters
+    String? q;
+    if (filters.isNotEmpty) {
+      final queryParts = <String>[];
+      filters.forEach((key, value) {
+        if (value.isNotEmpty && value != 'None') {
+          if (['hp', 'nationalPokedexNumbers'].contains(key)) {
+            // Range queries (e.g., hp:[150 TO *])
+            queryParts.add('$key:$value');
+          } else if (['text', 'flavor', 'artist', 'number'].contains(key)) {
+            // Free-text fields with quotes for phrases
+            queryParts.add('$key:"$value"');
+          } else {
+            // Standard fields (e.g., rarity:Rare, types:Fire)
+            queryParts.add('$key:$value');
+          }
+        }
+      });
+      q = queryParts.join(' ');
+      if (q.isEmpty) q = null;
+    }
+    if (q == null && !filters.containsKey('name')) {
+      q = 'set.name:generations'; // Default query
     }
 
     final queryParams = {
@@ -41,17 +67,18 @@ class PokemonTcgService {
     final uri = Uri.parse(
       'https://api.pokemontcg.io/v2/cards',
     ).replace(queryParameters: queryParams);
-    developer.log('API Request: $uri');
+    developer.log('API Request: $uri with params: $queryParams');
 
     try {
       final response = await http.get(uri, headers: {'X-Api-Key': apiKey});
       developer.log(
-        'API Response for searchCards: ${response.statusCode} - ${response.body}',
+        'API Response for searchCards: ${response.statusCode} - ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
       );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final cardsJson = data['data'] as List<dynamic>;
+        developer.log('Cards returned: ${cardsJson.length}');
         return cardsJson.map((json) {
           developer.log('Parsing JSON for Card: $json');
           return Card.fromJson(json as Map<String, dynamic>);
@@ -81,7 +108,7 @@ class PokemonTcgService {
     try {
       final response = await http.get(uri, headers: {'X-Api-Key': apiKey});
       developer.log(
-        'API Response for getCard: ${response.statusCode} - ${response.body}',
+        'API Response for getCard: ${response.statusCode} - ${response.body.substring(0, response.body.length.clamp(0, 500))}...',
       );
 
       if (response.statusCode == 200) {
