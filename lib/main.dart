@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/test_screen_pokemon.dart';
 import 'screens/test_screen_magic.dart';
 import 'screens/test_screen_apitcg.dart';
+import 'screens/test_screen_yugioh.dart';
 
 void main() async {
   await dotenv.load(fileName: "assets/.env");
@@ -22,13 +23,15 @@ class _MainAppState extends State<MainApp> {
   final List<Widget> _screens = [
     const TestScreen(),
     const TestScreenMagic(),
-    const TestScreenApiTcg(), // Change this to the correct class name if different, e.g., TestScreenApiTcg or TestScreenApiTcgScreen
+    const TestScreenApiTcg(),
+    const TestScreenYuGiOh(),
   ];
 
   final List<String> _screenTitles = [
     'Pokémon TCG',
     'Magic: The Gathering',
     'API TCG',
+    'Yu-Gi-Oh!',
   ];
 
   void _onScreenSelected(int index) {
@@ -64,6 +67,12 @@ class _MainAppState extends State<MainApp> {
                   child: ElevatedButton(
                     onPressed: () => _onScreenSelected(2),
                     child: Text(_screenTitles[2]),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => _onScreenSelected(3),
+                    child: Text(_screenTitles[3]),
                   ),
                 ),
               ],
