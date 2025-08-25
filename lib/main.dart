@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'screens/test_screen_pokemon.dart';
 import 'screens/test_screen_magic.dart';
 import 'screens/test_screen_apitcg.dart';
 import 'screens/test_screen_yugioh.dart';
 
-void main() async {
+Future<void> main() async {
   await dotenv.load(fileName: "assets/.env");
+
+  await Supabase.initialize(
+    url: 'https://xyzcompany.supabase.co',
+    anonKey: '${dotenv.env['SUPABASE_KEY'] != null}',
+  );
   runApp(const MainApp());
 }
 
