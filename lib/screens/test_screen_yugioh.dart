@@ -133,7 +133,7 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
             ),
             const SizedBox(height: 8),
             DropdownButtonFormField<String>(
-              initialValue: _sortBy,
+              value: _sortBy,
               isExpanded: true,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
