@@ -174,12 +174,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
       body: SafeArea(
         child: Column(
           children: [
-            // Top logo
-            const Image(
-              image: AssetImage('assets/logo.jpg'),
-              width: double.infinity,
-              fit: BoxFit.contain,
-            ),
             const SizedBox(height: 16),
 
             // Toggle hidden filters

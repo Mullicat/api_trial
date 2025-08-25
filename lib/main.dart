@@ -18,7 +18,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int _selectedScreenIndex = 0;
+  int _selectedScreenIndex = 2;
 
   final List<Widget> _screens = [
     const TestScreen(),
@@ -53,8 +53,8 @@ class _MainAppState extends State<MainApp> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () => _onScreenSelected(0),
-                    child: Text(_screenTitles[0]),
+                    onPressed: () => _onScreenSelected(2),
+                    child: Text(_screenTitles[2]),
                   ),
                 ),
                 Expanded(
@@ -65,8 +65,8 @@ class _MainAppState extends State<MainApp> {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () => _onScreenSelected(2),
-                    child: Text(_screenTitles[2]),
+                    onPressed: () => _onScreenSelected(0),
+                    child: Text(_screenTitles[0]),
                   ),
                 ),
                 Expanded(
