@@ -29,7 +29,8 @@ class ImageCaptureViewModel with ChangeNotifier {
     _setErrorMessage(null);
   }
 
-  Future<void> chooseAndUploadImage(ImageSource source, String name) async {
+  Future<void> chooseAndUploadImage(ImageSource source) async {
+    String name = DateTime.now().millisecondsSinceEpoch.toString() + '.jpg';
     _setloading(true);
 
     try {
