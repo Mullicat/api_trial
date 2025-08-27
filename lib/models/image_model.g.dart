@@ -9,9 +9,11 @@ part of 'image_model.dart';
 UploadedImage _$UploadedImageFromJson(Map<String, dynamic> json) =>
     UploadedImage(
       id: json['id'] as String?,
-      url: json['url'] as String,
-      name: json['name'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      url: json['url'] as String?,
+      name: json['name'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$UploadedImageToJson(UploadedImage instance) =>
@@ -19,5 +21,5 @@ Map<String, dynamic> _$UploadedImageToJson(UploadedImage instance) =>
       'id': instance.id,
       'url': instance.url,
       'name': instance.name,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'createdAt': instance.createdAt?.toIso8601String(),
     };
