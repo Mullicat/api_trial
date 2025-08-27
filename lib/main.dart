@@ -1,19 +1,20 @@
+// lib/main.dart
+import 'package:api_trial/screens/image_capture_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'screens/test_screen_pokemon.dart';
-import 'screens/test_screen_magic.dart';
-import 'screens/test_screen_apitcg.dart';
-import 'screens/test_screen_yugioh.dart';
+import 'package:api_trial/screens/test_screen_pokemon.dart';
+import 'package:api_trial/screens/test_screen_magic.dart';
+import 'package:api_trial/screens/test_screen_apitcg.dart';
+import 'package:api_trial/screens/test_screen_yugioh.dart';
+import 'dart:developer' as dev;
 
 Future<void> main() async {
-  await dotenv.load(fileName: "assets/.env");
-
-  await Supabase.initialize(
-    url: 'https://xyzcompany.supabase.co',
-    anonKey: '${dotenv.env['SUPABASE_KEY'] != null}',
-  );
-  runApp(const MainApp());
+  try {
+    await dotenv.load(fileName: "assets/.env");
+    runApp(const MainApp());
+  } catch (e, stack) {
+    dev.log('Main error: $e', stackTrace: stack);
+  }
 }
 
 class MainApp extends StatefulWidget {
@@ -24,13 +25,14 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int _selectedScreenIndex = 2;
+  int _selectedScreenIndex = 4; // Default to ImageCaptureScreen
 
   final List<Widget> _screens = [
     const TestScreen(),
     const TestScreenMagic(),
     const TestScreenApiTcg(),
     const TestScreenYuGiOh(),
+    const ImageCaptureScreen(),
   ];
 
   final List<String> _screenTitles = [
@@ -38,6 +40,7 @@ class _MainAppState extends State<MainApp> {
     'Magic: The Gathering',
     'API TCG',
     'Yu-Gi-Oh!',
+    'Image Capture',
   ];
 
   void _onScreenSelected(int index) {
@@ -57,30 +60,13 @@ class _MainAppState extends State<MainApp> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => _onScreenSelected(2),
-                    child: Text(_screenTitles[2]),
+                for (int i = 0; i < _screenTitles.length; i++)
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () => _onScreenSelected(i),
+                      child: Text(_screenTitles[i]),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => _onScreenSelected(1),
-                    child: Text(_screenTitles[1]),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => _onScreenSelected(0),
-                    child: Text(_screenTitles[0]),
-                  ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => _onScreenSelected(3),
-                    child: Text(_screenTitles[3]),
-                  ),
-                ),
               ],
             ),
           ),
