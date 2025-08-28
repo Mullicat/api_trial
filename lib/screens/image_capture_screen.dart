@@ -1,4 +1,3 @@
-// lib/screens/image_capture_screen.dart
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -15,105 +14,118 @@ class ImageCaptureScreen extends StatelessWidget {
         builder: (context, viewModel, child) {
           return Scaffold(
             appBar: AppBar(title: const Text('Captura de Imagen')),
-            body: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (viewModel.confirmedImage != null)
-                    Image.network(
-                      viewModel.confirmedImage!.url ?? '',
-                      height: 300,
-                      width: 300,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.error, size: 50),
-                    ),
-                  if (viewModel.imageFile != null)
-                    Image.file(
-                      viewModel.imageFile!,
-                      height: 300,
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
-                  if (viewModel.imageFile == null &&
-                      viewModel.confirmedImage == null)
-                    const Text('No image uploaded yet.'),
-                  const SizedBox(height: 20),
-                  if (viewModel.isLoading) const CircularProgressIndicator(),
-                  if (viewModel.errorMessage != null)
-                    Text(
-                      viewModel.errorMessage!,
-                      style: const TextStyle(color: Colors.red),
-                    ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: viewModel.isLoading
-                            ? null
-                            : () => viewModel.pickImage(ImageSource.camera),
-                        child: const Text('Take Photo'),
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (viewModel.confirmedImage != null)
+                      Image.network(
+                        viewModel.confirmedImage!.url ?? '',
+                        height: 300,
+                        width: 300,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.error, size: 50),
                       ),
-                      const SizedBox(width: 10),
-                      ElevatedButton(
-                        onPressed: viewModel.isLoading
-                            ? null
-                            : () => viewModel.pickImage(ImageSource.gallery),
-                        child: const Text('Pick from Gallery'),
+                    if (viewModel.imageFile != null)
+                      Image.file(
+                        viewModel.imageFile!,
+                        height: 300,
+                        width: 300,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.error, size: 50),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed:
-                        viewModel.isLoading || viewModel.imageFile == null
-                        ? null
-                        : viewModel.uploadImage,
-                    child: const Text('Upload Photo'),
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: viewModel.isLoading
-                        ? null
-                        : viewModel.toggleUploadedImages,
-                    child: const Text('Search Uploaded Photos'),
-                  ),
-                  if (viewModel.showUploadedImages)
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: viewModel.uploadedImages.length,
-                        itemBuilder: (context, index) {
-                          final image = viewModel.uploadedImages[index];
-                          final isSelected = viewModel.selectedImage == image;
-                          return ListTile(
-                            title: Text(image.name ?? 'Unknown'),
-                            leading: Image.network(
-                              image.url ?? '',
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(Icons.error, size: 50),
-                            ),
-                            tileColor: isSelected
-                                ? Colors.blue.withOpacity(0.2)
-                                : null,
-                            onTap: () => viewModel.selectImage(image),
-                          );
-                        },
+                    if (viewModel.imageFile == null &&
+                        viewModel.confirmedImage == null)
+                      const Text('No image uploaded yet.'),
+                    const SizedBox(height: 20),
+                    if (viewModel.isLoading) const CircularProgressIndicator(),
+                    if (viewModel.errorMessage != null)
+                      Text(
+                        viewModel.errorMessage!,
+                        style: const TextStyle(color: Colors.red),
                       ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: viewModel.isLoading
+                              ? null
+                              : () => viewModel.pickImage(ImageSource.camera),
+                          child: const Text('Take Photo'),
+                        ),
+                        const SizedBox(width: 10),
+                        ElevatedButton(
+                          onPressed: viewModel.isLoading
+                              ? null
+                              : () => viewModel.pickImage(ImageSource.gallery),
+                          child: const Text('Pick from Gallery'),
+                        ),
+                      ],
                     ),
-                  if (viewModel.showUploadedImages &&
-                      viewModel.selectedImage != null)
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed:
+                          viewModel.isLoading || viewModel.imageFile == null
+                          ? null
+                          : viewModel.uploadImage,
+                      child: const Text('Upload Photo'),
+                    ),
+                    const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: viewModel.isLoading
                           ? null
-                          : viewModel.confirmSelectedImage,
-                      child: const Text('Confirm'),
+                          : viewModel.toggleUploadedImages,
+                      child: const Text('Search Uploaded Photos'),
                     ),
-                ],
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: viewModel.isLoading
+                          ? null
+                          : viewModel.scanSingle,
+                      child: const Text('Scan Card'),
+                    ),
+                    if (viewModel.showUploadedImages)
+                      SizedBox(
+                        height: 200,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: viewModel.uploadedImages.length,
+                          itemBuilder: (context, index) {
+                            final image = viewModel.uploadedImages[index];
+                            final isSelected = viewModel.selectedImage == image;
+                            return ListTile(
+                              title: Text(image.name ?? 'Unknown'),
+                              leading: Image.network(
+                                image.url ?? '',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    const Icon(Icons.error, size: 50),
+                              ),
+                              tileColor: isSelected
+                                  ? Colors.blue.withOpacity(0.2)
+                                  : null,
+                              onTap: () => viewModel.selectImage(image),
+                            );
+                          },
+                        ),
+                      ),
+                    if (viewModel.showUploadedImages &&
+                        viewModel.selectedImage != null)
+                      ElevatedButton(
+                        onPressed: viewModel.isLoading
+                            ? null
+                            : viewModel.confirmSelectedImage,
+                        child: const Text('Confirm'),
+                      ),
+                  ],
+                ),
               ),
             ),
           );
