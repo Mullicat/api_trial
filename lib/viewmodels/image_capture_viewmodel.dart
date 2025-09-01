@@ -1,4 +1,3 @@
-import 'dart:developer' as developer;
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart' as OpenAppSettings;
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import '../data/repositories/supabase_repository.dart';
 import '../models/image_model.dart';
 
@@ -22,6 +22,7 @@ class ImageCaptureViewModel with ChangeNotifier {
   bool _isLoading = false;
   bool _showUploadedImages = false;
   String? _errorMessage;
+  List<Map<String, dynamic>> _recognizedTextBlocks = [];
 
   File? get imageFile => _imageFile;
   UploadedImage? get uploadedImage => _uploadedImage;
@@ -31,6 +32,7 @@ class ImageCaptureViewModel with ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get showUploadedImages => _showUploadedImages;
   String? get errorMessage => _errorMessage;
+  List<Map<String, dynamic>> get recognizedTextBlocks => _recognizedTextBlocks;
 
   void _setErrorMessage(String? message) {
     _errorMessage = message;
@@ -46,10 +48,17 @@ class ImageCaptureViewModel with ChangeNotifier {
     _setErrorMessage(null);
   }
 
+  void clearOcrResults() {
+    _recognizedTextBlocks = [];
+    notifyListeners();
+  }
+
   Future<void> toggleUploadedImages() async {
     _setShowUploadedImages(!_showUploadedImages);
     if (_showUploadedImages) {
       await fetchUploadedImages();
+    } else {
+      _selectedImage = null;
     }
     notifyListeners();
   }
@@ -66,6 +75,8 @@ class ImageCaptureViewModel with ChangeNotifier {
 
   void confirmSelectedImage() {
     _confirmedImage = _selectedImage;
+    _imageFile = null;
+    clearOcrResults();
     _showUploadedImages = false;
     notifyListeners();
   }
@@ -79,6 +90,7 @@ class ImageCaptureViewModel with ChangeNotifier {
       if (_uploadedImages.isEmpty) {
         _setErrorMessage('No uploaded images found in the database.');
       } else {
+        print('Image URLs: ${_uploadedImages.map((img) => img.url).toList()}');
         _setErrorMessage(null);
       }
       notifyListeners();
@@ -124,6 +136,7 @@ class ImageCaptureViewModel with ChangeNotifier {
         );
         if (await file.exists()) {
           _imageFile = file;
+          clearOcrResults();
           _setErrorMessage(null);
           notifyListeners();
         } else {
@@ -138,7 +151,7 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> uploadImage() async {
+  Future<void> uploadCurrentImage() async {
     if (_imageFile == null) {
       _setErrorMessage('Please select an image first');
       return;
@@ -155,7 +168,6 @@ class ImageCaptureViewModel with ChangeNotifier {
         final image = await _repository.uploadImage(_imageFile!, fileName);
         if (image != null) {
           _uploadedImage = await _repository.saveImageMetadata(image);
-          _imageFile = null;
           await fetchUploadedImages();
           _setErrorMessage(null);
           notifyListeners();
@@ -175,19 +187,21 @@ class ImageCaptureViewModel with ChangeNotifier {
 
   Future<File?> _copyToAppStorage(String sourcePath) async {
     try {
+      print('Copying file from: $sourcePath');
       final tempDir = await getTemporaryDirectory();
       final newFileName =
           DateTime.now().millisecondsSinceEpoch.toString() + '.jpg';
       final newFilePath = '${tempDir.path}/$newFileName';
       final newFile = await File(sourcePath).copy(newFilePath);
+      print('Copied to: $newFilePath, exists: ${await newFile.exists()}');
       if (await newFile.exists()) {
         return newFile;
       } else {
-        developer.log('Copied file does not exist: $newFilePath');
+        print('Copied file does not exist: $newFilePath');
         return null;
       }
     } catch (e) {
-      developer.log('Error copying file to app storage: $e');
+      print('Error copying file to app storage: $e');
       return null;
     }
   }
@@ -207,27 +221,87 @@ class ImageCaptureViewModel with ChangeNotifier {
 
     _setLoading(true);
     try {
+      print('Starting single scan...');
       final scannedDocuments = await CunningDocumentScanner.getPictures(
         noOfPages: 1,
       );
-      developer.log('Scanned documents: $scannedDocuments');
+      print('Scanned documents: $scannedDocuments');
       if (scannedDocuments != null && scannedDocuments.isNotEmpty) {
         final path = scannedDocuments[0];
-        developer.log(
-          'Scanned file path: $path, exists: ${await File(path).exists()}',
-        );
+        print('Scanned file path: $path, exists: ${await File(path).exists()}');
         File? imageFile = File(path);
         if (await imageFile.exists()) {
+          // Copy to app storage for reliability
           imageFile = await _copyToAppStorage(path) ?? imageFile;
           if (!await imageFile.exists()) {
             _setErrorMessage('Scanned file does not exist at path: $path');
             return;
           }
-          _imageFile = imageFile;
-          _setErrorMessage(null);
-          notifyListeners();
-          // Se sube automatico
-          await uploadImage();
+
+          // Perform OCR on the scanned image
+          final inputImage = InputImage.fromFilePath(imageFile.path);
+          final textRecognizerLatin = TextRecognizer(
+            script: TextRecognitionScript.latin,
+          );
+          final textRecognizerChinese = TextRecognizer(
+            script: TextRecognitionScript.chinese,
+          );
+          final textRecognizerJapanese = TextRecognizer(
+            script: TextRecognitionScript.japanese,
+          );
+          final textRecognizerKorean = TextRecognizer(
+            script: TextRecognitionScript.korean,
+          );
+
+          try {
+            final recognizedTextLatin = await textRecognizerLatin.processImage(
+              inputImage,
+            );
+            final recognizedTextChinese = await textRecognizerChinese
+                .processImage(inputImage);
+            final recognizedTextJapanese = await textRecognizerJapanese
+                .processImage(inputImage);
+            final recognizedTextKorean = await textRecognizerKorean
+                .processImage(inputImage);
+
+            _recognizedTextBlocks = [];
+            void addTextBlocks(List<TextBlock> blocks, String script) {
+              for (final block in blocks) {
+                final blockData = {
+                  'script': script,
+                  'text': block.text,
+                  'boundingBox': {
+                    'left': block.boundingBox.left,
+                    'top': block.boundingBox.top,
+                    'right': block.boundingBox.right,
+                    'bottom': block.boundingBox.bottom,
+                  },
+                  'cornerPoints': block.cornerPoints
+                      .map((p) => {'x': p.x, 'y': p.y})
+                      .toList(),
+                };
+                _recognizedTextBlocks.add(blockData);
+              }
+            }
+
+            addTextBlocks(recognizedTextLatin.blocks, 'Latin');
+            addTextBlocks(recognizedTextChinese.blocks, 'Chinese');
+            addTextBlocks(recognizedTextJapanese.blocks, 'Japanese');
+            addTextBlocks(recognizedTextKorean.blocks, 'Korean');
+
+            print('Recognized text blocks: $_recognizedTextBlocks');
+
+            _imageFile = imageFile;
+            _setErrorMessage(
+              _recognizedTextBlocks.isEmpty ? 'No text recognized' : null,
+            );
+            notifyListeners();
+          } finally {
+            await textRecognizerLatin.close();
+            await textRecognizerChinese.close();
+            await textRecognizerJapanese.close();
+            await textRecognizerKorean.close();
+          }
         } else {
           _setErrorMessage('Scanned file does not exist at path: $path');
         }
@@ -236,10 +310,10 @@ class ImageCaptureViewModel with ChangeNotifier {
       }
     } on PlatformException catch (e) {
       _setErrorMessage('Failed to scan document: ${e.message}');
-      developer.log('PlatformException in scanSingle: $e');
+      print('PlatformException in scanSingle: $e');
     } catch (e) {
       _setErrorMessage('Error scanning document: $e');
-      developer.log('Error in scanSingle: $e');
+      print('Error in scanSingle: $e');
     } finally {
       _setLoading(false);
     }

@@ -18,7 +18,7 @@ class ImageCaptureScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     if (viewModel.confirmedImage != null)
                       Image.network(
@@ -41,6 +41,56 @@ class ImageCaptureScreen extends StatelessWidget {
                     if (viewModel.imageFile == null &&
                         viewModel.confirmedImage == null)
                       const Text('No image uploaded yet.'),
+                    const SizedBox(height: 20),
+                    if (viewModel.recognizedTextBlocks.isNotEmpty)
+                      SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Recognized Text Blocks:',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            SizedBox(
+                              height: 200,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount:
+                                    viewModel.recognizedTextBlocks.length,
+                                itemBuilder: (context, index) {
+                                  final block =
+                                      viewModel.recognizedTextBlocks[index];
+                                  return ListTile(
+                                    title: Text(
+                                      '${block['script']}: ${block['text']}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    subtitle: Text(
+                                      'Bounding Box: L:${block['boundingBox']['left'].toStringAsFixed(0)}, '
+                                      'T:${block['boundingBox']['top'].toStringAsFixed(0)}, '
+                                      'R:${block['boundingBox']['right'].toStringAsFixed(0)}, '
+                                      'B:${block['boundingBox']['bottom'].toStringAsFixed(0)}',
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton(
+                              onPressed: viewModel.isLoading
+                                  ? null
+                                  : viewModel.clearOcrResults,
+                              child: const Text('Clear OCR Results'),
+                            ),
+                          ],
+                        ),
+                      ),
                     const SizedBox(height: 20),
                     if (viewModel.isLoading) const CircularProgressIndicator(),
                     if (viewModel.errorMessage != null)
@@ -72,7 +122,7 @@ class ImageCaptureScreen extends StatelessWidget {
                       onPressed:
                           viewModel.isLoading || viewModel.imageFile == null
                           ? null
-                          : viewModel.uploadImage,
+                          : viewModel.uploadCurrentImage,
                       child: const Text('Upload Photo'),
                     ),
                     const SizedBox(height: 10),
@@ -124,6 +174,7 @@ class ImageCaptureScreen extends StatelessWidget {
                             : viewModel.confirmSelectedImage,
                         child: const Text('Confirm'),
                       ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
