@@ -12,6 +12,15 @@ class ImageCaptureScreen extends StatelessWidget {
       create: (_) => ImageCaptureViewModel(),
       child: Consumer<ImageCaptureViewModel>(
         builder: (context, viewModel, child) {
+          // Check if Latin is the selected script
+          final isLatinSelected =
+              viewModel.recognizedTextBlocks.isNotEmpty &&
+              viewModel.recognizedTextBlocks.any(
+                (block) =>
+                    block['script'] == 'Latin' ||
+                    block['script'].startsWith('Language detected:'),
+              );
+
           return Scaffold(
             appBar: AppBar(title: const Text('Captura de Imagen')),
             body: SingleChildScrollView(
@@ -20,21 +29,19 @@ class ImageCaptureScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    // Display confirmed image from Supabase
                     if (viewModel.confirmedImage != null)
                       Image.network(
                         viewModel.confirmedImage!.url ?? '',
-                        height: 300,
-                        width: 300,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) =>
                             const Icon(Icons.error, size: 50),
                       ),
+                    // Display current image file
                     if (viewModel.imageFile != null)
                       Image.file(
                         viewModel.imageFile!,
-                        height: 300,
-                        width: 300,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) =>
                             const Icon(Icons.error, size: 50),
                       ),
@@ -42,71 +49,73 @@ class ImageCaptureScreen extends StatelessWidget {
                         viewModel.confirmedImage == null)
                       const Text('No image uploaded yet.'),
                     const SizedBox(height: 20),
+                    // Language options dropdown menu
                     SizedBox(
                       width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Language auto-detect:',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Switch(
-                                value: viewModel.autoDetectEnabled,
-                                onChanged: viewModel.isLoading
-                                    ? null
-                                    : (value) =>
-                                          viewModel.toggleAutoDetect(value),
-                              ),
-                            ],
+                      child: ExpansionTile(
+                        title: const Text(
+                          'Language Options',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                          if (!viewModel.autoDetectEnabled &&
-                              viewModel.imageFile != null)
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "Card's language:",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(width: 10),
-                                DropdownButton<String>(
-                                  value: 'Latin',
-                                  items:
-                                      ['Latin', 'Chinese', 'Japanese', 'Korean']
-                                          .map(
-                                            (script) => DropdownMenuItem(
-                                              value: script,
-                                              child: Text(script),
-                                            ),
-                                          )
-                                          .toList(),
-                                  onChanged: viewModel.isLoading
-                                      ? null
-                                      : (value) {
-                                          if (value != null) {
-                                            viewModel.reprocessWithScript(
-                                              value,
-                                            );
-                                          }
-                                        },
-                                ),
-                              ],
+                        ),
+                        children: [
+                          SwitchListTile(
+                            title: const Text('Language auto-detect'),
+                            value: viewModel.autoDetectEnabled,
+                            onChanged: viewModel.isLoading
+                                ? null
+                                : (value) => viewModel.toggleAutoDetect(value),
+                          ),
+                          if (viewModel.autoDetectEnabled && isLatinSelected)
+                            SwitchListTile(
+                              title: const Text('Latin-Language auto detect'),
+                              value: viewModel.latinLanguageAutoDetectEnabled,
+                              onChanged: viewModel.isLoading
+                                  ? null
+                                  : (value) => viewModel
+                                        .toggleLatinLanguageAutoDetect(value),
                             ),
                         ],
                       ),
                     ),
+                    // Card's language dropdown (visible when auto-detect is OFF)
+                    if (!viewModel.autoDetectEnabled &&
+                        viewModel.imageFile != null)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Card's language:",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          DropdownButton<String>(
+                            value: 'Latin', // Default value
+                            items: ['Latin', 'Chinese', 'Japanese', 'Korean']
+                                .map(
+                                  (script) => DropdownMenuItem(
+                                    value: script,
+                                    child: Text(script),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: viewModel.isLoading
+                                ? null
+                                : (value) {
+                                    if (value != null) {
+                                      viewModel.reprocessWithScript(value);
+                                    }
+                                  },
+                          ),
+                        ],
+                      ),
                     const SizedBox(height: 20),
+                    // Display OCR results
                     if (viewModel.recognizedTextBlocks.isNotEmpty)
                       SizedBox(
                         width: double.infinity,
@@ -122,7 +131,8 @@ class ImageCaptureScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 8),
                             SizedBox(
-                              height: 200,
+                              height:
+                                  200, // Constrain height for scrollable list
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
@@ -157,6 +167,7 @@ class ImageCaptureScreen extends StatelessWidget {
                         ),
                       ),
                     const SizedBox(height: 20),
+                    // Loading and error indicators
                     if (viewModel.isLoading) const CircularProgressIndicator(),
                     if (viewModel.errorMessage != null)
                       Text(
@@ -164,6 +175,7 @@ class ImageCaptureScreen extends StatelessWidget {
                         style: const TextStyle(color: Colors.red),
                       ),
                     const SizedBox(height: 20),
+                    // Action buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -204,6 +216,7 @@ class ImageCaptureScreen extends StatelessWidget {
                           : viewModel.scanSingle,
                       child: const Text('Scan Card'),
                     ),
+                    // Uploaded images list
                     if (viewModel.showUploadedImages)
                       SizedBox(
                         height: 200,
@@ -239,7 +252,9 @@ class ImageCaptureScreen extends StatelessWidget {
                             : viewModel.confirmSelectedImage,
                         child: const Text('Confirm'),
                       ),
-                    const SizedBox(height: 20),
+                    const SizedBox(
+                      height: 20,
+                    ), // Extra padding for scrollability
                   ],
                 ),
               ),

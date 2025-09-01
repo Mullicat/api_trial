@@ -25,7 +25,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int _selectedScreenIndex = 4; // Default to ImageCaptureScreen
+  int _selectedScreenIndex = 4;
 
   final List<Widget> _screens = [
     const TestScreen(),
