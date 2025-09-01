@@ -42,6 +42,71 @@ class ImageCaptureScreen extends StatelessWidget {
                         viewModel.confirmedImage == null)
                       const Text('No image uploaded yet.'),
                     const SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Language auto-detect:',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Switch(
+                                value: viewModel.autoDetectEnabled,
+                                onChanged: viewModel.isLoading
+                                    ? null
+                                    : (value) =>
+                                          viewModel.toggleAutoDetect(value),
+                              ),
+                            ],
+                          ),
+                          if (!viewModel.autoDetectEnabled &&
+                              viewModel.imageFile != null)
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Card's language:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                DropdownButton<String>(
+                                  value: 'Latin',
+                                  items:
+                                      ['Latin', 'Chinese', 'Japanese', 'Korean']
+                                          .map(
+                                            (script) => DropdownMenuItem(
+                                              value: script,
+                                              child: Text(script),
+                                            ),
+                                          )
+                                          .toList(),
+                                  onChanged: viewModel.isLoading
+                                      ? null
+                                      : (value) {
+                                          if (value != null) {
+                                            viewModel.reprocessWithScript(
+                                              value,
+                                            );
+                                          }
+                                        },
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     if (viewModel.recognizedTextBlocks.isNotEmpty)
                       SizedBox(
                         width: double.infinity,
