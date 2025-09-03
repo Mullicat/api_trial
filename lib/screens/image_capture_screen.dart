@@ -12,29 +12,36 @@ class ImageCaptureScreen extends StatelessWidget {
       create: (_) => ImageCaptureViewModel(),
       child: Consumer<ImageCaptureViewModel>(
         builder: (context, viewModel, child) {
+          // Check if Latin is the selected script
+          final isLatinSelected =
+              viewModel.recognizedTextBlocks.isNotEmpty &&
+              viewModel.recognizedTextBlocks.any(
+                (block) =>
+                    block['script'] == 'Latin' ||
+                    block['script'].startsWith('Language detected:'),
+              );
+
           return Scaffold(
             appBar: AppBar(title: const Text('Captura de Imagen')),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    // Display confirmed image from Supabase
                     if (viewModel.confirmedImage != null)
                       Image.network(
                         viewModel.confirmedImage!.url ?? '',
-                        height: 300,
-                        width: 300,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) =>
                             const Icon(Icons.error, size: 50),
                       ),
+                    // Display current image file
                     if (viewModel.imageFile != null)
                       Image.file(
                         viewModel.imageFile!,
-                        height: 300,
-                        width: 300,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) =>
                             const Icon(Icons.error, size: 50),
                       ),
@@ -42,6 +49,125 @@ class ImageCaptureScreen extends StatelessWidget {
                         viewModel.confirmedImage == null)
                       const Text('No image uploaded yet.'),
                     const SizedBox(height: 20),
+                    // Language options dropdown menu
+                    SizedBox(
+                      width: double.infinity,
+                      child: ExpansionTile(
+                        title: const Text(
+                          'Language Options',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        children: [
+                          SwitchListTile(
+                            title: const Text('Language auto-detect'),
+                            value: viewModel.autoDetectEnabled,
+                            onChanged: viewModel.isLoading
+                                ? null
+                                : (value) => viewModel.toggleAutoDetect(value),
+                          ),
+                          if (viewModel.autoDetectEnabled && isLatinSelected)
+                            SwitchListTile(
+                              title: const Text('Latin-Language auto detect'),
+                              value: viewModel.latinLanguageAutoDetectEnabled,
+                              onChanged: viewModel.isLoading
+                                  ? null
+                                  : (value) => viewModel
+                                        .toggleLatinLanguageAutoDetect(value),
+                            ),
+                        ],
+                      ),
+                    ),
+                    // Card's language dropdown (visible when auto-detect is OFF)
+                    if (!viewModel.autoDetectEnabled &&
+                        viewModel.imageFile != null)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Card's language:",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          DropdownButton<String>(
+                            value: 'Latin', // Default value
+                            items: ['Latin', 'Chinese', 'Japanese', 'Korean']
+                                .map(
+                                  (script) => DropdownMenuItem(
+                                    value: script,
+                                    child: Text(script),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: viewModel.isLoading
+                                ? null
+                                : (value) {
+                                    if (value != null) {
+                                      viewModel.reprocessWithScript(value);
+                                    }
+                                  },
+                          ),
+                        ],
+                      ),
+                    const SizedBox(height: 20),
+                    // Display OCR results
+                    if (viewModel.recognizedTextBlocks.isNotEmpty)
+                      SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Recognized Text Blocks:',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            SizedBox(
+                              height:
+                                  200, // Constrain height for scrollable list
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount:
+                                    viewModel.recognizedTextBlocks.length,
+                                itemBuilder: (context, index) {
+                                  final block =
+                                      viewModel.recognizedTextBlocks[index];
+                                  return ListTile(
+                                    title: Text(
+                                      '${block['script']}: ${block['text']}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    subtitle: Text(
+                                      'Bounding Box: L:${block['boundingBox']['left'].toStringAsFixed(0)}, '
+                                      'T:${block['boundingBox']['top'].toStringAsFixed(0)}, '
+                                      'R:${block['boundingBox']['right'].toStringAsFixed(0)}, '
+                                      'B:${block['boundingBox']['bottom'].toStringAsFixed(0)}',
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton(
+                              onPressed: viewModel.isLoading
+                                  ? null
+                                  : viewModel.clearOcrResults,
+                              child: const Text('Clear OCR Results'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    const SizedBox(height: 20),
+                    // Loading and error indicators
                     if (viewModel.isLoading) const CircularProgressIndicator(),
                     if (viewModel.errorMessage != null)
                       Text(
@@ -49,6 +175,7 @@ class ImageCaptureScreen extends StatelessWidget {
                         style: const TextStyle(color: Colors.red),
                       ),
                     const SizedBox(height: 20),
+                    // Action buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -72,7 +199,7 @@ class ImageCaptureScreen extends StatelessWidget {
                       onPressed:
                           viewModel.isLoading || viewModel.imageFile == null
                           ? null
-                          : viewModel.uploadImage,
+                          : viewModel.uploadCurrentImage,
                       child: const Text('Upload Photo'),
                     ),
                     const SizedBox(height: 10),
@@ -89,6 +216,7 @@ class ImageCaptureScreen extends StatelessWidget {
                           : viewModel.scanSingle,
                       child: const Text('Scan Card'),
                     ),
+                    // Uploaded images list
                     if (viewModel.showUploadedImages)
                       SizedBox(
                         height: 200,
@@ -124,6 +252,9 @@ class ImageCaptureScreen extends StatelessWidget {
                             : viewModel.confirmSelectedImage,
                         child: const Text('Confirm'),
                       ),
+                    const SizedBox(
+                      height: 20,
+                    ), // Extra padding for scrollability
                   ],
                 ),
               ),
