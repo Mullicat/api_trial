@@ -10,6 +10,7 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 import 'package:google_mlkit_language_id/google_mlkit_language_id.dart';
 import '../data/repositories/supabase_repository.dart';
 import '../models/image_model.dart';
+import 'package:image/image.dart' as img;
 
 class ImageCaptureViewModel with ChangeNotifier {
   final SupabaseRepository _repository = SupabaseRepository();
@@ -27,9 +28,12 @@ class ImageCaptureViewModel with ChangeNotifier {
       []; // Stores OCR text blocks with script and coordinates
   List<Map<String, dynamic>> _textCoordinates =
       []; // Kept for compatibility, can be removed if unused
-  bool _autoDetectEnabled = true; // Toggle for auto-detect
+  bool _autoDetectEnabled = true; // Toggle for language auto-detect
   bool _latinLanguageAutoDetectEnabled =
-      true; // Second toggle for Latin language auto-detect
+      true; // Toggle for Latin language auto-detect
+  bool _tcgAutoDetectEnabled = true; // Toggle for TCG auto-detect
+  String _detectedGame = 'Other Game'; // Detected game name
+  String _selectedGame = 'YuGiOh'; // Selected game for manual mode
 
   File? get imageFile => _imageFile;
   UploadedImage? get uploadedImage => _uploadedImage;
@@ -43,6 +47,9 @@ class ImageCaptureViewModel with ChangeNotifier {
   List<Map<String, dynamic>> get textCoordinates => _textCoordinates;
   bool get autoDetectEnabled => _autoDetectEnabled;
   bool get latinLanguageAutoDetectEnabled => _latinLanguageAutoDetectEnabled;
+  bool get tcgAutoDetectEnabled => _tcgAutoDetectEnabled;
+  String get detectedGame => _detectedGame;
+  String get selectedGame => _selectedGame;
 
   void _setErrorMessage(String? message) {
     _errorMessage = message;
@@ -61,6 +68,8 @@ class ImageCaptureViewModel with ChangeNotifier {
   void clearOcrResults() {
     _recognizedTextBlocks = [];
     _textCoordinates = [];
+    _detectedGame = 'Other Game';
+    _selectedGame = 'YuGiOh';
     notifyListeners();
   }
 
@@ -82,13 +91,22 @@ class ImageCaptureViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> toggleUploadedImages() async {
-    _setShowUploadedImages(!_showUploadedImages);
-    if (_showUploadedImages) {
-      await fetchUploadedImages();
-    } else {
-      _selectedImage = null; // Clear selected image when closing the list
+  void toggleTcgAutoDetect(bool value) {
+    _tcgAutoDetectEnabled = value;
+    if (_imageFile != null) {
+      // Reprocess to update game detection
+      _detectGame();
+      if (!_tcgAutoDetectEnabled) {
+        _selectedGame = 'YuGiOh'; // Reset to default
+        _detectedGame = _selectedGame;
+      }
+      notifyListeners();
     }
+  }
+
+  void setSelectedGame(String game) {
+    _selectedGame = game;
+    _detectedGame = game;
     notifyListeners();
   }
 
@@ -108,7 +126,18 @@ class ImageCaptureViewModel with ChangeNotifier {
     clearOcrResults(); // Clear OCR results
     _autoDetectEnabled = true; // Reset to auto-detect
     _latinLanguageAutoDetectEnabled = true; // Reset second toggle
+    _tcgAutoDetectEnabled = true; // Reset TCG toggle
     _showUploadedImages = false;
+    notifyListeners();
+  }
+
+  Future<void> toggleUploadedImages() async {
+    _setShowUploadedImages(!_showUploadedImages);
+    if (_showUploadedImages) {
+      await fetchUploadedImages();
+    } else {
+      _selectedImage = null; // Clear selected image when closing the list
+    }
     notifyListeners();
   }
 
@@ -169,6 +198,7 @@ class ImageCaptureViewModel with ChangeNotifier {
           _imageFile = file;
           _autoDetectEnabled = true; // Reset to auto-detect
           _latinLanguageAutoDetectEnabled = true; // Reset second toggle
+          _tcgAutoDetectEnabled = true; // Reset TCG toggle
           clearOcrResults(); // Clear OCR results
           _setErrorMessage(null);
           notifyListeners();
@@ -313,6 +343,75 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
+  Future<Map<String, int>> _getImageDimensions(File imageFile) async {
+    try {
+      final bytes = await imageFile.readAsBytes();
+      final image = img.decodeImage(bytes);
+      if (image != null) {
+        return {'width': image.width, 'height': image.height};
+      } else {
+        print('Failed to decode image for dimensions');
+        return {'width': 800, 'height': 600}; // Fallback dimensions
+      }
+    } catch (e) {
+      print('Error getting image dimensions: $e');
+      return {'width': 800, 'height': 600}; // Fallback dimensions
+    }
+  }
+
+  void _detectGame() {
+    if (!_tcgAutoDetectEnabled) {
+      _detectedGame = _selectedGame;
+      return;
+    }
+
+    const onePieceKeywords = [
+      'LEADER',
+      'DON!! CARD',
+      'EVENT',
+      'STAGE',
+      'STACE',
+      'CHARACTER',
+      'D0N!! CARD',
+    ];
+    const leftRange = [0.37, 0.47];
+    const topRange = [0.83, 0.88];
+    const rightRange = [0.53, 0.64];
+    const bottomRange = [0.86, 0.90];
+
+    _detectedGame = 'Other Game';
+    for (final block in _recognizedTextBlocks) {
+      final text = block['text'].toString().toUpperCase();
+      final box = block['normalizedBoundingBox'] as Map<String, dynamic>;
+      final left = box['left'] as double;
+      final top = box['top'] as double;
+      final right = box['right'] as double;
+      final bottom = box['bottom'] as double;
+
+      bool inRange =
+          left >= leftRange[0] &&
+          left <= leftRange[1] &&
+          top >= topRange[0] &&
+          top <= topRange[1] &&
+          right >= rightRange[0] &&
+          right <= rightRange[1] &&
+          bottom >= bottomRange[0] &&
+          bottom <= bottomRange[1];
+
+      bool hasKeyword = onePieceKeywords.any(
+        (keyword) => text.contains(keyword),
+      );
+
+      if (inRange && hasKeyword) {
+        _detectedGame = 'One Piece TCG';
+        print('Detected One Piece TCG: Text=${block['text']}, Box=$box');
+        break;
+      }
+    }
+    print('Detected game: $_detectedGame');
+    notifyListeners();
+  }
+
   Future<void> scanSingle() async {
     final status = await Permission.camera.request();
     if (status.isPermanentlyDenied) {
@@ -348,6 +447,8 @@ class ImageCaptureViewModel with ChangeNotifier {
           _imageFile = imageFile;
           _recognizedTextBlocks = [];
           _textCoordinates = [];
+          _detectedGame = 'Other Game'; // Reset detected game
+          _selectedGame = 'YuGiOh'; // Reset selected game
 
           if (_imageFile == null || !await _imageFile!.exists()) {
             _setErrorMessage('Image file is null or does not exist');
@@ -355,6 +456,11 @@ class ImageCaptureViewModel with ChangeNotifier {
           }
 
           final inputImage = InputImage.fromFilePath(_imageFile!.path);
+          // Get image dimensions for normalization
+          final dimensions = await _getImageDimensions(_imageFile!);
+          final imageWidth = dimensions['width']!.toDouble();
+          final imageHeight = dimensions['height']!.toDouble();
+          print('Image dimensions: width=$imageWidth, height=$imageHeight');
 
           if (_autoDetectEnabled) {
             // Auto-detect: Process with all recognizers
@@ -418,6 +524,12 @@ class ImageCaptureViewModel with ChangeNotifier {
                       'top': block.boundingBox.top,
                       'right': block.boundingBox.right,
                       'bottom': block.boundingBox.bottom,
+                    },
+                    'normalizedBoundingBox': {
+                      'left': block.boundingBox.left / imageWidth,
+                      'top': block.boundingBox.top / imageHeight,
+                      'right': block.boundingBox.right / imageWidth,
+                      'bottom': block.boundingBox.bottom / imageHeight,
                     },
                     'cornerPoints': block.cornerPoints
                         .map((p) => {'x': p.x, 'y': p.y})
@@ -495,6 +607,12 @@ class ImageCaptureViewModel with ChangeNotifier {
                     'right': block.boundingBox.right,
                     'bottom': block.boundingBox.bottom,
                   },
+                  'normalizedBoundingBox': {
+                    'left': block.boundingBox.left / imageWidth,
+                    'top': block.boundingBox.top / imageHeight,
+                    'right': block.boundingBox.right / imageWidth,
+                    'bottom': block.boundingBox.bottom / imageHeight,
+                  },
                   'cornerPoints': block.cornerPoints
                       .map((p) => {'x': p.x, 'y': p.y})
                       .toList(),
@@ -512,6 +630,9 @@ class ImageCaptureViewModel with ChangeNotifier {
               await textRecognizer.close();
             }
           }
+
+          // Perform game detection after OCR
+          _detectGame();
 
           _setErrorMessage(
             _recognizedTextBlocks.isEmpty ? 'No text recognized' : null,
@@ -543,6 +664,12 @@ class ImageCaptureViewModel with ChangeNotifier {
     _setLoading(true);
     try {
       final inputImage = InputImage.fromFilePath(_imageFile!.path);
+      // Get image dimensions for normalization
+      final dimensions = await _getImageDimensions(_imageFile!);
+      final imageWidth = dimensions['width']!.toDouble();
+      final imageHeight = dimensions['height']!.toDouble();
+      print('Image dimensions: width=$imageWidth, height=$imageHeight');
+
       TextRecognizer textRecognizer;
       switch (script) {
         case 'Chinese':
@@ -584,6 +711,12 @@ class ImageCaptureViewModel with ChangeNotifier {
               'right': block.boundingBox.right,
               'bottom': block.boundingBox.bottom,
             },
+            'normalizedBoundingBox': {
+              'left': block.boundingBox.left / imageWidth,
+              'top': block.boundingBox.top / imageHeight,
+              'right': block.boundingBox.right / imageWidth,
+              'bottom': block.boundingBox.bottom / imageHeight,
+            },
             'cornerPoints': block.cornerPoints
                 .map((p) => {'x': p.x, 'y': p.y})
                 .toList(),
@@ -591,6 +724,9 @@ class ImageCaptureViewModel with ChangeNotifier {
           _recognizedTextBlocks.add(blockData);
           _textCoordinates.add(blockData); // Duplicate for compatibility
         }
+
+        // Perform game detection after reprocessing
+        _detectGame();
 
         print(
           'Reprocessed text blocks with $scriptLabel: $_recognizedTextBlocks',
