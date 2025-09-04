@@ -22,7 +22,6 @@ class ImageCaptureScreen extends StatelessWidget {
               );
 
           return Scaffold(
-            appBar: AppBar(title: const Text('Captura de Imagen')),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),

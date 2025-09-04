@@ -1,77 +1,86 @@
-// lib/main.dart
-import 'package:api_trial/screens/image_capture_screen.dart';
+/**
+ * main.dart - Application Entry Point
+ * 
+ * This file sets up the Flutter application with the necessary providers
+ * and configuration. It establishes the app-wide state management using
+ * the Provider package for dependency injection and state management.
+ * 
+ * Architecture Overview:
+ * - Provider package for state management (MVVM pattern)
+ * - AuthViewModel manages global authentication state
+ * - AuthWrapper handles routing based on auth state
+ * - Material 3 design system for modern UI
+ */
+
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:api_trial/screens/test_screen_pokemon.dart';
-import 'package:api_trial/screens/test_screen_magic.dart';
-import 'package:api_trial/screens/test_screen_apitcg.dart';
-import 'package:api_trial/screens/test_screen_yugioh.dart';
-import 'dart:developer' as dev;
+import 'package:provider/provider.dart';
+import 'viewmodels/auth_viewmodel.dart';
+import 'screens/auth_wrapper.dart';
 
-Future<void> main() async {
-  try {
-    await dotenv.load(fileName: "assets/.env");
-    runApp(const MainApp());
-  } catch (e, stack) {
-    dev.log('Main error: $e', stackTrace: stack);
-  }
+/**
+ * Application entry point
+ * 
+ * main() is the first function called when the app starts.
+ * WidgetsFlutterBinding.ensureInitialized() ensures that the Flutter
+ * framework is properly initialized before running the app.
+ * 
+ * This is required when calling Flutter services before runApp(),
+ * though in this case it's good practice for future extensibility.
+ */
+void main() async {
+  // Ensure Flutter framework is initialized
+  // Required for calling Flutter services in main() before runApp()
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Start the Flutter application
+  runApp(const MyApp());
 }
 
-class MainApp extends StatefulWidget {
-  const MainApp({super.key});
+/**
+ * MyApp - Root Application Widget
+ * 
+ * This widget sets up:
+ * 1. State management providers (AuthViewModel)
+ * 2. App-wide theme and configuration
+ * 3. Navigation and routing setup
+ * 
+ * The ChangeNotifierProvider makes AuthViewModel available to all
+ * descendant widgets in the widget tree, enabling reactive UI updates
+ * when authentication state changes.
+ */
 
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  int _selectedScreenIndex = 4;
-
-  final List<Widget> _screens = [
-    const TestScreen(),
-    const TestScreenMagic(),
-    const TestScreenApiTcg(),
-    const TestScreenYuGiOh(),
-    const ImageCaptureScreen(),
-  ];
-
-  final List<String> _screenTitles = [
-    'Pokémon TCG',
-    'Magic: The Gathering',
-    'API TCG',
-    'Yu-Gi-Oh!',
-    'Image Capture',
-  ];
-
-  void _onScreenSelected(int index) {
-    setState(() {
-      _selectedScreenIndex = index;
-    });
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    // ChangeNotifierProvider sets up state management for the entire app
+    // This makes AuthViewModel available to all child widgets
+    return ChangeNotifierProvider(
+      // Create AuthViewModel instance - this will automatically call
+      // its constructor which initializes authentication
+      create: (context) => AuthViewModel(),
+
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.blueGrey),
-        home: Scaffold(
-          appBar: AppBar(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                for (int i = 0; i < _screenTitles.length; i++)
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () => _onScreenSelected(i),
-                      child: Text(_screenTitles[i]),
-                    ),
-                  ),
-              ],
-            ),
+        title: 'API Trial',
+
+        // Material 3 theme configuration
+        theme: ThemeData(
+          // Generate color scheme from seed color
+          // This creates a cohesive color palette following Material 3 guidelines
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 171, 78, 199),
           ),
-          body: _screens[_selectedScreenIndex],
+          useMaterial3: true, // Enable Material 3 design system
         ),
+
+        // AuthWrapper handles routing based on authentication state
+        // It will show login/signup screens for unauthenticated users
+        // and main app content for authenticated users
+        home: const AuthWrapper(),
+
+        // Remove debug banner in top-right corner
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
