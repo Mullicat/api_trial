@@ -114,8 +114,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   _emailController.text.trim(),
                                   _passwordController.text,
                                 );
-                                if (authViewModel.isAuthenticated) {
+                                // Check if signup was successful
+                                if (authViewModel.isAuthenticated &&
+                                    authViewModel.errorMessage == null) {
                                   Navigator.of(context).pop();
+                                  // The AuthWrapper will handle navigation based on email verification
                                 }
                               }
                             },

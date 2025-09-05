@@ -195,6 +195,31 @@ class SupabaseDataSource {
     return supabase.auth.onAuthStateChange;
   }
 
+  /**
+   * Resend email confirmation for user verification
+   * 
+   * @param email - Email address to send confirmation to
+   * 
+   * This triggers Supabase to resend the email verification email.
+   * Useful when users don't receive the initial verification email
+   * or when they need it sent again.
+   * 
+   * Note: Supabase may have rate limiting on email sending
+   */
+  Future<void> resendEmailConfirmation(String email) async {
+    try {
+      // Use Supabase auth resend method for email confirmation
+      await supabase.auth.resend(
+        type: OtpType.signup, // Use signup type for email confirmation
+        email: email,
+      );
+      print('Email confirmation resent to: $email');
+    } catch (e) {
+      print('Resend email confirmation error: $e');
+      throw Exception('Failed to resend email confirmation: $e');
+    }
+  }
+
   // =================================================================
   // IMAGE STORAGE METHODS
   // These methods handle image upload/download to Supabase Storage
