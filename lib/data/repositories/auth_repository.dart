@@ -147,4 +147,24 @@ class AuthRepository {
     final user = await getCurrentUser();
     return user != null;
   }
+
+  /**
+   * Resend email confirmation for the given email address
+   * 
+   * @param email - Email address to send confirmation to
+   * 
+   * This method triggers Supabase to resend the email verification
+   * email to the specified address. Useful when users don't receive
+   * the initial verification email or need it resent.
+   */
+  Future<void> resendEmailConfirmation(String email) async {
+    await _ensureInitialized();
+    try {
+      await _dataSource.resendEmailConfirmation(email);
+      print('Email confirmation resent to: $email');
+    } catch (e) {
+      print('Repository resend email confirmation error: $e');
+      rethrow;
+    }
+  }
 }

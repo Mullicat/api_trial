@@ -37,6 +37,7 @@ class AuthViewModel with ChangeNotifier {
   bool _isInitialized = false; // Whether ViewModel is ready to use
   String? _errorMessage; // Current error message to display
   bool _isAuthenticated = false; // Simplified auth status
+  bool? _isEmailVerified; // Email verification status
 
   // =================================================================
   // PUBLIC GETTERS
@@ -48,6 +49,7 @@ class AuthViewModel with ChangeNotifier {
   bool get isInitialized => _isInitialized;
   String? get errorMessage => _errorMessage;
   bool get isAuthenticated => _isAuthenticated;
+  bool? get isEmailVerified => _isEmailVerified;
 
   /**
    * Constructor - Automatically initializes authentication
@@ -78,6 +80,7 @@ class AuthViewModel with ChangeNotifier {
       // Check if user is already signed in (persistent session)
       _currentUser = await _authRepository.getCurrentUser();
       _isAuthenticated = _currentUser != null;
+      _isEmailVerified = _currentUser?.emailConfirmedAt != null;
       _isInitialized = true;
 
       // Set up listener for auth state changes
@@ -86,7 +89,9 @@ class AuthViewModel with ChangeNotifier {
       authStream.listen((data) {
         _currentUser = data.session?.user;
         _isAuthenticated = _currentUser != null;
+        _isEmailVerified = _currentUser?.emailConfirmedAt != null;
         print('Auth state changed: ${_currentUser?.email ?? 'No user'}');
+        print('Email verified: $_isEmailVerified');
         notifyListeners(); // Notify UI to rebuild with new state
       });
     } catch (e) {
@@ -122,7 +127,9 @@ class AuthViewModel with ChangeNotifier {
       if (user != null) {
         _currentUser = user;
         _isAuthenticated = true;
+        _isEmailVerified = user.emailConfirmedAt != null;
         print('Sign up successful: ${user.email}');
+        print('Email verified: $_isEmailVerified');
       }
     } catch (e) {
       _setError('Sign up failed: ${e.toString()}');
@@ -146,6 +153,7 @@ class AuthViewModel with ChangeNotifier {
       await _authRepository.signOut();
       _currentUser = null;
       _isAuthenticated = false;
+      _isEmailVerified = null;
       print('Sign out successful');
     } catch (e) {
       _setError('Sign out failed: ${e.toString()}');
@@ -175,7 +183,9 @@ class AuthViewModel with ChangeNotifier {
       if (user != null) {
         _currentUser = user;
         _isAuthenticated = true;
+        _isEmailVerified = user.emailConfirmedAt != null;
         print('Sign in successful: ${user.email}');
+        print('Email verified: $_isEmailVerified');
       }
     } catch (e) {
       _setError('Sign in failed: ${e.toString()}');
@@ -231,5 +241,54 @@ class AuthViewModel with ChangeNotifier {
    */
   void clearError() {
     _clearError();
+  }
+
+  /**
+   * Reload current user data to check for email verification
+   * 
+   * This method refreshes the current user information from Supabase
+   * to get the latest email verification status. Should be called
+   * after user clicks "I've verified my email".
+   */
+  Future<void> reloadUser() async {
+    _setLoading(true);
+    _clearError();
+
+    try {
+      // Get fresh user data from repository
+      _currentUser = await _authRepository.getCurrentUser();
+      _isAuthenticated = _currentUser != null;
+      _isEmailVerified = _currentUser?.emailConfirmedAt != null;
+      print('User reloaded. Email verified: $_isEmailVerified');
+    } catch (e) {
+      _setError('Failed to reload user: ${e.toString()}');
+      print('Reload user error: $e');
+    } finally {
+      _setLoading(false);
+    }
+  }
+
+  /**
+   * Resend email verification
+   * 
+   * @param email - Email address to send verification to
+   * 
+   * Triggers Supabase to resend the email verification email.
+   * Useful when users don't receive the initial email.
+   */
+  Future<void> sendEmailVerification(String email) async {
+    _setLoading(true);
+    _clearError();
+
+    try {
+      await _authRepository.resendEmailConfirmation(email);
+      print('Email verification sent to: $email');
+      // Don't update any state here, just show success
+    } catch (e) {
+      _setError('Failed to send verification email: ${e.toString()}');
+      print('Send email verification error: $e');
+    } finally {
+      _setLoading(false);
+    }
   }
 }

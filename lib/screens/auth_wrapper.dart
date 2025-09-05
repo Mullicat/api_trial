@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../viewmodels/auth_viewmodel.dart';
 import 'login_screen.dart';
 import 'main_navigation.dart';
+import 'verify_email_screen.dart';
 
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({super.key});
@@ -55,7 +56,12 @@ class AuthWrapper extends StatelessWidget {
         }
 
         if (authViewModel.isAuthenticated) {
-          return const MainNavigation();
+          // Check if email is verified for authenticated users
+          if (authViewModel.isEmailVerified == true) {
+            return const MainNavigation();
+          } else {
+            return const VerifyEmailScreen();
+          }
         } else {
           return const LoginScreen();
         }
