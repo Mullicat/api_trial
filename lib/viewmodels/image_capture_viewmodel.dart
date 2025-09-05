@@ -359,25 +359,25 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
-  void _detectGame() {
+  void _detectGame({String? joinedText}) {
     if (!_tcgAutoDetectEnabled) {
       _detectedGame = _selectedGame;
       return;
     }
 
+    // One Piece TCG detection
     const onePieceKeywords = [
       'LEADER',
-      'DON!! CARD',
-      'EVENT',
+      'DON!! EVENT',
       'STAGE',
       'STACE',
       'CHARACTER',
       'D0N!! CARD',
     ];
-    const leftRange = [0.37, 0.47];
-    const topRange = [0.83, 0.88];
-    const rightRange = [0.53, 0.64];
-    const bottomRange = [0.86, 0.90];
+    const onePieceLeftRange = [0.37, 0.46];
+    const onePieceTopRange = [0.83, 0.88];
+    const onePieceRightRange = [0.53, 0.62];
+    const onePieceBottomRange = [0.86, 0.90];
 
     _detectedGame = 'Other Game';
     for (final block in _recognizedTextBlocks) {
@@ -389,14 +389,14 @@ class ImageCaptureViewModel with ChangeNotifier {
       final bottom = box['bottom'] as double;
 
       bool inRange =
-          left >= leftRange[0] &&
-          left <= leftRange[1] &&
-          top >= topRange[0] &&
-          top <= topRange[1] &&
-          right >= rightRange[0] &&
-          right <= rightRange[1] &&
-          bottom >= bottomRange[0] &&
-          bottom <= bottomRange[1];
+          left >= onePieceLeftRange[0] &&
+          left <= onePieceLeftRange[1] &&
+          top >= onePieceTopRange[0] &&
+          top <= onePieceTopRange[1] &&
+          right >= onePieceRightRange[0] &&
+          right <= onePieceRightRange[1] &&
+          bottom >= onePieceBottomRange[0] &&
+          bottom <= onePieceBottomRange[1];
 
       bool hasKeyword = onePieceKeywords.any(
         (keyword) => text.contains(keyword),
@@ -405,9 +405,302 @@ class ImageCaptureViewModel with ChangeNotifier {
       if (inRange && hasKeyword) {
         _detectedGame = 'One Piece TCG';
         print('Detected One Piece TCG: Text=${block['text']}, Box=$box');
-        break;
+        return;
       }
     }
+
+    if (joinedText == null) {
+      print(
+        'No joinedText provided, cannot detect YuGiOh, Pokémon, or Magic: The Gathering',
+      );
+      return;
+    }
+
+    // YuGiOh detection
+    final upperText = joinedText.toUpperCase();
+    const yugiohKeywords = [
+      'ATK',
+      'DEF',
+      'TRAP CARD',
+      'SPELL CARD',
+      'CARTA DE TRAMPA',
+      'CARTA MÁGICA',
+      'CARTE MAGIE',
+      'CARTE PIÈGE',
+      'CARTA TRAPPOLA',
+      'CARTA MAGIA',
+      'CARD DE MAGIA',
+      'CARD DE ARMADILHA',
+      'ZAUBERKARTE',
+      'FALLENKARTE',
+    ];
+    if (yugiohKeywords.any((keyword) => upperText.contains(keyword))) {
+      _detectedGame = 'YuGiOh';
+      print('Detected YuGiOh: Keywords found in joined text=$upperText');
+      return;
+    }
+
+    // Pokémon TCG detection
+    const pokemonWeaknessKeywords = [
+      'WEAKNESS',
+      'FAIBLESSE',
+      'SCHWÄCHE',
+      'DEBOLEZZA',
+      'DEBILIDAD',
+      'FRAQUEZA',
+      '弱点',
+      '弱点',
+    ];
+    const pokemonResistanceKeywords = [
+      'RESISTANCE',
+      'RÉSISTANCE',
+      'RESISTENZ',
+      'RESISTENZA',
+      'RESISTENCIA',
+      'RESISTÊNCIA',
+      '抵抗',
+      '抵抗',
+    ];
+    const pokemonTrainerKeywords = [
+      'TRAINER',
+      'DRESSEUR',
+      'TRAINER',
+      'ALLENATORE',
+      'ENTRENADOR',
+      'TREINADOR',
+      'トレーナー',
+      '训练家',
+    ];
+    const pokemonTrainerTypes = [
+      'ITEM',
+      'OBJET',
+      'ITEM',
+      'STRUMENTO',
+      'OBJETO',
+      'ITEM',
+      'グッズ',
+      '道具',
+      'SUPPORTER',
+      'SUPPORTER',
+      'UNTERSTÜTZER',
+      'SOSTENITORE',
+      'PARTIDARIO',
+      'APOIADOR',
+      'サポーター',
+      '支援者',
+      'STADIUM',
+      'STADE',
+      'STADION',
+      'STADIO',
+      'ESTADIO',
+      'ESTÁDIO',
+      'スタジアム',
+      '竞技场',
+    ];
+    const pokemonEnergyKeywords = [
+      'ENERGY',
+      'ÉNERGIE',
+      'ENERGIE',
+      'ENERGIA',
+      'ENERGÍA',
+      'ENERGIA',
+      'エネルギー',
+      '能量',
+    ];
+
+    bool hasWeakness = pokemonWeaknessKeywords.any(
+      (keyword) => upperText.contains(keyword),
+    );
+    bool hasResistance = pokemonResistanceKeywords.any(
+      (keyword) => upperText.contains(keyword),
+    );
+    bool hasTrainer = pokemonTrainerKeywords.any(
+      (keyword) => upperText.contains(keyword),
+    );
+    bool hasTrainerType = pokemonTrainerTypes.any(
+      (keyword) => upperText.contains(keyword),
+    );
+    bool hasEnergy = pokemonEnergyKeywords.any(
+      (keyword) => upperText.contains(keyword),
+    );
+
+    // Count Energy occurrences (case-insensitive for Latin, case-sensitive for Japanese/Chinese)
+    int energyCount = 0;
+    for (var keyword in pokemonEnergyKeywords) {
+      final pattern = RegExp(
+        '\\b$keyword\\b',
+        caseSensitive: keyword.contains(RegExp(r'[\u4E00-\u9FFF]')),
+      );
+      energyCount += pattern.allMatches(joinedText).length;
+    }
+
+    // Pokémon detection conditions
+    bool isPokemon = false;
+    String detectionReason = '';
+
+    if (hasWeakness && hasResistance) {
+      isPokemon = true;
+      detectionReason = 'Weakness and Resistance found';
+    } else if (hasTrainer && hasTrainerType) {
+      isPokemon = true;
+      detectionReason = 'Trainer and Item/Supporter/Stadium found';
+    } else if (hasEnergy &&
+        !hasWeakness &&
+        !hasResistance &&
+        !hasTrainer &&
+        !hasTrainerType) {
+      isPokemon = true;
+      detectionReason = 'Energy found alone';
+    } else if (energyCount > 3) {
+      isPokemon = true;
+      detectionReason = 'Energy found more than 3 times (count: $energyCount)';
+    }
+
+    if (isPokemon) {
+      _detectedGame = 'Pokemon TCG';
+      print('Detected Pokémon TCG: $detectionReason, joined text=$upperText');
+      return;
+    }
+
+    // Magic: The Gathering detection
+    const mtgKeywords = [
+      'ENCHANTMENT',
+      'ENCANTAMIENTO',
+      'ENCANTAMENTO',
+      'INCANTESIMO',
+      'ENCHANTEMENT',
+      'VERZAUBERUNG',
+      'エンチャント',
+      '结界',
+      'INSTANT',
+      'INSTANTÁNEO',
+      'INSTANTÂNEO',
+      'ISTANTANEO',
+      'INSTANTANÉ',
+      'SOFORTZAUBER',
+      'インスタント',
+      '瞬间',
+      'SORCERY',
+      'CONJURO',
+      'FEITIÇO',
+      'STREHONERIA',
+      'RITUALE',
+      'ZAUBEREI',
+      'ソーサリー',
+      '巫术',
+      'CREATURE',
+      'CREAFURE',
+      'CRIATURA',
+      'CREATURA',
+      'CRÉATURE',
+      'KREATUR',
+      'クリーチャー',
+      '生物',
+      'LAND',
+      'TIERRA',
+      'TERRA',
+      'TERRAIN',
+      'LAND',
+      '土地',
+      '地',
+      'ARTIFACT',
+      'ARTEFACTO',
+      'ARTEFATO',
+      'ARTEFATTO',
+      'ARTEFACT',
+      'ARTEFAKT',
+      'アーティファクト',
+      '神器',
+      'PLANESWALKER',
+      'CAMINANTE DE PLANOS',
+      'PLANINAUTA',
+      'PLANESWALKER',
+      'ARPENTEUR',
+      'PLANESWALKER',
+      'プレインズウォーカー',
+      '鹏洛客',
+      'SUMMON',
+      'CONVOCAR',
+      'EVOCARE',
+      'INVOCATION',
+      'BESCHWÖRUNG',
+      '召喚',
+      '召唤',
+    ];
+    const mtgSummonKeywords = [
+      'SUMMON',
+      'CONVOCAR',
+      'EVOCARE',
+      'INVOCATION',
+      'BESCHWÖRUNG',
+      '召喚',
+      '召唤',
+    ];
+    const mtgLeftRange = [0.02, 0.12];
+    const mtgTopRange = [0.55, 0.59];
+    const mtgBottomRange = [0.59, 0.64];
+
+    for (final block in _recognizedTextBlocks) {
+      final text = block['text'].toString();
+      final upperBlockText = text.toUpperCase();
+      final box = block['normalizedBoundingBox'] as Map<String, dynamic>;
+      final left = box['left'] as double;
+      final top = box['top'] as double;
+      final bottom = box['bottom'] as double;
+
+      bool inRange =
+          left >= mtgLeftRange[0] &&
+          left <= mtgLeftRange[1] &&
+          top >= mtgTopRange[0] &&
+          top <= mtgTopRange[1] &&
+          bottom >= mtgBottomRange[0] &&
+          bottom <= mtgBottomRange[1];
+
+      bool hasKeyword = mtgKeywords.any(
+        (keyword) => keyword.contains(RegExp(r'[\u4E00-\u9FFF]'))
+            ? text.contains(keyword)
+            : upperBlockText.contains(keyword),
+      );
+
+      if (inRange && hasKeyword) {
+        _detectedGame = 'Magic: The Gathering';
+        print('Detected Magic: The Gathering: Text=${block['text']}, Box=$box');
+        return;
+      }
+    }
+
+    // Check for Summon alone in the same bounding box
+    for (final block in _recognizedTextBlocks) {
+      final text = block['text'].toString();
+      final upperBlockText = text.toUpperCase();
+      final box = block['normalizedBoundingBox'] as Map<String, dynamic>;
+      final left = box['left'] as double;
+      final top = box['top'] as double;
+      final bottom = box['bottom'] as double;
+
+      bool inRange =
+          left >= mtgLeftRange[0] &&
+          left <= mtgLeftRange[1] &&
+          top >= mtgTopRange[0] &&
+          top <= mtgTopRange[1] &&
+          bottom >= mtgBottomRange[0] &&
+          bottom <= mtgBottomRange[1];
+
+      bool hasSummon = mtgSummonKeywords.any(
+        (keyword) => keyword.contains(RegExp(r'[\u4E00-\u9FFF]'))
+            ? text.contains(keyword)
+            : upperBlockText.contains(keyword),
+      );
+
+      if (inRange && hasSummon) {
+        _detectedGame = 'Magic: The Gathering';
+        print(
+          'Detected Magic: The Gathering (Summon): Text=${block['text']}, Box=$box',
+        );
+        return;
+      }
+    }
+
     print('Detected game: $_detectedGame');
     notifyListeners();
   }
@@ -581,6 +874,9 @@ class ImageCaptureViewModel with ChangeNotifier {
             print(
               'Selected script: $selectedScript, Blocks: $_recognizedTextBlocks',
             );
+
+            // Perform game detection after OCR
+            _detectGame(joinedText: latinJoinedText);
           } else {
             // Manual mode: Process with Latin only
             final textRecognizer = TextRecognizer(
@@ -623,6 +919,9 @@ class ImageCaptureViewModel with ChangeNotifier {
               print(
                 'Recognized text blocks ($scriptLabel): $_recognizedTextBlocks',
               );
+
+              // Perform game detection after OCR
+              _detectGame(joinedText: joinedText);
             } catch (e) {
               print('Error processing Latin: $e');
               _setErrorMessage('Error processing Latin: $e');
@@ -630,9 +929,6 @@ class ImageCaptureViewModel with ChangeNotifier {
               await textRecognizer.close();
             }
           }
-
-          // Perform game detection after OCR
-          _detectGame();
 
           _setErrorMessage(
             _recognizedTextBlocks.isEmpty ? 'No text recognized' : null,
@@ -726,7 +1022,7 @@ class ImageCaptureViewModel with ChangeNotifier {
         }
 
         // Perform game detection after reprocessing
-        _detectGame();
+        _detectGame(joinedText: joinedText);
 
         print(
           'Reprocessed text blocks with $scriptLabel: $_recognizedTextBlocks',
