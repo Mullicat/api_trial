@@ -48,12 +48,21 @@ class ImageCaptureScreen extends StatelessWidget {
                         viewModel.confirmedImage == null)
                       const Text('No image uploaded yet.'),
                     const SizedBox(height: 20),
-                    // Language options dropdown menu
+                    // Detected game display
+                    Text(
+                      'Detected Game: ${viewModel.detectedGame}',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    // Detection options dropdown menu
                     SizedBox(
                       width: double.infinity,
                       child: ExpansionTile(
                         title: const Text(
-                          'Language Options',
+                          'Detection Options',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -76,17 +85,25 @@ class ImageCaptureScreen extends StatelessWidget {
                                   : (value) => viewModel
                                         .toggleLatinLanguageAutoDetect(value),
                             ),
+                          SwitchListTile(
+                            title: const Text('TCG auto-detect'),
+                            value: viewModel.tcgAutoDetectEnabled,
+                            onChanged: viewModel.isLoading
+                                ? null
+                                : (value) =>
+                                      viewModel.toggleTcgAutoDetect(value),
+                          ),
                         ],
                       ),
                     ),
-                    // Card's language dropdown (visible when auto-detect is OFF)
-                    if (!viewModel.autoDetectEnabled &&
+                    // Card's game dropdown (visible when TCG auto-detect is OFF)
+                    if (!viewModel.tcgAutoDetectEnabled &&
                         viewModel.imageFile != null)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            "Card's language:",
+                            "Card's game:",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -94,20 +111,26 @@ class ImageCaptureScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           DropdownButton<String>(
-                            value: 'Latin', // Default value
-                            items: ['Latin', 'Chinese', 'Japanese', 'Korean']
-                                .map(
-                                  (script) => DropdownMenuItem(
-                                    value: script,
-                                    child: Text(script),
-                                  ),
-                                )
-                                .toList(),
+                            value: viewModel.selectedGame,
+                            items:
+                                [
+                                      'YuGiOh',
+                                      'Pokemon TCG',
+                                      'Magic The Gathering',
+                                      'One Piece TCG',
+                                    ]
+                                    .map(
+                                      (game) => DropdownMenuItem(
+                                        value: game,
+                                        child: Text(game),
+                                      ),
+                                    )
+                                    .toList(),
                             onChanged: viewModel.isLoading
                                 ? null
                                 : (value) {
                                     if (value != null) {
-                                      viewModel.reprocessWithScript(value);
+                                      viewModel.setSelectedGame(value);
                                     }
                                   },
                           ),
@@ -145,10 +168,10 @@ class ImageCaptureScreen extends StatelessWidget {
                                       style: const TextStyle(fontSize: 14),
                                     ),
                                     subtitle: Text(
-                                      'Bounding Box: L:${block['boundingBox']['left'].toStringAsFixed(0)}, '
-                                      'T:${block['boundingBox']['top'].toStringAsFixed(0)}, '
-                                      'R:${block['boundingBox']['right'].toStringAsFixed(0)}, '
-                                      'B:${block['boundingBox']['bottom'].toStringAsFixed(0)}',
+                                      'Normalized Bounding Box: L:${block['normalizedBoundingBox']['left'].toStringAsFixed(2)}, '
+                                      'T:${block['normalizedBoundingBox']['top'].toStringAsFixed(2)}, '
+                                      'R:${block['normalizedBoundingBox']['right'].toStringAsFixed(2)}, '
+                                      'B:${block['normalizedBoundingBox']['bottom'].toStringAsFixed(2)}',
                                       style: const TextStyle(fontSize: 12),
                                     ),
                                   );
