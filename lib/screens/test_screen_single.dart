@@ -1,5 +1,5 @@
 // lib/screens/test_screen_single.dart
-import 'package:api_trial/enums/game_type.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/models/card_model_api_apitcg.dart';
 import 'package:api_trial/models/card_model_magic.dart' as magic_model;
 import 'package:api_trial/models/card_model_pokemon.dart' as pokemon_model;
@@ -80,6 +80,9 @@ class _TestScreenSingleState extends State<TestScreenSingle> {
             id: widget.id,
           );
           break;
+        case GameType.yugioh:
+          // TODO: Handle this case.
+          throw UnimplementedError();
       }
       if (!mounted) return;
       setState(() {
@@ -344,6 +347,9 @@ class _TestScreenSingleState extends State<TestScreenSingle> {
         addField('Original Type', card.originalType);
         addField('ID', card.id);
         break;
+      case GameType.yugioh:
+        // TODO: Handle this case.
+        throw UnimplementedError();
     }
 
     // Add text widgets for fields

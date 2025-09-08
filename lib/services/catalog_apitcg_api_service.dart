@@ -4,7 +4,7 @@ import 'dart:developer' as developer;
 import 'package:api_trial/models/card_model_api_apitcg.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-import 'package:api_trial/enums/game_type.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 
 class TcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
@@ -185,6 +185,9 @@ class TcgService {
       case GameType.gundam:
         return GundamCard.fromJson(json) as T;
       case GameType.magic:
+        throw UnimplementedError();
+      case GameType.yugioh:
+        // TODO: Handle this case.
         throw UnimplementedError();
     }
   }

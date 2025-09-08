@@ -1,5 +1,5 @@
 // lib/test_screen_api_tcg.dart
-import 'package:api_trial/enums/game_type.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/models/card_model_api_apitcg.dart';
 import 'package:api_trial/services/catalog_apitcg_api_service.dart';
 import 'package:flutter/material.dart';
@@ -118,6 +118,9 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
             pageSize: 5,
           );
           break;
+        case GameType.yugioh:
+          // TODO: Handle this case.
+          throw UnimplementedError();
       }
       developer.log(
         'Cards fetched for ${_selectedGameType.name}: ${_cards?.length ?? 0}',
@@ -532,6 +535,9 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                                 typeText = c.type!;
                                 rarityText = c.rarity!;
                                 break;
+                              case GameType.yugioh:
+                                // TODO: Handle this case.
+                                throw UnimplementedError();
                             }
                             return Card(
                               margin: const EdgeInsets.symmetric(

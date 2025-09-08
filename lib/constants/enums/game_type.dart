@@ -5,7 +5,8 @@ enum GameType {
   digimon('digimon'),
   unionArena('union-arena'),
   gundam('gundam'),
-  magic('magic'); // Added magic
+  magic('magic'),
+  yugioh('yugioh');
 
   final String apiPath;
   const GameType(this.apiPath);
