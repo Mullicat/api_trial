@@ -1,11 +1,12 @@
-// lib/test_screen_pokemon.dart
+// lib/screens/test_screen_pokemon.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:developer' as developer;
 import '../services/catalog_pokemontcg_api_service.dart';
-import '../models/card_model_pokemon.dart' as model;
+import '../models/card.dart'; // Updated to use TCGCard model
 import './test_screen_single.dart';
-import '../enums/game_type.dart';
+import '../constants/enums/game_type.dart'; // Fixed import path
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -15,7 +16,7 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  List<model.Card>? _cards;
+  List<TCGCard>? _cards;
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
@@ -75,22 +76,22 @@ class _TestScreenState extends State<TestScreen> {
     }
   }
 
-  Future<void> _fetchSingleCard(String cardId) async {
-    if (cardId.isEmpty) {
+  Future<void> _fetchSingleCard(String gameCode) async {
+    if (gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: cardId is empty');
+      developer.log('Error: gameCode is empty');
       return;
     }
 
     try {
-      developer.log('Navigating to TestScreenSingle with cardId: $cardId');
+      developer.log('Navigating to TestScreenSingle with gameCode: $gameCode');
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              TestScreenSingle(id: cardId, gameType: GameType.pokemon),
+              TestScreenSingle(id: gameCode, gameType: GameType.pokemon),
         ),
       );
     } catch (e) {
@@ -380,9 +381,9 @@ class _TestScreenState extends State<TestScreen> {
                           vertical: 4,
                         ),
                         child: ListTile(
-                          leading: card.images?.small != null
+                          leading: card.imageRefSmall != null
                               ? Image.network(
-                                  card.images!.small!,
+                                  card.imageRefSmall!,
                                   width: 50,
                                   height: 70,
                                   fit: BoxFit.cover,
@@ -395,12 +396,14 @@ class _TestScreenState extends State<TestScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Rarity: ${card.rarity ?? 'Unknown'}'),
-                              Text('HP: ${card.hp ?? 'N/A'}'),
+                              Text(
+                                'HP: ${card.gameSpecificData?['hp']?.toString() ?? 'N/A'}',
+                              ),
                             ],
                           ),
                           onTap: () {
-                            if (card.id != null) {
-                              _fetchSingleCard(card.id!);
+                            if (card.gameCode != null) {
+                              _fetchSingleCard(card.gameCode);
                             }
                           },
                         ),

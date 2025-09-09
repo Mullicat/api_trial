@@ -1,11 +1,17 @@
-// lib/test_screen_api_tcg.dart
-import 'package:api_trial/constants/enums/game_type.dart';
-import 'package:api_trial/models/card_model_api_apitcg.dart';
-import 'package:api_trial/services/catalog_apitcg_api_service.dart';
+// lib/screens/test_screen_api_tcg.dart
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
+import '../constants/enums/game_type.dart';
+import '../models/card.dart';
+import '../services/catalog_onepiece_api_service.dart';
+import '../services/catalog_digimon_api_service.dart';
+import '../services/catalog_unionarena_api_service.dart';
+import '../services/catalog_gundam_api_service.dart';
+import '../services/catalog_yugioh_api_service.dart';
+import '../services/catalog_pokemontcg_api_service.dart';
+import '../services/catalog_magic_api_service.dart';
 import './test_screen_single.dart';
-import 'package:api_trial/models/card_model_magic.dart';
 
 class TestScreenApiTcg extends StatefulWidget {
   final GameType gameType;
@@ -17,9 +23,8 @@ class TestScreenApiTcg extends StatefulWidget {
 }
 
 class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
-  final TcgService _service = TcgService();
   GameType _selectedGameType = GameType.onePiece;
-  dynamic _cards;
+  List<TCGCard>? _cards;
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
@@ -68,65 +73,65 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
       if (_searchController.text.isNotEmpty) {
         filters['name'] = _searchController.text;
       }
+      List<TCGCard> cards;
       switch (_selectedGameType) {
         case GameType.onePiece:
-          _cards = await _service.getCards<OnePieceCard>(
-            gameType: _selectedGameType,
+          cards = await OnePieceTcgService().getCards(
             filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.pokemon:
-          _cards = await _service.getCards<PokemonCard>(
-            gameType: _selectedGameType,
-            filters: filters,
-            pageSize: 5,
-          );
-          break;
-        case GameType.dragonBall:
-          _cards = await _service.getCards<DragonBallCard>(
-            gameType: _selectedGameType,
+          cards = await PokemonTcgService().searchCards(
             filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.digimon:
-          _cards = await _service.getCards<DigimonCard>(
-            gameType: _selectedGameType,
+          cards = await DigimonTcgService().getCards(
             filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.unionArena:
-          _cards = await _service.getCards<UnionArenaCard>(
-            gameType: _selectedGameType,
+          cards = await UnionArenaTcgService().getCards(
             filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.gundam:
-          _cards = await _service.getCards<GundamCard>(
-            gameType: _selectedGameType,
+          cards = await GundamTcgService().getCards(
             filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.magic:
-          _cards = await _service.getCards<MagicCard>(
-            gameType: _selectedGameType,
+          cards = await MagicTcgService().getCards(
             filters: filters,
             pageSize: 5,
           );
           break;
         case GameType.yugioh:
+          cards = await CardApi.getCards(
+            fname: filters['name'],
+            types: filters['type']?.split(','),
+            extra: filters
+              ..remove('name')
+              ..remove('type'),
+            num: 5,
+            offset: 0,
+          );
+          break;
+        case GameType.dragonBall:
           // TODO: Handle this case.
           throw UnimplementedError();
       }
       developer.log(
-        'Cards fetched for ${_selectedGameType.name}: ${_cards?.length ?? 0}',
+        'Cards fetched for ${_selectedGameType.name}: ${cards.length}',
       );
       if (!mounted) return;
       setState(() {
+        _cards = cards;
         _isLoading = false;
       });
     } catch (e) {
@@ -208,12 +213,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
       'subtypes': ['None', 'Basic', 'Stage 1', 'Stage 2', 'V', 'VMAX', 'EX'],
       'hp': ['None', '[* TO 50]', '[50 TO 100]', '[100 TO 150]', '[150 TO *]'],
     },
-    GameType.dragonBall: {
-      'rarity': ['None', 'C', 'UC', 'R', 'SR', 'SCR', 'L'],
-      'cardType': ['None', 'LEADER', 'BATTLE', 'EXTRA'],
-      'color': ['None', 'Red', 'Blue', 'Green', 'Yellow', 'Black'],
-      'features': ['None', 'Saiyan', 'Universe 7', 'Frieza Clan'],
-    },
     GameType.digimon: {
       'rarity': ['None', 'C', 'U', 'R', 'SR', 'SEC'],
       'cardType': ['None', 'Digimon', 'Digi-Egg', 'Tamer', 'Option'],
@@ -231,18 +230,79 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
       'color': ['None', 'White', 'Red', 'Blue', 'Green'],
       'zone': ['None', 'Space', 'Earth', 'Space / Earth'],
     },
-    GameType.magic: {}, // Empty since Magic uses MagicTcgService
+    GameType.magic: {
+      'rarity': ['None', 'Common', 'Uncommon', 'Rare', 'Mythic'],
+      'type': [
+        'None',
+        'Creature',
+        'Instant',
+        'Sorcery',
+        'Enchantment',
+        'Artifact',
+        'Planeswalker',
+        'Land',
+      ],
+      'colors': [
+        'None',
+        'White',
+        'Blue',
+        'Black',
+        'Red',
+        'Green',
+        'Colorless',
+        'Multicolor',
+      ],
+    },
+    GameType.yugioh: {
+      'type': [
+        'None',
+        'Normal Monster',
+        'Effect Monster',
+        'Fusion Monster',
+        'Ritual Monster',
+        'Synchro Monster',
+        'XYZ Monster',
+        'Link Monster',
+        'Spell Card',
+        'Trap Card',
+      ],
+      'attribute': [
+        'None',
+        'LIGHT',
+        'DARK',
+        'EARTH',
+        'WATER',
+        'FIRE',
+        'WIND',
+        'DIVINE',
+      ],
+      'race': [
+        'None',
+        'Warrior',
+        'Spellcaster',
+        'Dragon',
+        'Zombie',
+        'Fiend',
+        'Machine',
+        'Aqua',
+        'Pyro',
+        'Rock',
+        'Winged Beast',
+        'Plant',
+        'Insect',
+      ],
+    },
   };
 
   // Game-specific free-text parameters
   final Map<GameType, List<String>> _freeTextParams = {
     GameType.onePiece: ['ability'],
     GameType.pokemon: ['text', 'flavor', 'artist', 'number'],
-    GameType.dragonBall: ['effect'],
     GameType.digimon: ['effect'],
     GameType.unionArena: ['effect'],
     GameType.gundam: ['effect'],
-    GameType.magic: [], // Empty since Magic uses MagicTcgService
+    GameType.magic: ['text', 'flavorText', 'artist', 'number'],
+    GameType.yugioh: ['archetype', 'desc'],
   };
 
   // Build filter bar with dropdown buttons and free-text buttons
@@ -287,8 +347,13 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                           vertical: 4.0,
                         ),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
+                          border: Border.all(
+                            color: isActive ? Colors.blue : Colors.grey,
+                          ),
                           borderRadius: BorderRadius.circular(4.0),
+                          color: isActive
+                              ? Colors.blue.withOpacity(0.08)
+                              : null,
                         ),
                         child: Text(
                           param,
@@ -316,8 +381,13 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                           vertical: 4.0,
                         ),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
+                          border: Border.all(
+                            color: isActive ? Colors.blue : Colors.grey,
+                          ),
                           borderRadius: BorderRadius.circular(4.0),
+                          color: isActive
+                              ? Colors.blue.withOpacity(0.08)
+                              : null,
                         ),
                         child: Text(
                           param,
@@ -375,6 +445,8 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
         ],
       ),
     );
+
+    if (!mounted) return;
 
     if (result != null && result.isNotEmpty) {
       setState(() {
@@ -439,14 +511,10 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
               onSubmitted: (value) => _fetchCards(),
             ),
           ),
-          if (_selectedGameType != GameType.magic)
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-                vertical: 4.0,
-              ),
-              child: _buildFilterBar(),
-            ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            child: _buildFilterBar(),
+          ),
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -471,7 +539,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                       ],
                     ),
                   )
-                : _cards == null || _cards.isEmpty
+                : _cards == null || _cards!.isEmpty
                 ? const Center(
                     child: Text(
                       'No cards found. Try adjusting your search or filters.',
@@ -484,7 +552,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          'Cards (${_cards.length}):',
+                          'Cards (${_cards!.length}):',
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -493,70 +561,35 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                       ),
                       Expanded(
                         child: ListView.builder(
-                          itemCount: _cards.length,
+                          itemCount: _cards!.length,
                           itemBuilder: (context, index) {
-                            final card = _cards[index];
+                            final card = _cards![index];
                             developer.log('Rendering card: ${card.name}');
-                            String typeText;
-                            String rarityText;
-                            switch (_selectedGameType) {
-                              case GameType.onePiece:
-                                final c = card as OnePieceCard;
-                                typeText = c.type;
-                                rarityText = c.rarity;
-                                break;
-                              case GameType.pokemon:
-                                final c = card as PokemonCard;
-                                typeText = c.types.join(', ') ?? 'Unknown';
-                                rarityText = c.rarity;
-                                break;
-                              case GameType.dragonBall:
-                                final c = card as DragonBallCard;
-                                typeText = c.cardType;
-                                rarityText = c.rarity;
-                                break;
-                              case GameType.digimon:
-                                final c = card as DigimonCard;
-                                typeText = c.cardType;
-                                rarityText = c.rarity ?? 'Unknown';
-                                break;
-                              case GameType.unionArena:
-                                final c = card as UnionArenaCard;
-                                typeText = c.type;
-                                rarityText = c.rarity;
-                                break;
-                              case GameType.gundam:
-                                final c = card as GundamCard;
-                                typeText = c.cardType;
-                                rarityText = c.rarity;
-                                break;
-                              case GameType.magic:
-                                final c = card as MagicCard;
-                                typeText = c.type!;
-                                rarityText = c.rarity!;
-                                break;
-                              case GameType.yugioh:
-                                // TODO: Handle this case.
-                                throw UnimplementedError();
-                            }
+                            final typeText =
+                                card.gameSpecificData?['type'] ??
+                                card.gameSpecificData?['cardType'] ??
+                                card.gameSpecificData?['types']?.join(', ') ??
+                                'Unknown';
+                            final rarityText = card.rarity ?? 'Unknown';
                             return Card(
                               margin: const EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,
                               ),
                               child: ListTile(
-                                leading: card.images['small'] != null
-                                    ? Image.network(
-                                        card.images['small']!,
+                                leading: card.imageRefSmall != null
+                                    ? CachedNetworkImage(
+                                        imageUrl: card.imageRefSmall!,
                                         width: 50,
                                         height: 50,
                                         fit: BoxFit.contain,
-                                        errorBuilder:
-                                            (context, error, stackTrace) =>
-                                                const Icon(
-                                                  Icons.broken_image,
-                                                  size: 50,
-                                                ),
+                                        placeholder: (context, url) =>
+                                            const CircularProgressIndicator(),
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(
+                                              Icons.broken_image,
+                                              size: 50,
+                                            ),
                                       )
                                     : const Icon(
                                         Icons.image_not_supported,
@@ -570,7 +603,7 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                                     Text('Rarity: $rarityText'),
                                   ],
                                 ),
-                                onTap: () => _fetchSingleCard(card.id),
+                                onTap: () => _fetchSingleCard(card.gameCode),
                               ),
                             );
                           },

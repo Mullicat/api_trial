@@ -1,7 +1,8 @@
 // lib/services/catalog_magic_api_service.dart
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:api_trial/models/card_model_magic.dart';
+import 'package:api_trial/models/card.dart'; // Use new Card model
 import 'dart:developer' as developer;
 
 class MagicTcgService {
@@ -9,7 +10,7 @@ class MagicTcgService {
       'https://api.magicthegathering.io/v1/cards';
   static const String baseSetsUrl = 'https://api.magicthegathering.io/v1/sets';
 
-  Future<List<MagicCard>> getCards({
+  Future<List<TCGCard>> getCards({
     int page = 1,
     int pageSize = 20,
     Map<String, String> filters = const {},
@@ -42,9 +43,50 @@ class MagicTcgService {
           try {
             final cardJson = json as Map<String, dynamic>;
             developer.log(
-              'Parsing card: name=${cardJson['name'] ?? 'N/A'}, id=${cardJson['id'] ?? 'N/A'}, multiverseid=${cardJson['multiverseid'] ?? 'N/A'}',
+              'Parsing card: name=${cardJson['name'] ?? 'N/A'}, id=${cardJson['id'] ?? 'N/A'}, multiverseid=${cardJson['multiverseId'] ?? 'N/A'}',
             );
-            return MagicCard.fromJson(cardJson);
+            // Map Magic API fields to Card model
+            final cardId =
+                'magic-${cardJson['id'] ?? cardJson['multiverseId']?.toString() ?? 'unknown-${DateTime.now().millisecondsSinceEpoch}'}';
+            final gameSpecificData = <String, dynamic>{
+              'manaCost': cardJson['manaCost'],
+              'cmc': cardJson['cmc'],
+              'colors': cardJson['colors'],
+              'colorIdentity': cardJson['colorIdentity'],
+              'type': cardJson['type'],
+              'supertypes': cardJson['supertypes'],
+              'subtypes': cardJson['subtypes'],
+              'text': cardJson['text'],
+              'power': cardJson['power'],
+              'toughness': cardJson['toughness'],
+              'rulings': cardJson['rulings'],
+              'foreignNames': cardJson['foreignNames'],
+              'printings': cardJson['printings'],
+              'originalText': cardJson['originalText'],
+              'originalType': cardJson['originalType'],
+              'artist': cardJson['artist'],
+              'number': cardJson['number'],
+              'layout': cardJson['layout'],
+              'multiverseId': cardJson['multiverseId'],
+            }..removeWhere((key, value) => value == null); // Remove null values
+            return TCGCard(
+              id: cardId,
+              gameCode:
+                  cardJson['id']?.toString() ??
+                  cardJson['multiverseId']?.toString() ??
+                  cardId,
+              name: cardJson['name'] ?? 'Unknown Card',
+              gameType: 'magic',
+              setName: cardJson['set'],
+              rarity: cardJson['rarity'],
+              imageRefSmall:
+                  cardJson['imageUrl'], // Use same URL until Supabase upload
+              imageRefLarge: cardJson['imageUrl'],
+              lastUpdated: DateTime.now(),
+              imageEmbedding: null, // Defer generation
+              textEmbedding: null, // Defer generation
+              gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,
+            );
           } catch (e) {
             developer.log('Error parsing card JSON: $json, Error: $e');
             rethrow;
@@ -64,14 +106,14 @@ class MagicTcgService {
     }
   }
 
-  Future<MagicCard?> getCard(String multiverseid) async {
-    if (multiverseid.isEmpty) {
-      developer.log('Invalid multiverseid: empty');
+  Future<TCGCard?> getCard(String multiverseId) async {
+    if (multiverseId.isEmpty) {
+      developer.log('Invalid multiverseId: empty');
       return null;
     }
 
     try {
-      final uri = Uri.parse('$baseCardsUrl/$multiverseid');
+      final uri = Uri.parse('$baseCardsUrl/$multiverseId');
       developer.log('API Request: $uri');
       final response = await http.get(uri);
 
@@ -83,14 +125,54 @@ class MagicTcgService {
         final data = jsonDecode(response.body) as Map<String, dynamic>;
         final cardJson = data['card'] as Map<String, dynamic>?;
         if (cardJson == null) {
-          developer.log('No card data found for multiverseid: $multiverseid');
+          developer.log('No card data found for multiverseId: $multiverseId');
           return null;
         }
         try {
           developer.log(
-            'Parsing card: name=${cardJson['name'] ?? 'N/A'}, id=${cardJson['id'] ?? 'N/A'}, multiverseid=${cardJson['multiverseid'] ?? 'N/A'}',
+            'Parsing card: name=${cardJson['name'] ?? 'N/A'}, id=${cardJson['id'] ?? 'N/A'}, multiverseId=${cardJson['multiverseId'] ?? 'N/A'}',
           );
-          return MagicCard.fromJson(cardJson);
+          // Map Magic API fields to Card model
+          final cardId =
+              'magic-${cardJson['id'] ?? cardJson['multiverseId']?.toString() ?? 'unknown-${DateTime.now().millisecondsSinceEpoch}'}';
+          final gameSpecificData = <String, dynamic>{
+            'manaCost': cardJson['manaCost'],
+            'cmc': cardJson['cmc'],
+            'colors': cardJson['colors'],
+            'colorIdentity': cardJson['colorIdentity'],
+            'type': cardJson['type'],
+            'supertypes': cardJson['supertypes'],
+            'subtypes': cardJson['subtypes'],
+            'text': cardJson['text'],
+            'power': cardJson['power'],
+            'toughness': cardJson['toughness'],
+            'rulings': cardJson['rulings'],
+            'foreignNames': cardJson['foreignNames'],
+            'printings': cardJson['printings'],
+            'originalText': cardJson['originalText'],
+            'originalType': cardJson['originalType'],
+            'artist': cardJson['artist'],
+            'number': cardJson['number'],
+            'layout': cardJson['layout'],
+            'multiverseId': cardJson['multiverseId'],
+          }..removeWhere((key, value) => value == null);
+          return TCGCard(
+            id: cardId,
+            gameCode:
+                cardJson['id']?.toString() ??
+                cardJson['multiverseId']?.toString() ??
+                cardId,
+            name: cardJson['name'] ?? 'Unknown Card',
+            gameType: 'magic',
+            setName: cardJson['set'],
+            rarity: cardJson['rarity'],
+            imageRefSmall: cardJson['imageUrl'],
+            imageRefLarge: cardJson['imageUrl'],
+            lastUpdated: DateTime.now(),
+            imageEmbedding: null,
+            textEmbedding: null,
+            gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,
+          );
         } catch (e) {
           developer.log('Error parsing card JSON: $cardJson, Error: $e');
           rethrow;

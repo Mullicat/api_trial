@@ -1,3 +1,4 @@
+// lib/screens/test_screen_yugioh_like_pokemon.dart
 /**
  * TestScreenYuGiOh - Yu-Gi-Oh! Card Search and Display Interface
  * 
@@ -10,6 +11,7 @@
  * - Sorting options (name, ATK, DEF, level, etc.)
  * - Responsive UI with loading states and error handling
  * - Horizontal filter bar with chip-based selection
+ * - Navigation to TestScreenSingle for card details
  * 
  * Architecture Patterns:
  * - StatefulWidget for local state management
@@ -23,22 +25,12 @@
  * - Handles API errors and rate limiting gracefully
  */
 
-// lib/screens/test_screen_yugioh_like_pokemon.dart
 import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import '../services/catalog_yugioh_api_service.dart';
-import '../models/card_model_yugioh.dart' as model;
-
-/**
- * TestScreenYuGiOh - Main widget class for Yu-Gi-Oh card browser
- * 
- * Uses StatefulWidget because it needs to manage:
- * - Search query state
- * - Filter selections
- * - Loading states
- * - API response data
- * - Error messages
- */
+import '../models/card.dart'; // Use new TCGCard model
+import '../constants/enums/game_type.dart';
+import './test_screen_single.dart';
 
 class TestScreenYuGiOh extends StatefulWidget {
   const TestScreenYuGiOh({super.key});
@@ -47,9 +39,6 @@ class TestScreenYuGiOh extends StatefulWidget {
   State<TestScreenYuGiOh> createState() => _TestScreenYuGiOhState();
 }
 
-/**
- * _TestScreenYuGiOhState - State class containing all the logic and UI
- */
 class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
   // =================================================================
   // CONSTANTS AND CONFIGURATION
@@ -60,11 +49,10 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
 
   // =================================================================
   // STATE VARIABLES
-  // These track the current state of the screen
   // =================================================================
 
   /// List of cards currently displayed (null = not loaded yet)
-  List<model.Card>? _cards;
+  List<TCGCard>? _cards;
 
   /// Whether an API call is currently in progress
   bool _isLoading = false;
@@ -96,20 +84,17 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
   @override
   void initState() {
     super.initState();
-    // Load all cards when screen first opens (no filters applied)
     _fetchCards();
   }
 
   @override
   void dispose() {
-    // Clean up text controller to prevent memory leaks
     _searchController.dispose();
     super.dispose();
   }
 
   // =================================================================
   // FILTER CONFIGURATION
-  // These define the available filter options for the API
   // =================================================================
 
   /// Yu-Gi-Oh card attributes (monster card properties)
@@ -124,139 +109,83 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
     'DIVINE', // Divine attribute monsters (rare)
   ];
 
-  /*
-   * Dropdown filter options mapping
-   * 
-   * Key: API parameter name
-   * Value: List of selectable options for that parameter
-   * 
-   * IMPORTANT: These values must match exactly what the YGOProDeck API expects
-   * Using incorrect values will result in 400 Bad Request errors
-   */
   final Map<String, List<String>> _parameterOptions = {
-    // Card type filter - determines what kind of card it is
     'type': [
-      'None', // No filter applied
-      'Normal Monster', // Basic monsters with no effects
-      'Effect Monster', // Monsters with special abilities
-      'Fusion Monster', // Extra Deck fusion monsters
-      'Ritual Monster', // Special summoned with ritual spells
-      'Synchro Monster', // Extra Deck synchro monsters
-      'XYZ Monster', // Extra Deck XYZ monsters
-      'Link Monster', // Extra Deck link monsters
-      'Pendulum Normal Monster', // Pendulum monsters without effects
-      'Pendulum Effect Monster', // Pendulum monsters with effects
-      'Spell Card', // All spell cards
-      'Trap Card', // All trap cards
+      'None',
+      'Normal Monster',
+      'Effect Monster',
+      'Fusion Monster',
+      'Ritual Monster',
+      'Synchro Monster',
+      'XYZ Monster',
+      'Link Monster',
+      'Pendulum Normal Monster',
+      'Pendulum Effect Monster',
+      'Spell Card',
+      'Trap Card',
     ],
 
-    // Race filter - monster types or spell/trap subtypes
     'race': [
-      'None', // No filter applied
-      'Warrior', // Warrior-type monsters
-      'Spellcaster', // Spellcaster-type monsters
-      'Dragon', // Dragon-type monsters
-      'Zombie', // Zombie-type monsters
-      'Fiend', // Fiend-type monsters
-      'Fairy', // Fairy-type monsters
-      'Machine', // Machine-type monsters
-      'Aqua', // Aqua-type monsters
-      'Pyro', // Fire-type monsters
-      'Rock', // Rock-type monsters
-      'Winged Beast', // Flying creatures
-      'Plant', // Plant-type monsters
-      'Insect', // Bug-type monsters
-      'Thunder', // Electric-type monsters
-      'Fish', // Fish-type monsters
-      'Sea Serpent', // Sea creature monsters
-      'Reptile', // Reptile-type monsters
-      'Psychic', // Psychic-type monsters
-      'Divine-Beast', // Divine beast monsters
-      'Wyrm', // Dragon-like creatures
-      'Cyberse', // Digital/cyber monsters
-      'Dinosaur', // Prehistoric monsters
-      'Beast', // Animal-type monsters
-      'Beast-Warrior', // Humanoid beast monsters
-      'Illusion', // Illusion-type monsters
+      'None',
+      'Warrior',
+      'Spellcaster',
+      'Dragon',
+      'Zombie',
+      'Fiend',
+      'Fairy',
+      'Machine',
+      'Aqua',
+      'Pyro',
+      'Rock',
+      'Winged Beast',
+      'Plant',
+      'Insect',
+      'Thunder',
+      'Fish',
+      'Sea Serpent',
+      'Reptile',
+      'Psychic',
+      'Divine-Beast',
+      'Wyrm',
+      'Cyberse',
+      'Dinosaur',
+      'Beast',
+      'Beast-Warrior',
+      'Illusion',
     ],
-    // Additional filters can be added here (level, ATK, DEF ranges)
   };
 
-  /*
-   * Free-text parameter filters
-   * 
-   * These filters open a text input dialog instead of dropdown menu.
-   * Used for parameters that accept free-form text input like archetype names.
-   */
-  final List<String> _freeTextParams = [
-    'archetype', // Card archetype (e.g., "Blue-Eyes", "Dark Magician")
-    // Additional text filters like 'level', 'atk', 'def' ranges could be added
-  ];
+  final List<String> _freeTextParams = ['archetype'];
 
-  /*
-   * Available sorting options
-   * 
-   * Key: API parameter value
-   * Value: User-friendly display name
-   * 
-   * These control how the API returns the card results
-   */
   static const Map<String, String> _sortOptions = {
-    'name': 'Name (A→Z)', // Alphabetical by card name
-    'atk': 'ATK', // By attack points (highest first)
-    'def': 'DEF', // By defense points (highest first)
-    'level': 'Level', // By card level/rank
-    'id': 'ID', // By card ID number
-    'new': 'Newest', // By release date (newest first)
+    'name': 'Name (A→Z)',
+    'atk': 'ATK',
+    'def': 'DEF',
+    'level': 'Level',
+    'id': 'ID',
+    'new': 'Newest',
   };
 
   // =================================================================
   // UTILITY METHODS
   // =================================================================
 
-  /*
-   * Extract thumbnail image URL from card data
-   * 
-   * @param c - Card model object
-   * @return URL string for small image, or null if no image available
-   * 
-   * Prioritizes small images for better performance in list views
-   * Falls back to full-size image if small version not available
-   */
-  String? _thumbOf(model.Card c) {
-    if (c.cardImages.isEmpty) return null;
-    return c.cardImages.first.imageUrlSmall ?? c.cardImages.first.imageUrl;
+  String? _thumbOf(TCGCard c) {
+    return c.imageRefSmall;
   }
 
   // =================================================================
   // API INTEGRATION METHODS
   // =================================================================
 
-  /*
-   * Fetch cards from YGOProDeck API with current search/filter parameters
-   * 
-   * This method implements intelligent API calling logic:
-   * 1. If no search/filters are active, fetches ALL cards
-   * 2. If search/filters are active, applies them to the API call
-   * 3. Handles loading states and error messages
-   * 4. Updates UI state when complete
-   * 
-   * The API call strategy optimizes for user experience:
-   * - Empty state shows all cards (browsing mode)  
-   * - Filtered state shows targeted results (search mode)
-   */
   Future<void> _fetchCards() async {
-    // Set loading state and clear any previous errors
     setState(() {
       _isLoading = true;
       _errorMessage = null;
     });
 
     try {
-      // Get current search query (trimmed to remove whitespace)
       final q = _searchController.text.trim();
-
-      // Check if any filters/sorting are currently active
       final hasAttrs = _selectedAttributes.isNotEmpty;
       final hasFilters = _filters.entries.any(
         (e) => e.value.isNotEmpty && e.value != 'None',
@@ -264,74 +193,78 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
       final hasSort = _sortBy?.isNotEmpty == true;
       final hasAny = hasAttrs || hasFilters || hasSort || q.isNotEmpty;
 
-      List<model.Card> cards;
+      List<TCGCard> cards;
 
       if (!hasAny) {
-        // No search query and no filters = fetch ALL cards (browsing mode)
-        // This gives users a starting point to explore the card database
         cards = await CardApi.getCards();
       } else {
-        // Active filters/search = build targeted API call
-
-        // Build parameter map for non-attribute filters (type, race, etc.)
         final extra = <String, String>{};
         _filters.forEach((k, v) {
           if (v.isNotEmpty && v != 'None') extra[k] = v;
         });
-
-        // Add sort parameter if selected
         if (_sortBy?.isNotEmpty == true) extra['sort'] = _sortBy!;
 
-        // Log the API call parameters for debugging
         developer.log(
           'YuGiOh fetch extra=$extra attrs=$_selectedAttributes fname=${q.isNotEmpty ? q : '(none)'}',
         );
 
-        // Execute API call with all active parameters
         cards = await CardApi.getCards(
-          // Fuzzy name search - only send if user entered search query
           fname: q.isNotEmpty ? q : null,
-          // Multi-select attributes (LIGHT, DARK, etc.)
           attributes: _selectedAttributes.toList(),
-          // Other filters and sorting
           extra: extra,
-          // Pagination support
           num: _pageSize,
-          offset:
-              0, // Start from beginning (could be enhanced for infinite scroll)
+          offset: 0,
         );
       }
 
-      // Check if widget is still mounted before updating state
-      // Prevents setState calls on disposed widgets
       if (!mounted) return;
 
-      // Update UI with fetched cards
       setState(() {
         _cards = cards;
         _isLoading = false;
       });
     } catch (e) {
-      // Handle API errors gracefully
       if (!mounted) return;
 
       setState(() {
         _isLoading = false;
-        // Provide user-friendly error message
         _errorMessage = 'Error fetching cards: $e';
       });
-
-      // Log detailed error for debugging
       developer.log('YGO fetch error: $e');
+    }
+  }
+
+  Future<void> _fetchSingleCard(String gameCode) async {
+    if (gameCode.isEmpty) {
+      setState(() {
+        _errorMessage = 'Invalid card ID';
+      });
+      developer.log('Error: gameCode is empty');
+      return;
+    }
+
+    try {
+      developer.log('Navigating to TestScreenSingle with gameCode: $gameCode');
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              TestScreenSingle(id: gameCode, gameType: GameType.yugioh),
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _errorMessage = 'Error navigating to card details: $e';
+      });
+      developer.log('Error navigating to card details: $e');
     }
   }
 
   // =================================================================
   // UI COMPONENT METHODS
-  // These methods build different parts of the user interface
   // =================================================================
 
-  // Horizontal filters like your Pokémon screen
   Widget _buildFilterBar() {
     return Row(
       children: [
@@ -340,7 +273,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                // Attributes multi-select (ChoiceChip-like menu)
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: PopupMenuButton<String>(
@@ -398,8 +330,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
                     },
                   ),
                 ),
-
-                // Dropdown-like popup menus for type/race/etc.
                 ..._parameterOptions.entries.map((entry) {
                   final param = entry.key;
                   final isActive =
@@ -429,8 +359,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
                     ),
                   );
                 }),
-
-                // Free-text params -> open dialog
                 ..._freeTextParams.map((param) {
                   final isActive =
                       _filters.containsKey(param) &&
@@ -503,7 +431,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
       appBar: AppBar(
         title: const Text('Yu-Gi-Oh! API Test'),
         actions: [
-          // Sort menu
           PopupMenuButton<String>(
             tooltip: 'Sort',
             icon: const Icon(Icons.sort),
@@ -534,7 +461,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
       ),
       body: Column(
         children: [
-          // Search box
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -550,14 +476,10 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
               onSubmitted: (_) => _fetchCards(),
             ),
           ),
-
-          // Filters row
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: _buildFilterBar(),
           ),
-
-          // Results
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -614,19 +536,23 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (c.type != null) Text('Type: ${c.type!}'),
-                              if (c.attribute != null)
-                                Text('Attribute: ${c.attribute!}'),
-                              if (c.atk != null || c.def != null)
+                              if (c.gameSpecificData?['type'] != null)
+                                Text('Type: ${c.gameSpecificData!['type']}'),
+                              if (c.gameSpecificData?['attribute'] != null)
                                 Text(
-                                  'ATK/DEF: ${c.atk ?? '-'} / ${c.def ?? '-'}',
+                                  'Attribute: ${c.gameSpecificData!['attribute']}',
+                                ),
+                              if (c.gameSpecificData?['atk'] != null ||
+                                  c.gameSpecificData?['def'] != null)
+                                Text(
+                                  'ATK/DEF: ${c.gameSpecificData?['atk'] ?? '-'} / ${c.gameSpecificData?['def'] ?? '-'}',
                                 ),
                             ],
                           ),
                           onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(c.name ?? 'Card')),
-                            );
+                            if (c.gameCode != null) {
+                              _fetchSingleCard(c.gameCode);
+                            }
                           },
                         ),
                       );
