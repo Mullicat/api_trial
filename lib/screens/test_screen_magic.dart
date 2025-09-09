@@ -1,6 +1,7 @@
 // lib/screens/test_screen_magic.dart
-import 'package:api_trial/enums/game_type.dart';
-import 'package:api_trial/models/card_model_magic.dart' as model;
+
+import 'package:api_trial/constants/enums/game_type.dart';
+import 'package:api_trial/models/card.dart'; // Updated to use new Card model
 import 'package:api_trial/services/catalog_magic_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -15,7 +16,7 @@ class TestScreenMagic extends StatefulWidget {
 }
 
 class _TestScreenMagicState extends State<TestScreenMagic> {
-  List<model.MagicCard>? _cards;
+  List<TCGCard>? _cards;
   bool _isLoading = false;
   String? _errorMessage;
   final TextEditingController _searchController = TextEditingController();
@@ -70,24 +71,22 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
     }
   }
 
-  Future<void> _fetchSingleCard(String multiverseid) async {
-    if (multiverseid.isEmpty) {
+  Future<void> _fetchSingleCard(String gameCode) async {
+    if (gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: multiverseid is empty');
+      developer.log('Error: gameCode is empty');
       return;
     }
 
     try {
-      developer.log(
-        'Navigating to TestScreenSingle with multiverseid: $multiverseid',
-      );
+      developer.log('Navigating to TestScreenSingle with gameCode: $gameCode');
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              TestScreenSingle(id: multiverseid, gameType: GameType.magic),
+              TestScreenSingle(id: gameCode, gameType: GameType.magic),
         ),
       );
     } catch (e) {
@@ -441,9 +440,9 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
                           vertical: 4,
                         ),
                         child: ListTile(
-                          leading: card.imageUrl != null
+                          leading: card.imageRefSmall != null
                               ? Image.network(
-                                  card.imageUrl!,
+                                  card.imageRefSmall!,
                                   width: 50,
                                   height: 50,
                                   fit: BoxFit.cover,
@@ -455,15 +454,19 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Type: ${card.type ?? 'Unknown'}'),
+                              Text(
+                                'Type: ${card.gameSpecificData?['type']?.toString() ?? 'Unknown'}',
+                              ),
                               Text('Rarity: ${card.rarity ?? 'Unknown'}'),
-                              Text('CMC: ${card.cmc?.toString() ?? 'N/A'}'),
-                              Text('Mana Cost: ${card.manaCost ?? 'N/A'}'),
+                              Text(
+                                'CMC: ${card.gameSpecificData?['cmc']?.toString() ?? 'N/A'}',
+                              ),
+                              Text(
+                                'Mana Cost: ${card.gameSpecificData?['manaCost']?.toString() ?? 'N/A'}',
+                              ),
                             ],
                           ),
-                          onTap: () => _fetchSingleCard(
-                            card.multiverseid?.toString() ?? '',
-                          ),
+                          onTap: () => _fetchSingleCard(card.gameCode),
                         ),
                       );
                     },

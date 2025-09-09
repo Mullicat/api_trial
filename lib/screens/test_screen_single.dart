@@ -1,15 +1,17 @@
 // lib/screens/test_screen_single.dart
-import 'package:api_trial/enums/game_type.dart';
-import 'package:api_trial/models/card_model_api_apitcg.dart';
-import 'package:api_trial/models/card_model_magic.dart' as magic_model;
-import 'package:api_trial/models/card_model_pokemon.dart' as pokemon_model;
-import 'package:api_trial/services/catalog_apitcg_api_service.dart';
-import 'package:api_trial/services/catalog_magic_api_service.dart';
-import 'package:api_trial/services/catalog_pokemontcg_api_service.dart';
+import 'package:api_trial/services/catalog_digimon_api_service.dart';
+import 'package:api_trial/services/catalog_gundam_api_service.dart';
+import 'package:api_trial/services/catalog_onepiece_api_service.dart';
+import 'package:api_trial/services/catalog_unionarena_api_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:developer' as developer;
+import '../constants/enums/game_type.dart';
+import '../models/card.dart'; // Use unified TCGCard model
+import '../services/catalog_pokemontcg_api_service.dart';
+import '../services/catalog_yugioh_api_service.dart';
+import '../services/catalog_magic_api_service.dart';
 
 class TestScreenSingle extends StatefulWidget {
   final String id;
@@ -22,7 +24,7 @@ class TestScreenSingle extends StatefulWidget {
 }
 
 class _TestScreenSingleState extends State<TestScreenSingle> {
-  dynamic _card;
+  TCGCard? _card;
   bool _isLoading = false;
   String? _errorMessage;
 
@@ -47,39 +49,27 @@ class _TestScreenSingleState extends State<TestScreenSingle> {
         case GameType.pokemon:
           _card = await PokemonTcgService().getCard(widget.id);
           break;
+        case GameType.yugioh:
+          _card = await CardApi().getCard(widget.id);
+          break;
         case GameType.magic:
           _card = await MagicTcgService().getCard(widget.id);
           break;
         case GameType.onePiece:
-          _card = await TcgService().getCard<OnePieceCard>(
-            gameType: widget.gameType,
-            id: widget.id,
-          );
-          break;
-        case GameType.dragonBall:
-          _card = await TcgService().getCard<DragonBallCard>(
-            gameType: widget.gameType,
-            id: widget.id,
-          );
+          _card = await OnePieceTcgService().getCard(id: widget.id);
           break;
         case GameType.digimon:
-          _card = await TcgService().getCard<DigimonCard>(
-            gameType: widget.gameType,
-            id: widget.id,
-          );
+          _card = await DigimonTcgService().getCard(id: widget.id);
           break;
         case GameType.unionArena:
-          _card = await TcgService().getCard<UnionArenaCard>(
-            gameType: widget.gameType,
-            id: widget.id,
-          );
+          _card = await UnionArenaTcgService().getCard(id: widget.id);
           break;
         case GameType.gundam:
-          _card = await TcgService().getCard<GundamCard>(
-            gameType: widget.gameType,
-            id: widget.id,
-          );
+          _card = await GundamTcgService().getCard(id: widget.id);
           break;
+        case GameType.dragonBall:
+          // TODO: Handle this case.
+          throw UnimplementedError();
       }
       if (!mounted) return;
       setState(() {
@@ -115,43 +105,19 @@ class _TestScreenSingleState extends State<TestScreenSingle> {
       }
     }
 
-    // Helper to add nested object fields
-    void addNestedField(String key, dynamic object, List<String> subKeys) {
-      if (object != null) {
-        subKeys.forEach((subKey) {
-          if (object is Map &&
-              object.containsKey(subKey) &&
-              object[subKey] != null) {
-            fields['$key.$subKey'] = object[subKey].toString();
-          } else if (object.toString() != '{}') {
-            fields[key] = object.toString();
-          }
-        });
-      }
-    }
-
     // Helper to format lists
-    String formatList(List<dynamic>? list) => list?.join(', ') ?? '';
-
-    // Add image (large preferred)
-    String? imageUrl;
-    if (_card is pokemon_model.Card) {
-      imageUrl =
-          (_card as pokemon_model.Card).images?.large ??
-          (_card as pokemon_model.Card).images?.small;
-    } else if (_card is magic_model.MagicCard) {
-      imageUrl = (_card as magic_model.MagicCard).imageUrl;
-    } else {
-      imageUrl = _card.images != null
-          ? (_card.images['large'] ?? _card.images['small'])
-          : null;
+    String formatList(dynamic list) {
+      if (list is List) return list.join(', ');
+      return list?.toString() ?? '';
     }
-    if (imageUrl != null) {
+
+    // Add image
+    if (_card!.imageRefLarge != null) {
       details.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: CachedNetworkImage(
-            imageUrl: imageUrl,
+            imageUrl: _card!.imageRefLarge!,
             height: 300,
             fit: BoxFit.contain,
             placeholder: (context, url) => const CircularProgressIndicator(),
@@ -162,188 +128,195 @@ class _TestScreenSingleState extends State<TestScreenSingle> {
       );
     }
 
-    // Add fields based on card type
-    switch (widget.gameType) {
-      case GameType.onePiece:
-        final card = _card as OnePieceCard;
-        addField('ID', card.id);
-        addField('Code', card.code);
-        addField('Rarity', card.rarity);
-        addField('Type', card.type);
-        addField('Name', card.name);
-        addField('Cost', card.cost);
-        addNestedField('Attribute', card.attribute, ['name', 'image']);
-        addField('Power', card.power);
-        addField('Counter', card.counter);
-        addField('Color', card.color);
-        addField('Family', card.family);
-        addField('Ability', card.ability);
-        addField('Trigger', card.trigger);
-        addNestedField('Set', card.set, ['name', 'id']);
-        addField('Notes', formatList(card.notes));
-        break;
+    // Common fields across all games
+    addField('Name', _card!.name);
+    addField('Rarity', _card!.rarity);
+    addField('Set Name', _card!.setName);
 
+    // Game-specific fields
+    switch (widget.gameType) {
       case GameType.pokemon:
-        final card = _card as pokemon_model.Card;
-        addField('ID', card.id);
-        addField('Name', card.name);
-        addField('Supertype', card.supertype);
-        addField('Subtypes', formatList(card.subtypes));
-        addField('HP', card.hp);
-        addField('Types', formatList(card.types));
-        addField('Evolves From', card.evolvesFrom);
-        addField(
-          'Abilities',
-          formatList(
-            card.abilities?.map((a) => '${a.name}: ${a.text}').toList(),
-          ),
-        );
+        addField('HP', _card!.gameSpecificData?['hp']);
+        addField('Types', formatList(_card!.gameSpecificData?['types']));
+        addField('Subtypes', formatList(_card!.gameSpecificData?['subtypes']));
         addField(
           'Attacks',
           formatList(
-            card.attacks?.map((a) => '${a.name}: ${a.damage}').toList(),
+            _card!.gameSpecificData?['attacks']?.map(
+              (a) => '${a['name']}: ${a['damage']}',
+            ),
           ),
         );
         addField(
           'Weaknesses',
           formatList(
-            card.weaknesses?.map((w) => '${w.type}: ${w.value}').toList(),
+            _card!.gameSpecificData?['weaknesses']?.map(
+              (w) => '${w['type']}: ${w['value']}',
+            ),
           ),
         );
-        addField('Retreat Cost', formatList(card.retreatCost));
-        addField('Converted Retreat Cost', card.convertedRetreatCost);
-        addNestedField('Set', card.set, ['name', 'series', 'releaseDate']);
-        addField('Number', card.number);
-        addField('Artist', card.artist);
-        addField('Rarity', card.rarity);
-        addField('Flavor Text', card.flavorText);
+        addField(
+          'Retreat Cost',
+          formatList(_card!.gameSpecificData?['retreatCost']),
+        );
+        addField(
+          'Converted Retreat Cost',
+          _card!.gameSpecificData?['convertedRetreatCost'],
+        );
+        addField('Number', _card!.gameSpecificData?['number']);
+        addField('Artist', _card!.gameSpecificData?['artist']);
+        addField('Flavor Text', _card!.gameSpecificData?['flavorText']);
         addField(
           'National Pokedex Numbers',
-          formatList(card.nationalPokedexNumbers),
+          formatList(_card!.gameSpecificData?['nationalPokedexNumbers']),
         );
-        addNestedField('Legalities', card.legalities, [
-          'unlimited',
-          'standard',
-          'expanded',
-        ]);
+        addField(
+          'Legalities (Standard)',
+          _card!.gameSpecificData?['legalities']?['standard'],
+        );
+        addField(
+          'Legalities (Expanded)',
+          _card!.gameSpecificData?['legalities']?['expanded'],
+        );
         break;
-
-      case GameType.dragonBall:
-        final card = _card as DragonBallCard;
-        addField('ID', card.id);
-        addField('Code', card.code);
-        addField('Rarity', card.rarity);
-        addField('Name', card.name);
-        addField('Color', card.color);
-        addField('Card Type', card.cardType);
-        addField('Cost', card.cost);
-        addField('Specified Cost', card.specifiedCost);
-        addField('Power', card.power);
-        addField('Combo Power', card.comboPower);
-        addField('Features', card.features);
-        addField('Effect', card.effect);
-        addField('Get It', card.getIt);
-        addNestedField('Set', card.set, ['name', 'id']);
+      case GameType.yugioh:
+        addField('Type', _card!.gameSpecificData?['type']);
+        addField('Attribute', _card!.gameSpecificData?['attribute']);
+        addField('ATK', _card!.gameSpecificData?['atk']);
+        addField('DEF', _card!.gameSpecificData?['def']);
+        addField('Level', _card!.gameSpecificData?['level']);
+        addField('Race', _card!.gameSpecificData?['race']);
+        addField('Description', _card!.gameSpecificData?['desc']);
+        addField(
+          'Card Sets',
+          formatList(
+            _card!.gameSpecificData?['card_sets']?.map(
+              (s) => '${s['set_name']} (${s['set_rarity']})',
+            ),
+          ),
+        );
+        addField('Archetype', _card!.gameSpecificData?['archetype']);
+        addField(
+          'Banlist Info',
+          formatList(_card!.gameSpecificData?['banlist_info']),
+        );
         break;
-
-      case GameType.digimon:
-        final card = _card as DigimonCard;
-        addField('ID', card.id);
-        addField('Code', card.code);
-        addField('Rarity', card.rarity);
-        addField('Name', card.name);
-        addField('Level', card.level);
-        addField('Colors', formatList(card.colors));
-        addField('Card Type', card.cardType);
-        addField('Form', card.form);
-        addField('Attribute', card.attribute);
-        addField('Type', card.type);
-        addField('DP', card.dp);
-        addField('Play Cost', card.playCost);
-        addField('Digivolve Cost 1', card.digivolveCost1);
-        addField('Digivolve Cost 2', card.digivolveCost2);
-        addField('Effect', card.effect);
-        addField('Inherited Effect', card.inheritedEffect);
-        addField('Security Effect', card.securityEffect);
-        addField('Notes', card.notes);
-        addNestedField('Set', card.set, ['name', 'id']);
-        break;
-
-      case GameType.unionArena:
-        final card = _card as UnionArenaCard;
-        addField('ID', card.id);
-        addField('Code', card.code);
-        addField('URL', card.url);
-        addField('Name', card.name);
-        addField('Rarity', card.rarity);
-        addField('AP', card.ap);
-        addField('Type', card.type);
-        addField('BP', card.bp);
-        addField('Affinity', card.affinity);
-        addField('Effect', card.effect);
-        addField('Trigger', card.trigger);
-        addNestedField('Set', card.set, ['name', 'id']);
-        addNestedField('Need Energy', card.needEnergy, ['value', 'logo']);
-        break;
-
-      case GameType.gundam:
-        final card = _card as GundamCard;
-        addField('ID', card.id);
-        addField('Code', card.code);
-        addField('Rarity', card.rarity);
-        addField('Name', card.name);
-        addField('Level', card.level);
-        addField('Cost', card.cost);
-        addField('Color', card.color);
-        addField('Card Type', card.cardType);
-        addField('Effect', card.effect);
-        addField('Zone', card.zone);
-        addField('Trait', card.trait);
-        addField('Link', card.link);
-        addField('AP', card.ap);
-        addField('HP', card.hp);
-        addField('Source Title', card.sourceTitle);
-        addField('Get It', card.getIt);
-        addNestedField('Set', card.set, ['name', 'id']);
-        break;
-
       case GameType.magic:
-        final card = _card as magic_model.MagicCard;
-        addField('Name', card.name);
-        addField('Names', formatList(card.names));
-        addField('Mana Cost', card.manaCost);
-        addField('CMC', card.cmc);
-        addField('Colors', formatList(card.colors));
-        addField('Color Identity', formatList(card.colorIdentity));
-        addField('Type', card.type);
-        addField('Supertypes', formatList(card.supertypes));
-        addField('Types', formatList(card.types));
-        addField('Subtypes', formatList(card.subtypes));
-        addField('Rarity', card.rarity);
-        addField('Set', card.set);
-        addField('Set Name', card.setName);
-        addField('Text', card.text);
-        addField('Artist', card.artist);
-        addField('Number', card.number);
-        addField('Power', card.power);
-        addField('Toughness', card.toughness);
-        addField('Layout', card.layout);
-        addField('Multiverse ID', card.multiverseid);
+        addField('Type', _card!.gameSpecificData?['type']);
+        addField('Mana Cost', _card!.gameSpecificData?['manaCost']);
+        addField('CMC', _card!.gameSpecificData?['cmc']);
+        addField('Colors', formatList(_card!.gameSpecificData?['colors']));
+        addField(
+          'Color Identity',
+          formatList(_card!.gameSpecificData?['colorIdentity']),
+        );
+        addField(
+          'Supertypes',
+          formatList(_card!.gameSpecificData?['supertypes']),
+        );
+        addField('Types', formatList(_card!.gameSpecificData?['types']));
+        addField('Subtypes', formatList(_card!.gameSpecificData?['subtypes']));
+        addField('Text', _card!.gameSpecificData?['text']);
+        addField('Artist', _card!.gameSpecificData?['artist']);
+        addField('Number', _card!.gameSpecificData?['number']);
+        addField('Power', _card!.gameSpecificData?['power']);
+        addField('Toughness', _card!.gameSpecificData?['toughness']);
         addField(
           'Rulings',
-          formatList(card.rulings?.map((r) => '${r.date}: ${r.text}').toList()),
+          formatList(
+            _card!.gameSpecificData?['rulings']?.map(
+              (r) => '${r['date']}: ${r['text']}',
+            ),
+          ),
         );
         addField(
           'Foreign Names',
           formatList(
-            card.foreignNames?.map((f) => '${f.name} (${f.language})').toList(),
+            _card!.gameSpecificData?['foreignNames']?.map(
+              (f) => '${f['name']} (${f['language']})',
+            ),
           ),
         );
-        addField('Printings', formatList(card.printings));
-        addField('Original Text', card.originalText);
-        addField('Original Type', card.originalType);
-        addField('ID', card.id);
+        addField(
+          'Printings',
+          formatList(_card!.gameSpecificData?['printings']),
+        );
         break;
+      case GameType.onePiece:
+        addField('Code', _card!.gameSpecificData?['code']);
+        addField('Type', _card!.gameSpecificData?['type']);
+        addField('Cost', _card!.gameSpecificData?['cost']);
+        addField('Attribute', _card!.gameSpecificData?['attribute']?['name']);
+        addField('Power', _card!.gameSpecificData?['power']);
+        addField('Counter', _card!.gameSpecificData?['counter']);
+        addField('Color', _card!.gameSpecificData?['color']);
+        addField('Family', _card!.gameSpecificData?['family']);
+        addField('Ability', _card!.gameSpecificData?['ability']);
+        addField('Trigger', _card!.gameSpecificData?['trigger']);
+        addField('Set', _card!.gameSpecificData?['set']?['name']);
+        addField('Notes', formatList(_card!.gameSpecificData?['notes']));
+        break;
+      case GameType.digimon:
+        addField('Code', _card!.gameSpecificData?['code']);
+        addField('Level', _card!.gameSpecificData?['level']);
+        addField('Colors', formatList(_card!.gameSpecificData?['colors']));
+        addField('Card Type', _card!.gameSpecificData?['cardType']);
+        addField('Form', _card!.gameSpecificData?['form']);
+        addField('Attribute', _card!.gameSpecificData?['attribute']);
+        addField('Type', _card!.gameSpecificData?['type']);
+        addField('DP', _card!.gameSpecificData?['dp']);
+        addField('Play Cost', _card!.gameSpecificData?['playCost']);
+        addField(
+          'Digivolve Cost 1',
+          _card!.gameSpecificData?['digivolveCost1'],
+        );
+        addField(
+          'Digivolve Cost 2',
+          _card!.gameSpecificData?['digivolveCost2'],
+        );
+        addField('Effect', _card!.gameSpecificData?['effect']);
+        addField(
+          'Inherited Effect',
+          _card!.gameSpecificData?['inheritedEffect'],
+        );
+        addField('Security Effect', _card!.gameSpecificData?['securityEffect']);
+        addField('Notes', _card!.gameSpecificData?['notes']);
+        addField('Set', _card!.gameSpecificData?['set']?['name']);
+        break;
+      case GameType.unionArena:
+        addField('Code', _card!.gameSpecificData?['code']);
+        addField('URL', _card!.gameSpecificData?['url']);
+        addField('AP', _card!.gameSpecificData?['ap']);
+        addField('Type', _card!.gameSpecificData?['type']);
+        addField('BP', _card!.gameSpecificData?['bp']);
+        addField('Affinity', _card!.gameSpecificData?['affinity']);
+        addField('Effect', _card!.gameSpecificData?['effect']);
+        addField('Trigger', _card!.gameSpecificData?['trigger']);
+        addField('Set', _card!.gameSpecificData?['set']?['name']);
+        addField(
+          'Need Energy',
+          _card!.gameSpecificData?['needEnergy']?['value'],
+        );
+        break;
+      case GameType.gundam:
+        addField('Code', _card!.gameSpecificData?['code']);
+        addField('Level', _card!.gameSpecificData?['level']);
+        addField('Cost', _card!.gameSpecificData?['cost']);
+        addField('Color', _card!.gameSpecificData?['color']);
+        addField('Card Type', _card!.gameSpecificData?['cardType']);
+        addField('Effect', _card!.gameSpecificData?['effect']);
+        addField('Zone', _card!.gameSpecificData?['zone']);
+        addField('Trait', _card!.gameSpecificData?['trait']);
+        addField('Link', _card!.gameSpecificData?['link']);
+        addField('AP', _card!.gameSpecificData?['ap']);
+        addField('HP', _card!.gameSpecificData?['hp']);
+        addField('Source Title', _card!.gameSpecificData?['sourceTitle']);
+        addField('Get It', _card!.gameSpecificData?['getIt']);
+        addField('Set', _card!.gameSpecificData?['set']?['name']);
+        break;
+      case GameType.dragonBall:
+        // TODO: Handle this case.
+        throw UnimplementedError();
     }
 
     // Add text widgets for fields

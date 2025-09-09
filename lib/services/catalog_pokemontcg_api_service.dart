@@ -1,8 +1,9 @@
 // lib/services/catalog_pokemontcg_api_service.dart
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:api_trial/models/card_model_pokemon.dart';
+import 'package:api_trial/models/card.dart'; // Use new TCGCard model
 import 'dart:developer' as developer;
 
 class PokemonTcgService {
@@ -19,7 +20,7 @@ class PokemonTcgService {
     }
   }
 
-  Future<List<Card>> searchCards({
+  Future<List<TCGCard>> searchCards({
     int? page,
     int? pageSize,
     Map<String, String> filters = const {},
@@ -80,8 +81,43 @@ class PokemonTcgService {
         final cardsJson = data['data'] as List<dynamic>;
         developer.log('Cards returned: ${cardsJson.length}');
         return cardsJson.map((json) {
-          developer.log('Parsing JSON for Card: $json');
-          return Card.fromJson(json as Map<String, dynamic>);
+          final cardJson = json as Map<String, dynamic>;
+          developer.log('Parsing JSON for TCGCard: $cardJson');
+          // Map Pokémon API fields to TCGCard model
+          final cardId =
+              'pokemon-${cardJson['id'] ?? 'unknown-${DateTime.now().millisecondsSinceEpoch}'}';
+          final gameSpecificData = <String, dynamic>{
+            'hp': cardJson['hp'],
+            'types': cardJson['types'],
+            'supertypes': cardJson['supertypes'],
+            'subtypes': cardJson['subtypes'],
+            'abilities': cardJson['abilities'],
+            'attacks': cardJson['attacks'],
+            'weaknesses': cardJson['weaknesses'],
+            'retreatCost': cardJson['retreatCost'],
+            'convertedRetreatCost': cardJson['convertedRetreatCost'],
+            'number': cardJson['number'],
+            'artist': cardJson['artist'],
+            'flavorText': cardJson['flavorText'],
+            'nationalPokedexNumbers': cardJson['nationalPokedexNumbers'],
+            'legalities': cardJson['legalities'],
+            'tcgplayer': cardJson['tcgplayer'],
+            'cardmarket': cardJson['cardmarket'],
+          }..removeWhere((key, value) => value == null); // Remove null values
+          return TCGCard(
+            id: cardId,
+            gameCode: cardJson['id']?.toString() ?? cardId,
+            name: cardJson['name'] ?? 'Unknown Card',
+            gameType: 'pokemon',
+            setName: cardJson['set']?['name'],
+            rarity: cardJson['rarity'],
+            imageRefSmall: cardJson['images']?['small'],
+            imageRefLarge: cardJson['images']?['large'],
+            lastUpdated: DateTime.now(),
+            imageEmbedding: null, // Defer generation
+            textEmbedding: null, // Defer generation
+            gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,
+          );
         }).toList();
       } else {
         throw Exception(
@@ -94,7 +130,7 @@ class PokemonTcgService {
     }
   }
 
-  Future<Card?> getCard(String cardId) async {
+  Future<TCGCard?> getCard(String cardId) async {
     await _loadEnv();
 
     final apiKey = dotenv.env['POKEMON_TCG_API_KEY'];
@@ -115,11 +151,45 @@ class PokemonTcgService {
         final data = json.decode(response.body);
         final cardJson = data['data'] as Map<String, dynamic>?;
         if (cardJson == null) {
-          developer.log('No card data found for ID: $cardId');
+          developer.log('No card data found for this card\'s ID');
           return null;
         }
-        developer.log('Parsing JSON for Card: $cardJson');
-        return Card.fromJson(cardJson);
+        developer.log('Parsing JSON for TCGCard: $cardJson');
+        // Map Pokémon API fields to TCGCard model
+        final cardId =
+            'pokemon-${cardJson['id'] ?? 'unknown-${DateTime.now().millisecondsSinceEpoch}'}';
+        final gameSpecificData = <String, dynamic>{
+          'hp': cardJson['hp'],
+          'types': cardJson['types'],
+          'supertypes': cardJson['supertypes'],
+          'subtypes': cardJson['subtypes'],
+          'abilities': cardJson['abilities'],
+          'attacks': cardJson['attacks'],
+          'weaknesses': cardJson['weaknesses'],
+          'retreatCost': cardJson['retreatCost'],
+          'convertedRetreatCost': cardJson['convertedRetreatCost'],
+          'number': cardJson['number'],
+          'artist': cardJson['artist'],
+          'flavorText': cardJson['flavorText'],
+          'nationalPokedexNumbers': cardJson['nationalPokedexNumbers'],
+          'legalities': cardJson['legalities'],
+          'tcgplayer': cardJson['tcgplayer'],
+          'cardmarket': cardJson['cardmarket'],
+        }..removeWhere((key, value) => value == null);
+        return TCGCard(
+          id: cardId,
+          gameCode: cardJson['id']?.toString() ?? cardId,
+          name: cardJson['name'] ?? 'Unknown Card',
+          gameType: 'pokemon',
+          setName: cardJson['set']?['name'],
+          rarity: cardJson['rarity'],
+          imageRefSmall: cardJson['images']?['small'],
+          imageRefLarge: cardJson['images']?['large'],
+          lastUpdated: DateTime.now(),
+          imageEmbedding: null,
+          textEmbedding: null,
+          gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,
+        );
       } else {
         throw Exception(
           'Failed to load card: ${response.statusCode} - ${response.body}',
