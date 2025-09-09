@@ -8,7 +8,7 @@ import '../constants/enums/game_type.dart';
 
 class OnePieceTcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
-  static const String _gamePath = 'onepiece';
+  static const String _gamePath = 'one-piece';
 
   Future<void> _loadEnv() async {
     try {

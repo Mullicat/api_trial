@@ -6,6 +6,7 @@ import '../constants/enums/game_type.dart';
 import '../models/card.dart';
 import '../services/catalog_onepiece_api_service.dart';
 import '../services/catalog_digimon_api_service.dart';
+import '../services/catalog_dragonball_api_service.dart';
 import '../services/catalog_unionarena_api_service.dart';
 import '../services/catalog_gundam_api_service.dart';
 import '../services/catalog_yugioh_api_service.dart';
@@ -123,8 +124,11 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
           );
           break;
         case GameType.dragonBall:
-          // TODO: Handle this case.
-          throw UnimplementedError();
+          cards = await DragonBallTcgService().getCards(
+            filters: filters,
+            pageSize: 5,
+          );
+          break;
       }
       developer.log(
         'Cards fetched for ${_selectedGameType.name}: ${cards.length}',

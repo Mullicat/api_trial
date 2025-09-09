@@ -8,7 +8,7 @@ import '../constants/enums/game_type.dart';
 
 class UnionArenaTcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
-  static const String _gamePath = 'unionarena';
+  static const String _gamePath = 'union-arena';
 
   Future<void> _loadEnv() async {
     try {

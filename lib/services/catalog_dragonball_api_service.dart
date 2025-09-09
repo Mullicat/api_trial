@@ -8,7 +8,7 @@ import '../constants/enums/game_type.dart';
 
 class DragonBallTcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
-  static const String _gamePath = 'dragonball';
+  static const String _gamePath = 'dragon-ball-fusion';
 
   Future<void> _loadEnv() async {
     try {
