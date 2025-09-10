@@ -1,0 +1,322 @@
+[
+  {
+    "id": "FS05-01",
+    "code": "FS05-01",
+    "rarity": "L",
+    "name": "Bardock",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-01_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-01_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Bardock's Crew\n                  Saiyan/Bardock's Crew",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-02",
+    "code": "FS05-02",
+    "rarity": "C",
+    "name": "Great Ape Bardock",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-02.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-02.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Great Ape/Bardock's Crew",
+    "effect": "-",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-03",
+    "code": "FS05-03",
+    "rarity": "SR",
+    "name": "Kakarot",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-03.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-03.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "2",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] Place 1 card from your hand at the top or bottom of its owner's deck : If you don't have an energy marker, you place 1 energy marker.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-04",
+    "code": "FS05-04",
+    "rarity": "C",
+    "name": "Fasha",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-04.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-04.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-05",
+    "code": "FS05-05",
+    "rarity": "C",
+    "name": "Son Gohan",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-05.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-05.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-06",
+    "code": "FS05-06",
+    "rarity": "C",
+    "name": "Tora",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-06.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-06.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[When Attacking] Add up to 1 card from your life to your hand. Then, look at the top card of your deck and place it on top of its owner's deck or in its owner's Drop.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-07",
+    "code": "FS05-07",
+    "rarity": "C",
+    "name": "Borgos",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-07.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-07.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "-",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-08",
+    "code": "FS05-08",
+    "rarity": "C",
+    "name": "Dodoria",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-08.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-08.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Frieza's Army",
+    "effect": "[Auto][Your Turn][Once per turn] When you use a card in a combo while this card is in a battle, draw 1 card.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-09",
+    "code": "FS05-09",
+    "rarity": "C",
+    "name": "Nappa : Adolescence",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-09.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-09.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Permanent] While this card is in a battle and if you have a card in your Combo Area, this card gets +5000 power.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-10",
+    "code": "FS05-10",
+    "rarity": "C",
+    "name": "Bardock",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-10.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-10.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[Auto][Once per turn] When you use a card in a combo while this card is in a battle, play up to 1 Battle Card with a cost of 2 or less and 《Bardock's Crew》 in its special traits from your hand.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-11",
+    "code": "FS05-11",
+    "rarity": "SR",
+    "name": "Bardock",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-11.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-11.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "BB",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[Activate Battle][Your Turn][Once per turn] If you have 2 or more cards in your Combo Area, choose up to 1 of your opponent's Battle Cards and KO it.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-12",
+    "code": "FS05-12",
+    "rarity": "C",
+    "name": "Shugesh",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-12.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-12.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "-",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-13",
+    "code": "FS05-13",
+    "rarity": "C",
+    "name": "Frieza",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-13.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-13.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[When Attacking] Choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and 《Saiyan》 in its special traits and KO it. Then, if you have an energy marker, choose up to 1 [Field] in your opponent's Battle Area and place it in its owner's Drop.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-14",
+    "code": "FS05-14",
+    "rarity": "C",
+    "name": "Vegeta : Youth",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-14.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-14.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-15",
+    "code": "FS05-15",
+    "rarity": "C",
+    "name": "Resisting Destiny",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-15.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-15.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[Activate Battle] Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle. Then, if you have a card in your Combo Area, draw 1 card.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  },
+  {
+    "id": "FS05-16",
+    "code": "FS05-16",
+    "rarity": "C",
+    "name": "A Lonesome, Final Battle",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-16.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-16.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Battle] Switch this card to Rest Mode : Look at 2 cards from the top of your deck and place them at the top or bottom of their owner's deck in any order.",
+    "getIt": "STARTER DECK -BARDOCK- [FS05]",
+    "set": { "id": "fs05", "name": "STARTER DECK -BARDOCK- [FS05]" }
+  }
+]

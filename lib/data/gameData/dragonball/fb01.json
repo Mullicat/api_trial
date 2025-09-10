@@ -1,0 +1,3262 @@
+[
+  {
+    "id": "FB01-001",
+    "code": "FB01-001",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-001_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-001_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-001-p1",
+    "code": "FB01-001-p1",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-001_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-001_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-002",
+    "code": "FB01-002",
+    "rarity": "L",
+    "name": "Beerus",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-002_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-002_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Your Turn] This card gets +5000 power.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-002-p1",
+    "code": "FB01-002-p1",
+    "rarity": "L",
+    "name": "Beerus",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-002_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-002_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Your Turn] This card gets +5000 power.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-003",
+    "code": "FB01-003",
+    "rarity": "C",
+    "name": "Vados",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-003.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-003.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "10000",
+    "comboPower": "5000",
+    "features": "Angel/Universe 6",
+    "effect": "[Activate Main][Once per turn] Choose up to 1 of your other Battle Cards with 《Universe 6》 in its special traits and it gets +5000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-004",
+    "code": "FB01-004",
+    "rarity": "UC",
+    "name": "Whis",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-004.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-004.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "10000",
+    "comboPower": "5000",
+    "features": "Angel/Universe 7",
+    "effect": "[Activate Main][Once per turn] Choose up to 1 of your opponent's Battle Cards and it gets -5000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-005",
+    "code": "FB01-005",
+    "rarity": "UC",
+    "name": "Master Roshi",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-005.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-005.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Universe 7",
+    "effect": "[Activate Main][Once per turn] Add 1 card from your life to your hand : During this turn, the next time you use an Extra from your hand, reduce the cost by (Red).",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-006",
+    "code": "FB01-006",
+    "rarity": "UC",
+    "name": "Caulifla",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-006.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-006.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Universe 6",
+    "effect": "[On Play] Play up to 1 &lt;Kale&gt; with a cost of 3 from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-007",
+    "code": "FB01-007",
+    "rarity": "UC",
+    "name": "Cabba",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-007.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-007.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Universe 6",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-008",
+    "code": "FB01-008",
+    "rarity": "R",
+    "name": "Krillin",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-008.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-008.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling/Universe 7",
+    "effect": "[When Attacking] Choose up to 1 of your opponent's Battle Cards and it gets -20000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-009",
+    "code": "FB01-009",
+    "rarity": "UC",
+    "name": "Kale",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-009.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-009.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Universe 6",
+    "effect": "[When Attacking][Once per turn] If you have a &lt;Caulifla&gt; Battle Card with a cost of 5, switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-010",
+    "code": "FB01-010",
+    "rarity": "C",
+    "name": "Saonel",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-010.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-010.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Namekian/Universe 6",
+    "effect": "[Permanent][Your Turn] If you have 2 or more Battle Cards with 《Namekian》 in their special traits, this card gets +5000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-011",
+    "code": "FB01-011",
+    "rarity": "C",
+    "name": "Champa",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-011.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-011.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "God of Destruction/Universe 6",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-012",
+    "code": "FB01-012",
+    "rarity": "UC",
+    "name": "Shin",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-012.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-012.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Supreme Kai/Universe 7",
+    "effect": "[Permanent][Your Turn] Your Leader with 《God of Destruction》 in its special traits gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-013",
+    "code": "FB01-013",
+    "rarity": "UC",
+    "name": "Android 17",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-013.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-013.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Android/Universe 7",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When Blocking] This card gets +15000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-014",
+    "code": "FB01-014",
+    "rarity": "UC",
+    "name": "Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-014.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-014.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android/Universe 7",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Krillin&gt; or up to 1 &lt;Android 17&gt; and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-015",
+    "code": "FB01-015",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-015.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-015.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 of your opponent's Battle Cards with 20000 power or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-015-p1",
+    "code": "FB01-015-p1",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-015_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-015_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 of your opponent's Battle Cards with 20000 power or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-016",
+    "code": "FB01-016",
+    "rarity": "R",
+    "name": "Son Gohan : Adolescence",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-016.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-016.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling/Universe 7",
+    "effect": "[On Play] Choose all of your opponent's Battle Cards and they get -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-017",
+    "code": "FB01-017",
+    "rarity": "UC",
+    "name": "Great Priest",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-017.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-017.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Angel/Universe",
+    "effect": "[Permanent] This card can't attack. <br>[Permanent][Your Turn] All of your Battle Cards with 《Angel》 in their special traits get +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-018",
+    "code": "FB01-018",
+    "rarity": "C",
+    "name": "Tien Shinhan",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-018.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-018.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Universe 7",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-019",
+    "code": "FB01-019",
+    "rarity": "C",
+    "name": "Dr. Rota",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-019.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-019.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Universe 6",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] Choose up to 1 of your opponent's Battle Cards and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-020",
+    "code": "FB01-020",
+    "rarity": "C",
+    "name": "Piccolo",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-020.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-020.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Namekian/God/Universe 7",
+    "effect": "[Permanent] All your &lt;Son Gohan : Adolescence&gt; Battle Cards get +5000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-021",
+    "code": "FB01-021",
+    "rarity": "SR",
+    "name": "Hit",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-021.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-021.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Universe 6",
+    "effect": "[When Attacking] Add up to 1 card from your life to your hand. Then, choose up to 1 of your opponent's Battle Cards and it gets -5000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-021-p1",
+    "code": "FB01-021-p1",
+    "rarity": "SR",
+    "name": "Hit",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-021_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-021_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Universe 6",
+    "effect": "[When Attacking] Add up to 1 card from your life to your hand. Then, choose up to 1 of your opponent's Battle Cards and it gets -5000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-022",
+    "code": "FB01-022",
+    "rarity": "C",
+    "name": "Pirina",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-022.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-022.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Namekian/Universe 6",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-023",
+    "code": "FB01-023",
+    "rarity": "SR",
+    "name": "Beerus",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-023.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-023.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "RR",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Discard 1 card from your hand : Choose all of your opponent's Battle Cards with 25000 power or less and KO them.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-023-p1",
+    "code": "FB01-023-p1",
+    "rarity": "SR",
+    "name": "Beerus",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-023_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-023_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "RR",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Discard 1 card from your hand : Choose all of your opponent's Battle Cards with 25000 power or less and KO them.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-024",
+    "code": "FB01-024",
+    "rarity": "C",
+    "name": "Frieza",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-024.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-024.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Frieza Clan/Universe 7",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-025",
+    "code": "FB01-025",
+    "rarity": "R",
+    "name": "Frost",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-025.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-025.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Universe 6",
+    "effect": "[Permanent] Your opponent's Battle Cards with 20000 power or less can't attack.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-026",
+    "code": "FB01-026",
+    "rarity": "R",
+    "name": "Fuwa",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-026.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-026.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Supreme Kai/Universe 6",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-027",
+    "code": "FB01-027",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-027.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-027.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Universe 7",
+    "effect": "[Permanent][Your Turn] This card gets +10000 power while it's in a battle with an opponent's Battle Card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-028",
+    "code": "FB01-028",
+    "rarity": "R",
+    "name": "Botamo",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-028.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-028.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Universe 6",
+    "effect": "[Permanent] This card can't be KO'd in battle.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-029",
+    "code": "FB01-029",
+    "rarity": "C",
+    "name": "Magetta",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-029.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-029.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Universe 6",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-030",
+    "code": "FB01-030",
+    "rarity": "C",
+    "name": "Assemble, Representatives of Universe 7!",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-030.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-030.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Universe 7",
+    "effect": "[Activate Main] Look at 5 cards from the top of your deck, reveal up to 1 card with 《Universe 7》 in its special traits and add it to your hand. Place the rest at the bottom of your deck in a random order.<br>[Activate Battle][Your Turn] Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-031",
+    "code": "FB01-031",
+    "rarity": "C",
+    "name": "Strong Warriors of Universe 6",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-031.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-031.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Universe 6",
+    "effect": "[Activate Main] Look at 5 cards from the top of your deck, reveal up to 1 card with 《Universe 6》 in its special traits and add it to your hand. Place the rest at the bottom of your deck in a random order.<br>[Activate Battle][Opponent's Turn] Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-032",
+    "code": "FB01-032",
+    "rarity": "R",
+    "name": "Tournament of Power Arena",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-032.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-032.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "World of Void",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Battle] Switch this card to Rest Mode : Choose your Leader or up to 1 of your Battle Cards and it gets +5000 power for the battle.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-033",
+    "code": "FB01-033",
+    "rarity": "C",
+    "name": "Time-Skip",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-033.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-033.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Universe 6",
+    "effect": "[Activate Main] Choose any number of your opponent's Battle Cards that add up to a total power of 35000 or less and KO them.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-034",
+    "code": "FB01-034",
+    "rarity": "C",
+    "name": "Mafuba",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-034.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-034.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/Universe 7",
+    "effect": "[Activate Main] Choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-035",
+    "code": "FB01-035",
+    "rarity": "L",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-035_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-035_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Your Turn] This card gets +5000 power.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-035-p1",
+    "code": "FB01-035-p1",
+    "rarity": "L",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-035_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-035_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Your Turn] This card gets +5000 power.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-036",
+    "code": "FB01-036",
+    "rarity": "L",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-036_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-036_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-036-p1",
+    "code": "FB01-036-p1",
+    "rarity": "L",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-036_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-036_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-037",
+    "code": "FB01-037",
+    "rarity": "R",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-037.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-037.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-038",
+    "code": "FB01-038",
+    "rarity": "C",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-038.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-038.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-039",
+    "code": "FB01-039",
+    "rarity": "SR",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-039.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-039.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "UU",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] Add up to 1 card with a cost of 4 or less from your Drop to your hand.<br>[When Attacking] If you have 7 or fewer cards in your hand, play up to 1 Battle Card with a cost of 4 or less from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-039-p1",
+    "code": "FB01-039-p1",
+    "rarity": "SR",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-039_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-039_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "UU",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] Add up to 1 card with a cost of 4 or less from your Drop to your hand.<br>[When Attacking] If you have 7 or fewer cards in your hand, play up to 1 Battle Card with a cost of 4 or less from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-040",
+    "code": "FB01-040",
+    "rarity": "C",
+    "name": "Gowasu",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-040.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-040.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Supreme Kai",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Goku Black&gt; or up to 1 &lt;Zamasu&gt; and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-041",
+    "code": "FB01-041",
+    "rarity": "C",
+    "name": "Gowasu",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-041.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-041.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[When KO'd] Choose up to 1 card with a cost of 2 or less in the Battle Area and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-042",
+    "code": "FB01-042",
+    "rarity": "UC",
+    "name": "Zamasu",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-042.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-042.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards with a cost of 1 or less and place it at the bottom of its owner's deck.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-043",
+    "code": "FB01-043",
+    "rarity": "C",
+    "name": "Zamasu",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-043.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-043.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[Permanent] If you have a &lt;Goku Black&gt; Battle Card, this card gains [Blocker].<br>(Blocker : After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-044",
+    "code": "FB01-044",
+    "rarity": "C",
+    "name": "Zamasu",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-044.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-044.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-045",
+    "code": "FB01-045",
+    "rarity": "C",
+    "name": "Shu",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-045.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-045.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "10000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-046",
+    "code": "FB01-046",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-046.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-046.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Choose up to 1 of your Battle Cards with a cost of 4 or more and return it to your hand : Choose up to 1 of your opponent's Battle Cards and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-047",
+    "code": "FB01-047",
+    "rarity": "UC",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-047.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-047.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[Permanent][Opponent's Turn] If you have 7 or fewer cards in your hand, this card gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-048",
+    "code": "FB01-048",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-048.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-048.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-049",
+    "code": "FB01-049",
+    "rarity": "R",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-049.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-049.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] At the end of the turn, place this card at the bottom of your deck.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-050",
+    "code": "FB01-050",
+    "rarity": "SR",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-050.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-050.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "UU",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 Battle Card with a cost of 5 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-050-p1",
+    "code": "FB01-050-p1",
+    "rarity": "SR",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-050_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-050_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "UU",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 Battle Card with a cost of 5 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-051",
+    "code": "FB01-051",
+    "rarity": "R",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-051.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-051.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Choose up to 1 Battle Card with a cost of 3 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-052",
+    "code": "FB01-052",
+    "rarity": "UC",
+    "name": "Trunks : Youth",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-052.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-052.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-053",
+    "code": "FB01-053",
+    "rarity": "C",
+    "name": "Babarian",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-053.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-053.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Alien",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-054",
+    "code": "FB01-054",
+    "rarity": "C",
+    "name": "Haru/Maki",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-054.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-054.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, choose up to 1 of your &lt;Trunks : Future&gt; and it gets +10000 power for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-055",
+    "code": "FB01-055",
+    "rarity": "C",
+    "name": "Pan",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-055.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-055.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Draw 2 cards. Then, discard 2 cards from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-056",
+    "code": "FB01-056",
+    "rarity": "C",
+    "name": "Pilaf",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-056.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-056.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, add up to 1 card with a cost of 1 or less and 《Earthling》 in its special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-057",
+    "code": "FB01-057",
+    "rarity": "C",
+    "name": "Bulma",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-057.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-057.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[Activate Main][Once per turn] If you have 7 or fewer cards in your hand, during this turn, the next time you use an Extra from your hand, reduce the cost by (Blue).",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-058",
+    "code": "FB01-058",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-058.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-058.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[End of Your Turn] If you have 7 or fewer cards in your hand, switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-059",
+    "code": "FB01-059",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-059.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-059.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[When Attacking][Once per turn] Choose up to 1 of your opponent's Battle Cards with a cost of 1 or less and place it at the bottom of its owner's deck. Then, switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-060",
+    "code": "FB01-060",
+    "rarity": "C",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-060.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-060.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-061",
+    "code": "FB01-061",
+    "rarity": "UC",
+    "name": "Mai : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-061.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-061.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Activate Main][Once per turn] Look at the top card of your deck and place it at the top or bottom of your deck.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-062",
+    "code": "FB01-062",
+    "rarity": "SR",
+    "name": "Mai : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-062.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-062.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Add up to 2 cards from your life to your hand.<br>[Auto][Once per turn] If you have 7 or fewer cards in your hand, when an opponent's Battle Card is returned to their hand by one of your skills, draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-062-p1",
+    "code": "FB01-062-p1",
+    "rarity": "SR",
+    "name": "Mai : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-062_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-062_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Add up to 2 cards from your life to your hand.<br>[Auto][Once per turn] If you have 7 or fewer cards in your hand, when an opponent's Battle Card is returned to their hand by one of your skills, draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-063",
+    "code": "FB01-063",
+    "rarity": "UC",
+    "name": "Yajirobe : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-063.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-063.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-064",
+    "code": "FB01-064",
+    "rarity": "UC",
+    "name": "Blade of Despair",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-064.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-064.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Supreme Kai",
+    "effect": "[Permanent] If you have a &lt;Zamasu&gt; Battle Card, reduce the cost of this card in your hand by 1.<br>[Activate Main] Choose up to 2 of your opponent's Battle Cards with costs of 3 or less and return them to their owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-065",
+    "code": "FB01-065",
+    "rarity": "UC",
+    "name": "Time Machine",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-065.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-065.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Main] Look at the bottom card of your deck and play up to 1 &lt;Trunks : Future&gt; with a cost of 2. Place any remaining cards at the bottom of your deck.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-066",
+    "code": "FB01-066",
+    "rarity": "R",
+    "name": "Final Hope Slash",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-066.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-066.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Battle][Your Turn] Choose your Leader or up to 1 of your Battle Cards and it gets +20000 power for the battle. Then, choose up to 1 Battle Card with a cost of 2 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-067",
+    "code": "FB01-067",
+    "rarity": "UC",
+    "name": "Black Kamehameha",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-067.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-067.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Battle][Opponent's Turn] Choose your Leader or up to 1 of your Battle Cards and it gets +20000 power for the battle. Then, look at 3 cards from the top of your deck and place them at the top or bottom of your deck in any order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-068",
+    "code": "FB01-068",
+    "rarity": "R",
+    "name": "Sinister Sickle",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-068.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-068.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] Choose up to 2 of your opponent's Battle Cards with costs of 4 or less and place them at the bottom of their owner's deck in any order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-069",
+    "code": "FB01-069",
+    "rarity": "R",
+    "name": "Sinister Shadows",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-069.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-069.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] If you have 7 or fewer cards in your hand, choose up to 1 of your &lt;Goku Black&gt; Battle Cards and switch it to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-070",
+    "code": "FB01-070",
+    "rarity": "L",
+    "name": "Android 17/Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-070_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-070_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-070-p1",
+    "code": "FB01-070-p1",
+    "rarity": "L",
+    "name": "Android 17/Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-070_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-070_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-071",
+    "code": "FB01-071",
+    "rarity": "L",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-071_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-071_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-071-p1",
+    "code": "FB01-071-p1",
+    "rarity": "L",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-071_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-071_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-072",
+    "code": "FB01-072",
+    "rarity": "C",
+    "name": "Krillin",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-072.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-072.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Permanent] Your opponent can't attack &lt;Android 18&gt; in your Battle Area.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-073",
+    "code": "FB01-073",
+    "rarity": "UC",
+    "name": "Android 16",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-073.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-073.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[Permanent][Opponent's Turn] If you have &lt;Android 17&gt; and &lt;Android 18&gt; in your Energy Area, this card gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-074",
+    "code": "FB01-074",
+    "rarity": "UC",
+    "name": "Android 16",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-074.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-074.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] Play up to 1 &lt;Son Gohan : Childhood&gt; with a cost of 6 from your Drop.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-075",
+    "code": "FB01-075",
+    "rarity": "C",
+    "name": "Android 17",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-075.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-075.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-076",
+    "code": "FB01-076",
+    "rarity": "C",
+    "name": "Android 17",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-076.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-076.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-077",
+    "code": "FB01-077",
+    "rarity": "UC",
+    "name": "Android 17",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-077.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-077.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, play up to 1 &lt;Android 18&gt; with a cost of 3 or less from your Drop.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-078",
+    "code": "FB01-078",
+    "rarity": "SR",
+    "name": "Android 17/Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-078.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-078.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "GG",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Choose up to 2 of your opponent's Battle Cards with costs of 3 or less and KO them.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-078-p1",
+    "code": "FB01-078-p1",
+    "rarity": "SR",
+    "name": "Android 17/Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-078_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-078_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "GG",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Choose up to 2 of your opponent's Battle Cards with costs of 3 or less and KO them.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-079",
+    "code": "FB01-079",
+    "rarity": "SR",
+    "name": "Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-079.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-079.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Draw 1 card. Then, discard 1 card from your hand.<br>[When Attacking] If you have 6 or more energy, draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-079-p1",
+    "code": "FB01-079-p1",
+    "rarity": "SR",
+    "name": "Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-079_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-079_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Draw 1 card. Then, discard 1 card from your hand.<br>[When Attacking] If you have 6 or more energy, draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-080",
+    "code": "FB01-080",
+    "rarity": "C",
+    "name": "Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-080.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-080.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[When Attacking] Place 1 card from your energy in your Drop : Add up to 1 card from your hand to your energy.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-081",
+    "code": "FB01-081",
+    "rarity": "R",
+    "name": "Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-081.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-081.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, play up to 1 &lt;Android 17&gt; with a cost of 3 or less from your Drop.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-082",
+    "code": "FB01-082",
+    "rarity": "C",
+    "name": "Android 19",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-082.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-082.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Permanent] If you have 6 or more energy, this card gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-083",
+    "code": "FB01-083",
+    "rarity": "C",
+    "name": "Android 20",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-083.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-083.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Android 17&gt; or up to 1 &lt;Android 18&gt; and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-084",
+    "code": "FB01-084",
+    "rarity": "R",
+    "name": "Android 20",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-084.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-084.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Activate Main] KO this card : Look at 10 cards from the top of your deck and place up to 1 &lt;Dr. Gero's Lab&gt; in your Battle Area. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-085",
+    "code": "FB01-085",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-085.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-085.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-086",
+    "code": "FB01-086",
+    "rarity": "UC",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-086.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-086.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Permanent][Your Turn] If you have &lt;Son Gohan : Childhood&gt; in your Drop, this card gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-087",
+    "code": "FB01-087",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-087.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-087.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "GGG",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Auto] When this card is played or when a card is placed in your Drop from your energy, add the top card of your deck to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-088",
+    "code": "FB01-088",
+    "rarity": "C",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-088.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-088.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, then reveal up to 1 card with a cost of 5 or less and 《Saiyan》 in its special traits and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-089",
+    "code": "FB01-089",
+    "rarity": "R",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-089.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-089.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "G",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards with a cost of 4 or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-090",
+    "code": "FB01-090",
+    "rarity": "R",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-090.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-090.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "G",
+    "power": "35000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Add the top card of your deck to your life.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-091",
+    "code": "FB01-091",
+    "rarity": "C",
+    "name": "Tien Shinhan",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-091.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-091.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] Place 1 card from your life in your Drop : Choose up to 1 of your opponent's Battle Cards with a cost of 4 or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-092",
+    "code": "FB01-092",
+    "rarity": "R",
+    "name": "Trunks : Future",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-092.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-092.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] If your Leader is &lt;Son Gohan : Childhood&gt;, add the top card of your deck to your energy.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-093",
+    "code": "FB01-093",
+    "rarity": "UC",
+    "name": "Trunks : Future",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-093.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-093.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent] This card can't attack your opponent's Leader.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-094",
+    "code": "FB01-094",
+    "rarity": "C",
+    "name": "Piccolo",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-094.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-094.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Namekian/God",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-095",
+    "code": "FB01-095",
+    "rarity": "C",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-095.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-095.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-096",
+    "code": "FB01-096",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-096.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-096.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Add up to 1 card with a cost of 3 or more from your Drop to your energy in Rest Mode.<br>[Activate Main][Once per turn] Discard 1 card from your hand : Choose up to 1 of your opponent's Battle Cards with a cost of 2 or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-096-p1",
+    "code": "FB01-096-p1",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-096_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-096_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Add up to 1 card with a cost of 3 or more from your Drop to your energy in Rest Mode.<br>[Activate Main][Once per turn] Discard 1 card from your hand : Choose up to 1 of your opponent's Battle Cards with a cost of 2 or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-097",
+    "code": "FB01-097",
+    "rarity": "C",
+    "name": "Hercule",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-097.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-097.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Permanent] This card must attack whenever possible.<br>[When Attacking] Draw 1 card. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-098",
+    "code": "FB01-098",
+    "rarity": "UC",
+    "name": "Yamcha",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-098.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-098.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-099",
+    "code": "FB01-099",
+    "rarity": "UC",
+    "name": "Eye Beam",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-099.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-099.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Activate Main] Choose up to 2 of your opponent's Battle Cards with costs of 1 or less and KO them.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-100",
+    "code": "FB01-100",
+    "rarity": "UC",
+    "name": "Brother-Sister Combination",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-100.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-100.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Activate Battle][Opponent's Turn] Choose your Leader or up to 1 of your Battle Cards and it gets +20000 power for the battle. Then, if you have 15 or more cards in your Drop, add up to 1 card with a cost of 3 or more from your Drop to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-101",
+    "code": "FB01-101",
+    "rarity": "C",
+    "name": "Instant Kamehameha",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-101.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-101.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Battle] Place 1 of your energy in your Drop : Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-102",
+    "code": "FB01-102",
+    "rarity": "R",
+    "name": "Dr. Gero's Lab",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-102.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-102.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Main](Green), switch this card to Rest Mode : If your Leader is &lt;Android 17&gt;, add up to 1 card with 《Android》 in its special traits from your Drop to your energy.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-103",
+    "code": "FB01-103",
+    "rarity": "UC",
+    "name": "Big Bang Attack",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-103.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-103.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Permanent] If you have 6 or more energy, reduce the cost of this card in your hand by 1.<br>[Activate Main] Place 1 of your energy in your Drop : Choose up to 1 of your opponent's Battle Cards with a cost of 5 or less and KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-104",
+    "code": "FB01-104",
+    "rarity": "L",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-104_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-104_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, switch up to 1 of your energy to Active Mode. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-104-p1",
+    "code": "FB01-104-p1",
+    "rarity": "L",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-104_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-104_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, switch up to 1 of your energy to Active Mode. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-105",
+    "code": "FB01-105",
+    "rarity": "L",
+    "name": "Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-105_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-105_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Frieza Clan",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Your Turn] This card gets +5000 power.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-105-p1",
+    "code": "FB01-105-p1",
+    "rarity": "L",
+    "name": "Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-105_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-105_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Frieza Clan",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Your Turn] This card gets +5000 power.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-106",
+    "code": "FB01-106",
+    "rarity": "C",
+    "name": "Appule",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-106.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-106.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Frieza's Army",
+    "effect": "[Activate Main] Switch this card to Rest Mode : Look at the top card of your deck, then reveal up to 1 card with 《Frieza's Army》 in its special traits and add it to your hand. Place any remaining cards at the top of your deck.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-107",
+    "code": "FB01-107",
+    "rarity": "UC",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-107.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-107.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Activate Main] Switch this card to Rest Mode : Draw 1 card.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-108",
+    "code": "FB01-108",
+    "rarity": "R",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-108.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-108.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, then reveal up to 1 non-&lt;Ginyu&gt; card with 《Ginyu Force》 in its special traits and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-109",
+    "code": "FB01-109",
+    "rarity": "SR",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-109.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-109.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "YY",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[On Play] If you have 3 or more Battle Cards with 《Frieza's Army》 in their special traits, switch up to 2 of your energy to Active Mode. Then, you can't play &lt;Ginyu&gt; for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-109-p1",
+    "code": "FB01-109-p1",
+    "rarity": "SR",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-109_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-109_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "YY",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[On Play] If you have 3 or more Battle Cards with 《Frieza's Army》 in their special traits, switch up to 2 of your energy to Active Mode. Then, you can't play &lt;Ginyu&gt; for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-110",
+    "code": "FB01-110",
+    "rarity": "C",
+    "name": "Ginyu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-110.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-110.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[On Play] Add up to 1 Extra with 《Ginyu Force》 in its special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-111",
+    "code": "FB01-111",
+    "rarity": "UC",
+    "name": "Cui",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-111.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-111.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Frieza's Army",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-112",
+    "code": "FB01-112",
+    "rarity": "C",
+    "name": "Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-112.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-112.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Frieza Clan",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-113",
+    "code": "FB01-113",
+    "rarity": "SR",
+    "name": "Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-113.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-113.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Frieza Clan",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When Attacking]/[When Blocking] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode. Then, if that card has a cost of 2 or less, KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-113-p1",
+    "code": "FB01-113-p1",
+    "rarity": "SR",
+    "name": "Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-113_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-113_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Frieza Clan",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When Attacking]/[When Blocking] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode. Then, if that card has a cost of 2 or less, KO it.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-114",
+    "code": "FB01-114",
+    "rarity": "R",
+    "name": "Guldo",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-114.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-114.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Activate Main] Switch this card to Rest Mode : Choose up to 1 of your opponent's Rest Mode Battle Cards and it can't switch to Active Mode during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-115",
+    "code": "FB01-115",
+    "rarity": "C",
+    "name": "King Cold",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-115.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-115.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Frieza Clan",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-116",
+    "code": "FB01-116",
+    "rarity": "C",
+    "name": "Zarbon",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-116.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-116.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Frieza's Army",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, then reveal up to 1 card that includes &lt;Frieza&gt; in its card name and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-117",
+    "code": "FB01-117",
+    "rarity": "C",
+    "name": "Salza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-117.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-117.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Cooler's Armored Squadron",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-118",
+    "code": "FB01-118",
+    "rarity": "C",
+    "name": "Salza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-118.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-118.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Cooler's Armored Squadron",
+    "effect": "[Activate Main] Switch this card to Rest Mode : Play up to 1 Battle Card with a cost of 2 or less and 《Cooler's Armored Squadron》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-119",
+    "code": "FB01-119",
+    "rarity": "UC",
+    "name": "Jeice",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-119.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-119.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Permanent][Your Turn] If you have a total of 3 or more cards with 《Ginyu Force》 in their special traits among your Leader and Battle Cards, this card gets +5000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-120",
+    "code": "FB01-120",
+    "rarity": "UC",
+    "name": "Sui",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-120.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-120.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Frieza's Army",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Permanent][Opponent's Turn] This card gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-121",
+    "code": "FB01-121",
+    "rarity": "R",
+    "name": "Chilled",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-121.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-121.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Frieza Clan",
+    "effect": "[Permanent][Opponent's Turn] All your Battle Cards with 《Frieza Clan》 in their special traits get +5000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-122",
+    "code": "FB01-122",
+    "rarity": "C",
+    "name": "Dore",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-122.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-122.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Cooler's Armored Squadron",
+    "effect": "[On Play] Choose up to 1 of your Battle Cards with 《Cooler's Armored Squadron》 in its special traits and switch it to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-123",
+    "code": "FB01-123",
+    "rarity": "C",
+    "name": "Dodoria",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-123.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-123.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Frieza's Army",
+    "effect": "[Permanent] If you have &lt;Frieza&gt; and &lt;Zarbon&gt; in your Battle Area, this card gets +10000 power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-124",
+    "code": "FB01-124",
+    "rarity": "UC",
+    "name": "Neiz",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-124.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-124.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Cooler's Armored Squadron",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Add 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-125",
+    "code": "FB01-125",
+    "rarity": "UC",
+    "name": "Nail",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-125.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-125.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Namekian",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-126",
+    "code": "FB01-126",
+    "rarity": "C",
+    "name": "Burter",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-126.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-126.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-127",
+    "code": "FB01-127",
+    "rarity": "UC",
+    "name": "Banan",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-127.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-127.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Frieza's Army",
+    "effect": "[End of Your Turn] Choose 1 of your Rest Mode Battle Cards with 《Frieza's Army》 in its special traits and switch it to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-128",
+    "code": "FB01-128",
+    "rarity": "UC",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-128.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-128.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Activate Main] Switch this card to Rest Mode : Play up to 1 Battle Card with a cost of 1 or less and 《Frieza's Army》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-129",
+    "code": "FB01-129",
+    "rarity": "SR",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-129.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-129.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "40000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Permanent] This card can't be switched to Active Mode during your Charge Phase.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-129-p1",
+    "code": "FB01-129-p1",
+    "rarity": "SR",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-129_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-129_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "40000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Permanent] This card can't be switched to Active Mode during your Charge Phase.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-130",
+    "code": "FB01-130",
+    "rarity": "R",
+    "name": "Mecha Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-130.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-130.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[On Play] Play up to 1 &lt;King Cold&gt; with a cost of 4 from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-131",
+    "code": "FB01-131",
+    "rarity": "C",
+    "name": "Meta-Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-131.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-131.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Frieza Clan",
+    "effect": "[Permanent] You can include as many copies of this card in your deck as you like.<br>[When KO'd] Play up to 1 &lt;Meta-Cooler&gt; with a cost of 3 from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-132",
+    "code": "FB01-132",
+    "rarity": "R",
+    "name": "Recoome",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-132.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-132.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, play up to 1 Battle Card with a cost of 2 or less and 《Ginyu Force》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-133",
+    "code": "FB01-133",
+    "rarity": "R",
+    "name": "Bonds of the Ginyu Force",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-133.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-133.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Activate Battle] Choose your Leader or up to 1 of your Battle Cards and it gets +10000 power for the battle. Then, that card gets +5000 power for the battle for each card with 《Ginyu Force》 in its special traits among your Leader and Battle Cards.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-134",
+    "code": "FB01-134",
+    "rarity": "C",
+    "name": "We Are Cooler's Armored Squadron!",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-134.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-134.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Cooler's Armored Squadron",
+    "effect": "[Activate Main] If you have a total of 2 or more &lt;Cooler&gt; and/or cards with 《Cooler's Armored Squadron》 in their special traits among your Leader and Battle Cards, draw 1 card and switch up to 1 of your energy to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-135",
+    "code": "FB01-135",
+    "rarity": "UC",
+    "name": "Crusher Ball",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-135.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-135.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Activate Main] Draw 1 card, then choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-136",
+    "code": "FB01-136",
+    "rarity": "R",
+    "name": "Supernova",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-136.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-136.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Frieza Clan",
+    "effect": "[Activate Battle][Your Turn] Choose your Leader or up to 1 of your Battle Cards and it gets +20000 power for the battle. Then, choose up to 1 of your opponent's Rest Mode Battle Cards with a cost of 4 or less and it can't switch to Active Mode during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-137",
+    "code": "FB01-137",
+    "rarity": "R",
+    "name": "Body Change",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-137.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-137.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Activate Main/Battle] Choose 1 of your Active Mode Battle Cards and switch it to Rest Mode : Choose up to 1 of your Battle Cards with a cost of 4 or less and switch it to Active Mode.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-138",
+    "code": "FB01-138",
+    "rarity": "C",
+    "name": "Now You See The Power of the Ginyu Force!",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-138.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-138.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Activate Main] If you have 2 or more Battle Cards with 《Ginyu Force》 in their special traits, draw 2 cards.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-139",
+    "code": "FB01-139",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-139.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-139.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "RR",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.<br>[Auto] When this card KO's an opponent's Battle Card in battle, deal 1 damage to your opponent.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-139-p1",
+    "code": "FB01-139-p1",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-139_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-139_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "RR",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.<br>[Auto] When this card KO's an opponent's Battle Card in battle, deal 1 damage to your opponent.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-139-p2",
+    "code": "FB01-139-p2",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-139_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-139_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "RR",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.<br>[Auto] When this card KO's an opponent's Battle Card in battle, deal 1 damage to your opponent.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-140",
+    "code": "FB01-140",
+    "rarity": "SCR",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-140.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-140.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGGG",
+    "power": "50000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Discard 1 card from your hand : Choose all of your opponent's Battle Cards with costs of 5 or less and KO them. Then, this card can't attack for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  },
+  {
+    "id": "FB01-140-p1",
+    "code": "FB01-140-p1",
+    "rarity": "SCR",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-140_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-140_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGGG",
+    "power": "50000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Discard 1 card from your hand : Choose all of your opponent's Battle Cards with costs of 5 or less and KO them. Then, this card can't attack for the turn.",
+    "getIt": "BOOSTER PACK -AWAKENED PULSE- [FB01]",
+    "set": { "id": "fb01", "name": "Awakened pulse" }
+  }
+]

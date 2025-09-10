@@ -1,0 +1,3162 @@
+[
+  {
+    "id": "FB04-001",
+    "code": "FB04-001",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-001_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-001_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7\n                  Saiyan/Universe 7",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 3 or less, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-001-p1",
+    "code": "FB04-001-p1",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-001_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-001_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7\n                  Saiyan/Universe 7",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 3 or less, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-002",
+    "code": "FB04-002",
+    "rarity": "UC",
+    "name": "Whis",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-002.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-002.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Angel/Universe 7",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-003",
+    "code": "FB04-003",
+    "rarity": "UC",
+    "name": "Obuni",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-003.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-003.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Universe 10/Tournament of Power",
+    "effect": "[On Play] Play up to 1 &lt;Obuni&gt; with 20000 power or less from your hand. Then, you can't play &lt;Obuni&gt; for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-004",
+    "code": "FB04-004",
+    "rarity": "R",
+    "name": "Golden Frieza",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-004.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-004.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Universe 7",
+    "effect": "[Permanent][Opponent's Turn] This card gets +10000 power.<br>[On Play] Choose up to 1 of your opponent's Battle Cards with 15000 power or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-005",
+    "code": "FB04-005",
+    "rarity": "UC",
+    "name": "Shantza",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-005.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-005.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Universe 4/Tournament of Power",
+    "effect": "[Permanent] This card can't be KO'd by your opponent's skills.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-006",
+    "code": "FB04-006",
+    "rarity": "R",
+    "name": "Jiren",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-006.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-006.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "RR",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Pride Troopers/Universe 11",
+    "effect": "[Permanent] This card can't be removed from the Battle Area by your opponent's skills.<br>[On Play] If your Leader has 《Pride Troopers》 in its special traits and your opponent's life is at 2 or more, you take 1 damage. Then, deal 1 damage to your opponent.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-007",
+    "code": "FB04-007",
+    "rarity": "R",
+    "name": "Shin",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-007.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-007.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Supreme Kai/Universe 7",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, then reveal up to 1 card with 《Universe 7》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-008",
+    "code": "FB04-008",
+    "rarity": "R",
+    "name": "Shin (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-008.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-008.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[Activate Main] Place this card into its owner's Drop : Choose up to 1 of your opponent's Battle Cards and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-009",
+    "code": "FB04-009",
+    "rarity": "C",
+    "name": "Android 17",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-009.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-009.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Android/Universe 7",
+    "effect": "[Permanent][Opponent's Turn] If your Leader is awakened, this card gets +10000 power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-010",
+    "code": "FB04-010",
+    "rarity": "R",
+    "name": "Zen-Oh",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-010.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-010.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Universe",
+    "effect": "[On Play] Choose all Battle Cards other than this card and they get -25000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-011",
+    "code": "FB04-011",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-011.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-011.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan/Universe 7",
+    "effect": "[Permanent][Opponent's Turn] This card gets +10000 power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-012",
+    "code": "FB04-012",
+    "rarity": "SR",
+    "name": "Son Goku (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-012.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-012.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Permanent] If your Leader is awakened, this card gets +10000 power.<br>[On Play] Add 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-012-p1",
+    "code": "FB04-012-p1",
+    "rarity": "SR",
+    "name": "Son Goku (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-012_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-012_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Permanent] If your Leader is awakened, this card gets +10000 power.<br>[On Play] Add 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-013",
+    "code": "FB04-013",
+    "rarity": "C",
+    "name": "Son Gohan : Adolescence",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-013.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-013.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling/Universe 7",
+    "effect": "[Permanent][Opponent's Turn] This card gets +10000 power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-014",
+    "code": "FB04-014",
+    "rarity": "C",
+    "name": "Great Priest",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-014.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-014.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Angel/Universe",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -5000 power for the turn for each of your Battle Cards with 《Angel》 in their special traits.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-015",
+    "code": "FB04-015",
+    "rarity": "C",
+    "name": "Dyspo",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-015.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-015.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Pride Troopers/Universe 11",
+    "effect": "[Auto][Once per turn] When you take damage, this card gets +10000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-016",
+    "code": "FB04-016",
+    "rarity": "UC",
+    "name": "Toppo",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-016.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-016.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Pride Troopers/God of Destruction/Universe 11",
+    "effect": "[On Play] You take 1 damage : If your Leader is awakened, add the top card of your deck to your life.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-017",
+    "code": "FB04-017",
+    "rarity": "UC",
+    "name": "Beerus",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-017.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-017.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[On Play] Discard 1 card from your hand : Choose all of your opponent's Battle Cards with 15000 power or less and KO them.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-018",
+    "code": "FB04-018",
+    "rarity": "SR",
+    "name": "Frieza",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-018.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-018.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Universe 7",
+    "effect": "[On Play] If your Leader has 《Universe 7》 in its special traits, until the end of your opponent's next turn, this card can't be removed from the Battle Area by your opponent's skills and it gets +20000 power.<br>[When Attacking] Choose up to 1 of your opponent's Battle Cards and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-018-p1",
+    "code": "FB04-018-p1",
+    "rarity": "SR",
+    "name": "Frieza",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-018_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-018_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Universe 7",
+    "effect": "[On Play] If your Leader has 《Universe 7》 in its special traits, until the end of your opponent's next turn, this card can't be removed from the Battle Area by your opponent's skills and it gets +20000 power.<br>[When Attacking] Choose up to 1 of your opponent's Battle Cards and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-019",
+    "code": "FB04-019",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-019.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-019.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[When Attacking] Choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-020",
+    "code": "FB04-020",
+    "rarity": "C",
+    "name": "Bota Magetta",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-020.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-020.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Universe 6",
+    "effect": "[When KO'd] Add up to 1 &lt;Botamo&gt; and up to 1 &lt;Magetta&gt;―both with a cost of 2 or less―from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-021",
+    "code": "FB04-021",
+    "rarity": "C",
+    "name": "Monna",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-021.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-021.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Universe 4",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-022",
+    "code": "FB04-022",
+    "rarity": "R",
+    "name": "Extreme Ultra Instinct",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-022.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-022.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[Activate Main] Choose up to 1 of your Battle Cards with an original power of 30000 power or more and 《Universe 7》 in its special traits, and it can't be removed from the Battle Area by the skills of your opponent's Battle Cards until the end of your opponent's next turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-023",
+    "code": "FB04-023",
+    "rarity": "C",
+    "name": "Heat Aura",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-023.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-023.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Pride Troopers/Universe 11",
+    "effect": "[Activate Main] If you have a &lt;Jiren&gt; with 30000 power or more, choose all of your opponent's Battle Cards and they get -25000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-024",
+    "code": "FB04-024",
+    "rarity": "C",
+    "name": "Arch-Enemies Team Up",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-024.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-024.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Frieza Clan/Universe 7",
+    "effect": "[Activate Battle] If you have a &lt;Frieza&gt; Battle Card with 《Universe 7》 in its special traits, your &lt;Son Goku&gt; that's in a battle gets +20000 power for the battle.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-025",
+    "code": "FB04-025",
+    "rarity": "UC",
+    "name": "Inexhaustible Power",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-025.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-025.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Pride Troopers/Universe 11",
+    "effect": "[Activate Battle][Your Turn] Your cards that are in a battle get +25000 power for the battle. Then, choose up to 1 of your opponent's Battle Cards and it gets -15000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-026",
+    "code": "FB04-026",
+    "rarity": "L",
+    "name": "Son Gohan : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-026_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-026_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling\n                  -",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-026-p1",
+    "code": "FB04-026-p1",
+    "rarity": "L",
+    "name": "Son Gohan : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-026_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-026_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling\n                  -",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-027",
+    "code": "FB04-027",
+    "rarity": "C",
+    "name": "Fortuneteller Baba",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-027.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-027.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Activate Main] Place this card into its owner's Drop : If you have 10 or more cards in your Drop, play up to 1 &lt;Vegeta&gt; with a cost of 2 or less from your Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-028",
+    "code": "FB04-028",
+    "rarity": "C",
+    "name": "Kibito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-028.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-028.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Attendant",
+    "effect": "[On Play] Place the top 3 cards of your deck into their owner's Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-029",
+    "code": "FB04-029",
+    "rarity": "C",
+    "name": "Kibito Kai",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-029.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-029.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Supreme Kai/Potara",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-030",
+    "code": "FB04-030",
+    "rarity": "R",
+    "name": "Great Saiyaman 2",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-030.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-030.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling/Satan City",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, play up to 1 skill-less &lt;Great Saiyaman&gt; from your Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-031",
+    "code": "FB04-031",
+    "rarity": "UC",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-031.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-031.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking] Draw 1 card. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-032",
+    "code": "FB04-032",
+    "rarity": "R",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-032.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-032.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Main] Place this card into its owner's Drop : If you have 10 or more cards in your Drop, play up to 1 &lt;Son Goten&gt; with a cost of 2 or less and up to 1 &lt;Trunks : Youth&gt; with a cost of 2 or less from your Drop in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-033",
+    "code": "FB04-033",
+    "rarity": "SR",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-033.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-033.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent] If you have 10 or more cards in your Drop, this card gets +5000 power.<br>[On Play] Place the top 2 cards of your deck into their owner's Drop. Then, choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and place it at the bottom of its owner's deck.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-033-p1",
+    "code": "FB04-033-p1",
+    "rarity": "SR",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-033_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-033_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent] If you have 10 or more cards in your Drop, this card gets +5000 power.<br>[On Play] Place the top 2 cards of your deck into their owner's Drop. Then, choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and place it at the bottom of its owner's deck.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-034",
+    "code": "FB04-034",
+    "rarity": "C",
+    "name": "Shin",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-034.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-034.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Supreme Kai",
+    "effect": "[Activate Main] Place this card and 1 &lt;Kibito&gt; from your Battle Area into their owners' Drop : Play up to 1 skill-less &lt;Kibito Kai&gt; from your Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-035",
+    "code": "FB04-035",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-035.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-035.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play/When Attacking] Choose up to 1 of your opponent's Battle Cards with a cost of 1 or less and place it at the bottom of its owner's deck.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-036",
+    "code": "FB04-036",
+    "rarity": "UC",
+    "name": "Son Goten",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-036.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-036.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you have 10 or more cards in your Drop, your Leader gets +5000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-037",
+    "code": "FB04-037",
+    "rarity": "C",
+    "name": "Son Gohan : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-037.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-037.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Auto][Once per turn] When a Battle Card is played from your Drop, choose up to 1 of your opponent's Battle Cards and reduce its cost by 1 for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-038",
+    "code": "FB04-038",
+    "rarity": "R",
+    "name": "Son Gohan : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-038.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-038.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you have 10 or more cards in your Drop, add up to 1 Extra with both 《Saiyan》 and 《Earthling》 in its special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-039",
+    "code": "FB04-039",
+    "rarity": "UC",
+    "name": "Tien Shinhan",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-039.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-039.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-040",
+    "code": "FB04-040",
+    "rarity": "UC",
+    "name": "Trunks : Youth",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-040.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-040.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you have 10 or more cards in your Drop, choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-041",
+    "code": "FB04-041",
+    "rarity": "UC",
+    "name": "Videl",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-041.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-041.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Satan City",
+    "effect": "[Activate Main] Return this card to its owner's hand : Reveal the top card of your deck, and if the revealed card has 《Satan City》 in its special traits, play up to 1 &lt;Videl&gt; with a cost of 2 from your hand. Then, you can't play &lt;Videl&gt; for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-042",
+    "code": "FB04-042",
+    "rarity": "C",
+    "name": "Piccolo",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-042.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-042.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Namekian/God",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, then reveal up to 1 &lt;Gotenks&gt; or Extra and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-043",
+    "code": "FB04-043",
+    "rarity": "R",
+    "name": "Bulma (Mini) : DA",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-043.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-043.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, if you have 7 or fewer cards in your hand, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-044",
+    "code": "FB04-044",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-044.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-044.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Saiyan/Another World",
+    "effect": "[Permanent][Your Turn] If you have 10 or more cards in your Drop, this card gets +15000 power.<br>[On Play] Place the top card of your deck into its owner's Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-045",
+    "code": "FB04-045",
+    "rarity": "SR",
+    "name": "Vegeta (Mini) : DA",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-045.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-045.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "UU",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Permanent][Your Turn] If you have 7 or fewer cards in your hand, this card gets +5000 power.<br>[When Attacking] Choose up to 1 of your opponent's Battle Cards and reduce its cost by 2 for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-045-p1",
+    "code": "FB04-045-p1",
+    "rarity": "SR",
+    "name": "Vegeta (Mini) : DA",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-045_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-045_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "UU",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Permanent][Your Turn] If you have 7 or fewer cards in your hand, this card gets +5000 power.<br>[When Attacking] Choose up to 1 of your opponent's Battle Cards and reduce its cost by 2 for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-046",
+    "code": "FB04-046",
+    "rarity": "R",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-046.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-046.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Potara",
+    "effect": "[Activate Main](2), discard 1 card from your hand and place this card into its owner's Drop : If you have 10 or more cards in your Drop, play up to 1 &lt;Vegito&gt; with a cost of 5 or 6 from your Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-047",
+    "code": "FB04-047",
+    "rarity": "R",
+    "name": "Overwhelming Confidence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-047.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-047.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "5",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Main] Place the top 3 cards of your deck into their owner's Drop : Draw 1 card. Then, play up to 1 Battle Card with a cost of 4 or less and 《Saiyan》 in its special traits from your Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-048",
+    "code": "FB04-048",
+    "rarity": "C",
+    "name": "Galactic Donut",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-048.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-048.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Main] Draw 2 cards. Then, choose up to 1 of your opponent's Battle Cards and it can't attack during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-049",
+    "code": "FB04-049",
+    "rarity": "UC",
+    "name": "Amazing Hidden Potential",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-049.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-049.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "5",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Main] Play up to 1 &lt;Gotenks&gt; or &lt;Son Gohan : Adolescence&gt;―both with a cost of 4 or less―from your Drop. Then, choose up to 1 of your opponent's Battle Cards and reduce its cost by 1 for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-050",
+    "code": "FB04-050",
+    "rarity": "C",
+    "name": "Legend of the Strongest Sword",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-050.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-050.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Supreme Kai",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Battle][Once per turn] Discard 1 Extra from your hand : Your &lt;Son Gohan : Adolescence&gt; that's in a battle gets +10000 power for the battle.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-051",
+    "code": "FB04-051",
+    "rarity": "L",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan\n                  Saiyan",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-051-p1",
+    "code": "FB04-051-p1",
+    "rarity": "L",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan\n                  Saiyan",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-052",
+    "code": "FB04-052",
+    "rarity": "SR",
+    "name": "Great Ape Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-052.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-052.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "GG",
+    "power": "40000",
+    "comboPower": "5000",
+    "features": "Saiyan/Great Ape",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Place 1 card from your energy into its owner's Drop : If your Leader has 《Saiyan》 in its special traits, choose up to 1 of your opponent's Battle Cards with a cost of 5 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-052-p1",
+    "code": "FB04-052-p1",
+    "rarity": "SR",
+    "name": "Great Ape Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-052_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-052_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "GG",
+    "power": "40000",
+    "comboPower": "5000",
+    "features": "Saiyan/Great Ape",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Place 1 card from your energy into its owner's Drop : If your Leader has 《Saiyan》 in its special traits, choose up to 1 of your opponent's Battle Cards with a cost of 5 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-053",
+    "code": "FB04-053",
+    "rarity": "UC",
+    "name": "Kami",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-053.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-053.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "GGG",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Namekian/God/Lookout",
+    "effect": "[On Play] Add up to 1 Extra from your Drop to your hand. Then, add up to 1 card from your hand to your energy.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-054",
+    "code": "FB04-054",
+    "rarity": "UC",
+    "name": "Master Roshi",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-054.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-054.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 of your opponent's Battle Cards with a cost of 1 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-055",
+    "code": "FB04-055",
+    "rarity": "C",
+    "name": "Krillin",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-055.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-055.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Draw 1 card. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-056",
+    "code": "FB04-056",
+    "rarity": "C",
+    "name": "Saibaman",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-056.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-056.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Saibamen",
+    "effect": "[When KO'd] Choose up to 1 of your opponent's Battle Cards with a cost of 2 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-057",
+    "code": "FB04-057",
+    "rarity": "C",
+    "name": "Android 18",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-057.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-057.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, then reveal up to 1 card with a cost of 5 or less and 《Android》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-058",
+    "code": "FB04-058",
+    "rarity": "R",
+    "name": "Cell",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-058.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-058.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Activate Main] Place this card into its owner's Drop : If your Leader is &lt;Cell&gt;, place up to 1 &lt;Cell Games Arena&gt; into the Battle Area from your hand in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-059",
+    "code": "FB04-059",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-059.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-059.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[When Attacking] If attacking a Battle Card with a cost of 4 or more, this card gets +25000 power for the battle. Then, place 1 card from your energy into its owner's Drop.<br>[End of Your Turn] If energy is placed into its owner's Drop by this card's skill during this turn, draw 1 card and add this card to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-059-p1",
+    "code": "FB04-059-p1",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-059_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-059_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[When Attacking] If attacking a Battle Card with a cost of 4 or more, this card gets +25000 power for the battle. Then, place 1 card from your energy into its owner's Drop.<br>[End of Your Turn] If energy is placed into its owner's Drop by this card's skill during this turn, draw 1 card and add this card to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-060",
+    "code": "FB04-060",
+    "rarity": "UC",
+    "name": "Son Gohan : Youth",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-060.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-060.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent] If you have a [Field] with &lt;Full Moon&gt; in its card name in your Battle Area, this card gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-061",
+    "code": "FB04-061",
+    "rarity": "C",
+    "name": "Turles",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-061.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-061.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "G",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan/Turles Crusher Corps",
+    "effect": "[Permanent][Your Turn] If you have 6 or more energy, your &lt;Broly&gt; Leader gets +10000 power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-062",
+    "code": "FB04-062",
+    "rarity": "C",
+    "name": "Chiaotzu",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-062.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-062.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[When KO'd] Draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-063",
+    "code": "FB04-063",
+    "rarity": "C",
+    "name": "Tien Shinhan",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-063.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-063.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards with a cost of 2 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-064",
+    "code": "FB04-064",
+    "rarity": "SR",
+    "name": "Nappa",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-064.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-064.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] Choose one―<br>・Add 1 card from your life to your energy in Rest Mode.<br>・If you have no &lt;Vegeta&gt; Battle Cards, this card can't attack for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-064-p1",
+    "code": "FB04-064-p1",
+    "rarity": "SR",
+    "name": "Nappa",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-064_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-064_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] Choose one―<br>・Add 1 card from your life to your energy in Rest Mode.<br>・If you have no &lt;Vegeta&gt; Battle Cards, this card can't attack for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-065",
+    "code": "FB04-065",
+    "rarity": "UC",
+    "name": "Nappa",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-065.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-065.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] If you placed a card from your energy into its owner's Drop during this turn, choose up to 1 [Field] with a cost of 2 or less in your opponent's Battle Area and place it into its owner's Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-066",
+    "code": "FB04-066",
+    "rarity": "R",
+    "name": "Piccolo",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-066.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-066.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Namekian",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] If your Leader is [Piccolo], add the top card of your deck to your energy.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-067",
+    "code": "FB04-067",
+    "rarity": "R",
+    "name": "Piccolo (Mini) : DA",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-067.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-067.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Namekian/God",
+    "effect": "[On Play] Place 1 card from your energy into its owner's Drop : Choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-068",
+    "code": "FB04-068",
+    "rarity": "UC",
+    "name": "Bulma",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-068.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-068.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-069",
+    "code": "FB04-069",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-069.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-069.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Discard 1 card from your hand : Look at 10 cards from the top of your deck and place up to 1 &lt;Artificial Full Moon&gt; into the Battle Area. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-070",
+    "code": "FB04-070",
+    "rarity": "UC",
+    "name": "Yajirobe",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-070.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-070.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[Activate Main] Place this card into its owner's Drop : Choose up to 1 card with 《Great Ape》 in its special traits in a Battle Area and add it to its owner's energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-071",
+    "code": "FB04-071",
+    "rarity": "C",
+    "name": "Yamcha",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-071.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-071.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[Permanent][Your Turn] If you have a Battle Card with a cost of 3 or more in your Drop, this card gets +5000 power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-072",
+    "code": "FB04-072",
+    "rarity": "R",
+    "name": "Raditz",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-072.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-072.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] If you placed a card from your energy into its owner's Drop during this turn, add up to 1 《Saiyan》-only non-&lt;Raditz&gt; card with a cost of 3 or less from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-073",
+    "code": "FB04-073",
+    "rarity": "UC",
+    "name": "A Warm Greeting",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-073.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-073.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] Draw 1 card. Then, choose up to 1 card with a cost of 4 or less in your opponent's Battle Area and add it to its owner's energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-074",
+    "code": "FB04-074",
+    "rarity": "C",
+    "name": "Self-Destructing Saibamen",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-074.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-074.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saibamen",
+    "effect": "[Activate Main] KO 1 of your &lt;Saibaman&gt; Battle Cards : Draw 2 cards.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-075",
+    "code": "FB04-075",
+    "rarity": "C",
+    "name": "Invasion of the Saiyans",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-075.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-075.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "5",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] Play up to 2 《Saiyan》-only Battle Cards with energy costs of 3 or less from your energy.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-076",
+    "code": "FB04-076",
+    "rarity": "R",
+    "name": "Artificial Full Moon",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-076.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-076.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "GG",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[End of Your Turn] If you have 4 or less energy and you placed a card from your energy into its owner's Drop during this turn, add up to 1 card with a cost of 3 or more from your Drop to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-077",
+    "code": "FB04-077",
+    "rarity": "L",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-077_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-077_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Majin\n                  Majin/Absorption",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-077-p1",
+    "code": "FB04-077-p1",
+    "rarity": "L",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-077_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-077_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Majin\n                  Majin/Absorption",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-078",
+    "code": "FB04-078",
+    "rarity": "C",
+    "name": "Idasa",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-078.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-078.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd][Opponent's Turn] Switch up to 1 of your energy to Active Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-079",
+    "code": "FB04-079",
+    "rarity": "UC",
+    "name": "Shin",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-079.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-079.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-080",
+    "code": "FB04-080",
+    "rarity": "R",
+    "name": "King Gomah : DA",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-080.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-080.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "-",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking][Once per turn] Switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-081",
+    "code": "FB04-081",
+    "rarity": "R",
+    "name": "Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-081.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-081.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Frieza Clan",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Auto][Once per turn] When one of your Battle Cards other than this card is switched to Active Mode by your &lt;Cooler&gt; Leader's skill, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-082",
+    "code": "FB04-082",
+    "rarity": "C",
+    "name": "Dabura",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-082.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-082.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Demon Realm Race/Wicked Soul",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-083",
+    "code": "FB04-083",
+    "rarity": "C",
+    "name": "Grand Supreme Kai",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-083.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-083.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-084",
+    "code": "FB04-084",
+    "rarity": "UC",
+    "name": "West Supreme Kai",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-084.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-084.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-085",
+    "code": "FB04-085",
+    "rarity": "R",
+    "name": "Babidi",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-085.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-085.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Evil Wizard",
+    "effect": "[On Play] If your Leader has 《Majin》 in its special traits, play up to 1 Battle Card with a cost of 3 or less and 《Majin》 in its special traits from your hand.<br>[When KO'd] If your opponent has 6 or more cards in their hand, your opponent discards 1 card from their hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-086",
+    "code": "FB04-086",
+    "rarity": "C",
+    "name": "Bibidi",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-086.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-086.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Evil Wizard",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, then reveal up to 1 card with a cost of 4 or less and 《Majin》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-087",
+    "code": "FB04-087",
+    "rarity": "C",
+    "name": "Bee",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-087.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-087.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Animal",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] Choose up to 1 of your Battle Cards with 《Majin》 in its special traits and it gets +5000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-088",
+    "code": "FB04-088",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-088.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-088.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Wicked Soul",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] If there is a &lt;Majin Buu&gt; in a Leader Area or Battle Area, choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-089",
+    "code": "FB04-089",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-089.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-089.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "Y",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Permanent][Opponent's Turn] This card gets +15000 power.<br>[End of Your Turn](1) : Choose up to 2 of your opponent's Rest Mode Battle Cards and they can't switch to Active Mode during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-090",
+    "code": "FB04-090",
+    "rarity": "C",
+    "name": "Majin Buu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-090.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-090.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[Activate Main][Once per turn] KO 1 of your Battle Cards : This card gets +15000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-091",
+    "code": "FB04-091",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-091.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-091.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-092",
+    "code": "FB04-092",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-092.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-092.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Majin/Absorption",
+    "effect": "[When KO'd] Draw 1 card.<br>[Activate Main][Once per turn] KO up to 1 of your Battle Cards.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-093",
+    "code": "FB04-093",
+    "rarity": "SR",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-093.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-093.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "YY",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[Activate Main][Once per turn] KO 1 of your Battle Cards : Draw 1 card. Then, if your opponent has 6 or more cards in their hand, your opponent discards 1 card from their hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-093-p1",
+    "code": "FB04-093-p1",
+    "rarity": "SR",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-093_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-093_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "YY",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[Activate Main][Once per turn] KO 1 of your Battle Cards : Draw 1 card. Then, if your opponent has 6 or more cards in their hand, your opponent discards 1 card from their hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-094",
+    "code": "FB04-094",
+    "rarity": "SR",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-094.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-094.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "YY",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Play up to 1 Battle Card with a cost of 4 or less and 《Majin》 or 《Evil Wizard》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-094-p1",
+    "code": "FB04-094-p1",
+    "rarity": "SR",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-094_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-094_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "YY",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Play up to 1 Battle Card with a cost of 4 or less and 《Majin》 or 《Evil Wizard》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-095",
+    "code": "FB04-095",
+    "rarity": "R",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-095.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-095.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[Permanent] This card can't be switched to Active Mode during your Charge Phase.<br>[Activate Main][Once per turn] KO 1 of your Battle Cards : If your Leader has 《Majin》 in its special traits, switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-096",
+    "code": "FB04-096",
+    "rarity": "UC",
+    "name": "Majin Buu : Pure Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-096.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-096.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[When Attacking] At the end of the battle, KO this card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-097",
+    "code": "FB04-097",
+    "rarity": "C",
+    "name": "Hercule",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-097.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-097.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-098",
+    "code": "FB04-098",
+    "rarity": "C",
+    "name": "South Supreme Kai",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-098.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-098.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Supreme Kai",
+    "effect": "[When KO'd][Opponent's Turn] Switch up to 1 of your energy to Active Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-099",
+    "code": "FB04-099",
+    "rarity": "UC",
+    "name": "Blind Spot Absorption",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-099.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-099.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Majin/Absorption",
+    "effect": "[Activate Battle][Opponent's Turn] Your cards that are in a battle get +20000 power for the battle.<br>[Activate Battle](1) : Draw 1 card. Then, choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-100",
+    "code": "FB04-100",
+    "rarity": "C",
+    "name": "Humanity's Destruction",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-100.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-100.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Activate Main] Choose all Rest Mode Battle Cards with costs of 2 or less and KO them.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-101",
+    "code": "FB04-101",
+    "rarity": "UC",
+    "name": "Unsealed Majin",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-101.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-101.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Activate Main] KO 1 of your Battle Cards with 《Evil Wizard》 in its special traits : Play up to 1 Battle Card with a cost of 3 or less and 《Majin》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-102",
+    "code": "FB04-102",
+    "rarity": "R",
+    "name": "Frieza's Spaceship",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-102.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-102.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Frieza's Army",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Main] Switch this card to Rest Mode : If your Leader has 《Frieza's Army》 in its special traits, play up to 1 Battle Card with a cost of 2 or less and 《Frieza's Army》 in its special traits from your hand in Rest Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-103",
+    "code": "FB04-103",
+    "rarity": "L",
+    "name": "Super Baby 2",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-103_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-103_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan\n                  -",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-103-p1",
+    "code": "FB04-103-p1",
+    "rarity": "L",
+    "name": "Super Baby 2",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-103_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-103_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan\n                  -",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-104",
+    "code": "FB04-104",
+    "rarity": "SR",
+    "name": "Great Ape Baby",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-104.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-104.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "BB",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan/Great Ape",
+    "effect": "[On Play] Play up to 1 Battle Card with a cost of 2 or less from your hand.<br>[When Attacking] Choose up to 1 Battle Card with a cost of 3 or less and place it into its owner's Combo Area.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-104-p1",
+    "code": "FB04-104-p1",
+    "rarity": "SR",
+    "name": "Great Ape Baby",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-104_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-104_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "BB",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan/Great Ape",
+    "effect": "[On Play] Play up to 1 Battle Card with a cost of 2 or less from your hand.<br>[When Attacking] Choose up to 1 Battle Card with a cost of 3 or less and place it into its owner's Combo Area.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-105",
+    "code": "FB04-105",
+    "rarity": "R",
+    "name": "Glorio : DA",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-105.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-105.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "-",
+    "effect": "[Permanent] If you or your opponent has an energy marker, reduce the cost of this card in your hand by 2.<br>[On Play] If your opponent has an energy marker, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-106",
+    "code": "FB04-106",
+    "rarity": "UC",
+    "name": "Super Uub",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-106.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-106.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling/Majin",
+    "effect": "[Activate Main][Once per turn] If your opponent doesn't have an energy marker, choose up to 1 of your opponent's Battle Cards with a cost of 5 or less and KO it. Then, your opponent places 1 energy marker.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-107",
+    "code": "FB04-107",
+    "rarity": "UC",
+    "name": "Super Sigma",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-107.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-107.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Machine Mutant",
+    "effect": "[On Play] If you have less than 3 cards with 《Machine Mutant》 in their special traits in your Drop, KO this card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-108",
+    "code": "FB04-108",
+    "rarity": "SR",
+    "name": "Super Baby 1",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-108.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-108.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan",
+    "effect": "[On Play] Play up to 1 Battle Card with a cost of 2 or less and 《Brainwashed》 or 《Machine Mutant》 in its special traits from your hand.<br>[Auto][Once per turn] When a card is used in a combo from your Battle Area while this card is in a battle, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-108-p1",
+    "code": "FB04-108-p1",
+    "rarity": "SR",
+    "name": "Super Baby 1",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-108_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-108_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan",
+    "effect": "[On Play] Play up to 1 Battle Card with a cost of 2 or less and 《Brainwashed》 or 《Machine Mutant》 in its special traits from your hand.<br>[Auto][Once per turn] When a card is used in a combo from your Battle Area while this card is in a battle, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-109",
+    "code": "FB04-109",
+    "rarity": "R",
+    "name": "Son Goku : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-109.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-109.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Permanent] If your Leader is &lt;Son Goku : GT&gt; and this card has 45000 power or more, this card gains [Double Strike].<br>([Double Strike] : This card inflicts 2 damage instead of 1 when attacking.)",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-110",
+    "code": "FB04-110",
+    "rarity": "UC",
+    "name": "Son Goten : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-110.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-110.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling/Brainwashed",
+    "effect": "[Auto][Your Turn] When this card is used in a combo from the Battle Area, choose up to 1 of your opponent's Battle Cards with a cost of 4 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-111",
+    "code": "FB04-111",
+    "rarity": "C",
+    "name": "Son Gohan : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-111.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-111.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling/Brainwashed",
+    "effect": "[Auto] When this card is used in a combo from the Battle Area, draw 1 card. Then, during this turn, the next time you use an Extra with a cost of 2 or less from your hand, you don't have to pay the cost.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-112",
+    "code": "FB04-112",
+    "rarity": "C",
+    "name": "Dr. Myuu",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-112.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-112.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Machine Mutant",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, then reveal up to 1 non-&lt;Dr. Myuu&gt; card with a cost of 4 or less and 《Machine Mutant》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-113",
+    "code": "FB04-113",
+    "rarity": "R",
+    "name": "Trunks : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-113.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-113.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling/Brainwashed",
+    "effect": "[Auto] When this card is used in a combo from the Battle Area, add up to 2 non-&lt;Trunks : GT&gt; Battle Cards with costs of 4 or less and 《Brainwashed》 or 《Machine Mutant》 in their special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-114",
+    "code": "FB04-114",
+    "rarity": "SR",
+    "name": "Trunks : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-114.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-114.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent][Opponent's Turn] If you have an energy marker, your non-&lt;Trunks : GT&gt; Battle Cards can't be removed from the Battle Area by your opponent's skills.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-114-p1",
+    "code": "FB04-114-p1",
+    "rarity": "SR",
+    "name": "Trunks : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-114_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-114_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent][Opponent's Turn] If you have an energy marker, your non-&lt;Trunks : GT&gt; Battle Cards can't be removed from the Battle Area by your opponent's skills.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-115",
+    "code": "FB04-115",
+    "rarity": "C",
+    "name": "Nezi",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-115.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-115.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Machine Mutant",
+    "effect": "[Auto] When this card is used in a combo from the Battle Area, play up to 1 &lt;Super Sigma&gt; with a cost of 2 from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-116",
+    "code": "FB04-116",
+    "rarity": "UC",
+    "name": "Hyper Meta-Rilldo",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-116.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-116.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Machine Mutant",
+    "effect": "[On Play] If you have &lt;Super Sigma&gt; in your Drop, choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and return it to its owner's hand.<br>[Auto] When this card is used in a combo from the Battle Area, play up to 1 &lt;Meta-Rilldo&gt; with a cost of 4 from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-117",
+    "code": "FB04-117",
+    "rarity": "UC",
+    "name": "Pan : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-117.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-117.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Choose up to 1 of your &lt;Son Goku : GT&gt; and it gets +5000 power for the turn. Then, if you have an energy marker, that card gets +5000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-118",
+    "code": "FB04-118",
+    "rarity": "C",
+    "name": "Bizu",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-118.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-118.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Machine Mutant",
+    "effect": "[Auto] When this card is used in a combo from the Battle Area, play up to 1 &lt;Super Sigma&gt; with a cost of 2 from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-119",
+    "code": "FB04-119",
+    "rarity": "R",
+    "name": "Bulla : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-119.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-119.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling/Brainwashed",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Auto] When this card is used in a combo from the Battle Area, if your Leader has 《Machine Mutant》 in its special traits and you don't have an energy marker, you place 1 energy marker.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-120",
+    "code": "FB04-120",
+    "rarity": "UC",
+    "name": "Vegeta : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-120.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-120.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-121",
+    "code": "FB04-121",
+    "rarity": "C",
+    "name": "Baby Vegeta",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-121.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-121.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Machine Mutant/Saiyan",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-122",
+    "code": "FB04-122",
+    "rarity": "C",
+    "name": "Baby : Possessed Boy Form",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-122.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-122.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Machine Mutant",
+    "effect": "[Auto] When this card is used in a combo from the Battle Area, if your Leader has 《Machine Mutant》 in its special traits, play up to 1 Battle Card with a cost of 2 and 《Brainwashed》 in its special traits, or up to 1 &lt;Baby Vegeta&gt; with a cost of 2 from your hand. Then, you can't play Battle Cards for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-123",
+    "code": "FB04-123",
+    "rarity": "R",
+    "name": "Meta-Rilldo",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-123.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-123.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Machine Mutant",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] Switch 1 [Field] in your Battle Area to Rest Mode : Play this card from its owner's Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-124",
+    "code": "FB04-124",
+    "rarity": "C",
+    "name": "Ribet",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-124.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-124.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Machine Mutant",
+    "effect": "[Auto] When this card is used in a combo from the Battle Area, play up to 1 &lt;Super Sigma&gt; with a cost of 2 from your hand.<br>[Activate Main] Switch this card to Rest Mode : Draw 1 card. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-125",
+    "code": "FB04-125",
+    "rarity": "R",
+    "name": "General Rilldo",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-125.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-125.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Machine Mutant",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Auto] When this card is used in a combo from the Battle Area, play up to 1 &lt;Hyper Meta-Rilldo&gt; with a cost of 3 from your hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-126",
+    "code": "FB04-126",
+    "rarity": "C",
+    "name": "New Planet Tuffle",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-126.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-126.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Machine Mutant",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Main] Discard 1 card from your hand and switch this card to Rest Mode : If your Leader has 《Machine Mutant》 in its special traits, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-127",
+    "code": "FB04-127",
+    "rarity": "UC",
+    "name": "Super Galick Gun",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-127.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-127.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan/Great Ape",
+    "effect": "[Activate Battle] Your cards that are in a battle get +25000 power for the battle. Then, if you have a card in your Combo Area, choose up to 1 Battle Card with a cost of 3 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-128",
+    "code": "FB04-128",
+    "rarity": "C",
+    "name": "Revenge Death Ball",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-128.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-128.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Machine Mutant/Saiyan",
+    "effect": "[Activate Main] If you have 3 or more Battle Cards with 《Brainwashed》 or 《Machine Mutant》 in their special traits in your Drop, your Leader with 《Machine Mutant》 in its special traits gets +5000 power until the end of your opponent's next turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-129",
+    "code": "FB04-129",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-129.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-129.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "RR",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Until the end of your opponent's next turn, negate the next damage you take.<br>[When Attacking] Choose all of your opponent's Battle Cards and they get -20000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-129-p1",
+    "code": "FB04-129-p1",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-129_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-129_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "RR",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Until the end of your opponent's next turn, negate the next damage you take.<br>[When Attacking] Choose all of your opponent's Battle Cards and they get -20000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-129-p2",
+    "code": "FB04-129-p2",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-129_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-129_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "RR",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Until the end of your opponent's next turn, negate the next damage you take.<br>[When Attacking] Choose all of your opponent's Battle Cards and they get -20000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-130",
+    "code": "FB04-130",
+    "rarity": "SCR",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-130.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-130.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "UU",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan/Potara",
+    "effect": "[Permanent] Having 0 cards in your deck does not cause you to lose the game, and if you have 0 cards in your deck, this card gets +10000 power.<br>[Activate Main][Once per turn] Switch this card to Active Mode, then choose up to 1 card in your opponent's Battle Area and return it to its owner's hand. Then, place the top 5 cards of your deck into their owner's Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-130-p1",
+    "code": "FB04-130-p1",
+    "rarity": "SCR",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-130_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-130_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "UU",
+    "power": "40000",
+    "comboPower": "-",
+    "features": "Saiyan/Potara",
+    "effect": "[Permanent] Having 0 cards in your deck does not cause you to lose the game, and if you have 0 cards in your deck, this card gets +10000 power.<br>[Activate Main][Once per turn] Switch this card to Active Mode, then choose up to 1 card in your opponent's Battle Area and return it to its owner's hand. Then, place the top 5 cards of your deck into their owner's Drop.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB03-077-p1",
+    "code": "FB03-077-p1",
+    "rarity": "R",
+    "name": "Special Beam Cannon",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-077_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-077_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "5",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Namekian",
+    "effect": "[Activate Main] Choose up to 1 of your opponent's Battle Cards and KO it. Then, if you have 8 or more energy, choose your Leader or up to 1 of your Battle Cards and it gets +30000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB03-102-p1",
+    "code": "FB03-102-p1",
+    "rarity": "R",
+    "name": "Final Explosion",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-102_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-102_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Wicked Soul",
+    "effect": "[Activate Main] Choose all of your opponent's Battle Cards with costs of 3 or less and switch them to Rest Mode. Then, choose up to 2 of your opponent's Rest Mode Battle Cards with costs of 4 or less and KO them.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB03-137-p1",
+    "code": "FB03-137-p1",
+    "rarity": "R",
+    "name": "10x Kamehameha",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-137_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-137_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] Choose one―・Choose up to 1 of your opponent's Battle Cards with a cost of 2 or less and KO it.・If you removed an energy marker to use this card, choose up to 2 of your opponent's Battle Cards with costs of 3 or less and KO them.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-008-p1",
+    "code": "FB04-008-p1",
+    "rarity": "R",
+    "name": "Shin (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-008_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-008_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Supreme Kai",
+    "effect": "[Activate Main] Place this card into its owner's Drop : Choose up to 1 of your opponent's Battle Cards and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-043-p1",
+    "code": "FB04-043-p1",
+    "rarity": "R",
+    "name": "Bulma (Mini) : DA",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-043_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-043_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, if you have 7 or fewer cards in your hand, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-067-p1",
+    "code": "FB04-067-p1",
+    "rarity": "R",
+    "name": "Piccolo (Mini) : DA",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-067_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-067_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Namekian/God",
+    "effect": "[On Play] Place 1 card from your energy into its owner's Drop : Choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and KO it.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-080-p1",
+    "code": "FB04-080-p1",
+    "rarity": "R",
+    "name": "King Gomah : DA",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-080_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-080_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "-",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking][Once per turn] Switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  },
+  {
+    "id": "FB04-105-p1",
+    "code": "FB04-105-p1",
+    "rarity": "R",
+    "name": "Glorio : DA",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-105_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-105_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "-",
+    "effect": "[Permanent] If you or your opponent has an energy marker, reduce the cost of this card in your hand by 2.<br>[On Play] If your opponent has an energy marker, draw 1 card.",
+    "getIt": "BOOSTER PACK -ULTRA LIMIT- [FB04]",
+    "set": { "id": "fb04", "name": "BOOSTER PACK -ULTRA LIMIT- [FB04]" }
+  }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "id": "FS02-01",
+    "code": "FS02-01",
+    "rarity": "L",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-01_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-01_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-02",
+    "code": "FS02-02",
+    "rarity": "C",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-02.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-02.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "-",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-03",
+    "code": "FS02-03",
+    "rarity": "SR",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-03.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-03.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, add up to 1 &lt;Son Goten&gt; and up to 1 &lt;Trunks : Youth&gt;―both with a cost of 2 or less―from your Drop to your hand.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-04",
+    "code": "FS02-04",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-04.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-04.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "-",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-05",
+    "code": "FS02-05",
+    "rarity": "C",
+    "name": "Son Goten",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-05.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-05.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "-",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-06",
+    "code": "FS02-06",
+    "rarity": "C",
+    "name": "Son Goten",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-06.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-06.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] Add up to 1 card from your life to your hand. Then, if you have 7 or fewer cards in your hand, choose up to 1 of your opponent's Battle Cards with a cost of 2 or less and return it to its owner's hand.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-07",
+    "code": "FS02-07",
+    "rarity": "C",
+    "name": "Son Gohan : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-07.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-07.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent][Your Turn] If you have 7 or fewer cards in your hand, this card gets +15000 power.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-08",
+    "code": "FS02-08",
+    "rarity": "C",
+    "name": "Trunks : Youth",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-08.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-08.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-09",
+    "code": "FS02-09",
+    "rarity": "C",
+    "name": "Trunks : Youth",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-09.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-09.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent][Your Turn] If you have 7 or fewer cards in your hand, this card gets +10000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-10",
+    "code": "FS02-10",
+    "rarity": "C",
+    "name": "Videl",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-10.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-10.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-11",
+    "code": "FS02-11",
+    "rarity": "C",
+    "name": "Piccolo",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-11.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-11.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Namekian/God",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, add up to 1 Extra from your Drop to your hand.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-12",
+    "code": "FS02-12",
+    "rarity": "C",
+    "name": "Bulma",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-12.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-12.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-13",
+    "code": "FS02-13",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-13.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-13.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "UU",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Choose up to 1 of your opponent's Battle Cards with a cost of 4 or less and place it at the bottom of its owner's deck.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-14",
+    "code": "FS02-14",
+    "rarity": "C",
+    "name": "Majin Buu : Good",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-14.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-14.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "-",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-15",
+    "code": "FS02-15",
+    "rarity": "C",
+    "name": "Galick Gun",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-15.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-15.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Battle] Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle. Then, if you have 7 or fewer cards in your hand, draw 1 card.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  },
+  {
+    "id": "FS02-16",
+    "code": "FS02-16",
+    "rarity": "C",
+    "name": "Final Flash",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-16.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS02-16.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Permanent] If you have 7 or fewer cards in your hand, reduce the cost of this card in your hand by 1.<br>[Activate Main] Discard 1 card from your hand : Choose up to 1 of your opponent's Battle Cards with a cost of 5 or less and place it at the bottom of its owner's deck.",
+    "getIt": "STARTER DECK -VEGETA- [FS02]",
+    "set": { "id": "fs02", "name": "Starter Deck -Vegeta-" }
+  }
+]

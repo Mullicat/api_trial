@@ -1,0 +1,3542 @@
+[
+  {
+    "id": "SB01-001",
+    "code": "SB01-001",
+    "rarity": "L",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-001_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-001_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Android\n                  Android",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-001-p1",
+    "code": "SB01-001-p1",
+    "rarity": "L",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-001_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-001_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Android\n                  Android",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-002",
+    "code": "SB01-002",
+    "rarity": "R",
+    "name": "Android 16",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-002.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-002.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[Activate Main] Place this card in a Battle Area into its owner's Drop : If your Leader is an 《Android》-only card, play up to 1 &lt;Android 17&gt; or &lt;Android 18&gt; with a cost of 2 or less from your Drop in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-002-p1",
+    "code": "SB01-002-p1",
+    "rarity": "R",
+    "name": "Android 16",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-002_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-002_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[Activate Main] Place this card in a Battle Area into its owner's Drop : If your Leader is an 《Android》-only card, play up to 1 &lt;Android 17&gt; or &lt;Android 18&gt; with a cost of 2 or less from your Drop in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-003",
+    "code": "SB01-003",
+    "rarity": "R",
+    "name": "Android 17",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-003.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-003.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[On Play] Discard 1 Battle Card with 《Android》 in its special traits from your hand : If your Leader is an 《Android》-only card, draw 2 cards.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-003-p1",
+    "code": "SB01-003-p1",
+    "rarity": "R",
+    "name": "Android 17",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-003_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-003_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[On Play] Discard 1 Battle Card with 《Android》 in its special traits from your hand : If your Leader is an 《Android》-only card, draw 2 cards.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-004",
+    "code": "SB01-004",
+    "rarity": "SR",
+    "name": "Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-004.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-004.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[On Play] If your Leader is an 《Android》-only card, look at 3 cards from the top of your deck, reveal up to 1 card with a cost of 5 or less and 《Android》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order. Then, choose up to 1 Battle Card in your opponent's Battle Area and it gets -5000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-005",
+    "code": "SB01-005",
+    "rarity": "C",
+    "name": "Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-005.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-005.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-006",
+    "code": "SB01-006",
+    "rarity": "C",
+    "name": "Android 19",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-006.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-006.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[On Play] If your Leader is an 《Android》-only card, choose up to 1 Battle Card in your opponent's Battle Area and it gets -15000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-007",
+    "code": "SB01-007",
+    "rarity": "UC",
+    "name": "Android 19/Android 20",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-007.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-007.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] If your Leader is awakened, play up to 1 Battle Card with a cost of 1 and 《Android》 in its special traits from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-008",
+    "code": "SB01-008",
+    "rarity": "C",
+    "name": "Android 20",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-008.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-008.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[On Play] If your Leader is awakened, choose your &lt;Cell&gt; Leader or up to 1 &lt;Cell&gt; in your Battle Area and it gets +10000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-009",
+    "code": "SB01-009",
+    "rarity": "R",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-009.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-009.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[End of Your Turn] Place 1 &lt;Android 17&gt; and this card from your Battle Area into their owner's Drop : If your Leader is an 《Android》-only card, draw 1 card. Then, play up to 1 &lt;Cell&gt; with 25000 power from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-009-p1",
+    "code": "SB01-009-p1",
+    "rarity": "R",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-009_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-009_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[End of Your Turn] Place 1 &lt;Android 17&gt; and this card from your Battle Area into their owner's Drop : If your Leader is an 《Android》-only card, draw 1 card. Then, play up to 1 &lt;Cell&gt; with 25000 power from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-010",
+    "code": "SB01-010",
+    "rarity": "UC",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-010.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-010.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[On Play] Choose up to 1 Battle Card in your opponent's Battle Area and it gets -10000 power for the turn.<br>[Activate Main] Place 1 &lt;Android 18&gt; and this card from your Battle Area into their owner's Drop : If your Leader is an 《Android》-only card, draw 1 card. Then, play up to 1 &lt;Cell&gt; with 30000 power from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-011",
+    "code": "SB01-011",
+    "rarity": "UC",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-011.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-011.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "R",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[On Play] Add up to 1 card with a cost of 4 or less and 《Android》 in its special traits from your Drop to your hand.<br>[When KO'd] If your Leader is an 《Android》-only card, play up to 1 &lt;Android 18&gt; with a cost of 2 or less from your Drop.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-012",
+    "code": "SB01-012",
+    "rarity": "SR",
+    "name": "Cell",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-012.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-012.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "RR",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[When Attacking] Choose up to 1 Battle Card with 10000 power or less in your opponent's Battle Area and KO it.<br>[Activate Main][Once per turn] Place 1 card with 《Android》 in its special traits from your Battle Area into its owner's Drop : Choose up to 2 Battle Cards in your opponent's Battle Area and they get -20000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-013",
+    "code": "SB01-013",
+    "rarity": "UC",
+    "name": "Cell Jr.",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-013.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-013.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Permanent] If your Leader is an 《Android》-only card and you have a &lt;Cell&gt; with an original power of 30000 or more in your Battle Area, you can use this card from your hand without paying its cost.<br>[On Play] Choose up to 1 Battle Card in your opponent's Battle Area and it gets -5000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-014",
+    "code": "SB01-014",
+    "rarity": "C",
+    "name": "The Royal Defence Force's Last Stand",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-014.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-014.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/Android",
+    "effect": "[Activate Main] Add 1 card from your life to your hand : If your Leader is an 《Android》-only card, choose up to 1 Battle Card in your opponent's Battle Area and it gets -20000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-015",
+    "code": "SB01-015",
+    "rarity": "C",
+    "name": "Self-Destruct",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-015.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-015.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Activate Main] KO 1 Battle Card with 《Android》 in its special traits in your Battle Area : If your Leader is an 《Android》-only card, draw 1 card. Then, choose up to 1 Battle Card with 30000 power or less in your opponent's Battle Area and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-016",
+    "code": "SB01-016",
+    "rarity": "C",
+    "name": "Instant Transmission",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-016.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-016.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Activate Battle][Your Turn] If your Leader is an 《Android》-only card and you have a &lt;Cell&gt; with an original power of 30000 or more in your Battle Area, your card that's in a battle gets +15000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-017",
+    "code": "SB01-017",
+    "rarity": "SR",
+    "name": "Great Ape Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-017.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-017.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Great Ape/World Tournament",
+    "effect": "[Permanent][Your Turn] If your Leader has 《World Tournament》 in its special traits and you have an Extra with a cost of 2 or more in your Battle Area or Drop, reduce the cost of this card in your hand by 2.<br>[When KO'd] Add up to 1 card with a cost of 3 or less from your Drop to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-018",
+    "code": "SB01-018",
+    "rarity": "SR",
+    "name": "Son Goku : Childhood",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-018.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-018.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/World Tournament",
+    "effect": "[On Play] If your Leader has 《World Tournament》 in its special traits, choose up to 1 Battle Card with a cost of 2 or less in your opponent's Battle Area and place it at the bottom of its owner's deck. Then, draw 2 cards and discard 2 cards from your hand.<br>[When Attacking] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-018-p1",
+    "code": "SB01-018-p1",
+    "rarity": "SR",
+    "name": "Son Goku : Childhood",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-018_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-018_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/World Tournament",
+    "effect": "[On Play] If your Leader has 《World Tournament》 in its special traits, choose up to 1 Battle Card with a cost of 2 or less in your opponent's Battle Area and place it at the bottom of its owner's deck. Then, draw 2 cards and discard 2 cards from your hand.<br>[When Attacking] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-019",
+    "code": "SB01-019",
+    "rarity": "R",
+    "name": "Chi-Chi",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-019.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-019.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Discard 1 Extra from your hand : If your Leader has 《World Tournament》 in its special traits, draw 2 cards.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-019-p1",
+    "code": "SB01-019-p1",
+    "rarity": "R",
+    "name": "Chi-Chi",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-019_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-019_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Discard 1 Extra from your hand : If your Leader has 《World Tournament》 in its special traits, draw 2 cards.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-020",
+    "code": "SB01-020",
+    "rarity": "UC",
+    "name": "Kamehameha! Full Power!",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-020.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-020.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Battle][Your Turn] If your Leader has 《World Tournament》 in its special traits, your card that's in a battle gets +25000 power for the battle. Then, choose all Battle Cards with costs of 2 or less in your opponent's Battle Area and place them at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-021",
+    "code": "SB01-021",
+    "rarity": "UC",
+    "name": "Tri-Beam",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-021.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-021.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Main] If your Leader has 《World Tournament》 in its special traits, choose up to 1 card with a cost of 5 or less in your opponent's Battle Area and place it at the bottom of its owner's deck.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-022",
+    "code": "SB01-022",
+    "rarity": "C",
+    "name": "Thunder Shock Surprise",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-022.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-022.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Main] If your Leader has 《World Tournament》 in its special traits, draw 1 card. Then, choose up to 1 Battle Card in your opponent's Battle Area and it can't attack during your opponent's next turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-023",
+    "code": "SB01-023",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-023.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-023.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Switch 1 other card in your Battle Area to Rest Mode : If your Leader is &lt;Vegeta&gt;, add up to 1 card from your life to your hand. Then, add the top card of your deck to your energy in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-023-p1",
+    "code": "SB01-023-p1",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-023_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-023_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Switch 1 other card in your Battle Area to Rest Mode : If your Leader is &lt;Vegeta&gt;, add up to 1 card from your life to your hand. Then, add the top card of your deck to your energy in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-023-p2",
+    "code": "SB01-023-p2",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-023_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-023_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Switch 1 other card in your Battle Area to Rest Mode : If your Leader is &lt;Vegeta&gt;, add up to 1 card from your life to your hand. Then, add the top card of your deck to your energy in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-024",
+    "code": "SB01-024",
+    "rarity": "UC",
+    "name": "Nappa",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-024.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-024.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] If your Leader is &lt;Vegeta&gt;, look at 4 cards from the top of your deck, reveal up to 1 &lt;Great Ape Vegeta&gt; or up to 1 card with a cost of 5 or less and 《Saiyan》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-025",
+    "code": "SB01-025",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-025.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-025.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GG",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] If your Leader is &lt;Vegeta&gt;, draw 1 card.<br>[Activate Main](3), place this card in a Battle Area into its owner's Drop : If you have a [Field] with &lt;Full Moon&gt; in its card name in your Battle Area, play up to 1 &lt;Great Ape Vegeta&gt; with a cost of 6 from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-025-p1",
+    "code": "SB01-025-p1",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-025_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-025_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GG",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] If your Leader is &lt;Vegeta&gt;, draw 1 card.<br>[Activate Main](3), place this card in a Battle Area into its owner's Drop : If you have a [Field] with &lt;Full Moon&gt; in its card name in your Battle Area, play up to 1 &lt;Great Ape Vegeta&gt; with a cost of 6 from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-026",
+    "code": "SB01-026",
+    "rarity": "SR",
+    "name": "Raditz",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-026.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-026.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] If your Leader is &lt;Vegeta&gt;, play up to 1 《Saiyan》-only non-&lt;Raditz&gt; Battle Card with a cost of 3 from your hand. Then, you can't play &lt;Raditz&gt; for the turn.<br>[When Attacking] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-026-p1",
+    "code": "SB01-026-p1",
+    "rarity": "SR",
+    "name": "Raditz",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-026_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-026_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] If your Leader is &lt;Vegeta&gt;, play up to 1 《Saiyan》-only non-&lt;Raditz&gt; Battle Card with a cost of 3 from your hand. Then, you can't play &lt;Raditz&gt; for the turn.<br>[When Attacking] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-027",
+    "code": "SB01-027",
+    "rarity": "C",
+    "name": "Strongest Team-Up",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-027.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-027.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "6",
+    "specifiedCost": "GGG",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Namekian",
+    "effect": "[Activate Main] If your Leader is &lt;Piccolo&gt;, add the top card of your deck to your energy in Rest Mode. Then, play up to 1 &lt;Son Goku&gt; and up to 1 &lt;Piccolo&gt;―both with a cost of 6―from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-028",
+    "code": "SB01-028",
+    "rarity": "C",
+    "name": "Ruthless Sorting",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-028.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-028.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] Place 1 of your energy into its owner's Drop : If your Leader is &lt;Vegeta&gt;, choose up to 1 Rest Mode Battle Card with 《Saiyan》 in its special traits in your opponent's Battle Area and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-029",
+    "code": "SB01-029",
+    "rarity": "L",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-029_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-029_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Majin\n                  Majin",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-029-p1",
+    "code": "SB01-029-p1",
+    "rarity": "L",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-029_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-029_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Majin\n                  Majin",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-030",
+    "code": "SB01-030",
+    "rarity": "R",
+    "name": "Dabura",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-030.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-030.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Demon Realm Race/Wicked Soul",
+    "effect": "[Permanent] If your Leader has &lt;Babidi&gt; in its card name or if you have a card with &lt;Babidi&gt; in its card name in your Battle Area, reduce the cost of this card in your hand by 2.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-030-p1",
+    "code": "SB01-030-p1",
+    "rarity": "R",
+    "name": "Dabura",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-030_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-030_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Demon Realm Race/Wicked Soul",
+    "effect": "[Permanent] If your Leader has &lt;Babidi&gt; in its card name or if you have a card with &lt;Babidi&gt; in its card name in your Battle Area, reduce the cost of this card in your hand by 2.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-031",
+    "code": "SB01-031",
+    "rarity": "SR",
+    "name": "Babidi",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-031.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-031.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "YY",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Evil Wizard",
+    "effect": "[Barrier] (This card can’t be chosen by the skills of your opponent's cards.)<br>[End of Your Turn] Choose up to 1 Battle Card with 《Majin》 or 《Wicked Soul》 in its special traits in your Battle Area, switch it to Active Mode, and it gains [Blocker] until the end of your opponent's next turn.<br>([Blocker] : After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-032",
+    "code": "SB01-032",
+    "rarity": "C",
+    "name": "Vegeta",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-032.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-032.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Wicked Soul",
+    "effect": "[Activate Main] KO this card in a Battle Area : Choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode. Then, during this turn, the next time you use an Extra with a cost of 3 or less and 《Wicked Soul》 in its special traits from your hand, you don't have to pay the <br>cost.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-033",
+    "code": "SB01-033",
+    "rarity": "R",
+    "name": "Majin Buu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-033.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-033.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin",
+    "effect": "[On Play] If your Leader has 《Majin》 in its special traits, look at 3 cards from the top of your deck, reveal up to 1 &lt;Babidi&gt; or up to 1 card with 《Majin》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-033-p1",
+    "code": "SB01-033-p1",
+    "rarity": "R",
+    "name": "Majin Buu",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-033_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-033_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin",
+    "effect": "[On Play] If your Leader has 《Majin》 in its special traits, look at 3 cards from the top of your deck, reveal up to 1 &lt;Babidi&gt; or up to 1 card with 《Majin》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-034",
+    "code": "SB01-034",
+    "rarity": "R",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-034.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-034.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[Activate Main] Place this card in a Battle Area into its owner's Drop : Choose up to 1 Rest Mode Battle Card with a cost of 5 or less in your opponent's Battle Area and place it into its owner's Drop. Then, play up to 1 &lt;Majin Buu : Evil&gt; with a cost less than or equal to the card chosen by this skill and 《Absorption》 in its special traits from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-035",
+    "code": "SB01-035",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-035.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-035.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.<br>[When Attacking] If your Leader has 《Majin》 in its special traits, choose up to 1 Rest Mode Battle Card with a cost of 2 or less in your opponent's Battle Area and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-036",
+    "code": "SB01-036",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-036.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-036.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[When Attacking][Once per turn] Discard 1 card from your hand : If your Leader has 《Majin》 in its special traits, switch this card to Active Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-036-p1",
+    "code": "SB01-036-p1",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-036_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-036_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[When Attacking][Once per turn] Discard 1 card from your hand : If your Leader has 《Majin》 in its special traits, switch this card to Active Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-037",
+    "code": "SB01-037",
+    "rarity": "C",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-037.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-037.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "Y",
+    "power": "35000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[On Play] If your Leader has 《Majin》 in its special traits, choose up to 1 of your opponent's Rest Mode energy, and that card can't switch to Active Mode during your opponent's next turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-038",
+    "code": "SB01-038",
+    "rarity": "UC",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-038.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-038.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[When KO'd] Discard 1 card from your hand : If your Leader has 《Majin》 in its special traits, play up to 1 &lt;Majin Buu : Kid&gt; with a cost of 4 or less from your Drop in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-039",
+    "code": "SB01-039",
+    "rarity": "SR",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-039.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-039.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Permanent] This card can't be KO'd by your opponent's skills.<br>[On Play/When KO'd] If your Leader has 《Majin》 in its special traits, draw 1 card. Then, choose all cards with costs of 5 or less in your opponent's energy and Battle Area and switch them to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-040",
+    "code": "SB01-040",
+    "rarity": "C",
+    "name": "Majin Buu : Pure Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-040.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-040.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[On Play] Choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-041",
+    "code": "SB01-041",
+    "rarity": "C",
+    "name": "Majin Buu : Good",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-041.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-041.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking] If there are 2 or more Rest Mode cards in your opponent's Battle Area, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-042",
+    "code": "SB01-042",
+    "rarity": "C",
+    "name": "Majin Buu : Good",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-042.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-042.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking] If your Leader has 《Majin》 in its special traits, choose up to 1 Rest Mode card with a cost of 5 or less in your opponent's Battle Area and it can't switch to Active Mode during your opponent's next turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-043",
+    "code": "SB01-043",
+    "rarity": "C",
+    "name": "Yakon",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-043.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-043.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Wicked Soul",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] Play up to 1 non-&lt;Yakon&gt; Battle Card with a cost of 3 or less and 《Wicked Soul》 in its special traits from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-044",
+    "code": "SB01-044",
+    "rarity": "C",
+    "name": "Evil Itself",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-044.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-044.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Majin",
+    "effect": "[Activate Main] Discard 1 card from your hand : If you have &lt;Majin Buu : Kid&gt; in your Battle Area, choose up to 2 Rest Mode Battle Cards with costs of 4 or less in your opponent's Battle Area and KO them.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-045",
+    "code": "SB01-045",
+    "rarity": "L",
+    "name": "Bulma",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-045_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-045_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Earthling/Adventure\n                  Earthling/Adventure",
+    "effect": "[Permanent] This card can't attack.<br>[Activate Main] Switch this card to Rest Mode : Draw 1 card. Then, discard 1 card from your hand.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 5 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-045-p1",
+    "code": "SB01-045-p1",
+    "rarity": "L",
+    "name": "Bulma",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-045_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-045_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Earthling/Adventure\n                  Earthling/Adventure",
+    "effect": "[Permanent] This card can't attack.<br>[Activate Main] Switch this card to Rest Mode : Draw 1 card. Then, discard 1 card from your hand.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 5 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-046",
+    "code": "SB01-046",
+    "rarity": "C",
+    "name": "Spike",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-046.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-046.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] If you have 3 or more types of non-&lt;Spike&gt; cards with 《Adventure》 in their special traits in your Drop, choose up to 2 Battle Cards without &lt;Son Goku&gt; in their card names and with costs of 3 or less in your opponent's Battle Area and KO them.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-047",
+    "code": "SB01-047",
+    "rarity": "UC",
+    "name": "Oolong",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-047.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-047.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Adventure",
+    "effect": "[Auto][Your Turn] When this card is used in a combo from your Drop, draw 1 card. Then, discard 1 card from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-048",
+    "code": "SB01-048",
+    "rarity": "C",
+    "name": "Turtle",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-048.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-048.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Animal/Adventure",
+    "effect": "[Activate Main](1), switch this card in a Battle Area to Rest Mode : If your Leader has 《Adventure》 in its special traits, play up to 1 &lt;Master Roshi&gt; with a cost of 3 from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-049",
+    "code": "SB01-049",
+    "rarity": "UC",
+    "name": "Fortuneteller Baba",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-049.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-049.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, reveal up to 1 card with 《Adventure》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-049-p1",
+    "code": "SB01-049-p1",
+    "rarity": "UC",
+    "name": "Fortuneteller Baba",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-049_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-049_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, reveal up to 1 card with 《Adventure》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-050",
+    "code": "SB01-050",
+    "rarity": "R",
+    "name": "Master Roshi",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-050.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-050.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Activate Battle][Your Turn][Once per turn] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you use a card from your Drop in a combo during this turn, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-050-p1",
+    "code": "SB01-050-p1",
+    "rarity": "R",
+    "name": "Master Roshi",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-050_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-050_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Activate Battle][Your Turn][Once per turn] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you use a card from your Drop in a combo during this turn, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-051",
+    "code": "SB01-051",
+    "rarity": "UC",
+    "name": "Krillin",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-051.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-051.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling/Adventure",
+    "effect": "[Permanent] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you have a card in your Combo Area, this card gains [Critical] and +5000 power.<br>([Critical] : When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-051-p1",
+    "code": "SB01-051-p1",
+    "rarity": "UC",
+    "name": "Krillin",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-051_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-051_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling/Adventure",
+    "effect": "[Permanent] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you have a card in your Combo Area, this card gains [Critical] and +5000 power.<br>([Critical] : When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-052",
+    "code": "SB01-052",
+    "rarity": "C",
+    "name": "Suke San",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-052.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-052.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Activate Battle][Your Turn][Once per turn] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you use a card from your Drop in a combo during this turn, choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-053",
+    "code": "SB01-053",
+    "rarity": "R",
+    "name": "Son Goku : Childhood",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-053.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-053.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Adventure",
+    "effect": "[When Attacking] If your Leader has 《Adventure》 in its special traits, use up to 1 Battle Card from your Drop in a combo.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-053-p1",
+    "code": "SB01-053-p1",
+    "rarity": "R",
+    "name": "Son Goku : Childhood",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-053_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-053_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Adventure",
+    "effect": "[When Attacking] If your Leader has 《Adventure》 in its special traits, use up to 1 Battle Card from your Drop in a combo.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-054",
+    "code": "SB01-054",
+    "rarity": "UC",
+    "name": "Son Gohan",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-054.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-054.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "35000",
+    "comboPower": "10000",
+    "features": "Earthling/Adventure",
+    "effect": "[On Play] Add up to 1 &lt;Reunion&gt; from your Drop to your hand.<br>[End of Your Turn] Place this card in a Battle Area into its owner's Drop.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-055",
+    "code": "SB01-055",
+    "rarity": "C",
+    "name": "Draculaman",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-055.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-055.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Earthling/Adventure",
+    "effect": "[Permanent][Your Turn] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you have a card in your Combo Area, this card gets +10000 power.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-056",
+    "code": "SB01-056",
+    "rarity": "UC",
+    "name": "Puar",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-056.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-056.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Adventure",
+    "effect": "[Auto][Your Turn] When this card is used in a combo from your Drop, choose up to 1 Battle Card with a cost of 1 or less in your opponent's Battle Area and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-057",
+    "code": "SB01-057",
+    "rarity": "SR",
+    "name": "Bulma/Son Goku : Childhood",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-057.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-057.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "BB",
+    "power": "35000",
+    "comboPower": "5000",
+    "features": "Earthling/Saiyan/Adventure",
+    "effect": "[On Play] Draw 2 cards. Then, discard 1 card from your hand.<br>[Activate Battle][Your Turn][Once per turn] If you use a card from your Drop in a combo during this turn, this card gains [Double Strike] for the battle.<br>([Double Strike] : This card inflicts 2 damage instead of 1 when attacking.)",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-057-p1",
+    "code": "SB01-057-p1",
+    "rarity": "SR",
+    "name": "Bulma/Son Goku : Childhood",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-057_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-057_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "BB",
+    "power": "35000",
+    "comboPower": "5000",
+    "features": "Earthling/Saiyan/Adventure",
+    "effect": "[On Play] Draw 2 cards. Then, discard 1 card from your hand.<br>[Activate Battle][Your Turn][Once per turn] If you use a card from your Drop in a combo during this turn, this card gains [Double Strike] for the battle.<br>([Double Strike] : This card inflicts 2 damage instead of 1 when attacking.)",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-058",
+    "code": "SB01-058",
+    "rarity": "C",
+    "name": "Bandages",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-058.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-058.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling/Adventure",
+    "effect": "[Permanent] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you have a card in your Combo Area, this card gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-059",
+    "code": "SB01-059",
+    "rarity": "SR",
+    "name": "Yamcha",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-059.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-059.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "BB",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Earthling/Adventure",
+    "effect": "[Activate Battle][Your Turn][Once per turn] If your Leader has 《Adventure》 in its special traits, this card is in a battle, and you use a card from your Drop in a combo during this turn, play up to 1 non-&lt;Yamcha&gt; Battle Card with 《Adventure》 in its special traits from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "SB01-060",
+    "code": "SB01-060",
+    "rarity": "C",
+    "name": "Reunion",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-060.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/SB01-060.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling/Adventure",
+    "effect": "[Activate Battle] If your Leader has 《Adventure》 in its special traits, your card that's in a battle gets +15000 power for the battle. Then, use up to 1 &lt;Son Gohan&gt; from your Drop in a combo.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB01-085-p1",
+    "code": "FB01-085-p1",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-085_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-085_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB01-088-p2",
+    "code": "FB01-088-p2",
+    "rarity": "C",
+    "name": "Son Gohan : Childhood",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-088_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-088_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, then reveal up to 1 card with a cost of 5 or less and 《Saiyan》 in its special traits and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB01-101-p1",
+    "code": "FB01-101-p1",
+    "rarity": "C",
+    "name": "Instant Kamehameha",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-101_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-101_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Battle] Place 1 of your energy in your Drop : Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB01-103-p1",
+    "code": "FB01-103-p1",
+    "rarity": "UC",
+    "name": "Big Bang Attack",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-103_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-103_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Permanent] If you have 6 or more energy, reduce the cost of this card in your hand by 1.<br>[Activate Main] Place 1 of your energy in your Drop : Choose up to 1 of your opponent's Battle Cards with a cost of 5 or less and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB02-071-p1",
+    "code": "FB02-071-p1",
+    "rarity": "C",
+    "name": "Kami",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-071_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-071_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Namekian/God/Lookout",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards with a cost of 1 or less and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB02-074-p1",
+    "code": "FB02-074-p1",
+    "rarity": "R",
+    "name": "Krillin",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-074_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-074_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Earthling",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Android 18&gt; or up to 1 Extra and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB02-085-p3",
+    "code": "FB02-085-p3",
+    "rarity": "R",
+    "name": "Cell Jr.",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-085_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-085_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Permanent] If you have a &lt;Cell&gt; Battle Card with a cost of 8 or more in your Battle Area, you can use and play this card from your hand without paying its cost.<br>[On Play] Add up to 1 Extra from your Drop to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB03-032-p3",
+    "code": "FB03-032-p3",
+    "rarity": "C",
+    "name": "Great Saiyaman",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-032_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-032_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling/Satan City",
+    "effect": "-",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB03-049-p3",
+    "code": "FB03-049-p3",
+    "rarity": "R",
+    "name": "Hercule",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-049_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-049_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Satan City",
+    "effect": "[When Attacking] Reveal the top card of your deck, and if the revealed card has 《Satan City》 in its special traits, choose up to 1 of your opponent's Battle Cards and reduce its cost by 2 for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB03-062-p1",
+    "code": "FB03-062-p1",
+    "rarity": "C",
+    "name": "The Farmer With Power Level 5",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-062_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-062_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "5",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "-",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB03-075-p3",
+    "code": "FB03-075-p3",
+    "rarity": "UC",
+    "name": "Days of Training",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-075_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-075_p3.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Namekian/Training",
+    "effect": "[Activate Main] If your Leader is &lt;Piccolo&gt;, add the top card of your deck to your energy in Rest Mode.<br>[Activate Battle] Choose your Leader or up to 1 of your Battle Cards and it gets +40000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB03-084-p3",
+    "code": "FB03-084-p3",
+    "rarity": "C",
+    "name": "Babidi",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-084_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-084_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Evil Wizard",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Majin Buu&gt; or card with 《Wicked Soul》 in its special traits and add it to your hand. Place the rest at the bottom of its owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB03-099-p1",
+    "code": "FB03-099-p1",
+    "rarity": "C",
+    "name": "Energy Absorption",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-099_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-099_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/Wicked Soul",
+    "effect": "[Activate Main] Choose up to 1 of your opponent's Battle Cards, switch it to Rest Mode, and it can't switch to Active Mode during your opponent's next turn. Then, if that card has a cost of 4 or more, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-041-p1",
+    "code": "FB04-041-p1",
+    "rarity": "UC",
+    "name": "Videl",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-041_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-041_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Satan City",
+    "effect": "[Activate Main] Return this card to its owner's hand : Reveal the top card of your deck, and if the revealed card has 《Satan City》 in its special traits, play up to 1 &lt;Videl&gt; with a cost of 2 from your hand. Then, you can't play &lt;Videl&gt; for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-051-p2",
+    "code": "FB04-051-p2",
+    "rarity": "L",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f_p2.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan\n                  Saiyan",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-051-p3",
+    "code": "FB04-051-p3",
+    "rarity": "L",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-051_f_p3.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan\n                  Saiyan",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-060-p5",
+    "code": "FB04-060-p5",
+    "rarity": "UC",
+    "name": "Son Gohan : Youth",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-060_p5.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-060_p5.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent] If you have a [Field] with &lt;Full Moon&gt; in its card name in your Battle Area, this card gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-069-p3",
+    "code": "FB04-069-p3",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-069_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-069_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GGG",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Discard 1 card from your hand : Look at 10 cards from the top of your deck and place up to 1 &lt;Artificial Full Moon&gt; into the Battle Area. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-072-p3",
+    "code": "FB04-072-p3",
+    "rarity": "R",
+    "name": "Raditz",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-072_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-072_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[On Play] If you placed a card from your energy into its owner's Drop during this turn, add up to 1 《Saiyan》-only non-&lt;Raditz&gt; card with a cost of 3 or less from your Drop to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-073-p1",
+    "code": "FB04-073-p1",
+    "rarity": "UC",
+    "name": "A Warm Greeting",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-073_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-073_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] Draw 1 card. Then, choose up to 1 card with a cost of 4 or less in your opponent's Battle Area and add it to its owner's energy in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-076-p3",
+    "code": "FB04-076-p3",
+    "rarity": "R",
+    "name": "Artificial Full Moon",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-076_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-076_p3.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "GG",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[End of Your Turn] If you have 4 or less energy and you placed a card from your energy into its owner's Drop during this turn, add up to 1 card with a cost of 3 or more from your Drop to your energy in Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-088-p1",
+    "code": "FB04-088-p1",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-088_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-088_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Wicked Soul",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] If there is a &lt;Majin Buu&gt; in a Leader Area or Battle Area, choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-091-p4",
+    "code": "FB04-091-p4",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-091_p4.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-091_p4.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-095-p3",
+    "code": "FB04-095-p3",
+    "rarity": "R",
+    "name": "Majin Buu : Kid",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-095_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-095_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[Permanent] This card can't be switched to Active Mode during your Charge Phase.<br>[Activate Main][Once per turn] KO 1 of your Battle Cards : If your Leader has 《Majin》 in its special traits, switch this card to Active Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB04-096-p1",
+    "code": "FB04-096-p1",
+    "rarity": "UC",
+    "name": "Majin Buu : Pure Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-096_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-096_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[When Attacking] At the end of the battle, KO this card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB05-119-p3",
+    "code": "FB05-119-p3",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGG",
+    "power": "45000",
+    "comboPower": "-",
+    "features": "Saiyan/Namek",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[Permanent] If your life is at 2 or less and you don't have a &lt;Son Goku&gt; with a cost of 7 in your Battle Area, reduce the cost of this card in your hand by 4.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB05-119-p4",
+    "code": "FB05-119-p4",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p4.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p4.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGG",
+    "power": "45000",
+    "comboPower": "-",
+    "features": "Saiyan/Namek",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[Permanent] If your life is at 2 or less and you don't have a &lt;Son Goku&gt; with a cost of 7 in your Battle Area, reduce the cost of this card in your hand by 4.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-011-p1",
+    "code": "FB06-011-p1",
+    "rarity": "UC",
+    "name": "Android 17",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-011_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-011_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking] If attacking a Battle Card, this card gets +5000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-012-p1",
+    "code": "FB06-012-p1",
+    "rarity": "R",
+    "name": "Android 17/Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-012_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-012_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Choose all Battle Cards in your opponent's Battle Area and they get -10000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-014-p1",
+    "code": "FB06-014-p1",
+    "rarity": "C",
+    "name": "Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-014_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-014_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android",
+    "effect": "[Permanent][Your Turn] This card in a Battle Area gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-019-p1",
+    "code": "FB06-019-p1",
+    "rarity": "UC",
+    "name": "Dr. Gero",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-019_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-019_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-022-p1",
+    "code": "FB06-022-p1",
+    "rarity": "R",
+    "name": "Bleak Future",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-022_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-022_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Permanent] If your Leader is &lt;Android 18&gt;, your Battle Cards with 《Android》 in their special traits can attack Active Mode Battle Cards in your opponent's Battle Area.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-024-p1",
+    "code": "FB06-024-p1",
+    "rarity": "C",
+    "name": "Hell's Flash",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-024_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-024_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Android",
+    "effect": "[Activate Battle][Your Turn] Your cards with 《Android》 in their special traits that are in a battle with your opponent's Battle Cards get +25000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-025-p2",
+    "code": "FB06-025-p2",
+    "rarity": "L",
+    "name": "Son Goku : Childhood",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-025_f_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-025_f_p2.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/World Tournament\n                  Saiyan/World Tournament",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-025-p3",
+    "code": "FB06-025-p3",
+    "rarity": "L",
+    "name": "Son Goku : Childhood",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-025_f_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-025_f_p3.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/World Tournament\n                  Saiyan/World Tournament",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-026-p1",
+    "code": "FB06-026-p1",
+    "rarity": "C",
+    "name": "Announcer",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-026_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-026_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 non-&lt;Announcer&gt; card with a cost of 4 or less and 《World Tournament》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-027-p1",
+    "code": "FB06-027-p1",
+    "rarity": "UC",
+    "name": "Giran",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-027_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-027_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Choose up to 1 Battle Card in your opponent's Battle Area with a cost of 1 or less and place it at the bottom of its owner's deck.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-033-p1",
+    "code": "FB06-033-p1",
+    "rarity": "UC",
+    "name": "Nam",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-033_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-033_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, if this card was played by a skill, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-035-p1",
+    "code": "FB06-035-p1",
+    "rarity": "C",
+    "name": "Bulma",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-035_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-035_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Look at 7 cards from the top of your deck, reveal up to 1 Extra with a cost of 2 or less and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-035-p2",
+    "code": "FB06-035-p2",
+    "rarity": "C",
+    "name": "Bulma",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-035_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-035_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Look at 7 cards from the top of your deck, reveal up to 1 Extra with a cost of 2 or less and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-037-p1",
+    "code": "FB06-037-p1",
+    "rarity": "R",
+    "name": "Yamcha",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-037_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-037_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Activate Battle][Your Turn][Once per turn] If you use an Extra with an original cost of 1 or more during this turn, this card in a Battle Area gets +10000 power for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-038-p1",
+    "code": "FB06-038-p1",
+    "rarity": "UC",
+    "name": "Launch",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-038_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-038_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling/World Tournament",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-039-p1",
+    "code": "FB06-039-p1",
+    "rarity": "C",
+    "name": "Ranfan",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-039_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-039_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "10000",
+    "comboPower": "5000",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Main][Once per turn] If your Leader is &lt;Son Goku : Childhood&gt;, choose up to 1 Battle Card in your opponent's Battle Area and reduce its cost by 1 for the turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-041-p1",
+    "code": "FB06-041-p1",
+    "rarity": "R",
+    "name": "Scissors Paper Rock",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-041_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-041_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/World Tournament",
+    "effect": "[Activate Battle] Your cards that are in a battle get +25000 power for the battle. Then, if you have 7 or fewer cards in your hand, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-043-p1",
+    "code": "FB06-043-p1",
+    "rarity": "UC",
+    "name": "World Tournament Arena",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-043_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-043_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "World Tournament",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Battle] Discard 1 Extra from your hand and switch this card in a Battle Area to Rest Mode : Your cards that are in a battle get +15000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-044-p1",
+    "code": "FB06-044-p1",
+    "rarity": "UC",
+    "name": "Cross Arm Dive",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-044_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-044_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Main] Return 1 blue Battle Card with a cost of 3 or less in your Battle Area to its owner's hand : Play up to 1 Battle Card with a cost of 3 or less and 《World Tournament》 in its special traits from your hand.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-045-p1",
+    "code": "FB06-045-p1",
+    "rarity": "R",
+    "name": "Dodon Wave",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-045_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-045_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Battle][Your Turn] Choose up to 1 Battle Card with a cost of 5 or less in your opponent's Battle Area and return it to its owner's hand. Then, if there is a Battle Card with a cost of 4 or more in your Battle Area, your cards that are in a battle get +10000 power for the battle.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-046-p1",
+    "code": "FB06-046-p1",
+    "rarity": "C",
+    "name": "Sleepy Boy Technique",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-046_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-046_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/World Tournament",
+    "effect": "[Activate Main] Discard 1 card from your hand : Choose up to 2 Battle Cards with a total cost of 5 or less in your opponent's Battle Area and place them at the bottom of their owner's deck in any order.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-100-p1",
+    "code": "FB06-100-p1",
+    "rarity": "R",
+    "name": "Cymbal",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-100_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-100_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Demon Clan",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-102-p1",
+    "code": "FB06-102-p1",
+    "rarity": "UC",
+    "name": "Tambourine",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-102_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-102_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Demon Clan",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, if you have 2 or more Battle Cards with 《Demon Clan》 in their special traits in your Battle Area, this card can't be removed from the Battle Area by your opponent's skills until the end of your opponent's next turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-105-p1",
+    "code": "FB06-105-p1",
+    "rarity": "R",
+    "name": "Drum",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-105_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-105_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Demon Clan",
+    "effect": "[On Play] Choose up to 1 Battle Card with a cost of 4 or less in your opponent's Battle Area and it can't attack during your opponent's next turn.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-113-p1",
+    "code": "FB06-113-p1",
+    "rarity": "R",
+    "name": "Piccolo Jr.",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-113_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-113_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Demon Clan",
+    "effect": "[On Play/When Attacking] If you have 5 or more cards with 《Demon Clan》 in their special traits in your Drop, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-113-p2",
+    "code": "FB06-113-p2",
+    "rarity": "R",
+    "name": "Piccolo Jr.",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-113_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-113_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Demon Clan",
+    "effect": "[On Play/When Attacking] If you have 5 or more cards with 《Demon Clan》 in their special traits in your Drop, draw 1 card.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FB06-117-p1",
+    "code": "FB06-117-p1",
+    "rarity": "UC",
+    "name": "Explosive Wave",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-117_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB06-117_p1.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Demon Clan",
+    "effect": "[Activate Main] If you have 2 or more Battle Cards with 《Demon Clan》 in their special traits in your Battle Area, choose up to 1 Battle Card in your opponent's Battle Area and KO it.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "FS05-05-p2",
+    "code": "FS05-05-p2",
+    "rarity": "C",
+    "name": "Son Gohan",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-05_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-05_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-42",
+    "code": "E-42",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-42.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-42.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-43",
+    "code": "E-43",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-43.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-43.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-44",
+    "code": "E-44",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-44.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-44.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-45",
+    "code": "E-45",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-45.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-45.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-46",
+    "code": "E-46",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-46.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-46.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-47",
+    "code": "E-47",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-47.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-47.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-48",
+    "code": "E-48",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-48.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-48.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-49",
+    "code": "E-49",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-49.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-49.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-50",
+    "code": "E-50",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-50.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-50.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-51",
+    "code": "E-51",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-51.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-51.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-52",
+    "code": "E-52",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-52.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-52.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-53",
+    "code": "E-53",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-53.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-53.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-54",
+    "code": "E-54",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-54.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-54.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-55",
+    "code": "E-55",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-55.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-55.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-56",
+    "code": "E-56",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-56.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-56.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-57",
+    "code": "E-57",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-57.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-57.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-58",
+    "code": "E-58",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-58.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-58.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-59",
+    "code": "E-59",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-59.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-59.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-60",
+    "code": "E-60",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-60.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-60.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-61",
+    "code": "E-61",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-61.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-61.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-62",
+    "code": "E-62",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-62.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-62.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-42-p1",
+    "code": "E-42-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-42_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-42_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-43-p1",
+    "code": "E-43-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-43_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-43_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-44-p1",
+    "code": "E-44-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-44_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-44_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-45-p1",
+    "code": "E-45-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-45_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-45_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-46-p1",
+    "code": "E-46-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-46_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-46_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-47-p1",
+    "code": "E-47-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-47_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-47_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-48-p1",
+    "code": "E-48-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-48_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-48_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-49-p1",
+    "code": "E-49-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-49_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-49_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-50-p1",
+    "code": "E-50-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-50_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-50_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-51-p1",
+    "code": "E-51-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-51_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-51_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-52-p1",
+    "code": "E-52-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-52_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-52_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-53-p1",
+    "code": "E-53-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-53_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-53_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-54-p1",
+    "code": "E-54-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-54_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-54_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-55-p1",
+    "code": "E-55-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-55_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-55_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-56-p1",
+    "code": "E-56-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-56_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-56_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-57-p1",
+    "code": "E-57-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-57_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-57_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-58-p1",
+    "code": "E-58-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-58_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-58_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-59-p1",
+    "code": "E-59-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-59_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-59_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-60-p1",
+    "code": "E-60-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-60_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-60_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-61-p1",
+    "code": "E-61-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-61_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-61_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  },
+  {
+    "id": "E-62-p1",
+    "code": "E-62-p1",
+    "rarity": "",
+    "name": "Energy Marker",
+    "color": "-",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-62_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/E-62_p1.webp"
+    },
+    "cardType": "ENERGY MARKER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "-",
+    "effect": "At the start of the game, the player who goes second places 1 Energy Marker in their Energy Area.<br>Removing 1 Energy Marker from the game is equivalent to switching 1 card from your energy (with the same color as your Leader) to Rest Mode.",
+    "getIt": "MANGA BOOSTER 01[SB01]",
+    "set": { "id": "sb01", "name": "MANGA BOOSTER 01[SB01]" }
+  }
+]

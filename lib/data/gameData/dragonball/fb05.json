@@ -1,0 +1,3082 @@
+[
+  {
+    "id": "FB05-001",
+    "code": "FB05-001",
+    "rarity": "L",
+    "name": "Son Goku (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-001_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-001_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Demon Realm\n                  Saiyan/Demon Realm",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-001-p1",
+    "code": "FB05-001-p1",
+    "rarity": "L",
+    "name": "Son Goku (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-001_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-001_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Demon Realm\n                  Saiyan/Demon Realm",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-002",
+    "code": "FB05-002",
+    "rarity": "UC",
+    "name": "Kadan : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-002.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-002.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Demon Realm",
+    "effect": "[When Attacking] If your Leader is awakened, play up to 1 Battle Card with a cost of 1 and &lt;DA&gt; in its card name from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-003",
+    "code": "FB05-003",
+    "rarity": "C",
+    "name": "Master Roshi (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-003.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-003.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Earthling/Demon Realm",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-004",
+    "code": "FB05-004",
+    "rarity": "R",
+    "name": "Kibito (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-004.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-004.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Attendant/Demon Realm",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-005",
+    "code": "FB05-005",
+    "rarity": "C",
+    "name": "Glorio : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-005.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-005.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Demon Realm",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-006",
+    "code": "FB05-006",
+    "rarity": "SR",
+    "name": "Glorio : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-006.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-006.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Demon Realm",
+    "effect": "[On Play] If your Leader is awakened, your opponent's Leader gets -5000 power for the turn.<br>[When Attacking][Once per turn] If your Leader has &lt;DA&gt; in its card name, switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-006-p1",
+    "code": "FB05-006-p1",
+    "rarity": "SR",
+    "name": "Glorio : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-006_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-006_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Demon Realm",
+    "effect": "[On Play] If your Leader is awakened, your opponent's Leader gets -5000 power for the turn.<br>[When Attacking][Once per turn] If your Leader has &lt;DA&gt; in its card name, switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-007",
+    "code": "FB05-007",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-007.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-007.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Universe 7",
+    "effect": "[When Attacking] Choose up to 1 Battle Card in your opponent's Battle Area and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-008",
+    "code": "FB05-008",
+    "rarity": "R",
+    "name": "Son Gohan : Adolescence",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-008.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-008.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling/Universe 7",
+    "effect": "[On Play] Add up to 1 card with a cost of 3 or less and 《Universe 7》 in its special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-009",
+    "code": "FB05-009",
+    "rarity": "SR",
+    "name": "Tamagami Number Three : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-009.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-009.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Demon Realm",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[Permanent] This card can't be KO'd once per turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-009-p1",
+    "code": "FB05-009-p1",
+    "rarity": "SR",
+    "name": "Tamagami Number Three : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-009_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-009_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Demon Realm",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[Permanent] This card can't be KO'd once per turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-010",
+    "code": "FB05-010",
+    "rarity": "UC",
+    "name": "Tien Shinhan",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-010.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-010.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling/Universe 7",
+    "effect": "[Permanent][Opponent's Turn] This card in a Battle Area gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-011",
+    "code": "FB05-011",
+    "rarity": "C",
+    "name": "Neva : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-011.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-011.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Namekian/Demon Realm",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 non-&lt;Neva : DA&gt; card with a cost of 4 or less and &lt;DA&gt; in its card name and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-012",
+    "code": "FB05-012",
+    "rarity": "C",
+    "name": "Hybis : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-012.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-012.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Demon Realm",
+    "effect": "[On Play] Choose up to 1 Battle Card with 15000 power or less in your opponent's Battle Area and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-013",
+    "code": "FB05-013",
+    "rarity": "R",
+    "name": "Panzy : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-013.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-013.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "Demon Realm",
+    "effect": "[Permanent][Your Turn] If your Leader is awakened, this card in a Battle Area gets +5000 power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-014",
+    "code": "FB05-014",
+    "rarity": "C",
+    "name": "Panzy : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-014.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-014.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Demon Realm",
+    "effect": "[On Play] Choose up to 1 of your Leaders or up to 1 Battle Card―both with &lt;DA&gt; in their card names―in your Battle Area and it gets +5000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-015",
+    "code": "FB05-015",
+    "rarity": "SR",
+    "name": "Panzy : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-015.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-015.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Demon Realm",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] If your Leader has &lt;DA&gt; in its card name, draw 2 cards.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-015-p1",
+    "code": "FB05-015-p1",
+    "rarity": "SR",
+    "name": "Panzy : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-015_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-015_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Demon Realm",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] If your Leader has &lt;DA&gt; in its card name, draw 2 cards.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-016",
+    "code": "FB05-016",
+    "rarity": "C",
+    "name": "Piccolo (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-016.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-016.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Namekian/God/Demon Realm",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-017",
+    "code": "FB05-017",
+    "rarity": "UC",
+    "name": "Bulma (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-017.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-017.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling/Demon Realm",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-018",
+    "code": "FB05-018",
+    "rarity": "UC",
+    "name": "Vegeta (Mini) : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-018.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-018.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Demon Realm",
+    "effect": "[Permanent][Your Turn] This card in a Battle Area gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-019",
+    "code": "FB05-019",
+    "rarity": "R",
+    "name": "Majin Buu : Good",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-019.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-019.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Majin/Universe 7",
+    "effect": "[On Play] If your Leader is awakened, this card gets +15000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-020",
+    "code": "FB05-020",
+    "rarity": "UC",
+    "name": "Minotaur : DA",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-020.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-020.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Demon Realm",
+    "effect": "[When Attacking] If there is a Battle Card with 25000 power or more, choose up to 1 Battle Card in your opponent's Battle Area and it gets -10000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-021",
+    "code": "FB05-021",
+    "rarity": "R",
+    "name": "Mosco",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-021.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-021.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "God of Destruction/Universe 3",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 non-&lt;Mosco&gt; card with 《God of Destruction》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-022",
+    "code": "FB05-022",
+    "rarity": "UC",
+    "name": "New Adventure",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-022.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-022.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Demon Realm",
+    "effect": "[Activate Battle][Your Turn] If your Leader is awakened, your cards with &lt;DA&gt; in their card names that are in a battle get +15000 power for the battle.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-023",
+    "code": "FB05-023",
+    "rarity": "C",
+    "name": "Mini Body",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-023.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-023.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling",
+    "effect": "[Activate Main] Choose all Battle Cards in your opponent's Battle Area and they get -5000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-024",
+    "code": "FB05-024",
+    "rarity": "C",
+    "name": "Warp-sama",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-024.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-024.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Demon Realm",
+    "effect": "[Activate Main] Look at 5 cards from the top of your deck, reveal up to 1 card with &lt;DA&gt; in its card name and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.<br>[Activate Battle][Opponent's Turn] Your cards that are in a battle get +15000 power for the battle.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-025",
+    "code": "FB05-025",
+    "rarity": "L",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-025_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-025_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Potara\n                  Saiyan/Potara",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, place the top 10 cards of your deck into their owner's Drop. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-025-p1",
+    "code": "FB05-025-p1",
+    "rarity": "L",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-025_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-025_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Potara\n                  Saiyan/Potara",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, place the top 10 cards of your deck into their owner's Drop. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-026",
+    "code": "FB05-026",
+    "rarity": "C",
+    "name": "Uub",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-026.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-026.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[On Play] If there is a &lt;Son Goku&gt; in your Battle Area, draw 2 cards. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-027",
+    "code": "FB05-027",
+    "rarity": "R",
+    "name": "Goku Black",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-027.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-027.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[Permanent][Your Turn] If you have 7 or fewer cards in your hand, this card in a Battle Area gets +10000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-028",
+    "code": "FB05-028",
+    "rarity": "R",
+    "name": "Gotenks",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-028.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-028.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent][Your Turn] If you have 10 or more cards in your Drop, this card in a Battle Area gets +10000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-029",
+    "code": "FB05-029",
+    "rarity": "UC",
+    "name": "Zamasu : Fused",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-029.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-029.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Supreme Kai/Potara",
+    "effect": "[On Play]  If you have 7 or fewer cards in your hand, choose up to 1 &lt;Zamasu : Fused&gt; in your Leader Area or Battle Area and it gets +5000 power until the end of your opponent's next turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-030",
+    "code": "FB05-030",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-030.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-030.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose one―<br>・Place the top 5 cards of your deck into their owner's Drop.<br>・If you have 20 or more cards in your Drop, during this turn, the next time you use an Extra with a cost of 3 or less from your hand, you don't have to pay the cost.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-030-p1",
+    "code": "FB05-030-p1",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-030_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-030_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose one―<br>・Place the top 5 cards of your deck into their owner's Drop.<br>・If you have 20 or more cards in your Drop, during this turn, the next time you use an Extra with a cost of 3 or less from your hand, you don't have to pay the cost.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-031",
+    "code": "FB05-031",
+    "rarity": "UC",
+    "name": "Son Goku",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-031.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-031.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] Add 1 card from your life to your hand. Then, place the top 3 cards of your deck into their owner's Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-032",
+    "code": "FB05-032",
+    "rarity": "C",
+    "name": "Son Goten : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-032.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-032.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-033",
+    "code": "FB05-033",
+    "rarity": "R",
+    "name": "Son Gohan : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-033.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-033.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "U",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you have 7 or fewer cards in your hand, draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-034",
+    "code": "FB05-034",
+    "rarity": "C",
+    "name": "Dende",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-034.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-034.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Namekian/God",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-035",
+    "code": "FB05-035",
+    "rarity": "UC",
+    "name": "Trunks : Adolescence",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-035.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-035.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, choose up to 1 Battle Card with a cost of 1 or less in your opponent's Battle Area and place it at the bottom of its owner's deck.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-036",
+    "code": "FB05-036",
+    "rarity": "UC",
+    "name": "Pan",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-036.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-036.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-037",
+    "code": "FB05-037",
+    "rarity": "C",
+    "name": "Bulma",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-037.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-037.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Trunks : Youth&gt; or &lt;Vegeta&gt; and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-038",
+    "code": "FB05-038",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-038.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-038.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "UU",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play] Add up to 1 blue card with a cost of 3 from your Drop to your hand.<br>[Activate Battle] Switch this card in a Battle Area to Rest Mode : If you have 20 or more cards in your Drop, your &lt;Son Goku&gt; with a cost of 3 that's in a battle gets +30000 power for the battle",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-038-p1",
+    "code": "FB05-038-p1",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-038_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-038_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "UU",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play] Add up to 1 blue card with a cost of 3 from your Drop to your hand.<br>[Activate Battle] Switch this card in a Battle Area to Rest Mode : If you have 20 or more cards in your Drop, your &lt;Son Goku&gt; with a cost of 3 that's in a battle gets +30000 power for the battle",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-039",
+    "code": "FB05-039",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-039.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-039.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Another World",
+    "effect": "[When Attacking] Add up to 1 card from your life to your hand. Then, place the top 3 cards of your deck into their owner's Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-040",
+    "code": "FB05-040",
+    "rarity": "SR",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-040.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-040.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Potara",
+    "effect": "[On Play] Choose up to 1 Battle Card with a cost of 4 or less in your opponent's Battle Area and return it to its owner's hand.<br>[When Attacking] If you have 20 or more cards in your Drop, your opponent can't attack using Battle Cards with costs of 3 or less during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-040-p1",
+    "code": "FB05-040-p1",
+    "rarity": "SR",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-040_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-040_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Saiyan/Potara",
+    "effect": "[On Play] Choose up to 1 Battle Card with a cost of 4 or less in your opponent's Battle Area and return it to its owner's hand.<br>[When Attacking] If you have 20 or more cards in your Drop, your opponent can't attack using Battle Cards with costs of 3 or less during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-041",
+    "code": "FB05-041",
+    "rarity": "R",
+    "name": "Vegito",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-041.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-041.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Potara",
+    "effect": "[Activate Main] Place this card in a Battle Area at the bottom of its owner's deck : If you have 20 or more cards in your Drop, add up to 1 &lt;Son Goku&gt; with a cost of 3 or less and up to 1 &lt;Vegeta&gt; with a cost of 3 or less from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-042",
+    "code": "FB05-042",
+    "rarity": "C",
+    "name": "Majin Buu : Good",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-042.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-042.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Majin",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[Permanent][Opponent's Turn] If you have 20 or more cards in your Drop, this card in a Battle Area gets +20000 power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-043",
+    "code": "FB05-043",
+    "rarity": "UC",
+    "name": "Hercule",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-043.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-043.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Place the top 2 cards of your deck into their owner's Drop. Then, if you have 10 or more cards in your Drop, draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-044",
+    "code": "FB05-044",
+    "rarity": "C",
+    "name": "Old Kai",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-044.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-044.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Supreme Kai",
+    "effect": "[On Play] Place the top 2 cards of your deck into their owner's Drop. Then, if you have 10 or more cards in your Drop, choose up to 1 of your Leaders or up to 1 Battle Card in your Battle Area―both with 《Saiyan》 in their special traits―and it gets +5000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-045",
+    "code": "FB05-045",
+    "rarity": "C",
+    "name": "Sacred World of the Kai",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-045.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-045.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Supreme Kai",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Main] Switch this card in a Battle Area to Rest Mode : Place the top 2 cards of your deck into their owner's Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-046",
+    "code": "FB05-046",
+    "rarity": "R",
+    "name": "Savior of the World",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-046.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-046.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling",
+    "effect": "[Activate Battle] If you have 20 or more cards in your Drop, your cards that are in a battle get +15000 power for the battle.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-047",
+    "code": "FB05-047",
+    "rarity": "C",
+    "name": "Unrivaled Fusion Father",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-047.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-047.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Potara",
+    "effect": "[Activate Main] Choose up to 1 &lt;Vegito&gt; with a cost of 4 or more in your Battle Area and it gets +10000 power for the turn. Then, if you have 20 or more cards in your Drop, that card gets +10000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-048",
+    "code": "FB05-048",
+    "rarity": "R",
+    "name": "See You!",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-048.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-048.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "U",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] If you have 20 or more cards in your Drop, choose up to 1 &lt;Son Goku&gt; with a cost of 3 in your Battle Area and it gains [Double Strike] for the turn. Then, choose up to 1 Battle Card in your opponent's Battle Area and place it at the bottom of its owner's deck.<br>([Double Strike] : This card inflicts 2 damage instead of 1 when attacking.)",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-049",
+    "code": "FB05-049",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-049_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-049_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Planet Namek\n                  Saiyan/Planet Namek",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 3 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-049-p1",
+    "code": "FB05-049-p1",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-049_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-049_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Planet Namek\n                  Saiyan/Planet Namek",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 3 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-050",
+    "code": "FB05-050",
+    "rarity": "C",
+    "name": "North Kai",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-050.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-050.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Kai/King Kai's Planet",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-051-p1",
+    "code": "FB05-051-p1",
+    "rarity": "SR",
+    "name": "Krillin",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-051_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-051_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling/Planet Namek",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] Add up to 1 card from your hand to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-051",
+    "code": "FB05-051",
+    "rarity": "SR",
+    "name": "Krillin",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-051.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-051.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling/Planet Namek",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] Add up to 1 card from your hand to your energy in Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-052",
+    "code": "FB05-052",
+    "rarity": "C",
+    "name": "Guru",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-052.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-052.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Namekian/Planet Namek",
+    "effect": "[End of Your Turn] Place 1 card from your life into your Drop.<br>[Activate Main] Switch this card in a Battle Area to Rest Mode : During this turn, the next time you use an Extra with a cost of 5 and 《Namekian》 in its special traits from your hand, you don't have to pay the cost.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-053",
+    "code": "FB05-053",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-053.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-053.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Planet Namek",
+    "effect": "[Permanent][Your Turn] If your life is at 2 or less, this card in a Battle Area gets +15000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-054",
+    "code": "FB05-054",
+    "rarity": "SR",
+    "name": "Son Gohan : Youth",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-054.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-054.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling/Planet Namek",
+    "effect": "[On Play] Choose one―<br>・If your life is at 2 or less, choose up to 1 Battle Card in your opponent's Battle Area and KO it.<br>・Add 1 card from your life to your hand. Then, choose up to 1 Battle Card with a cost of 3 or less in your opponent's Battle Area and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-054-p1",
+    "code": "FB05-054-p1",
+    "rarity": "SR",
+    "name": "Son Gohan : Youth",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-054_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-054_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "GG",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling/Planet Namek",
+    "effect": "[On Play] Choose one―<br>・If your life is at 2 or less, choose up to 1 Battle Card in your opponent's Battle Area and KO it.<br>・Add 1 card from your life to your hand. Then, choose up to 1 Battle Card with a cost of 3 or less in your opponent's Battle Area and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-055",
+    "code": "FB05-055",
+    "rarity": "UC",
+    "name": "Chi-Chi",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-055.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-055.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-056",
+    "code": "FB05-056",
+    "rarity": "UC",
+    "name": "Chiaotzu",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-056.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-056.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Another World/King Kai's Planet",
+    "effect": "[On Play] If your life is at 2 or less, choose up to 1 Battle Card with a cost of 5 or less in your opponent's Battle Area and it can't attack during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-057",
+    "code": "FB05-057",
+    "rarity": "C",
+    "name": "Tien Shinhan",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-057.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-057.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Earthling/Another World/King Kai's Planet",
+    "effect": "[On Play] Place 1 card from your life into its owner's Drop : Choose up to 1 Battle Card with a cost of 2 or less in your opponent's Battle Area and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-058",
+    "code": "FB05-058",
+    "rarity": "UC",
+    "name": "Dende",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-058.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-058.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Namekian/Planet Namek",
+    "effect": "[Activate Main] Switch this card in a Battle Area to Rest Mode : If your life is at 1, add the top card of your deck to your life.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-059",
+    "code": "FB05-059",
+    "rarity": "C",
+    "name": "Nail",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-059.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-059.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Namekian/Planet Namek",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[Permanent][Opponent's Turn] Your &lt;Guru&gt; can't be removed from the Battle Area by your opponent's skills.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-060",
+    "code": "FB05-060",
+    "rarity": "UC",
+    "name": "Piccolo",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-060.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-060.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "GGG",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Namekian/Planet Namek",
+    "effect": "[On Play] Place 1 card from your life into its owner's Drop : Add up to 1 card with 《Namekian》 in its special traits from your Drop to its owner's energy.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-061",
+    "code": "FB05-061",
+    "rarity": "C",
+    "name": "Dr. Brief",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-061.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-061.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] Look at 7 cards from the top of your deck, reveal up to 1 Extra with a cost of 2 or less and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-062",
+    "code": "FB05-062",
+    "rarity": "R",
+    "name": "Bulma",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-062.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-062.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/Planet Namek",
+    "effect": "[On Play] Look at 3 cards from the top of your deck, reveal up to 1 card with 《Planet Namek》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-063",
+    "code": "FB05-063",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-063.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-063.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Planet Namek",
+    "effect": "[On Play] Add 1 card from your life to your hand. Then, if your life is at 2 or less, draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-064",
+    "code": "FB05-064",
+    "rarity": "R",
+    "name": "Muri",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-064.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-064.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Namekian/Planet Namek",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Add 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-065",
+    "code": "FB05-065",
+    "rarity": "C",
+    "name": "Yamcha",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-065.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-065.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Earthling/Another World/King Kai's Planet",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-066",
+    "code": "FB05-066",
+    "rarity": "UC",
+    "name": "Yardratian",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-066.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-066.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Alien",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-067",
+    "code": "FB05-067",
+    "rarity": "R",
+    "name": "Destructo Disc",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-067.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-067.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Earthling/Planet Namek",
+    "effect": "[Activate Battle][Your Turn] Your cards that are in a battle get +20000 power for the battle. Then, if your life is at 2 or less, those cards gain [Critical] for the Battle.<br>([Critical] : When this card inflicts damage with an attack, the life is placed in the Drop.)",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-068",
+    "code": "FB05-068",
+    "rarity": "C",
+    "name": "Unlock Ability",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-068.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-068.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "5",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Namekian/Planet Namek",
+    "effect": "[Activate Main] Choose up to 1 Battle Card in your Battle Area and it gets +15000 power for the turn. Then, if your life is at 1, add the top 2 cards of your deck to your life.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-069",
+    "code": "FB05-069",
+    "rarity": "C",
+    "name": "Training at 100Gs",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-069.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-069.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "3",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Training",
+    "effect": "[Activate Main] Draw 1 card and add 1 card from your life to your hand. Then, if your life is at 2 or less, play up to 1 &lt;Son Goku&gt; with a cost of 3 or less from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-070",
+    "code": "FB05-070",
+    "rarity": "UC",
+    "name": "Dr. Brief's Spaceship",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-070.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-070.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] If your Leader is &lt;Son Goku&gt; and your life is at 2 or less, draw 2 cards.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-071",
+    "code": "FB05-071",
+    "rarity": "R",
+    "name": "Full Power!",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-071.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-071.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "G",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Earthling/Planet Namek",
+    "effect": "[Activate Main] If your life is at 2 or less, choose up to 2 Battle Cards with costs of 4 or less in your opponent's Battle Area and KO them.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-072",
+    "code": "FB05-072",
+    "rarity": "L",
+    "name": "Janemba",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-072_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-072_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Another World\n                  Another World",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-072-p1",
+    "code": "FB05-072-p1",
+    "rarity": "L",
+    "name": "Janemba",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-072_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-072_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Another World\n                  Another World",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-073",
+    "code": "FB05-073",
+    "rarity": "R",
+    "name": "King Cold",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-073.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-073.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "Y",
+    "power": "25000",
+    "comboPower": "-",
+    "features": "Frieza Clan",
+    "effect": "[On Play] If you have a total of 3 or more cards with 《Frieza Clan》 in their special traits among your Leader and Battle Cards in your Battle Area, play up to 1 non-&lt;King Cold&gt; Battle Card with a cost of 4 or less and 《Frieza Clan》 in its special traits from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-074",
+    "code": "FB05-074",
+    "rarity": "UC",
+    "name": "Zarbon",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-074.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-074.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "Y",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Frieza's Army",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-075",
+    "code": "FB05-075",
+    "rarity": "C",
+    "name": "Saike Demon",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-075.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-075.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Another World",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-076",
+    "code": "FB05-076",
+    "rarity": "R",
+    "name": "Zangya",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-076.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-076.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Boujack Brigade",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking](1) : Draw 2 cards. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-077",
+    "code": "FB05-077",
+    "rarity": "R",
+    "name": "Jeice",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-077.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-077.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-078",
+    "code": "FB05-078",
+    "rarity": "UC",
+    "name": "Lord Jaguar",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-078.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-078.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Jaguar's Island",
+    "effect": "[Activate Main] Switch this card in a Battle Area to Rest Mode : Add up to 1 non-&lt;Lord Jaguar&gt; card with a cost of 3 or less and 《Jaguar's Island》 in its special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-079",
+    "code": "FB05-079",
+    "rarity": "C",
+    "name": "Janemba",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-079.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-079.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Another World",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-080",
+    "code": "FB05-080",
+    "rarity": "SR",
+    "name": "Janemba",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-080.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-080.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "YY",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Another World",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, switch 1 of your energy to Active Mode, choose up to 1 Battle Card in your opponent's Battle Area, and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-080-p1",
+    "code": "FB05-080-p1",
+    "rarity": "SR",
+    "name": "Janemba",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-080_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-080_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "YY",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Another World",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, switch 1 of your energy to Active Mode, choose up to 1 Battle Card in your opponent's Battle Area, and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-081",
+    "code": "FB05-081",
+    "rarity": "C",
+    "name": "Burter",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-081.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-081.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[On Play] Choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-082",
+    "code": "FB05-082",
+    "rarity": "C",
+    "name": "Bio Warrior",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-082.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-082.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Jaguar's Island",
+    "effect": "[Activate Battle] KO this card in a Battle Area : Choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-083",
+    "code": "FB05-083",
+    "rarity": "R",
+    "name": "Bio-Broly",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-083.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-083.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Jaguar's Island",
+    "effect": "[When Attacking] If you have 2 or more Active Mode energy, draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-084",
+    "code": "FB05-084",
+    "rarity": "SR",
+    "name": "Bio-Broly",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-084.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-084.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "YY",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Saiyan/Jaguar's Island",
+    "effect": "[On Play] Draw 1 card. Then, switch 2 of your energy to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-084-p1",
+    "code": "FB05-084-p1",
+    "rarity": "SR",
+    "name": "Bio-Broly",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-084_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-084_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "YY",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Saiyan/Jaguar's Island",
+    "effect": "[On Play] Draw 1 card. Then, switch 2 of your energy to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-085",
+    "code": "FB05-085",
+    "rarity": "R",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-085.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-085.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[When Attacking] Add up to 1 card from your life to your hand. Then, choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-086",
+    "code": "FB05-086",
+    "rarity": "R",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-086.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-086.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin/Absorption",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] Choose up to 1 Rest Mode Battle Card with a cost of 3 or less in your opponent's Battle Area and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-087",
+    "code": "FB05-087",
+    "rarity": "UC",
+    "name": "Mecha Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-087.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-087.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Activate Main] Switch this card in a Battle Area to Rest Mode : Look at 3 cards from the top of your deck, reveal up to 1 card with 《Frieza Clan》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-088",
+    "code": "FB05-088",
+    "rarity": "C",
+    "name": "Men-Men",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-088.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-088.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/Jaguar's Island",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 non-&lt;Men-Men&gt; card with 《Jaguar's Island》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-089",
+    "code": "FB05-089",
+    "rarity": "UC",
+    "name": "Recoome",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-089.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-089.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Ginyu Force/Frieza's Army",
+    "effect": "[Permanent][Your Turn] If you have a total of 3 or more cards with 《Ginyu Force》 in their special traits among your Leader and Battle Cards in your Battle Area, this card in a Battle Area gets +5000 power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-090",
+    "code": "FB05-090",
+    "rarity": "C",
+    "name": "Dazzling Onslaught",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-090.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-090.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Another World",
+    "effect": "[Activate Battle] Your cards that are in a battle get +25000 power for the battle. Then, switch up to 1 of your energy to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-091",
+    "code": "FB05-091",
+    "rarity": "UC",
+    "name": "Hell Rakshasa",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-091.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-091.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Another World",
+    "effect": "[Activate Battle] Your cards that are in a battle get +25000 power for the battle. Then, choose up to 1 Battle Card in your opponent's Battle Area and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-092",
+    "code": "FB05-092",
+    "rarity": "UC",
+    "name": "Jaguar's Island",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-092.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-092.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Jaguar's Island",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Main] Switch this card in a Battle Area to Rest Mode : Play up to 1 Battle Card with a cost of 1 and 《Jaguar's Island》 in its special traits from your hand in Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-093",
+    "code": "FB05-093",
+    "rarity": "C",
+    "name": "Wicked Rampage",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-093.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-093.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Another World",
+    "effect": "[Activate Main] KO 1 &lt;Saike Demon&gt; in your Battle Area : Look at 5 cards from the top of your deck, reveal up to 1 &lt;Janemba&gt; and add it to your hand. Place the rest at the bottom of their owner's deck in a random order. Then, play up to 1 &lt;Janemba&gt; with a cost of 2 from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-094",
+    "code": "FB05-094",
+    "rarity": "C",
+    "name": "Fierce Hyper Beam",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-094.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-094.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "Y",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Jaguar's Island",
+    "effect": "[Activate Main] Draw 1 card. Then, choose up to 1 Rest Mode Battle Card in your opponent's Battle Area and it can't switch to Active Mode during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-095",
+    "code": "FB05-095",
+    "rarity": "L",
+    "name": "Gogeta",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-095_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-095_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Another World\n                  Saiyan/Another World",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-095-p1",
+    "code": "FB05-095-p1",
+    "rarity": "L",
+    "name": "Gogeta",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-095_f_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-095_f_p1.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Another World\n                  Saiyan/Another World",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, flip this card over.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-096",
+    "code": "FB05-096",
+    "rarity": "C",
+    "name": "North Kai",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-096.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-096.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "10000",
+    "comboPower": "10000",
+    "features": "Kai/Another World",
+    "effect": "[On Play] If you have an energy marker, choose up to 1 &lt;Son Goku&gt; in your Battle Area and it gets +20000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-097",
+    "code": "FB05-097",
+    "rarity": "UC",
+    "name": "Gotenks",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-097.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-097.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you removed an energy marker to use this card, choose up to 2 Battle Cards with costs of 2 or less in your opponent's Battle Area and KO them.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-098",
+    "code": "FB05-098",
+    "rarity": "R",
+    "name": "Super Baby 2",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-098.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-098.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Machine Mutant/Saiyan",
+    "effect": "[Auto][Once per turn] When a card is used in a combo from your Battle Area while this card is in a battle, draw 2 cards. Then, discard 1 card from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-099",
+    "code": "FB05-099",
+    "rarity": "R",
+    "name": "Son Goku",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-099.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-099.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Another World",
+    "effect": "[Permanent][Your Turn] If you have an energy marker, this card in a Battle Area gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-100",
+    "code": "FB05-100",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-100.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-100.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "BB",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play] If you removed an energy marker to use this card, draw 2 cards.<br>[Activate Main][Once per turn] Discard 1 card from your hand : Then, switch this card in a Battle Area to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-100-p1",
+    "code": "FB05-100-p1",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-100_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-100_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "BB",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play] If you removed an energy marker to use this card, draw 2 cards.<br>[Activate Main][Once per turn] Discard 1 card from your hand : Then, switch this card in a Battle Area to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-101",
+    "code": "FB05-101",
+    "rarity": "C",
+    "name": "Son Goten",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-101.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-101.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-102",
+    "code": "FB05-102",
+    "rarity": "C",
+    "name": "Son Gohan : Adolescence",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-102.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-102.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-103",
+    "code": "FB05-103",
+    "rarity": "UC",
+    "name": "Grand Kai",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-103.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-103.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Kai/Another World",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-104",
+    "code": "FB05-104",
+    "rarity": "C",
+    "name": "Trunks : Youth",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-104.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-104.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] If you removed an energy marker to use this card, play up to 1 skill-less &lt;Son Goten&gt; with a cost of 2 from your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-105",
+    "code": "FB05-105",
+    "rarity": "UC",
+    "name": "West Kai",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-105.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-105.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "BBB",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Kai/Another World",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[When KO'd] If you don't have an energy marker, you place 1 energy marker.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-106",
+    "code": "FB05-106",
+    "rarity": "R",
+    "name": "Bardock",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-106.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-106.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[Auto][Your Turn][Once per turn] If your Leader is &lt;Bardock&gt;, when your card is used in a combo while this card is in a battle, choose up to 1 Battle Card with a cost of 4 or less in your opponent's Battle Area and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-107",
+    "code": "FB05-107",
+    "rarity": "SR",
+    "name": "Paikuhan",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-107.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-107.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Another World/Another World Budokai",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking] If you have an energy marker, look at 2 cards from the top of your deck, reveal up to 1 card with 《Another World》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-107-p1",
+    "code": "FB05-107-p1",
+    "rarity": "SR",
+    "name": "Paikuhan",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-107_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-107_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Another World/Another World Budokai",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking] If you have an energy marker, look at 2 cards from the top of your deck, reveal up to 1 card with 《Another World》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-108",
+    "code": "FB05-108",
+    "rarity": "C",
+    "name": "Videl",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-108.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-108.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling",
+    "effect": "-",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-109",
+    "code": "FB05-109",
+    "rarity": "C",
+    "name": "East Kai",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-109.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-109.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Kai/Another World",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-110",
+    "code": "FB05-110",
+    "rarity": "UC",
+    "name": "Bulma : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-110.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-110.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Earthling/Brainwashed",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[Activate Main] Switch this card in a Battle Area to Rest Mode : Draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-111",
+    "code": "FB05-111",
+    "rarity": "C",
+    "name": "Veku",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-111.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-111.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Another World",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[End of Your Turn] If you have an energy marker, switch this card in a Battle Area to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-112",
+    "code": "FB05-112",
+    "rarity": "UC",
+    "name": "Vegeta",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-112.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-112.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, if you have an energy marker, choose up to 1 Battle Card with 《Another World》 in its special traits in your Battle Area and it gets +10000 power for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-113",
+    "code": "FB05-113",
+    "rarity": "R",
+    "name": "Vegeta",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-113.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-113.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Saiyan/Another World",
+    "effect": "[On Play] If you have an energy marker, choose up to 1 Battle Card in your opponent's Battle Area with a cost of 3 or less and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-114",
+    "code": "FB05-114",
+    "rarity": "C",
+    "name": "South Kai",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-114.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-114.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Kai/Another World",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-115",
+    "code": "FB05-115",
+    "rarity": "R",
+    "name": "Ultimate Sparking",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-115.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-115.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Another World",
+    "effect": "[Activate Battle][Opponent's Turn] Your cards that are in a battle get +20000 power for the battle. Then, if you removed an energy marker to use this card, choose up to 1 Battle Card in your opponent's Battle Area and it can't attack for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-116",
+    "code": "FB05-116",
+    "rarity": "UC",
+    "name": "Soul Punisher",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-116.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-116.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Another World",
+    "effect": "[Activate Main] Choose one―<br>・Choose up to 1 Battle Card in your opponent's Battle Area and KO it.<br>・If you removed an energy marker to use this card, choose up to 2 Battle Cards in your opponent's Battle Area and KO them.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-117",
+    "code": "FB05-117",
+    "rarity": "R",
+    "name": "Fusion Resurrection",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-117.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-117.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Another World",
+    "effect": "[Activate Main] If you have an energy marker, look at 5 cards from the top of your deck, reveal up to 1 card with 《Saiyan》 in its special traits and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-118",
+    "code": "FB05-118",
+    "rarity": "UC",
+    "name": "Trash Talk",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-118.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-118.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Another World/Another World Budokai",
+    "effect": "[Activate Main] Draw 1 card. Then, if you have an energy marker, choose up to 1 Battle Card with a cost of 4 or less in your opponent's Battle Area and it can't attack during your opponent's next turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-119",
+    "code": "FB05-119",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGG",
+    "power": "45000",
+    "comboPower": "-",
+    "features": "Saiyan/Planet Namek",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[Permanent] If your life is at 2 or less and you don't have a &lt;Son Goku&gt; with a cost of 7 in your Battle Area, reduce the cost of this card in your hand by 4.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-119-p1",
+    "code": "FB05-119-p1",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGG",
+    "power": "45000",
+    "comboPower": "-",
+    "features": "Saiyan/Planet Namek",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[Permanent] If your life is at 2 or less and you don't have a &lt;Son Goku&gt; with a cost of 7 in your Battle Area, reduce the cost of this card in your hand by 4.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-119-p2",
+    "code": "FB05-119-p2",
+    "rarity": "SCR",
+    "name": "Son Goku",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-119_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "GGG",
+    "power": "45000",
+    "comboPower": "-",
+    "features": "Saiyan/Planet Namek",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[Permanent] If your life is at 2 or less and you don't have a &lt;Son Goku&gt; with a cost of 7 in your Battle Area, reduce the cost of this card in your hand by 4.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-120",
+    "code": "FB05-120",
+    "rarity": "SCR",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-120.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-120.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Barrier] (This card can’t be chosen by the skills of your opponent's cards.)<br>[When Attacking](2) : Choose up to 1 Rest Mode Battle Card with a cost of 5 or less in your opponent's Battle Area and place it into its owner's Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-120-p1",
+    "code": "FB05-120-p1",
+    "rarity": "SCR",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-120_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-120_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Barrier] (This card can’t be chosen by the skills of your opponent's cards.)<br>[When Attacking](2) : Choose up to 1 Rest Mode Battle Card with a cost of 5 or less in your opponent's Battle Area and place it into its owner's Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB05-120-p2",
+    "code": "FB05-120-p2",
+    "rarity": "SCR",
+    "name": "Frieza",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-120_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB05-120_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "YY",
+    "power": "30000",
+    "comboPower": "-",
+    "features": "Frieza Clan/Frieza's Army",
+    "effect": "[Barrier] (This card can’t be chosen by the skills of your opponent's cards.)<br>[When Attacking](2) : Choose up to 1 Rest Mode Battle Card with a cost of 5 or less in your opponent's Battle Area and place it into its owner's Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB01-014-p1",
+    "code": "FB01-014-p1",
+    "rarity": "UC",
+    "name": "Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-014_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-014_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Android/Universe 7",
+    "effect": "[On Play] Look at 5 cards from the top of your deck, reveal up to 1 &lt;Krillin&gt; or up to 1 &lt;Android 17&gt; and add it to your hand. Place the rest at the bottom of your deck in a random order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB01-049-p4",
+    "code": "FB01-049-p4",
+    "rarity": "R",
+    "name": "Trunks : Future",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-049_p4.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-049_p4.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "U",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[When Attacking] At the end of the turn, place this card at the bottom of its owner's deck.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB01-077-p1",
+    "code": "FB01-077-p1",
+    "rarity": "UC",
+    "name": "Android 17",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-077_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB01-077_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "G",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Android",
+    "effect": "[On Play] Add up to 1 card from your life to your hand. Then, play up to 1 &lt;Android 18&gt; with a cost of 3 or less from your Drop.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB02-035-p2",
+    "code": "FB02-035-p2",
+    "rarity": "C",
+    "name": "Glimpse of a Hidden Arrogance",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-035_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-035_p2.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7/Tournament of Power",
+    "effect": "[Activate Battle] Choose your Leader or up to 1 of your Battle Cards and it gets +25000 power for the battle. Then, if you have a Battle Card with 30000 power or more, add up to 1 Battle Card with a cost of 4 or less from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB02-044-p2",
+    "code": "FB02-044-p2",
+    "rarity": "SR",
+    "name": "Zamasu : Fused",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-044_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-044_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "UU",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Supreme Kai/Potara",
+    "effect": "[When Attacking] If you have 7 or fewer cards in your hand, draw 1 card.<br>[When KO'd] Play this card from your Drop in Rest Mode. Then, you can't play &lt;Zamasu : Fused&gt; for the turn.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB02-089-p2",
+    "code": "FB02-089-p2",
+    "rarity": "SR",
+    "name": "Son Gohan : Future",
+    "color": "Green",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-089_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-089_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "GG",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Permanent] All of your Battle Cards with a cost of 3 can't be removed from the Battle Area by your opponent's skills.<br>[End of Your Turn] Choose one―<br>・Play up to 1 Battle Card with a cost of 3 or less from your hand.<br>・Choose up to 1 of your opponent's Battle Cards with a cost of 3 or less and KO it.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB02-135-p1",
+    "code": "FB02-135-p1",
+    "rarity": "UC",
+    "name": "Meta-Cooler",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-135_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB02-135_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Frieza Clan",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[End of Your Turn] Switch this card to Active Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB03-020-p2",
+    "code": "FB03-020-p2",
+    "rarity": "SR",
+    "name": "Vegeta",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-020_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-020_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "RR",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Universe 7/Tournament of Power",
+    "effect": "[When Attacking] Discard 2 cards from your hand : Until the end of your opponent's next turn, this card can't be KO'd and gets +30000 power.<br>[Activate Main][Once per turn] Choose up to 1 of your opponent's Battle Cards with 25000 power or less and KO it. Then, KO this card.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB03-042-p2",
+    "code": "FB03-042-p2",
+    "rarity": "SR",
+    "name": "Videl",
+    "color": "Blue",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-042_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-042_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "UU",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Earthling/Satan City",
+    "effect": "[When Attacking] If you have 7 or fewer cards in your hand, add up to 1 blue non-&lt;Videl&gt; card with a cost of 3 or less and 《Earthling》 in its special traits from your Drop to your hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB03-125-p2",
+    "code": "FB03-125-p2",
+    "rarity": "SR",
+    "name": "Pan : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-125_p2.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB03-125_p2.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When Attacking](1) : Draw 1 card. Then, if you removed an energy marker for this skill, choose up to 1 of your opponent's Battle Cards with a cost of 4 or less and return it to its owner's hand.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB04-091-p3",
+    "code": "FB04-091-p3",
+    "rarity": "UC",
+    "name": "Majin Buu : Evil",
+    "color": "Yellow",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-091_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-091_p3.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "Y",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Majin",
+    "effect": "[On Play] Add up to 1 card from your life to your hand.<br>[When KO'd] Choose up to 1 of your opponent's Battle Cards and switch it to Rest Mode.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FB04-109-p1",
+    "code": "FB04-109-p1",
+    "rarity": "R",
+    "name": "Son Goku : GT",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-109_p1.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FB04-109_p1.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Permanent] If your Leader is &lt;Son Goku : GT&gt; and this card has 45000 power or more, this card gains [Double Strike].<br>([Double Strike] : This card inflicts 2 damage instead of 1 when attacking.)",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  },
+  {
+    "id": "FS05-16-p3",
+    "code": "FS05-16-p3",
+    "rarity": "C",
+    "name": "A Lonesome, Final Battle",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-16_p3.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS05-16_p3.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[Field] (This card remains in your Battle Area until you place another [Field].)<br>[Activate Battle] Switch this card to Rest Mode : Look at 2 cards from the top of your deck and place them at the top or bottom of their owner's deck in any order.",
+    "getIt": "BOOSTER PACK -NEW ADVENTURE- [FB05]",
+    "set": { "id": "fb05", "name": "BOOSTER PACK -NEW ADVENTURE- [FB05]" }
+  }
+]

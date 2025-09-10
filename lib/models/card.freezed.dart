@@ -13,20 +13,9 @@ part of 'card.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$TCGCard implements DiagnosticableTreeMixin {
+mixin _$TCGCard {
 
- String get id;// App-unique ID (e.g., UUID or gameType-gameCode)
- String get gameCode;// API-specific ID (e.g., 'swsh4-25', '6983839')
- String get name;// Card name (e.g., 'Charizard', 'Tornado Dragon')
- String get gameType;// e.g., 'pokemon', 'yugioh', 'magic', 'optcg', 'dragonball', 'digimon', 'unionarena', 'gundam'
- String? get setName;// e.g., 'Vivid Voltage', 'Battles of Legend'
- String? get rarity;// e.g., 'Rare', 'Mythic Rare'
- String? get imageRefSmall;// Supabase bucket path for small image (grid view)
- String? get imageRefLarge;// Supabase bucket path for large image (detail view)
- DateTime? get lastUpdated;// Timestamp of last update
- List<double>? get imageEmbedding;// pgvector embedding for image searches
- List<double>? get textEmbedding;// pgvector embedding for text searches
- Map<String, dynamic>? get gameSpecificData;
+ String get id; String get gameCode; String get name; String get gameType; String? get version; String? get setName; String? get rarity; String? get imageRefSmall; String? get imageRefLarge; List<double>? get imageEmbedding; List<double>? get textEmbedding; Map<String, dynamic>? get gameSpecificData;
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -36,25 +25,19 @@ $TCGCardCopyWith<TCGCard> get copyWith => _$TCGCardCopyWithImpl<TCGCard>(this as
   /// Serializes this TCGCard to a JSON map.
   Map<String, dynamic> toJson();
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'TCGCard'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('gameCode', gameCode))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('gameType', gameType))..add(DiagnosticsProperty('setName', setName))..add(DiagnosticsProperty('rarity', rarity))..add(DiagnosticsProperty('imageRefSmall', imageRefSmall))..add(DiagnosticsProperty('imageRefLarge', imageRefLarge))..add(DiagnosticsProperty('lastUpdated', lastUpdated))..add(DiagnosticsProperty('imageEmbedding', imageEmbedding))..add(DiagnosticsProperty('textEmbedding', textEmbedding))..add(DiagnosticsProperty('gameSpecificData', gameSpecificData));
-}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TCGCard&&(identical(other.id, id) || other.id == id)&&(identical(other.gameCode, gameCode) || other.gameCode == gameCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.gameType, gameType) || other.gameType == gameType)&&(identical(other.setName, setName) || other.setName == setName)&&(identical(other.rarity, rarity) || other.rarity == rarity)&&(identical(other.imageRefSmall, imageRefSmall) || other.imageRefSmall == imageRefSmall)&&(identical(other.imageRefLarge, imageRefLarge) || other.imageRefLarge == imageRefLarge)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&const DeepCollectionEquality().equals(other.imageEmbedding, imageEmbedding)&&const DeepCollectionEquality().equals(other.textEmbedding, textEmbedding)&&const DeepCollectionEquality().equals(other.gameSpecificData, gameSpecificData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TCGCard&&(identical(other.id, id) || other.id == id)&&(identical(other.gameCode, gameCode) || other.gameCode == gameCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.gameType, gameType) || other.gameType == gameType)&&(identical(other.version, version) || other.version == version)&&(identical(other.setName, setName) || other.setName == setName)&&(identical(other.rarity, rarity) || other.rarity == rarity)&&(identical(other.imageRefSmall, imageRefSmall) || other.imageRefSmall == imageRefSmall)&&(identical(other.imageRefLarge, imageRefLarge) || other.imageRefLarge == imageRefLarge)&&const DeepCollectionEquality().equals(other.imageEmbedding, imageEmbedding)&&const DeepCollectionEquality().equals(other.textEmbedding, textEmbedding)&&const DeepCollectionEquality().equals(other.gameSpecificData, gameSpecificData));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,gameCode,name,gameType,setName,rarity,imageRefSmall,imageRefLarge,lastUpdated,const DeepCollectionEquality().hash(imageEmbedding),const DeepCollectionEquality().hash(textEmbedding),const DeepCollectionEquality().hash(gameSpecificData));
+int get hashCode => Object.hash(runtimeType,id,gameCode,name,gameType,version,setName,rarity,imageRefSmall,imageRefLarge,const DeepCollectionEquality().hash(imageEmbedding),const DeepCollectionEquality().hash(textEmbedding),const DeepCollectionEquality().hash(gameSpecificData));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'TCGCard(id: $id, gameCode: $gameCode, name: $name, gameType: $gameType, setName: $setName, rarity: $rarity, imageRefSmall: $imageRefSmall, imageRefLarge: $imageRefLarge, lastUpdated: $lastUpdated, imageEmbedding: $imageEmbedding, textEmbedding: $textEmbedding, gameSpecificData: $gameSpecificData)';
+String toString() {
+  return 'TCGCard(id: $id, gameCode: $gameCode, name: $name, gameType: $gameType, version: $version, setName: $setName, rarity: $rarity, imageRefSmall: $imageRefSmall, imageRefLarge: $imageRefLarge, imageEmbedding: $imageEmbedding, textEmbedding: $textEmbedding, gameSpecificData: $gameSpecificData)';
 }
 
 
@@ -65,7 +48,7 @@ abstract mixin class $TCGCardCopyWith<$Res>  {
   factory $TCGCardCopyWith(TCGCard value, $Res Function(TCGCard) _then) = _$TCGCardCopyWithImpl;
 @useResult
 $Res call({
- String id, String gameCode, String name, String gameType, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, DateTime? lastUpdated, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
+ String id, String gameCode, String name, String gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
 });
 
 
@@ -82,18 +65,18 @@ class _$TCGCardCopyWithImpl<$Res>
 
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? gameCode = null,Object? name = null,Object? gameType = null,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? lastUpdated = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? gameCode = null,Object? name = null,Object? gameType = null,Object? version = freezed,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,gameCode: null == gameCode ? _self.gameCode : gameCode // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,gameType: null == gameType ? _self.gameType : gameType // ignore: cast_nullable_to_non_nullable
-as String,setName: freezed == setName ? _self.setName : setName // ignore: cast_nullable_to_non_nullable
+as String,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String?,setName: freezed == setName ? _self.setName : setName // ignore: cast_nullable_to_non_nullable
 as String?,rarity: freezed == rarity ? _self.rarity : rarity // ignore: cast_nullable_to_non_nullable
 as String?,imageRefSmall: freezed == imageRefSmall ? _self.imageRefSmall : imageRefSmall // ignore: cast_nullable_to_non_nullable
 as String?,imageRefLarge: freezed == imageRefLarge ? _self.imageRefLarge : imageRefLarge // ignore: cast_nullable_to_non_nullable
-as String?,lastUpdated: freezed == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
-as DateTime?,imageEmbedding: freezed == imageEmbedding ? _self.imageEmbedding : imageEmbedding // ignore: cast_nullable_to_non_nullable
+as String?,imageEmbedding: freezed == imageEmbedding ? _self.imageEmbedding : imageEmbedding // ignore: cast_nullable_to_non_nullable
 as List<double>?,textEmbedding: freezed == textEmbedding ? _self.textEmbedding : textEmbedding // ignore: cast_nullable_to_non_nullable
 as List<double>?,gameSpecificData: freezed == gameSpecificData ? _self.gameSpecificData : gameSpecificData // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,
@@ -181,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String gameCode,  String name,  String gameType,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  DateTime? lastUpdated,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String gameCode,  String name,  String gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TCGCard() when $default != null:
-return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.lastUpdated,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
+return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
   return orElse();
 
 }
@@ -202,10 +185,10 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.setName,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String gameCode,  String name,  String gameType,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  DateTime? lastUpdated,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String gameCode,  String name,  String gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)  $default,) {final _that = this;
 switch (_that) {
 case _TCGCard():
-return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.lastUpdated,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
+return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -222,10 +205,10 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.setName,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String gameCode,  String name,  String gameType,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  DateTime? lastUpdated,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String gameCode,  String name,  String gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,) {final _that = this;
 switch (_that) {
 case _TCGCard() when $default != null:
-return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.lastUpdated,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
+return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
   return null;
 
 }
@@ -236,30 +219,20 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.setName,
 /// @nodoc
 @JsonSerializable()
 
-class _TCGCard with DiagnosticableTreeMixin implements TCGCard {
-  const _TCGCard({required this.id, required this.gameCode, required this.name, required this.gameType, this.setName, this.rarity, this.imageRefSmall, this.imageRefLarge, this.lastUpdated, final  List<double>? imageEmbedding, final  List<double>? textEmbedding, final  Map<String, dynamic>? gameSpecificData}): _imageEmbedding = imageEmbedding,_textEmbedding = textEmbedding,_gameSpecificData = gameSpecificData;
+class _TCGCard implements TCGCard {
+   _TCGCard({required this.id, required this.gameCode, required this.name, required this.gameType, this.version, this.setName, this.rarity, this.imageRefSmall, this.imageRefLarge, final  List<double>? imageEmbedding, final  List<double>? textEmbedding, final  Map<String, dynamic>? gameSpecificData}): _imageEmbedding = imageEmbedding,_textEmbedding = textEmbedding,_gameSpecificData = gameSpecificData;
   factory _TCGCard.fromJson(Map<String, dynamic> json) => _$TCGCardFromJson(json);
 
 @override final  String id;
-// App-unique ID (e.g., UUID or gameType-gameCode)
 @override final  String gameCode;
-// API-specific ID (e.g., 'swsh4-25', '6983839')
 @override final  String name;
-// Card name (e.g., 'Charizard', 'Tornado Dragon')
 @override final  String gameType;
-// e.g., 'pokemon', 'yugioh', 'magic', 'optcg', 'dragonball', 'digimon', 'unionarena', 'gundam'
+@override final  String? version;
 @override final  String? setName;
-// e.g., 'Vivid Voltage', 'Battles of Legend'
 @override final  String? rarity;
-// e.g., 'Rare', 'Mythic Rare'
 @override final  String? imageRefSmall;
-// Supabase bucket path for small image (grid view)
 @override final  String? imageRefLarge;
-// Supabase bucket path for large image (detail view)
-@override final  DateTime? lastUpdated;
-// Timestamp of last update
  final  List<double>? _imageEmbedding;
-// Timestamp of last update
 @override List<double>? get imageEmbedding {
   final value = _imageEmbedding;
   if (value == null) return null;
@@ -268,9 +241,7 @@ class _TCGCard with DiagnosticableTreeMixin implements TCGCard {
   return EqualUnmodifiableListView(value);
 }
 
-// pgvector embedding for image searches
  final  List<double>? _textEmbedding;
-// pgvector embedding for image searches
 @override List<double>? get textEmbedding {
   final value = _textEmbedding;
   if (value == null) return null;
@@ -279,9 +250,7 @@ class _TCGCard with DiagnosticableTreeMixin implements TCGCard {
   return EqualUnmodifiableListView(value);
 }
 
-// pgvector embedding for text searches
  final  Map<String, dynamic>? _gameSpecificData;
-// pgvector embedding for text searches
 @override Map<String, dynamic>? get gameSpecificData {
   final value = _gameSpecificData;
   if (value == null) return null;
@@ -301,25 +270,19 @@ _$TCGCardCopyWith<_TCGCard> get copyWith => __$TCGCardCopyWithImpl<_TCGCard>(thi
 Map<String, dynamic> toJson() {
   return _$TCGCardToJson(this, );
 }
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'TCGCard'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('gameCode', gameCode))..add(DiagnosticsProperty('name', name))..add(DiagnosticsProperty('gameType', gameType))..add(DiagnosticsProperty('setName', setName))..add(DiagnosticsProperty('rarity', rarity))..add(DiagnosticsProperty('imageRefSmall', imageRefSmall))..add(DiagnosticsProperty('imageRefLarge', imageRefLarge))..add(DiagnosticsProperty('lastUpdated', lastUpdated))..add(DiagnosticsProperty('imageEmbedding', imageEmbedding))..add(DiagnosticsProperty('textEmbedding', textEmbedding))..add(DiagnosticsProperty('gameSpecificData', gameSpecificData));
-}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TCGCard&&(identical(other.id, id) || other.id == id)&&(identical(other.gameCode, gameCode) || other.gameCode == gameCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.gameType, gameType) || other.gameType == gameType)&&(identical(other.setName, setName) || other.setName == setName)&&(identical(other.rarity, rarity) || other.rarity == rarity)&&(identical(other.imageRefSmall, imageRefSmall) || other.imageRefSmall == imageRefSmall)&&(identical(other.imageRefLarge, imageRefLarge) || other.imageRefLarge == imageRefLarge)&&(identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated)&&const DeepCollectionEquality().equals(other._imageEmbedding, _imageEmbedding)&&const DeepCollectionEquality().equals(other._textEmbedding, _textEmbedding)&&const DeepCollectionEquality().equals(other._gameSpecificData, _gameSpecificData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TCGCard&&(identical(other.id, id) || other.id == id)&&(identical(other.gameCode, gameCode) || other.gameCode == gameCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.gameType, gameType) || other.gameType == gameType)&&(identical(other.version, version) || other.version == version)&&(identical(other.setName, setName) || other.setName == setName)&&(identical(other.rarity, rarity) || other.rarity == rarity)&&(identical(other.imageRefSmall, imageRefSmall) || other.imageRefSmall == imageRefSmall)&&(identical(other.imageRefLarge, imageRefLarge) || other.imageRefLarge == imageRefLarge)&&const DeepCollectionEquality().equals(other._imageEmbedding, _imageEmbedding)&&const DeepCollectionEquality().equals(other._textEmbedding, _textEmbedding)&&const DeepCollectionEquality().equals(other._gameSpecificData, _gameSpecificData));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,gameCode,name,gameType,setName,rarity,imageRefSmall,imageRefLarge,lastUpdated,const DeepCollectionEquality().hash(_imageEmbedding),const DeepCollectionEquality().hash(_textEmbedding),const DeepCollectionEquality().hash(_gameSpecificData));
+int get hashCode => Object.hash(runtimeType,id,gameCode,name,gameType,version,setName,rarity,imageRefSmall,imageRefLarge,const DeepCollectionEquality().hash(_imageEmbedding),const DeepCollectionEquality().hash(_textEmbedding),const DeepCollectionEquality().hash(_gameSpecificData));
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'TCGCard(id: $id, gameCode: $gameCode, name: $name, gameType: $gameType, setName: $setName, rarity: $rarity, imageRefSmall: $imageRefSmall, imageRefLarge: $imageRefLarge, lastUpdated: $lastUpdated, imageEmbedding: $imageEmbedding, textEmbedding: $textEmbedding, gameSpecificData: $gameSpecificData)';
+String toString() {
+  return 'TCGCard(id: $id, gameCode: $gameCode, name: $name, gameType: $gameType, version: $version, setName: $setName, rarity: $rarity, imageRefSmall: $imageRefSmall, imageRefLarge: $imageRefLarge, imageEmbedding: $imageEmbedding, textEmbedding: $textEmbedding, gameSpecificData: $gameSpecificData)';
 }
 
 
@@ -330,7 +293,7 @@ abstract mixin class _$TCGCardCopyWith<$Res> implements $TCGCardCopyWith<$Res> {
   factory _$TCGCardCopyWith(_TCGCard value, $Res Function(_TCGCard) _then) = __$TCGCardCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String gameCode, String name, String gameType, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, DateTime? lastUpdated, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
+ String id, String gameCode, String name, String gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
 });
 
 
@@ -347,18 +310,18 @@ class __$TCGCardCopyWithImpl<$Res>
 
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? gameCode = null,Object? name = null,Object? gameType = null,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? lastUpdated = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? gameCode = null,Object? name = null,Object? gameType = null,Object? version = freezed,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
   return _then(_TCGCard(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,gameCode: null == gameCode ? _self.gameCode : gameCode // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,gameType: null == gameType ? _self.gameType : gameType // ignore: cast_nullable_to_non_nullable
-as String,setName: freezed == setName ? _self.setName : setName // ignore: cast_nullable_to_non_nullable
+as String,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as String?,setName: freezed == setName ? _self.setName : setName // ignore: cast_nullable_to_non_nullable
 as String?,rarity: freezed == rarity ? _self.rarity : rarity // ignore: cast_nullable_to_non_nullable
 as String?,imageRefSmall: freezed == imageRefSmall ? _self.imageRefSmall : imageRefSmall // ignore: cast_nullable_to_non_nullable
 as String?,imageRefLarge: freezed == imageRefLarge ? _self.imageRefLarge : imageRefLarge // ignore: cast_nullable_to_non_nullable
-as String?,lastUpdated: freezed == lastUpdated ? _self.lastUpdated : lastUpdated // ignore: cast_nullable_to_non_nullable
-as DateTime?,imageEmbedding: freezed == imageEmbedding ? _self._imageEmbedding : imageEmbedding // ignore: cast_nullable_to_non_nullable
+as String?,imageEmbedding: freezed == imageEmbedding ? _self._imageEmbedding : imageEmbedding // ignore: cast_nullable_to_non_nullable
 as List<double>?,textEmbedding: freezed == textEmbedding ? _self._textEmbedding : textEmbedding // ignore: cast_nullable_to_non_nullable
 as List<double>?,gameSpecificData: freezed == gameSpecificData ? _self._gameSpecificData : gameSpecificData // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,

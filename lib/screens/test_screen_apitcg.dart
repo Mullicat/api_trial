@@ -79,37 +79,37 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
         case GameType.onePiece:
           cards = await OnePieceTcgService().getCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
         case GameType.pokemon:
           cards = await PokemonTcgService().searchCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
         case GameType.digimon:
           cards = await DigimonTcgService().getCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
         case GameType.unionArena:
           cards = await UnionArenaTcgService().getCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
         case GameType.gundam:
           cards = await GundamTcgService().getCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
         case GameType.magic:
           cards = await MagicTcgService().getCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
         case GameType.yugioh:
@@ -119,14 +119,14 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
             extra: filters
               ..remove('name')
               ..remove('type'),
-            num: 5,
+            num: 20,
             offset: 0,
           );
           break;
         case GameType.dragonBall:
           cards = await DragonBallTcgService().getCards(
             filters: filters,
-            pageSize: 5,
+            pageSize: 20,
           );
           break;
       }
