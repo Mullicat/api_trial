@@ -13,16 +13,13 @@ class OnePieceTcgService {
   final SupabaseDataSource _supabaseDataSource;
   List<TCGCard> _cachedCards = []; // Cache for getCardFromAPICards
 
-  // Private constructor
   OnePieceTcgService._(this._supabaseDataSource);
 
-  // Factory constructor to handle async initialization
   static Future<OnePieceTcgService> create() async {
     final supabaseDataSource = await SupabaseDataSource.getInstance();
     return OnePieceTcgService._(supabaseDataSource);
   }
 
-  // Loads environment variables from assets/.env
   Future<void> _loadEnv() async {
     try {
       await dotenv.load(fileName: 'assets/.env');
@@ -36,8 +33,8 @@ class OnePieceTcgService {
     }
   }
 
-  // Converts enum-based filters to API/Supabase query parameters
-  Map<String, String> _buildQueryParams({
+  // Converts enum-based filters to API query parameters
+  Map<String, String> _buildAPIQueryParams({
     String? word,
     SetName? setName,
     Rarity? rarity,
@@ -48,13 +45,18 @@ class OnePieceTcgService {
     List<Family>? families,
     Counter? counter,
     Trigger? trigger,
+    Ability? ability,
   }) {
     final queryParams = <String, String>{};
     if (word != null && word.isNotEmpty) {
       queryParams['name'] = word;
     }
     if (setName != null) {
-      queryParams['set_name'] = setName.value;
+      // Extract set code (e.g., 'OP06') from '-WINGS OF THE CAPTAIN- [OP06]'
+      final setCode = setName.value.contains('[')
+          ? setName.value.split('[').last.replaceAll(']', '')
+          : setName.value;
+      queryParams['set'] = setCode;
     }
     if (rarity != null) {
       queryParams['rarity'] = rarity.value;
@@ -78,9 +80,57 @@ class OnePieceTcgService {
       queryParams['counter'] = counter.value;
     }
     if (trigger != null) {
-      queryParams['trigger'] = trigger.value;
+      queryParams['has_trigger'] = trigger == Trigger.hasTrigger
+          ? 'true'
+          : 'false';
+    }
+    if (ability != null) {
+      queryParams['effect'] =
+          ability.value; // API uses 'effect' for ability-like filtering
     }
     return queryParams;
+  }
+
+  // Converts enum-based filters to Supabase query parameters
+  Map<String, String> _buildSupabaseQueryParams({
+    String? word,
+    SetName? setName,
+    Rarity? rarity,
+    Cost? cost,
+    Type? type,
+    Color? color,
+    Power? power,
+    List<Family>? families,
+    Counter? counter,
+    Trigger? trigger,
+    Ability? ability,
+  }) {
+    final queryParams = <String, String>{};
+    if (word != null && word.isNotEmpty) {
+      queryParams['name'] = word;
+    }
+    if (setName != null) {
+      queryParams['set_name'] = setName.value;
+    }
+    if (rarity != null) {
+      queryParams['rarity'] = rarity.value;
+    }
+    if (cost != null) {
+      queryParams['cost'] = cost.value;
+    }
+    if (type != null) {
+      queryParams['type'] = type.value;
+    }
+    if (color != null) {
+      queryParams['color'] = color.value;
+    }
+    if (power != null) {
+      queryParams['power'] = power.value;
+    }
+    if (counter != null) {
+      queryParams['counter'] = counter.value;
+    }
+    return queryParams; // Families, trigger, and ability are handled in query logic
   }
 
   // Fetches cards from the API with filters and pagination
@@ -95,6 +145,7 @@ class OnePieceTcgService {
     List<Family>? families,
     Counter? counter,
     Trigger? trigger,
+    Ability? ability,
     int page = 1,
     int pageSize = 100,
   }) async {
@@ -106,7 +157,7 @@ class OnePieceTcgService {
         throw Exception('API_TCG_KEY not found in assets/.env');
       }
 
-      final queryParams = _buildQueryParams(
+      final queryParams = _buildAPIQueryParams(
         word: word,
         setName: setName,
         rarity: rarity,
@@ -117,6 +168,7 @@ class OnePieceTcgService {
         families: families,
         counter: counter,
         trigger: trigger,
+        ability: ability,
       );
       queryParams['page'] = page.toString();
       queryParams['limit'] = (pageSize > 100 ? 100 : pageSize).toString();
@@ -167,6 +219,7 @@ class OnePieceTcgService {
     List<Family>? families,
     Counter? counter,
     Trigger? trigger,
+    Ability? ability,
     int page = 1,
     int pageSize = 100,
   }) async {
@@ -174,6 +227,19 @@ class OnePieceTcgService {
       List<Map<String, dynamic>> response;
 
       if (word != null && word.isNotEmpty) {
+        final queryParams = _buildSupabaseQueryParams(
+          word: word,
+          setName: setName,
+          rarity: rarity,
+          cost: cost,
+          type: type,
+          color: color,
+          power: power,
+          families: families,
+          counter: counter,
+          trigger: trigger,
+          ability: ability,
+        );
         response = await _supabaseDataSource.searchCardsByTerm(
           searchTerm: word,
           gameType: 'onepiece',
@@ -186,6 +252,7 @@ class OnePieceTcgService {
           families: families,
           counter: counter,
           trigger: trigger,
+          ability: ability,
           page: page,
           pageSize: pageSize,
         );
@@ -195,35 +262,41 @@ class OnePieceTcgService {
             .select()
             .eq('game_type', 'onepiece');
 
-        if (setName != null) {
-          query = query.eq('set_name', setName.value);
-        }
-        if (rarity != null) {
-          query = query.eq('rarity', rarity.value);
-        }
-        if (cost != null) {
+        if (setName != null) query = query.eq('set_name', setName.value);
+        if (rarity != null) query = query.eq('rarity', rarity.value);
+        if (cost != null)
           query = query.eq('game_specific_data->>cost', cost.value);
-        }
-        if (type != null) {
+        if (type != null)
           query = query.eq('game_specific_data->>type', type.value);
-        }
-        if (color != null) {
+        if (color != null)
           query = query.eq('game_specific_data->>color', color.value);
-        }
-        if (power != null) {
+        if (power != null)
           query = query.eq('game_specific_data->>power', power.value);
+        if (counter != null)
+          query = query.eq('game_specific_data->>counter', counter.value);
+        if (trigger != null) {
+          if (trigger == Trigger.hasTrigger) {
+            query = query
+                .neq('game_specific_data->>trigger', '')
+                .not('game_specific_data->>trigger', 'is', null);
+          } else if (trigger == Trigger.noTrigger) {
+            query = query.or(
+              'game_specific_data->>trigger.eq.,game_specific_data->>trigger.is.null',
+            );
+          }
+        }
+        if (ability != null) {
+          // Ensure ability is stored as a JSON array and use contains for exact match
+          query = query.contains('game_specific_data->ability', [
+            ability.value,
+          ]);
         }
         if (families != null && families.isNotEmpty) {
+          // Ensure family is stored as a JSON array
           query = query.contains(
             'game_specific_data->family',
             families.map((f) => f.value).toList(),
           );
-        }
-        if (counter != null) {
-          query = query.eq('game_specific_data->>counter', counter.value);
-        }
-        if (trigger != null) {
-          query = query.eq('game_specific_data->>trigger', trigger.value);
         }
 
         final offset = (page - 1) * pageSize;
@@ -252,6 +325,7 @@ class OnePieceTcgService {
     List<Family>? families,
     Counter? counter,
     Trigger? trigger,
+    Ability? ability,
     int page = 1,
     int pageSize = 100,
   }) async {
@@ -267,19 +341,21 @@ class OnePieceTcgService {
         families: families,
         counter: counter,
         trigger: trigger,
+        ability: ability,
         page: page,
         pageSize: pageSize,
       );
 
-      // Display cards first, then upload in background
       Future.microtask(() async {
         try {
           final cardsToUpsert = <Map<String, dynamic>>[];
           for (var card in apiCards) {
+            final normalizedImageRefSmall =
+                card.imageRefSmall?.split('?').first ?? '';
             final existingCards = await _supabaseDataSource.getCardsByGameCode(
               gameCode: card.gameCode!.split('-').first,
               gameType: 'onepiece',
-              imageRefSmall: card.imageRefSmall ?? '',
+              imageRefSmall: normalizedImageRefSmall,
             );
 
             bool shouldUpsert = true;
@@ -289,12 +365,11 @@ class OnePieceTcgService {
               for (var existing in existingCards) {
                 if (existing['set_name'] == card.setName &&
                     existing['image_ref_small'] == card.imageRefSmall) {
-                  shouldUpsert = false; // Duplicate found
+                  shouldUpsert = false;
                   break;
                 }
               }
               if (shouldUpsert) {
-                // Check for existing versions
                 final baseGameCode = card.gameCode!.split('-').first;
                 final versionedCards = await _supabaseDataSource.supabase
                     .from('cards')
@@ -315,20 +390,28 @@ class OnePieceTcgService {
             }
 
             if (shouldUpsert) {
+              // Normalize family and ability for Supabase (store as arrays)
+              final gameSpecificData = Map<String, dynamic>.from(
+                card.gameSpecificData ?? {},
+              );
+              if (gameSpecificData['family'] != null &&
+                  gameSpecificData['family'] is String) {
+                gameSpecificData['family'] = [gameSpecificData['family']];
+              }
+              if (gameSpecificData['ability'] != null &&
+                  gameSpecificData['ability'] is String) {
+                gameSpecificData['ability'] = [gameSpecificData['ability']];
+              }
+
               cardsToUpsert.add({
-                // Remove 'id' to let Supabase assign UUID
                 'game_code': newGameCode,
                 'game_type': card.gameType,
                 'name': card.name,
                 'set_name': card.setName,
                 'rarity': card.rarity,
-                'image_ref_small': card.imageRefSmall
-                    ?.split('?')
-                    .first, // Eliminate query parameters
-                'image_ref_large': card.imageRefLarge
-                    ?.split('?')
-                    .first, // Eliminate query parameters
-                'game_specific_data': card.gameSpecificData,
+                'image_ref_small': card.imageRefSmall?.split('?').first,
+                'image_ref_large': card.imageRefLarge?.split('?').first,
+                'game_specific_data': gameSpecificData,
               });
             }
           }
@@ -349,7 +432,6 @@ class OnePieceTcgService {
     }
   }
 
-  // Fetches a single card from the API by ID
   Future<TCGCard?> getCardFromAPI({required String id}) async {
     try {
       await _loadEnv();
@@ -359,25 +441,28 @@ class OnePieceTcgService {
         throw Exception('API_TCG_KEY not found in assets/.env');
       }
 
+      // Remove 'onepiece-' prefix for API query
+      final apiId = id.startsWith('onepiece-')
+          ? id.replaceFirst('onepiece-', '')
+          : id;
       final uri = Uri.parse(
         '$_baseUrl/$_gamePath/cards',
-      ).replace(queryParameters: {'id': id, 'limit': '1'});
+      ).replace(queryParameters: {'id': apiId, 'limit': '1'});
       final response = await http.get(uri, headers: {'x-api-key': apiKey});
-
       developer.log('API Request for One Piece getCardFromAPI: $uri');
+
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
         if (json['data'] == null) {
-          developer.log('No One Piece card found for ID: $id');
+          developer.log('No One Piece card found for ID: $apiId');
           return null;
         }
 
-        // Handle both single object and list responses
         Map<String, dynamic> cardJson;
         if (json['data'] is List<dynamic>) {
           final cardsJson = json['data'] as List<dynamic>;
           if (cardsJson.isEmpty) {
-            developer.log('No One Piece card found for ID: $id');
+            developer.log('No One Piece card found for ID: $apiId');
             return null;
           }
           cardJson = cardsJson.first as Map<String, dynamic>;
@@ -385,7 +470,7 @@ class OnePieceTcgService {
           cardJson = json['data'] as Map<String, dynamic>;
         } else {
           developer.log(
-            'Unexpected data format for ID: $id, data: ${json['data']}',
+            'Unexpected data format for ID: $apiId, data: ${json['data']}',
           );
           throw Exception(
             'Unexpected data format: ${json['data'].runtimeType}',
@@ -412,7 +497,6 @@ class OnePieceTcgService {
     }
   }
 
-  // Fetches a single card from Supabase by ID
   Future<TCGCard?> getCardFromSupabase({required String id}) async {
     try {
       final response = await _supabaseDataSource.supabase
@@ -436,7 +520,6 @@ class OnePieceTcgService {
     }
   }
 
-  // Retrieves a card from the cached list (from getCards methods)
   TCGCard? getCardFromAPICards({required String id}) {
     try {
       final card = _cachedCards.firstWhere(
@@ -452,7 +535,6 @@ class OnePieceTcgService {
     }
   }
 
-  // Parses API JSON to TCGCard model
   TCGCard _parseCard(Map<String, dynamic> json) {
     final cardId =
         'onepiece-${json['id'] ?? 'unknown-${DateTime.now().millisecondsSinceEpoch}'}';
@@ -462,13 +544,23 @@ class OnePieceTcgService {
       ..remove('rarity')
       ..remove('set')
       ..remove('images');
-    // Standardize 'type' field
     if (json['cardType'] != null) {
       gameSpecificData['type'] = json['cardType'];
     } else if (json['types'] != null && json['types'] is List) {
       gameSpecificData['type'] = (json['types'] as List).join(', ');
     } else if (json['type'] != null) {
       gameSpecificData['type'] = json['type'];
+    }
+    // Normalize family and ability for consistency
+    if (json['family'] != null && json['family'] is List) {
+      gameSpecificData['family'] = json['family'];
+    } else if (json['family'] != null) {
+      gameSpecificData['family'] = [json['family'].toString()];
+    }
+    if (json['effect'] != null) {
+      gameSpecificData['ability'] = json['effect'] is List
+          ? json['effect']
+          : [json['effect'].toString()];
     }
     return TCGCard(
       id: cardId,
@@ -477,14 +569,8 @@ class OnePieceTcgService {
       gameType: 'onepiece',
       setName: json['set']?['name']?.toString(),
       rarity: json['rarity']?.toString(),
-      imageRefSmall: json['images']?['small']
-          ?.toString()
-          .split('?')
-          .first, // Remove query parameters
-      imageRefLarge: json['images']?['large']
-          ?.toString()
-          .split('?')
-          .first, // Remove query parameters
+      imageRefSmall: json['images']?['small']?.toString().split('?').first,
+      imageRefLarge: json['images']?['large']?.toString().split('?').first,
       imageEmbedding: null,
       textEmbedding: null,
       gameSpecificData: gameSpecificData.isEmpty ? null : gameSpecificData,

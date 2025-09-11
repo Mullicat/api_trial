@@ -427,3 +427,29 @@ enum Trigger {
     }
   }
 }
+
+enum Ability {
+  onPlay('On Play'),
+  whenAttacking('When Attacking'),
+  onBlock('On Block'),
+  onKO('On K.O.'),
+  onYourOpponentsAttack('On Your Opponent’s Attack'),
+  blocker('Blocker'),
+  banish('Banish'),
+  rush('Rush'),
+  doubleAttack('Double Attack'),
+  trigger('Trigger'),
+  activateMain('Activate: Main'),
+  main('Main'),
+  endOfYourTurn('End of Your Turn'),
+  endOfYourOpponentsTurn('End of Your Opponent’s Turn'),
+  yourTurn('Your Turn'),
+  opponentsTurn('Opponent’s Turn'),
+  oncePerTurn('Once Per Turn'),
+  donPlus('DON!!+'),
+  donMinus('DON!!-'),
+  trash('Trash');
+
+  final String value;
+  const Ability(this.value);
+}

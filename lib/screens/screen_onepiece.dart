@@ -1,15 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:api_trial/models/card.dart';
+import 'package:api_trial/services/onepiece_service.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
+import 'package:api_trial/constants/enums/onepiece_filters.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:api_trial/screens/screen_single.dart';
 import 'dart:developer' as developer;
-import '../constants/enums/game_type.dart';
-import '../models/card.dart';
-import '../services/onepiece_service.dart';
-import '../constants/enums/onepiece_filters.dart';
-import './screen_single.dart';
 
 enum GetCardsType { fromAPI, fromDatabase, uploadCards }
-
-enum GetCardType { fromAPI, fromSupabase, fromAPICards }
 
 class ScreenOnePiece extends StatefulWidget {
   final GameType gameType;
@@ -44,24 +42,12 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       'power': ['None', ...Power.values.map((e) => e.value)],
       'counter': ['None', ...Counter.values.map((e) => e.value)],
       'trigger': ['None', ...Trigger.values.map((e) => e.displayName)],
+      'ability': ['None', ...Ability.values.map((e) => e.value)],
     },
   };
 
-  // Game-specific free-text parameters
-  final Map<GameType, List<String>> _freeTextParams = {
-    GameType.onePiece: ['ability'],
-  };
-
-  // Dynamic filter options based on GetCardsType
-  Map<String, List<String>> _getDynamicFilterOptions() {
-    final baseOptions = _parameterOptions[widget.gameType] ?? {};
-    if (_selectedGetCardsType == GetCardsType.fromDatabase) {
-      // Supabase might have different filter constraints
-      // For simplicity, assume same filters as API for now
-      return baseOptions;
-    }
-    return baseOptions;
-  }
+  // Game-specific free-text parameters (removed ability)
+  final Map<GameType, List<String>> _freeTextParams = {GameType.onePiece: []};
 
   @override
   void initState() {
@@ -72,8 +58,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
 
   Future<void> _initializeService() async {
     try {
-      _service =
-          await OnePieceTcgService.create(); // Use async factory constructor
+      _service = await OnePieceTcgService.create();
       await _fetchInitialData();
     } catch (e) {
       setState(() {
@@ -91,7 +76,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
   }
 
   Future<void> _fetchInitialData() async {
-    if (_service == null) return; // Guard against uninitialized service
+    if (_service == null) return;
     developer.log('Fetching initial data');
     setState(() {
       _isLoading = true;
@@ -177,6 +162,15 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     return Trigger.values.firstWhere((e) => e.displayName == value);
   }
 
+  Ability? _getAbility(String? value) {
+    if (value == null ||
+        value == 'None' ||
+        !Ability.values.any((e) => e.value == value)) {
+      return null;
+    }
+    return Ability.values.firstWhere((e) => e.value == value);
+  }
+
   Future<void> _fetchCards() async {
     if (_service == null) {
       setState(() {
@@ -213,6 +207,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                 : null,
             counter: _getCounter(_filters['counter'] as String?),
             trigger: _getTrigger(_filters['trigger'] as String?),
+            ability: _getAbility(_filters['ability'] as String?),
             page: _page,
             pageSize: _pageSize,
           );
@@ -271,13 +266,6 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
         _isLoading = false;
         _errorMessage = 'Error fetching cards: $e';
         developer.log('Error fetching cards: $e');
-        // Clear invalid filters to prevent persistent errors
-        _filters.removeWhere((key, value) {
-          if (key == 'family') return false; // Preserve family filter
-          if (key == 'ability') return false; // Preserve ability filter
-          return value != 'None' &&
-              !_parameterOptions[widget.gameType]![key]!.contains(value);
-        });
       });
     }
   }
@@ -324,8 +312,13 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
   void _onGetCardsTypeSelected(GetCardsType type) {
     setState(() {
       _selectedGetCardsType = type;
-      _page = 1; // Reset page on type change
-      _filters.clear(); // Clear filters to avoid invalid values
+      _selectedGetCardType = type == GetCardsType.fromAPI
+          ? GetCardType.fromAPI
+          : type == GetCardsType.fromDatabase
+          ? GetCardType.fromSupabase
+          : GetCardType.fromAPICards;
+      _page = 1;
+      _filters.clear();
       _searchController.clear();
     });
     _fetchCards();
@@ -428,48 +421,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     }
   }
 
-  Future<void> _showTextInputDialog(String param) async {
-    final controller = TextEditingController(text: _filters[param] ?? '');
-    final result = await showDialog<String>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Enter $param'),
-        content: TextField(
-          controller: controller,
-          decoration: InputDecoration(hintText: 'Enter $param value'),
-          maxLines: 3,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, controller.text),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-
-    if (!mounted) return;
-
-    if (result != null && result.isNotEmpty) {
-      setState(() {
-        _filters[param] = result;
-      });
-      await _fetchCards();
-    } else if (result != null) {
-      setState(() {
-        _filters.remove(param);
-      });
-      await _fetchCards();
-    }
-  }
-
   Widget _buildFilterBar() {
-    final params = _getDynamicFilterOptions();
-    final freeTextParams = _freeTextParams[widget.gameType] ?? [];
+    final params = _parameterOptions[widget.gameType] ?? {};
     return Column(
       children: [
         SingleChildScrollView(
@@ -488,7 +441,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                         ),
                       )
                       .toList(),
-                  onChanged: (value) => _onGetCardsTypeSelected(value!),
+                  onChanged: (value) {
+                    if (value != null) {
+                      _onGetCardsTypeSelected(value);
+                    }
+                  },
                 ),
               ),
               Padding(
@@ -503,7 +460,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                         ),
                       )
                       .toList(),
-                  onChanged: (value) => _onGetCardTypeSelected(value!),
+                  onChanged: (value) {
+                    if (value != null) {
+                      _onGetCardTypeSelected(value);
+                    }
+                  },
                 ),
               ),
             ],
@@ -598,36 +559,6 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                   ),
                 ),
               ),
-              ...freeTextParams.map((param) {
-                final isActive =
-                    _filters.containsKey(param) && _filters[param]!.isNotEmpty;
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: GestureDetector(
-                    onTap: () => _showTextInputDialog(param),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0,
-                        vertical: 4.0,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: isActive ? Colors.blue : Colors.grey,
-                        ),
-                        borderRadius: BorderRadius.circular(4.0),
-                        color: isActive ? Colors.blue.withOpacity(0.08) : null,
-                      ),
-                      child: Text(
-                        param,
-                        style: TextStyle(
-                          color: isActive ? Colors.blue : Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextButton(
@@ -659,9 +590,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
         left: 8.0,
         right: 8.0,
         top: 8.0,
-        bottom:
-            MediaQuery.of(context).padding.bottom +
-            8.0, // Add system navigation bar height
+        bottom: MediaQuery.of(context).padding.bottom + 8.0,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -698,11 +627,13 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                 )
                 .toList(),
             onChanged: (value) {
-              setState(() {
-                _pageSize = value!;
-                _page = 1; // Reset page when page size changes
-              });
-              _fetchCards();
+              if (value != null) {
+                setState(() {
+                  _pageSize = value;
+                  _page = 1;
+                });
+                _fetchCards();
+              }
             },
           ),
         ],
@@ -768,8 +699,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                           onPressed: () {
                             setState(() {
                               _filters.clear();
-                              _page = 1;
                               _searchController.clear();
+                              _page = 1;
                             });
                             _fetchCards();
                           },
@@ -803,52 +734,31 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                           itemCount: _cards!.length,
                           itemBuilder: (context, index) {
                             final card = _cards![index];
-                            developer.log(
-                              'Rendering card: ${card.name ?? 'Unknown'}, imageRefSmall=${card.imageRefSmall}',
-                            );
-                            final typeText =
-                                card.gameSpecificData?['type']?.toString() ??
-                                'Unknown';
-                            final rarityText = card.rarity ?? 'Unknown';
                             return Card(
                               margin: const EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,
                               ),
                               child: ListTile(
-                                leading:
-                                    card.imageRefSmall != null &&
-                                        card.imageRefSmall!.isNotEmpty
+                                leading: card.imageRefSmall != null
                                     ? CachedNetworkImage(
                                         imageUrl: card.imageRefSmall!,
                                         width: 50,
-                                        height: 50,
                                         fit: BoxFit.contain,
                                         placeholder: (context, url) =>
                                             const CircularProgressIndicator(),
-                                        errorWidget: (context, url, error) {
-                                          developer.log(
-                                            'Image load error for ${card.name}: $error, URL: ${card.imageRefSmall}',
-                                          );
-                                          return const Icon(
-                                            Icons.broken_image,
-                                            size: 50,
-                                          );
-                                        },
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(
+                                              Icons.broken_image,
+                                              size: 50,
+                                            ),
                                       )
-                                    : const Icon(
-                                        Icons.image_not_supported,
-                                        size: 50,
-                                      ),
-                                title: Text(card.name ?? 'No Name'),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Type: $typeText'),
-                                    Text('Rarity: $rarityText'),
-                                  ],
+                                    : null,
+                                title: Text(card.name ?? 'Unknown'),
+                                subtitle: Text(
+                                  'Type: ${card.gameSpecificData?['type'] ?? 'Unknown'}',
                                 ),
-                                onTap: () => _fetchSingleCard(card.gameCode),
+                                onTap: () => _fetchSingleCard(card.id),
                               ),
                             );
                           },

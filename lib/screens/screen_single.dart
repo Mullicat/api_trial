@@ -1,4 +1,3 @@
-import 'package:api_trial/screens/screen_onepiece.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
@@ -34,7 +33,7 @@ class _ScreenSingleState extends State<ScreenSingle> {
   void initState() {
     super.initState();
     developer.log(
-      'ScreenSingle initState: id=${widget.id}, gameType=${widget.gameType.name}, getCardType=${widget.getCardType}',
+      'ScreenSingle initState: id=${widget.id}, gameType=${widget.gameType.name}, getCardType=${widget.getCardType.value}',
     );
     _fetchCard();
   }
@@ -160,7 +159,7 @@ class _ScreenSingleState extends State<ScreenSingle> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Type: ${_card!.gameSpecificData?['type'] ?? _card!.gameSpecificData?['cardType'] ?? _card!.gameSpecificData?['types']?.join(', ') ?? 'Unknown'}',
+                    'Type: ${_card!.gameSpecificData?['type'] ?? _card!.gameSpecificData?['cardType'] ?? (_card!.gameSpecificData?['types'] is List ? (_card!.gameSpecificData!['types'] as List).join(', ') : 'Unknown')}',
                     style: const TextStyle(fontSize: 16),
                   ),
                   Text(
@@ -191,17 +190,20 @@ class _ScreenSingleState extends State<ScreenSingle> {
                       'Family: ${_card!.gameSpecificData!['family'] is List<dynamic> ? (_card!.gameSpecificData!['family'] as List<dynamic>).join(', ') : _card!.gameSpecificData!['family'].toString()}',
                       style: const TextStyle(fontSize: 16),
                     ),
-                  if (_card!.gameSpecificData?['counter'] != null)
+                  if (_card!.gameSpecificData?['counter'] != null &&
+                      _card!.gameSpecificData!['counter'] != '')
                     Text(
                       'Counter: ${_card!.gameSpecificData!['counter']}',
                       style: const TextStyle(fontSize: 16),
                     ),
-                  if (_card!.gameSpecificData?['trigger'] != null)
+                  if (_card!.gameSpecificData?['trigger'] != null &&
+                      _card!.gameSpecificData!['trigger'] != '')
                     Text(
                       'Trigger: ${_card!.gameSpecificData!['trigger']}',
                       style: const TextStyle(fontSize: 16),
                     ),
-                  if (_card!.gameSpecificData?['ability'] != null)
+                  if (_card!.gameSpecificData?['ability'] != null &&
+                      _card!.gameSpecificData!['ability'] != '')
                     Text(
                       'Ability: ${_card!.gameSpecificData!['ability']}',
                       style: const TextStyle(fontSize: 16),

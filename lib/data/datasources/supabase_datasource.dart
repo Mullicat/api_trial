@@ -215,7 +215,6 @@ class SupabaseDataSource {
     }
   }
 
-  // Searches cards using the search_onepiece_cards function with full-text search
   Future<List<Map<String, dynamic>>> searchCardsByTerm({
     required String searchTerm,
     required String gameType,
@@ -228,60 +227,58 @@ class SupabaseDataSource {
     List<Family>? families,
     Counter? counter,
     Trigger? trigger,
+    Ability? ability,
     int page = 1,
     int pageSize = 100,
   }) async {
     try {
-      var query = supabase.rpc(
-        'search_onepiece_cards',
-        params: {'search_term': searchTerm},
-      );
+      var query = supabase
+          .from('cards')
+          .select()
+          .eq('game_type', gameType)
+          .ilike('name', '%$searchTerm%');
 
-      // Apply filters to the query
-      if (setName != null) {
-        query = query.eq('set_name', setName.value);
-      }
-      if (rarity != null) {
-        query = query.eq('rarity', rarity.value);
-      }
-      if (cost != null) {
+      if (setName != null) query = query.eq('set_name', setName.value);
+      if (rarity != null) query = query.eq('rarity', rarity.value);
+      if (cost != null)
         query = query.eq('game_specific_data->>cost', cost.value);
-      }
-      if (type != null) {
+      if (type != null)
         query = query.eq('game_specific_data->>type', type.value);
-      }
-      if (color != null) {
+      if (color != null)
         query = query.eq('game_specific_data->>color', color.value);
-      }
-      if (power != null) {
+      if (power != null)
         query = query.eq('game_specific_data->>power', power.value);
-      }
       if (families != null && families.isNotEmpty) {
-        query = query.contains(
-          'game_specific_data->family',
-          families.map((f) => f.value).toList(),
+        final familyValues = families.map((f) => f.value).toList();
+        query = query.contains('game_specific_data->family', familyValues);
+      }
+      if (counter != null)
+        query = query.eq('game_specific_data->>counter', counter.value);
+      if (trigger != null) {
+        if (trigger == Trigger.hasTrigger) {
+          query = query
+              .neq('game_specific_data->>trigger', '')
+              .not('game_specific_data->>trigger', 'is', null);
+        } else if (trigger == Trigger.noTrigger) {
+          query = query.or(
+            'game_specific_data->>trigger.eq.,game_specific_data->>trigger.is.null',
+          );
+        }
+      }
+      if (ability != null) {
+        query = query.ilike(
+          'game_specific_data->>ability',
+          '%${ability.value}%',
         );
       }
-      if (counter != null) {
-        query = query.eq('game_specific_data->>counter', counter.value);
-      }
-      if (trigger != null) {
-        query = query.eq('game_specific_data->>trigger', trigger.value);
-      }
 
-      // Apply pagination
       final offset = (page - 1) * pageSize;
       final response = await query.range(
         offset,
         offset + (pageSize > 100 ? 100 : pageSize) - 1,
       );
-
-      print(
-        'Fetched ${response.length} cards via search_onepiece_cards for term: $searchTerm',
-      );
-      return response;
+      return response as List<Map<String, dynamic>>;
     } catch (e) {
-      print('Error searching cards: $e');
       throw Exception('Error searching cards: $e');
     }
   }
