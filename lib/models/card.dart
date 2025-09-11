@@ -6,10 +6,10 @@ part 'card.g.dart';
 @freezed
 abstract class TCGCard with _$TCGCard {
   factory TCGCard({
-    required String id,
-    required String gameCode,
-    required String name,
-    required String gameType,
+    required String? id,
+    required String? gameCode,
+    required String? name,
+    required String? gameType,
     String? version,
     String? setName,
     String? rarity,

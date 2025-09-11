@@ -1,4 +1,3 @@
-// lib/screens/test_screen_api_tcg.dart
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
@@ -148,24 +147,24 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     }
   }
 
-  Future<void> _fetchSingleCard(String id) async {
-    if (id.isEmpty) {
+  Future<void> _fetchSingleCard(String? gameCode) async {
+    if (gameCode == null || gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: cardId is empty');
+      developer.log('Error: gameCode is null or empty');
       return;
     }
 
     try {
       developer.log(
-        'Navigating to TestScreenSingle with cardId: $id, gameType: ${_selectedGameType.name}',
+        'Navigating to TestScreenSingle with gameCode: $gameCode, gameType: ${_selectedGameType.name}',
       );
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              TestScreenSingle(id: id, gameType: _selectedGameType),
+              TestScreenSingle(id: gameCode, gameType: _selectedGameType),
         ),
       );
     } catch (e) {
@@ -188,7 +187,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     _fetchInitialData();
   }
 
-  // Game-specific filter options
   final Map<GameType, Map<String, List<String>>> _parameterOptions = {
     GameType.onePiece: {
       'rarity': ['None', 'C', 'R', 'SR', 'SEC', 'L'],
@@ -298,7 +296,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     },
   };
 
-  // Game-specific free-text parameters
   final Map<GameType, List<String>> _freeTextParams = {
     GameType.onePiece: ['ability'],
     GameType.pokemon: ['text', 'flavor', 'artist', 'number'],
@@ -309,7 +306,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     GameType.yugioh: ['archetype', 'desc'],
   };
 
-  // Build filter bar with dropdown buttons and free-text buttons
   Widget _buildFilterBar() {
     final params = _parameterOptions[_selectedGameType] ?? {};
     final freeTextParams = _freeTextParams[_selectedGameType] ?? [];
@@ -320,7 +316,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                // Dropdown buttons for non-free-text parameters
                 ...params.keys.map((param) {
                   final isActive =
                       _filters.containsKey(param) && _filters[param] != 'None';
@@ -370,7 +365,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                     ),
                   );
                 }).toList(),
-                // Buttons for free-text parameters
                 ...freeTextParams.map((param) {
                   final isActive =
                       _filters.containsKey(param) &&
@@ -425,7 +419,6 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
     );
   }
 
-  // Show dialog for free-text parameters
   Future<void> _showTextInputDialog(String param) async {
     final controller = TextEditingController(text: _filters[param] ?? '');
     final result = await showDialog<String>(
@@ -568,7 +561,9 @@ class _TestScreenApiTcgState extends State<TestScreenApiTcg> {
                           itemCount: _cards!.length,
                           itemBuilder: (context, index) {
                             final card = _cards![index];
-                            developer.log('Rendering card: ${card.name}');
+                            developer.log(
+                              'Rendering card: ${card.name ?? 'Unknown'}',
+                            );
                             final typeText =
                                 card.gameSpecificData?['type'] ??
                                 card.gameSpecificData?['cardType'] ??

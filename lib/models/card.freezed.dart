@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TCGCard {
 
- String get id; String get gameCode; String get name; String get gameType; String? get version; String? get setName; String? get rarity; String? get imageRefSmall; String? get imageRefLarge; List<double>? get imageEmbedding; List<double>? get textEmbedding; Map<String, dynamic>? get gameSpecificData;
+ String? get id; String? get gameCode; String? get name; String? get gameType; String? get version; String? get setName; String? get rarity; String? get imageRefSmall; String? get imageRefLarge; List<double>? get imageEmbedding; List<double>? get textEmbedding; Map<String, dynamic>? get gameSpecificData;
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $TCGCardCopyWith<$Res>  {
   factory $TCGCardCopyWith(TCGCard value, $Res Function(TCGCard) _then) = _$TCGCardCopyWithImpl;
 @useResult
 $Res call({
- String id, String gameCode, String name, String gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
+ String? id, String? gameCode, String? name, String? gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
 });
 
 
@@ -65,13 +65,13 @@ class _$TCGCardCopyWithImpl<$Res>
 
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? gameCode = null,Object? name = null,Object? gameType = null,Object? version = freezed,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? gameCode = freezed,Object? name = freezed,Object? gameType = freezed,Object? version = freezed,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,gameCode: null == gameCode ? _self.gameCode : gameCode // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,gameType: null == gameType ? _self.gameType : gameType // ignore: cast_nullable_to_non_nullable
-as String,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,gameCode: freezed == gameCode ? _self.gameCode : gameCode // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,gameType: freezed == gameType ? _self.gameType : gameType // ignore: cast_nullable_to_non_nullable
+as String?,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String?,setName: freezed == setName ? _self.setName : setName // ignore: cast_nullable_to_non_nullable
 as String?,rarity: freezed == rarity ? _self.rarity : rarity // ignore: cast_nullable_to_non_nullable
 as String?,imageRefSmall: freezed == imageRefSmall ? _self.imageRefSmall : imageRefSmall // ignore: cast_nullable_to_non_nullable
@@ -164,7 +164,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String gameCode,  String name,  String gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String? gameCode,  String? name,  String? gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TCGCard() when $default != null:
 return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
@@ -185,7 +185,7 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String gameCode,  String name,  String gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String? gameCode,  String? name,  String? gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)  $default,) {final _that = this;
 switch (_that) {
 case _TCGCard():
 return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
@@ -205,7 +205,7 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String gameCode,  String name,  String gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String? gameCode,  String? name,  String? gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,) {final _that = this;
 switch (_that) {
 case _TCGCard() when $default != null:
 return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
@@ -223,10 +223,10 @@ class _TCGCard implements TCGCard {
    _TCGCard({required this.id, required this.gameCode, required this.name, required this.gameType, this.version, this.setName, this.rarity, this.imageRefSmall, this.imageRefLarge, final  List<double>? imageEmbedding, final  List<double>? textEmbedding, final  Map<String, dynamic>? gameSpecificData}): _imageEmbedding = imageEmbedding,_textEmbedding = textEmbedding,_gameSpecificData = gameSpecificData;
   factory _TCGCard.fromJson(Map<String, dynamic> json) => _$TCGCardFromJson(json);
 
-@override final  String id;
-@override final  String gameCode;
-@override final  String name;
-@override final  String gameType;
+@override final  String? id;
+@override final  String? gameCode;
+@override final  String? name;
+@override final  String? gameType;
 @override final  String? version;
 @override final  String? setName;
 @override final  String? rarity;
@@ -293,7 +293,7 @@ abstract mixin class _$TCGCardCopyWith<$Res> implements $TCGCardCopyWith<$Res> {
   factory _$TCGCardCopyWith(_TCGCard value, $Res Function(_TCGCard) _then) = __$TCGCardCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String gameCode, String name, String gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
+ String? id, String? gameCode, String? name, String? gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
 });
 
 
@@ -310,13 +310,13 @@ class __$TCGCardCopyWithImpl<$Res>
 
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? gameCode = null,Object? name = null,Object? gameType = null,Object? version = freezed,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? gameCode = freezed,Object? name = freezed,Object? gameType = freezed,Object? version = freezed,Object? setName = freezed,Object? rarity = freezed,Object? imageRefSmall = freezed,Object? imageRefLarge = freezed,Object? imageEmbedding = freezed,Object? textEmbedding = freezed,Object? gameSpecificData = freezed,}) {
   return _then(_TCGCard(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,gameCode: null == gameCode ? _self.gameCode : gameCode // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,gameType: null == gameType ? _self.gameType : gameType // ignore: cast_nullable_to_non_nullable
-as String,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,gameCode: freezed == gameCode ? _self.gameCode : gameCode // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,gameType: freezed == gameType ? _self.gameType : gameType // ignore: cast_nullable_to_non_nullable
+as String?,version: freezed == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String?,setName: freezed == setName ? _self.setName : setName // ignore: cast_nullable_to_non_nullable
 as String?,rarity: freezed == rarity ? _self.rarity : rarity // ignore: cast_nullable_to_non_nullable
 as String?,imageRefSmall: freezed == imageRefSmall ? _self.imageRefSmall : imageRefSmall // ignore: cast_nullable_to_non_nullable

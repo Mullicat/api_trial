@@ -1,34 +1,7 @@
-// lib/screens/test_screen_yugioh_like_pokemon.dart
-/**
- * TestScreenYuGiOh - Yu-Gi-Oh! Card Search and Display Interface
- * 
- * This screen demonstrates advanced API integration with the YGOProDeck API,
- * featuring comprehensive filtering, searching, and sorting capabilities.
- * 
- * Key Features:
- * - Real-time card search by name (fuzzy search)
- * - Multiple filter types (attributes, types, races, archetypes)
- * - Sorting options (name, ATK, DEF, level, etc.)
- * - Responsive UI with loading states and error handling
- * - Horizontal filter bar with chip-based selection
- * - Navigation to TestScreenSingle for card details
- * 
- * Architecture Patterns:
- * - StatefulWidget for local state management
- * - Separation of concerns (UI logic vs API logic)
- * - Error handling with user-friendly messages
- * - Efficient API calls with conditional parameters
- * 
- * API Integration:
- * - Uses YGOProDeck public API (https://db.ygoprodeck.com/api/v7/cardinfo.php)
- * - Supports fuzzy name search, multi-parameter filtering
- * - Handles API errors and rate limiting gracefully
- */
-
 import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import '../services/catalog_yugioh_api_service.dart';
-import '../models/card.dart'; // Use new TCGCard model
+import '../models/card.dart';
 import '../constants/enums/game_type.dart';
 import './test_screen_single.dart';
 
@@ -40,73 +13,23 @@ class TestScreenYuGiOh extends StatefulWidget {
 }
 
 class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
-  // =================================================================
-  // CONSTANTS AND CONFIGURATION
-  // =================================================================
-
-  /// Number of cards to fetch per API call (pagination support)
   static const int _pageSize = 14;
-
-  // =================================================================
-  // STATE VARIABLES
-  // =================================================================
-
-  /// List of cards currently displayed (null = not loaded yet)
   List<TCGCard>? _cards;
-
-  /// Whether an API call is currently in progress
   bool _isLoading = false;
-
-  /// Current error message to display (null = no error)
   String? _errorMessage;
-
-  // =================================================================
-  // SEARCH AND FILTER STATE
-  // =================================================================
-
-  /// Text controller for the search input field
   final TextEditingController _searchController = TextEditingController();
-
-  /// Map storing single-select filter values (type, race, etc.)
-  /// Key: filter name, Value: selected value
   final Map<String, String> _filters = {};
-
-  /// Set storing multi-select attribute filters (LIGHT, DARK, etc.)
   final Set<String> _selectedAttributes = {};
-
-  /// Currently selected sort option (null = no sorting)
   String? _sortBy;
 
-  // =================================================================
-  // LIFECYCLE METHODS
-  // =================================================================
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchCards();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  // =================================================================
-  // FILTER CONFIGURATION
-  // =================================================================
-
-  /// Yu-Gi-Oh card attributes (monster card properties)
-  /// Used for multi-select filtering
   static const List<String> _attributes = [
-    'LIGHT', // Light attribute monsters
-    'DARK', // Dark attribute monsters
-    'EARTH', // Earth attribute monsters
-    'WATER', // Water attribute monsters
-    'FIRE', // Fire attribute monsters
-    'WIND', // Wind attribute monsters
-    'DIVINE', // Divine attribute monsters (rare)
+    'LIGHT',
+    'DARK',
+    'EARTH',
+    'WATER',
+    'FIRE',
+    'WIND',
+    'DIVINE',
   ];
 
   final Map<String, List<String>> _parameterOptions = {
@@ -124,7 +47,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
       'Spell Card',
       'Trap Card',
     ],
-
     'race': [
       'None',
       'Warrior',
@@ -166,17 +88,21 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
     'new': 'Newest',
   };
 
-  // =================================================================
-  // UTILITY METHODS
-  // =================================================================
+  @override
+  void initState() {
+    super.initState();
+    _fetchCards();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   String? _thumbOf(TCGCard c) {
     return c.imageRefSmall;
   }
-
-  // =================================================================
-  // API INTEGRATION METHODS
-  // =================================================================
 
   Future<void> _fetchCards() async {
     setState(() {
@@ -234,12 +160,12 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
     }
   }
 
-  Future<void> _fetchSingleCard(String gameCode) async {
-    if (gameCode.isEmpty) {
+  Future<void> _fetchSingleCard(String? gameCode) async {
+    if (gameCode == null || gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: gameCode is empty');
+      developer.log('Error: gameCode is null or empty');
       return;
     }
 
@@ -260,10 +186,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
       developer.log('Error navigating to card details: $e');
     }
   }
-
-  // =================================================================
-  // UI COMPONENT METHODS
-  // =================================================================
 
   Widget _buildFilterBar() {
     return Row(
@@ -549,11 +471,7 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
                                 ),
                             ],
                           ),
-                          onTap: () {
-                            if (c.gameCode != null) {
-                              _fetchSingleCard(c.gameCode);
-                            }
-                          },
+                          onTap: () => _fetchSingleCard(c.gameCode),
                         ),
                       );
                     },
@@ -565,7 +483,6 @@ class _TestScreenYuGiOhState extends State<TestScreenYuGiOh> {
   }
 }
 
-// Small chip-like box used in the filter bar
 class _ChipBox extends StatelessWidget {
   final String label;
   final bool active;

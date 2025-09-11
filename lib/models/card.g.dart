@@ -7,10 +7,10 @@ part of 'card.dart';
 // **************************************************************************
 
 _TCGCard _$TCGCardFromJson(Map<String, dynamic> json) => _TCGCard(
-  id: json['id'] as String,
-  gameCode: json['gameCode'] as String,
-  name: json['name'] as String,
-  gameType: json['gameType'] as String,
+  id: json['id'] as String?,
+  gameCode: json['gameCode'] as String?,
+  name: json['name'] as String?,
+  gameType: json['gameType'] as String?,
   version: json['version'] as String?,
   setName: json['setName'] as String?,
   rarity: json['rarity'] as String?,

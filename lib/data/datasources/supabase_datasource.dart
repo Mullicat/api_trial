@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:api_trial/constants/enums/onepiece_filters.dart';
 
 class SupabaseDataSource {
   static SupabaseDataSource? _instance;
@@ -8,6 +9,7 @@ class SupabaseDataSource {
 
   SupabaseDataSource._();
 
+  // Initializes the singleton instance of SupabaseDataSource
   static Future<SupabaseDataSource> getInstance() async {
     if (_instance == null) {
       _instance = SupabaseDataSource._();
@@ -16,6 +18,7 @@ class SupabaseDataSource {
     return _instance!;
   }
 
+  // Loads Supabase credentials from .env and initializes the Supabase client
   Future<void> _initialize() async {
     if (_client != null) return;
 
@@ -35,6 +38,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Provides access to the Supabase client
   SupabaseClient get supabase {
     if (_client == null) {
       throw Exception('Supabase not initialized. Call getInstance() first.');
@@ -42,7 +46,7 @@ class SupabaseDataSource {
     return _client!;
   }
 
-  // Authentication methods (unchanged)
+  // Signs up a user with email and password
   Future<AuthResponse> signUpWithEmailPassword(
     String email,
     String password,
@@ -59,6 +63,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Signs in a user with email and password
   Future<AuthResponse> signInWithEmailPassword(
     String email,
     String password,
@@ -75,6 +80,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Signs out the current user
   Future<void> signOut() async {
     try {
       await supabase.auth.signOut();
@@ -84,14 +90,17 @@ class SupabaseDataSource {
     }
   }
 
+  // Retrieves the current authenticated user
   User? getCurrentUser() {
     return supabase.auth.currentUser;
   }
 
+  // Streams authentication state changes
   Stream<AuthState> get authStateChanges {
     return supabase.auth.onAuthStateChange;
   }
 
+  // Resends email confirmation for a user
   Future<void> resendEmailConfirmation(String email) async {
     try {
       await supabase.auth.resend(type: OtpType.signup, email: email);
@@ -102,7 +111,7 @@ class SupabaseDataSource {
     }
   }
 
-  // Image storage methods
+  // Uploads an image to Supabase storage and returns its public URL
   Future<String?> uploadImage(File file, String path) async {
     try {
       final user = getCurrentUser();
@@ -141,6 +150,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Fetches all images from the uploaded_images table
   Future<List<Map<String, dynamic>>> fetchImages() async {
     try {
       final response = await supabase
@@ -154,6 +164,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Fetches a single image by ID from the uploaded_images table
   Future<Map<String, dynamic>?> fetchImage(String id) async {
     try {
       final response = await supabase
@@ -168,7 +179,7 @@ class SupabaseDataSource {
     }
   }
 
-  // Card-related methods
+  // Fetches cards by game_code, game_type, and image_ref_small for duplicate/version checking
   Future<List<Map<String, dynamic>>> getCardsByGameCode({
     required String gameCode,
     required String gameType,
@@ -188,6 +199,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Upserts cards to the cards table, handling conflicts
   Future<void> upsertCards(List<Map<String, dynamic>> cards) async {
     try {
       await supabase
@@ -200,6 +212,77 @@ class SupabaseDataSource {
     } catch (e) {
       print('Error upserting cards: $e');
       throw Exception('Error upserting cards: $e');
+    }
+  }
+
+  // Searches cards using the search_onepiece_cards function with full-text search
+  Future<List<Map<String, dynamic>>> searchCardsByTerm({
+    required String searchTerm,
+    required String gameType,
+    SetName? setName,
+    Rarity? rarity,
+    Cost? cost,
+    Type? type,
+    Color? color,
+    Power? power,
+    List<Family>? families,
+    Counter? counter,
+    Trigger? trigger,
+    int page = 1,
+    int pageSize = 100,
+  }) async {
+    try {
+      var query = supabase.rpc(
+        'search_onepiece_cards',
+        params: {'search_term': searchTerm},
+      );
+
+      // Apply filters to the query
+      if (setName != null) {
+        query = query.eq('set_name', setName.value);
+      }
+      if (rarity != null) {
+        query = query.eq('rarity', rarity.value);
+      }
+      if (cost != null) {
+        query = query.eq('game_specific_data->>cost', cost.value);
+      }
+      if (type != null) {
+        query = query.eq('game_specific_data->>type', type.value);
+      }
+      if (color != null) {
+        query = query.eq('game_specific_data->>color', color.value);
+      }
+      if (power != null) {
+        query = query.eq('game_specific_data->>power', power.value);
+      }
+      if (families != null && families.isNotEmpty) {
+        query = query.contains(
+          'game_specific_data->family',
+          families.map((f) => f.value).toList(),
+        );
+      }
+      if (counter != null) {
+        query = query.eq('game_specific_data->>counter', counter.value);
+      }
+      if (trigger != null) {
+        query = query.eq('game_specific_data->>trigger', trigger.value);
+      }
+
+      // Apply pagination
+      final offset = (page - 1) * pageSize;
+      final response = await query.range(
+        offset,
+        offset + (pageSize > 100 ? 100 : pageSize) - 1,
+      );
+
+      print(
+        'Fetched ${response.length} cards via search_onepiece_cards for term: $searchTerm',
+      );
+      return response;
+    } catch (e) {
+      print('Error searching cards: $e');
+      throw Exception('Error searching cards: $e');
     }
   }
 }

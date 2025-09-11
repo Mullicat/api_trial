@@ -3,6 +3,7 @@ import 'test_screen_pokemon.dart';
 import 'test_screen_magic.dart';
 import 'test_screen_yugioh.dart';
 import 'test_screen_apitcg.dart';
+import 'screen_onepiece.dart';
 
 class ApiCardsScreen extends StatelessWidget {
   const ApiCardsScreen({super.key});
@@ -14,9 +15,7 @@ class ApiCardsScreen extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 30,
         title: const Padding(
-          padding: EdgeInsets.only(
-            bottom: 10,
-          ), // <— lifts the text off the bottom
+          padding: EdgeInsets.only(bottom: 10),
           child: Text(
             'Trading Card Games',
             style: TextStyle(
@@ -87,6 +86,15 @@ class ApiCardsScreen extends StatelessWidget {
                     color: const Color(0xFF991B1B),
                     onTap: () =>
                         _navigateToScreen(context, const TestScreenYuGiOh()),
+                  ),
+                  _buildEnhancedApiCard(
+                    context: context,
+                    title: 'One Piece TCG',
+                    subtitle: 'Set sail for adventure!',
+                    icon: Icons.directions_boat,
+                    color: const Color(0xFF2F4F4F),
+                    onTap: () =>
+                        _navigateToScreen(context, const ScreenOnePiece()),
                   ),
                   _buildEnhancedApiCard(
                     context: context,

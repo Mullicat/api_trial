@@ -1,12 +1,10 @@
-// lib/screens/test_screen_pokemon.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:developer' as developer;
 import '../services/catalog_pokemontcg_api_service.dart';
-import '../models/card.dart'; // Updated to use TCGCard model
+import '../models/card.dart';
 import './test_screen_single.dart';
-import '../constants/enums/game_type.dart'; // Fixed import path
+import '../constants/enums/game_type.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -76,12 +74,12 @@ class _TestScreenState extends State<TestScreen> {
     }
   }
 
-  Future<void> _fetchSingleCard(String gameCode) async {
-    if (gameCode.isEmpty) {
+  Future<void> _fetchSingleCard(String? gameCode) async {
+    if (gameCode == null || gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: gameCode is empty');
+      developer.log('Error: gameCode is null or empty');
       return;
     }
 
@@ -103,7 +101,6 @@ class _TestScreenState extends State<TestScreen> {
     }
   }
 
-  // Predefined options for dropdowns based on Pokémon TCG API
   final Map<String, List<String>> _parameterOptions = {
     'rarity': [
       'None',
@@ -140,15 +137,7 @@ class _TestScreenState extends State<TestScreen> {
       'Break',
       'Prism Star',
     ],
-    'set.id': [
-      'None',
-      'base1',
-      'base2',
-      'sm1',
-      'xy1',
-      'swsh1',
-      'sv1',
-    ], // Example set IDs
+    'set.id': ['None', 'base1', 'base2', 'sm1', 'xy1', 'swsh1', 'sv1'],
     'hp': ['None', '[* TO 50]', '[50 TO 100]', '[100 TO 150]', '[150 TO *]'],
     'nationalPokedexNumbers': [
       'None',
@@ -160,10 +149,8 @@ class _TestScreenState extends State<TestScreen> {
     'legalities.standard': ['None', 'Legal', 'Banned'],
   };
 
-  // Free-text parameters that open a dialog directly
   final List<String> _freeTextParams = ['text', 'flavor', 'artist', 'number'];
 
-  // Build filter bar with dropdown buttons and free-text buttons
   Widget _buildFilterBar() {
     return Row(
       children: [
@@ -172,7 +159,6 @@ class _TestScreenState extends State<TestScreen> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                // Dropdown buttons for non-free-text parameters
                 ..._parameterOptions.keys.map((param) {
                   final isActive =
                       _filters.containsKey(param) && _filters[param] != 'None';
@@ -217,7 +203,6 @@ class _TestScreenState extends State<TestScreen> {
                     ),
                   );
                 }).toList(),
-                // Buttons for free-text parameters
                 ..._freeTextParams.map((param) {
                   final isActive =
                       _filters.containsKey(param) &&
@@ -267,7 +252,6 @@ class _TestScreenState extends State<TestScreen> {
     );
   }
 
-  // Show dialog for free-text parameters
   Future<void> _showTextInputDialog(String param) async {
     final controller = TextEditingController(text: _filters[param] ?? '');
     final result = await showDialog<String>(
@@ -277,7 +261,7 @@ class _TestScreenState extends State<TestScreen> {
         content: TextField(
           controller: controller,
           decoration: InputDecoration(hintText: 'Enter $param value'),
-          maxLines: 3, // Allow multi-line input for text and flavor
+          maxLines: 3,
         ),
         actions: [
           TextButton(
@@ -401,11 +385,7 @@ class _TestScreenState extends State<TestScreen> {
                               ),
                             ],
                           ),
-                          onTap: () {
-                            if (card.gameCode != null) {
-                              _fetchSingleCard(card.gameCode);
-                            }
-                          },
+                          onTap: () => _fetchSingleCard(card.gameCode),
                         ),
                       );
                     },
