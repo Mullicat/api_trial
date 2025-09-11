@@ -52,11 +52,7 @@ class OnePieceTcgService {
       queryParams['name'] = word;
     }
     if (setName != null) {
-      // Extract set code (e.g., 'OP06') from '-WINGS OF THE CAPTAIN- [OP06]'
-      final setCode = setName.value.contains('[')
-          ? setName.value.split('[').last.replaceAll(']', '')
-          : setName.value;
-      queryParams['set'] = setCode;
+      queryParams['set'] = setName.value;
     }
     if (rarity != null) {
       queryParams['rarity'] = rarity.value;
@@ -80,13 +76,10 @@ class OnePieceTcgService {
       queryParams['counter'] = counter.value;
     }
     if (trigger != null) {
-      queryParams['has_trigger'] = trigger == Trigger.hasTrigger
-          ? 'true'
-          : 'false';
+      queryParams['trigger'] = trigger == Trigger.hasTrigger ? '*' : '';
     }
     if (ability != null) {
-      queryParams['effect'] =
-          ability.value; // API uses 'effect' for ability-like filtering
+      queryParams['ability'] = ability.value;
     }
     return queryParams;
   }
@@ -227,19 +220,6 @@ class OnePieceTcgService {
       List<Map<String, dynamic>> response;
 
       if (word != null && word.isNotEmpty) {
-        final queryParams = _buildSupabaseQueryParams(
-          word: word,
-          setName: setName,
-          rarity: rarity,
-          cost: cost,
-          type: type,
-          color: color,
-          power: power,
-          families: families,
-          counter: counter,
-          trigger: trigger,
-          ability: ability,
-        );
         response = await _supabaseDataSource.searchCardsByTerm(
           searchTerm: word,
           gameType: 'onepiece',
@@ -272,6 +252,12 @@ class OnePieceTcgService {
           query = query.eq('game_specific_data->>color', color.value);
         if (power != null)
           query = query.eq('game_specific_data->>power', power.value);
+        if (families != null && families.isNotEmpty) {
+          query = query.contains(
+            'game_specific_data->family',
+            families.map((f) => f.value).toList(),
+          );
+        }
         if (counter != null)
           query = query.eq('game_specific_data->>counter', counter.value);
         if (trigger != null) {
@@ -286,17 +272,9 @@ class OnePieceTcgService {
           }
         }
         if (ability != null) {
-          // Ensure ability is stored as a JSON array and use contains for exact match
           query = query.contains('game_specific_data->ability', [
             ability.value,
           ]);
-        }
-        if (families != null && families.isNotEmpty) {
-          // Ensure family is stored as a JSON array
-          query = query.contains(
-            'game_specific_data->family',
-            families.map((f) => f.value).toList(),
-          );
         }
 
         final offset = (page - 1) * pageSize;
@@ -390,7 +368,6 @@ class OnePieceTcgService {
             }
 
             if (shouldUpsert) {
-              // Normalize family and ability for Supabase (store as arrays)
               final gameSpecificData = Map<String, dynamic>.from(
                 card.gameSpecificData ?? {},
               );
@@ -441,7 +418,6 @@ class OnePieceTcgService {
         throw Exception('API_TCG_KEY not found in assets/.env');
       }
 
-      // Remove 'onepiece-' prefix for API query
       final apiId = id.startsWith('onepiece-')
           ? id.replaceFirst('onepiece-', '')
           : id;
@@ -551,16 +527,14 @@ class OnePieceTcgService {
     } else if (json['type'] != null) {
       gameSpecificData['type'] = json['type'];
     }
-    // Normalize family and ability for consistency
-    if (json['family'] != null && json['family'] is List) {
-      gameSpecificData['family'] = json['family'];
-    } else if (json['family'] != null) {
-      gameSpecificData['family'] = [json['family'].toString()];
+    if (json['family'] != null && json['family'] is String) {
+      gameSpecificData['family'] = json['family']
+          .split('/')
+          .map((f) => f.trim())
+          .toList();
     }
-    if (json['effect'] != null) {
-      gameSpecificData['ability'] = json['effect'] is List
-          ? json['effect']
-          : [json['effect'].toString()];
+    if (json['ability'] != null && json['ability'] is String) {
+      gameSpecificData['ability'] = [json['ability']];
     }
     return TCGCard(
       id: cardId,
