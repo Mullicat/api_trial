@@ -35,13 +35,11 @@ stats = {
     "local_duplicates": 0,
 }
 
-
 def parse_version(card_id, card_code):
     if card_id == card_code:
         return 'standard'
     suffix = card_id.replace(card_code, '').lstrip('_').lower()
     return suffix if suffix else 'standard'
-
 
 def check_duplicates(cards):
     """Check duplicates locally based on rule."""
@@ -67,7 +65,6 @@ def check_duplicates(cards):
     stats["local_duplicates"] += len(duplicates)
     return duplicates
 
-
 def process_json(game_folder, json_file):
     file_path = os.path.join(DATA_DIR, game_folder, json_file)
     if not os.path.exists(file_path):
@@ -89,6 +86,12 @@ def process_json(game_folder, json_file):
             card_id = card_json.get('id', game_code)
             version = parse_version(card_id, game_code)
 
+            # Remove query parameters from image URLs
+            image_ref_small = card_json.get('images', {}).get('small', '')
+            image_ref_large = card_json.get('images', {}).get('large', '')
+            normalized_image_ref_small = image_ref_small.split('?')[0] if image_ref_small else ''
+            normalized_image_ref_large = image_ref_large.split('?')[0] if image_ref_large else ''
+
             card = {
                 'game_code': game_code,
                 'name': card_json.get('name', 'Unknown Card'),
@@ -96,8 +99,8 @@ def process_json(game_folder, json_file):
                 'version': version,
                 'set_name': card_json.get('set', {}).get('name', ''),
                 'rarity': card_json.get('rarity', ''),
-                'image_ref_small': card_json.get('images', {}).get('small', ''),
-                'image_ref_large': card_json.get('images', {}).get('large', ''),
+                'image_ref_small': normalized_image_ref_small,
+                'image_ref_large': normalized_image_ref_large,
                 'game_specific_data': {
                     k: v for k, v in card_json.items()
                     if k not in ['id', 'code', 'name', 'rarity', 'set', 'images']
@@ -112,7 +115,6 @@ def process_json(game_folder, json_file):
 
     stats["attempted"] += len(cards_data)
     return cards_data
-
 
 def upsert_to_supabase(cards, batch_size=500):
     if not cards:
@@ -147,7 +149,6 @@ def upsert_to_supabase(cards, batch_size=500):
     for i in range(0, len(valid_cards), batch_size):
         process_batch(valid_cards[i:i + batch_size])
 
-
 def main():
     for game_folder in GAME_TYPES.keys():
         game_dir = os.path.join(DATA_DIR, game_folder)
@@ -168,7 +169,6 @@ def main():
     print(f" - Inserted/Upserted in Supabase: {stats['supabase_success']}")
     print(f" - Failed in Supabase: {stats['supabase_fail']}")
     print(f" - Rejected by local rule (duplicates): {stats['local_duplicates']}")
-
 
 if __name__ == "__main__":
     main()

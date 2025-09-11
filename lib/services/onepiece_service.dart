@@ -234,26 +234,13 @@ class OnePieceTcgService {
       }
 
       developer.log('Fetched ${response.length} cards from Supabase');
-      for (var json in response) {
-        developer.log(
-          'Supabase card: name=${json['name']}, image_ref_small=${json['image_ref_small']}, game_specific_data=${json['game_specific_data']}',
-        );
-      }
-      return response.map((json) {
-        try {
-          return TCGCard.fromJson(json);
-        } catch (e) {
-          developer.log('Error parsing card from Supabase: $e, JSON: $json');
-          throw Exception('Error parsing card: $e');
-        }
-      }).toList();
+      return response.map((json) => TCGCard.fromJson(json)).toList();
     } catch (e) {
       developer.log('Error fetching One Piece cards from Supabase: $e');
       throw Exception('Error fetching One Piece cards from Supabase: $e');
     }
   }
 
-  // Fetches cards from API, checks Supabase, and upserts with versioning
   Future<List<TCGCard>> getCardsUploadCards({
     String? word,
     SetName? setName,
@@ -290,13 +277,13 @@ class OnePieceTcgService {
           final cardsToUpsert = <Map<String, dynamic>>[];
           for (var card in apiCards) {
             final existingCards = await _supabaseDataSource.getCardsByGameCode(
-              gameCode: card.gameCode!.split('-').first, // Strip version suffix
+              gameCode: card.gameCode!.split('-').first,
               gameType: 'onepiece',
               imageRefSmall: card.imageRefSmall ?? '',
             );
 
             bool shouldUpsert = true;
-            String? newGameCode = card.gameCode;
+            String newGameCode = card.gameCode!;
 
             if (existingCards.isNotEmpty) {
               for (var existing in existingCards) {
@@ -308,7 +295,7 @@ class OnePieceTcgService {
               }
               if (shouldUpsert) {
                 // Check for existing versions
-                final baseGameCode = card.gameCode?.split('-').first;
+                final baseGameCode = card.gameCode!.split('-').first;
                 final versionedCards = await _supabaseDataSource.supabase
                     .from('cards')
                     .select('game_code')
@@ -335,8 +322,12 @@ class OnePieceTcgService {
                 'name': card.name,
                 'set_name': card.setName,
                 'rarity': card.rarity,
-                'image_ref_small': card.imageRefSmall,
-                'image_ref_large': card.imageRefLarge,
+                'image_ref_small': card.imageRefSmall
+                    ?.split('?')
+                    .first, // Eliminate query parameters
+                'image_ref_large': card.imageRefLarge
+                    ?.split('?')
+                    .first, // Eliminate query parameters
                 'game_specific_data': card.gameSpecificData,
               });
             }
@@ -436,7 +427,7 @@ class OnePieceTcgService {
         return null;
       }
       developer.log(
-        'Fetched card from Supabase: ${response['name'] ?? 'Unknown'}, image_ref_small=${response['image_ref_small']}, game_specific_data=${response['game_specific_data']}',
+        'Fetched card from Supabase: ${response['name'] ?? 'Unknown'}',
       );
       return TCGCard.fromJson(response);
     } catch (e) {
@@ -479,17 +470,21 @@ class OnePieceTcgService {
     } else if (json['type'] != null) {
       gameSpecificData['type'] = json['type'];
     }
-    final imageRefSmall = json['images']?['small']?.toString();
-    developer.log('Parsed card image_ref_small: $imageRefSmall');
     return TCGCard(
       id: cardId,
       gameCode: json['id']?.toString() ?? cardId,
-      name: json['name']!.toString(),
+      name: json['name']?.toString(),
       gameType: 'onepiece',
       setName: json['set']?['name']?.toString(),
       rarity: json['rarity']?.toString(),
-      imageRefSmall: imageRefSmall,
-      imageRefLarge: json['images']?['large']?.toString(),
+      imageRefSmall: json['images']?['small']
+          ?.toString()
+          .split('?')
+          .first, // Remove query parameters
+      imageRefLarge: json['images']?['large']
+          ?.toString()
+          .split('?')
+          .first, // Remove query parameters
       imageEmbedding: null,
       textEmbedding: null,
       gameSpecificData: gameSpecificData.isEmpty ? null : gameSpecificData,
