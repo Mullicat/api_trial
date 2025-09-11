@@ -1,42 +1,13 @@
-// lib/data/datasources/supabase_datasource.dart
-
-/*
- * SupabaseDataSource - Data Access Layer for Supabase Backend
- * 
- * This class implements the Singleton pattern to ensure only one instance
- * of the Supabase client exists throughout the app lifecycle.
- * 
- * Responsibilities:
- * - Initialize Supabase connection with environment variables
- * - Provide authentication methods (sign up, sign in, sign out)
- * - Handle image upload/download to Supabase Storage
- * - Manage database operations for uploaded images
- * 
- * Design Pattern: Singleton + Repository Pattern
- * Why Singleton? Supabase client should be initialized once and reused
- */
-
 import 'dart:io';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SupabaseDataSource {
-  // Singleton instance - only one SupabaseDataSource can exist
   static SupabaseDataSource? _instance;
-
-  // Supabase client - the main connection to our backend
   static SupabaseClient? _client;
 
-  // Private constructor prevents direct instantiation
-  // Forces use of getInstance() method
   SupabaseDataSource._();
 
-  /*
-   * Singleton pattern implementation
-   * Returns existing instance or creates new one if doesn't exist
-   * 
-   * Usage: final dataSource = await SupabaseDataSource.getInstance();
-   */
   static Future<SupabaseDataSource> getInstance() async {
     if (_instance == null) {
       _instance = SupabaseDataSource._();
@@ -45,53 +16,25 @@ class SupabaseDataSource {
     return _instance!;
   }
 
-  /*
-   * Initialize Supabase connection with environment variables
-   * 
-   * Process:
-   * 1. Load .env file from assets folder
-   * 2. Extract SUPABASE_URL and SUPABASE_KEY
-   * 3. Initialize Supabase with these credentials
-   * 4. Create client instance for future operations
-   * 
-   * Security: Environment variables keep sensitive data out of source code
-   */
-
   Future<void> _initialize() async {
-    // Prevent multiple initializations
     if (_client != null) return;
 
     try {
-      // Load environment variables from assets/.env file
       await dotenv.load(fileName: "assets/.env");
-
       final supabaseUrl = dotenv.env['SUPABASE_URL'];
       final supabaseKey = dotenv.env['SUPABASE_KEY'];
 
-      // Validate that required environment variables exist
       if (supabaseUrl == null || supabaseKey == null) {
         throw Exception('Supabase URL or Key not found in .env file');
       }
 
-      // Initialize Supabase with URL and anonymous key
-      // This creates the global Supabase instance
       await Supabase.initialize(url: supabaseUrl, anonKey: supabaseKey);
-
-      // Get reference to the initialized client
       _client = Supabase.instance.client;
-      print('Supabase initialized successfully');
     } catch (e) {
-      print('Error initializing Supabase: $e');
-      rethrow; // Re-throw to let caller handle the error
+      rethrow;
     }
   }
 
-  /*
-   * Getter for Supabase client with safety check
-   * 
-   * Returns the initialized Supabase client or throws exception
-   * if not properly initialized. This prevents null pointer exceptions.
-   */
   SupabaseClient get supabase {
     if (_client == null) {
       throw Exception('Supabase not initialized. Call getInstance() first.');
@@ -99,21 +42,7 @@ class SupabaseDataSource {
     return _client!;
   }
 
-  // =================================================================
-  // AUTHENTICATION METHODS
-  // These methods handle user registration, login, and logout
-  // =================================================================
-
-  /*
-   * Register new user with email and password
-   * 
-   * @param email - User's email address
-   * @param password - User's chosen password
-   * @return AuthResponse containing user info and session
-   * 
-   * Note: Supabase may send confirmation email depending on settings
-   */
-
+  // Authentication methods (unchanged)
   Future<AuthResponse> signUpWithEmailPassword(
     String email,
     String password,
@@ -126,19 +55,10 @@ class SupabaseDataSource {
       return response;
     } catch (e) {
       print('Sign up error: $e');
-      rethrow; // Let upper layers handle specific error types
+      rethrow;
     }
   }
 
-  /*
-   * Authenticate existing user with email and password
-   * 
-   * @param email - User's registered email
-   * @param password - User's password
-   * @return AuthResponse with user session if successful
-   * 
-   * Creates a session that persists across app restarts
-   */
   Future<AuthResponse> signInWithEmailPassword(
     String email,
     String password,
@@ -155,14 +75,6 @@ class SupabaseDataSource {
     }
   }
 
-  /*
-   * Sign out current user and clear session
-   * 
-   * This will:
-   * - Clear local session data
-   * - Invalidate JWT token
-   * - Trigger auth state change listeners
-   */
   Future<void> signOut() async {
     try {
       await supabase.auth.signOut();
@@ -172,47 +84,17 @@ class SupabaseDataSource {
     }
   }
 
-  /*
-   * Get currently authenticated user (if any)
-   * 
-   * @return User object or null if not authenticated
-   * 
-   * This checks the current session without making network calls
-   */
   User? getCurrentUser() {
     return supabase.auth.currentUser;
   }
 
-  /*
-   * Stream of authentication state changes
-   * 
-   * @return Stream<AuthState> that emits when user signs in/out
-   * 
-   * Useful for reactive UI updates when auth state changes
-   * Listen to this stream to automatically update UI
-   */
   Stream<AuthState> get authStateChanges {
     return supabase.auth.onAuthStateChange;
   }
 
-  /**
-   * Resend email confirmation for user verification
-   * 
-   * @param email - Email address to send confirmation to
-   * 
-   * This triggers Supabase to resend the email verification email.
-   * Useful when users don't receive the initial verification email
-   * or when they need it sent again.
-   * 
-   * Note: Supabase may have rate limiting on email sending
-   */
   Future<void> resendEmailConfirmation(String email) async {
     try {
-      // Use Supabase auth resend method for email confirmation
-      await supabase.auth.resend(
-        type: OtpType.signup, // Use signup type for email confirmation
-        email: email,
-      );
+      await supabase.auth.resend(type: OtpType.signup, email: email);
       print('Email confirmation resent to: $email');
     } catch (e) {
       print('Resend email confirmation error: $e');
@@ -220,56 +102,26 @@ class SupabaseDataSource {
     }
   }
 
-  // =================================================================
-  // IMAGE STORAGE METHODS
-  // These methods handle image upload/download to Supabase Storage
-  // =================================================================
-
-  /*
-   * Upload image file to Supabase Storage
-   * 
-   * @param file - Image file from device (File object)
-   * @param path - Desired path/filename in storage
-   * @return Public URL of uploaded image or null if failed
-   * 
-   * Process:
-   * 1. Check user authentication (required for uploads)
-   * 2. Create user-specific path to prevent conflicts
-   * 3. Upload file to 'images' bucket
-   * 4. Generate and return public URL for accessing image
-   * 
-   * Security: Files are organized by user_id to implement access control
-   */
-
+  // Image storage methods
   Future<String?> uploadImage(File file, String path) async {
     try {
-      // Verify user is authenticated before allowing upload
       final user = getCurrentUser();
       if (user == null) {
         throw Exception('User must be authenticated to upload images');
       }
-
       print('Uploading image as user: ${user.email}');
-
-      // Create user-specific path to prevent filename conflicts
-      // Format: user_[userid]/[original_path]
       final userPath = 'user_${user.id}/$path';
-
-      // Upload file to 'images' bucket in Supabase Storage
       final response = await supabase.storage
-          .from('images') // Bucket name - must exist in Supabase
+          .from('images')
           .upload(
-            userPath, // Path within bucket
-            file, // File to upload
+            userPath,
+            file,
             fileOptions: const FileOptions(
-              contentType: 'image/jpeg', // MIME type for proper handling
-              upsert: false, // Don't overwrite existing files
+              contentType: 'image/jpeg',
+              upsert: false,
             ),
           );
-
-      // Check if upload was successful
       if (response.isNotEmpty) {
-        // Generate public URL for accessing the uploaded image
         final publicUrl = supabase.storage
             .from('images')
             .getPublicUrl(userPath);
@@ -280,7 +132,6 @@ class SupabaseDataSource {
       }
     } catch (e) {
       print('Upload error: $e');
-      // Provide helpful error messages for common issues
       if (e.toString().contains('row-level security policy')) {
         throw Exception(
           'Storage access denied. Please check Supabase RLS policies for the images bucket.',
@@ -290,24 +141,12 @@ class SupabaseDataSource {
     }
   }
 
-  /*
-   * Fetch all uploaded images from database
-   * 
-   * @return List of image metadata records
-   * 
-   * Retrieves image records from 'uploaded_images' table
-   * Ordered by creation date (newest first)
-   * 
-   * Note: This returns metadata, not actual image files
-   * Use the URLs in the records to display images
-   */
   Future<List<Map<String, dynamic>>> fetchImages() async {
     try {
       final response = await supabase
-          .from('uploaded_images') // Table name
-          .select() // Select all columns
-          .order('created_at', ascending: false); // Newest first
-
+          .from('uploaded_images')
+          .select()
+          .order('created_at', ascending: false);
       return response;
     } catch (e) {
       print('Fetch images error: $e');
@@ -315,27 +154,52 @@ class SupabaseDataSource {
     }
   }
 
-  /*
-   * Fetch single image record by ID
-   * 
-   * @param id - Unique identifier of the image record
-   * @return Image metadata record or null if not found
-   * 
-   * Uses .single() which expects exactly one match
-   * Throws exception if 0 or multiple records found
-   */
   Future<Map<String, dynamic>?> fetchImage(String id) async {
     try {
       final response = await supabase
           .from('uploaded_images')
           .select()
-          .eq('id', id) // WHERE id = ?
-          .single(); // Expect exactly one result
-
+          .eq('id', id)
+          .single();
       return response;
     } catch (e) {
       print('Fetch image error: $e');
       throw Exception('Error fetching image: $e');
+    }
+  }
+
+  // Card-related methods
+  Future<List<Map<String, dynamic>>> getCardsByGameCode({
+    required String gameCode,
+    required String gameType,
+    required String imageRefSmall,
+  }) async {
+    try {
+      final response = await supabase
+          .from('cards')
+          .select()
+          .eq('game_code', gameCode)
+          .eq('game_type', gameType)
+          .eq('image_ref_small', imageRefSmall);
+      return response;
+    } catch (e) {
+      print('Error fetching cards by game_code: $e');
+      throw Exception('Error fetching cards: $e');
+    }
+  }
+
+  Future<void> upsertCards(List<Map<String, dynamic>> cards) async {
+    try {
+      await supabase
+          .from('cards')
+          .upsert(
+            cards,
+            onConflict: 'game_code,game_type,set_name,image_ref_small',
+          );
+      print('Upserted ${cards.length} cards to Supabase');
+    } catch (e) {
+      print('Error upserting cards: $e');
+      throw Exception('Error upserting cards: $e');
     }
   }
 }
