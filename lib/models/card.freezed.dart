@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TCGCard {
 
- String? get id; String? get gameCode; String? get name; String? get gameType; String? get version; String? get setName; String? get rarity; String? get imageRefSmall; String? get imageRefLarge; List<double>? get imageEmbedding; List<double>? get textEmbedding; Map<String, dynamic>? get gameSpecificData;
+@JsonKey(name: 'id') String? get id;@JsonKey(name: 'game_code') String? get gameCode;@JsonKey(name: 'name') String? get name;@JsonKey(name: 'game_type') String? get gameType;@JsonKey(name: 'version') String? get version;@JsonKey(name: 'set_name') String? get setName;@JsonKey(name: 'rarity') String? get rarity;@JsonKey(name: 'image_ref_small') String? get imageRefSmall;@JsonKey(name: 'image_ref_large') String? get imageRefLarge;@JsonKey(name: 'image_embedding') List<double>? get imageEmbedding;@JsonKey(name: 'text_embedding') List<double>? get textEmbedding;@JsonKey(name: 'game_specific_data') Map<String, dynamic>? get gameSpecificData;
 /// Create a copy of TCGCard
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $TCGCardCopyWith<$Res>  {
   factory $TCGCardCopyWith(TCGCard value, $Res Function(TCGCard) _then) = _$TCGCardCopyWithImpl;
 @useResult
 $Res call({
- String? id, String? gameCode, String? name, String? gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
+@JsonKey(name: 'id') String? id,@JsonKey(name: 'game_code') String? gameCode,@JsonKey(name: 'name') String? name,@JsonKey(name: 'game_type') String? gameType,@JsonKey(name: 'version') String? version,@JsonKey(name: 'set_name') String? setName,@JsonKey(name: 'rarity') String? rarity,@JsonKey(name: 'image_ref_small') String? imageRefSmall,@JsonKey(name: 'image_ref_large') String? imageRefLarge,@JsonKey(name: 'image_embedding') List<double>? imageEmbedding,@JsonKey(name: 'text_embedding') List<double>? textEmbedding,@JsonKey(name: 'game_specific_data') Map<String, dynamic>? gameSpecificData
 });
 
 
@@ -164,7 +164,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String? gameCode,  String? name,  String? gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  String? id, @JsonKey(name: 'game_code')  String? gameCode, @JsonKey(name: 'name')  String? name, @JsonKey(name: 'game_type')  String? gameType, @JsonKey(name: 'version')  String? version, @JsonKey(name: 'set_name')  String? setName, @JsonKey(name: 'rarity')  String? rarity, @JsonKey(name: 'image_ref_small')  String? imageRefSmall, @JsonKey(name: 'image_ref_large')  String? imageRefLarge, @JsonKey(name: 'image_embedding')  List<double>? imageEmbedding, @JsonKey(name: 'text_embedding')  List<double>? textEmbedding, @JsonKey(name: 'game_specific_data')  Map<String, dynamic>? gameSpecificData)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TCGCard() when $default != null:
 return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
@@ -185,7 +185,7 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String? gameCode,  String? name,  String? gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  String? id, @JsonKey(name: 'game_code')  String? gameCode, @JsonKey(name: 'name')  String? name, @JsonKey(name: 'game_type')  String? gameType, @JsonKey(name: 'version')  String? version, @JsonKey(name: 'set_name')  String? setName, @JsonKey(name: 'rarity')  String? rarity, @JsonKey(name: 'image_ref_small')  String? imageRefSmall, @JsonKey(name: 'image_ref_large')  String? imageRefLarge, @JsonKey(name: 'image_embedding')  List<double>? imageEmbedding, @JsonKey(name: 'text_embedding')  List<double>? textEmbedding, @JsonKey(name: 'game_specific_data')  Map<String, dynamic>? gameSpecificData)  $default,) {final _that = this;
 switch (_that) {
 case _TCGCard():
 return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
@@ -205,7 +205,7 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String? gameCode,  String? name,  String? gameType,  String? version,  String? setName,  String? rarity,  String? imageRefSmall,  String? imageRefLarge,  List<double>? imageEmbedding,  List<double>? textEmbedding,  Map<String, dynamic>? gameSpecificData)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  String? id, @JsonKey(name: 'game_code')  String? gameCode, @JsonKey(name: 'name')  String? name, @JsonKey(name: 'game_type')  String? gameType, @JsonKey(name: 'version')  String? version, @JsonKey(name: 'set_name')  String? setName, @JsonKey(name: 'rarity')  String? rarity, @JsonKey(name: 'image_ref_small')  String? imageRefSmall, @JsonKey(name: 'image_ref_large')  String? imageRefLarge, @JsonKey(name: 'image_embedding')  List<double>? imageEmbedding, @JsonKey(name: 'text_embedding')  List<double>? textEmbedding, @JsonKey(name: 'game_specific_data')  Map<String, dynamic>? gameSpecificData)?  $default,) {final _that = this;
 switch (_that) {
 case _TCGCard() when $default != null:
 return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,_that.setName,_that.rarity,_that.imageRefSmall,_that.imageRefLarge,_that.imageEmbedding,_that.textEmbedding,_that.gameSpecificData);case _:
@@ -220,20 +220,20 @@ return $default(_that.id,_that.gameCode,_that.name,_that.gameType,_that.version,
 @JsonSerializable()
 
 class _TCGCard implements TCGCard {
-   _TCGCard({required this.id, required this.gameCode, required this.name, required this.gameType, this.version, this.setName, this.rarity, this.imageRefSmall, this.imageRefLarge, final  List<double>? imageEmbedding, final  List<double>? textEmbedding, final  Map<String, dynamic>? gameSpecificData}): _imageEmbedding = imageEmbedding,_textEmbedding = textEmbedding,_gameSpecificData = gameSpecificData;
+   _TCGCard({@JsonKey(name: 'id') required this.id, @JsonKey(name: 'game_code') required this.gameCode, @JsonKey(name: 'name') required this.name, @JsonKey(name: 'game_type') required this.gameType, @JsonKey(name: 'version') this.version, @JsonKey(name: 'set_name') this.setName, @JsonKey(name: 'rarity') this.rarity, @JsonKey(name: 'image_ref_small') this.imageRefSmall, @JsonKey(name: 'image_ref_large') this.imageRefLarge, @JsonKey(name: 'image_embedding') final  List<double>? imageEmbedding, @JsonKey(name: 'text_embedding') final  List<double>? textEmbedding, @JsonKey(name: 'game_specific_data') final  Map<String, dynamic>? gameSpecificData}): _imageEmbedding = imageEmbedding,_textEmbedding = textEmbedding,_gameSpecificData = gameSpecificData;
   factory _TCGCard.fromJson(Map<String, dynamic> json) => _$TCGCardFromJson(json);
 
-@override final  String? id;
-@override final  String? gameCode;
-@override final  String? name;
-@override final  String? gameType;
-@override final  String? version;
-@override final  String? setName;
-@override final  String? rarity;
-@override final  String? imageRefSmall;
-@override final  String? imageRefLarge;
+@override@JsonKey(name: 'id') final  String? id;
+@override@JsonKey(name: 'game_code') final  String? gameCode;
+@override@JsonKey(name: 'name') final  String? name;
+@override@JsonKey(name: 'game_type') final  String? gameType;
+@override@JsonKey(name: 'version') final  String? version;
+@override@JsonKey(name: 'set_name') final  String? setName;
+@override@JsonKey(name: 'rarity') final  String? rarity;
+@override@JsonKey(name: 'image_ref_small') final  String? imageRefSmall;
+@override@JsonKey(name: 'image_ref_large') final  String? imageRefLarge;
  final  List<double>? _imageEmbedding;
-@override List<double>? get imageEmbedding {
+@override@JsonKey(name: 'image_embedding') List<double>? get imageEmbedding {
   final value = _imageEmbedding;
   if (value == null) return null;
   if (_imageEmbedding is EqualUnmodifiableListView) return _imageEmbedding;
@@ -242,7 +242,7 @@ class _TCGCard implements TCGCard {
 }
 
  final  List<double>? _textEmbedding;
-@override List<double>? get textEmbedding {
+@override@JsonKey(name: 'text_embedding') List<double>? get textEmbedding {
   final value = _textEmbedding;
   if (value == null) return null;
   if (_textEmbedding is EqualUnmodifiableListView) return _textEmbedding;
@@ -251,7 +251,7 @@ class _TCGCard implements TCGCard {
 }
 
  final  Map<String, dynamic>? _gameSpecificData;
-@override Map<String, dynamic>? get gameSpecificData {
+@override@JsonKey(name: 'game_specific_data') Map<String, dynamic>? get gameSpecificData {
   final value = _gameSpecificData;
   if (value == null) return null;
   if (_gameSpecificData is EqualUnmodifiableMapView) return _gameSpecificData;
@@ -293,7 +293,7 @@ abstract mixin class _$TCGCardCopyWith<$Res> implements $TCGCardCopyWith<$Res> {
   factory _$TCGCardCopyWith(_TCGCard value, $Res Function(_TCGCard) _then) = __$TCGCardCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String? gameCode, String? name, String? gameType, String? version, String? setName, String? rarity, String? imageRefSmall, String? imageRefLarge, List<double>? imageEmbedding, List<double>? textEmbedding, Map<String, dynamic>? gameSpecificData
+@JsonKey(name: 'id') String? id,@JsonKey(name: 'game_code') String? gameCode,@JsonKey(name: 'name') String? name,@JsonKey(name: 'game_type') String? gameType,@JsonKey(name: 'version') String? version,@JsonKey(name: 'set_name') String? setName,@JsonKey(name: 'rarity') String? rarity,@JsonKey(name: 'image_ref_small') String? imageRefSmall,@JsonKey(name: 'image_ref_large') String? imageRefLarge,@JsonKey(name: 'image_embedding') List<double>? imageEmbedding,@JsonKey(name: 'text_embedding') List<double>? textEmbedding,@JsonKey(name: 'game_specific_data') Map<String, dynamic>? gameSpecificData
 });
 
 

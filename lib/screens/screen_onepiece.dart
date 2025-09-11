@@ -804,12 +804,10 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                           itemBuilder: (context, index) {
                             final card = _cards![index];
                             developer.log(
-                              'Rendering card: ${card.name ?? 'Unknown'}',
+                              'Rendering card: ${card.name ?? 'Unknown'}, imageRefSmall=${card.imageRefSmall}',
                             );
                             final typeText =
-                                card.gameSpecificData?['type'] ??
-                                card.gameSpecificData?['cardType'] ??
-                                card.gameSpecificData?['types']?.join(', ') ??
+                                card.gameSpecificData?['type']?.toString() ??
                                 'Unknown';
                             final rarityText = card.rarity ?? 'Unknown';
                             return Card(
@@ -818,7 +816,9 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                                 vertical: 4,
                               ),
                               child: ListTile(
-                                leading: card.imageRefSmall != null
+                                leading:
+                                    card.imageRefSmall != null &&
+                                        card.imageRefSmall!.isNotEmpty
                                     ? CachedNetworkImage(
                                         imageUrl: card.imageRefSmall!,
                                         width: 50,
@@ -826,11 +826,15 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                                         fit: BoxFit.contain,
                                         placeholder: (context, url) =>
                                             const CircularProgressIndicator(),
-                                        errorWidget: (context, url, error) =>
-                                            const Icon(
-                                              Icons.broken_image,
-                                              size: 50,
-                                            ),
+                                        errorWidget: (context, url, error) {
+                                          developer.log(
+                                            'Image load error for ${card.name}: $error, URL: ${card.imageRefSmall}',
+                                          );
+                                          return const Icon(
+                                            Icons.broken_image,
+                                            size: 50,
+                                          );
+                                        },
                                       )
                                     : const Icon(
                                         Icons.image_not_supported,

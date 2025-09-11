@@ -234,6 +234,11 @@ class OnePieceTcgService {
       }
 
       developer.log('Fetched ${response.length} cards from Supabase');
+      for (var json in response) {
+        developer.log(
+          'Supabase card: name=${json['name']}, image_ref_small=${json['image_ref_small']}, game_specific_data=${json['game_specific_data']}',
+        );
+      }
       return response.map((json) {
         try {
           return TCGCard.fromJson(json);
@@ -431,7 +436,7 @@ class OnePieceTcgService {
         return null;
       }
       developer.log(
-        'Fetched card from Supabase: ${response['name'] ?? 'Unknown'}',
+        'Fetched card from Supabase: ${response['name'] ?? 'Unknown'}, image_ref_small=${response['image_ref_small']}, game_specific_data=${response['game_specific_data']}',
       );
       return TCGCard.fromJson(response);
     } catch (e) {
@@ -466,6 +471,16 @@ class OnePieceTcgService {
       ..remove('rarity')
       ..remove('set')
       ..remove('images');
+    // Standardize 'type' field
+    if (json['cardType'] != null) {
+      gameSpecificData['type'] = json['cardType'];
+    } else if (json['types'] != null && json['types'] is List) {
+      gameSpecificData['type'] = (json['types'] as List).join(', ');
+    } else if (json['type'] != null) {
+      gameSpecificData['type'] = json['type'];
+    }
+    final imageRefSmall = json['images']?['small']?.toString();
+    developer.log('Parsed card image_ref_small: $imageRefSmall');
     return TCGCard(
       id: cardId,
       gameCode: json['id']?.toString() ?? cardId,
@@ -473,7 +488,7 @@ class OnePieceTcgService {
       gameType: 'onepiece',
       setName: json['set']?['name']?.toString(),
       rarity: json['rarity']?.toString(),
-      imageRefSmall: json['images']?['small']?.toString(),
+      imageRefSmall: imageRefSmall,
       imageRefLarge: json['images']?['large']?.toString(),
       imageEmbedding: null,
       textEmbedding: null,
