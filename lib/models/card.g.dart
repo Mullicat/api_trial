@@ -7,37 +7,35 @@ part of 'card.dart';
 // **************************************************************************
 
 _TCGCard _$TCGCardFromJson(Map<String, dynamic> json) => _TCGCard(
-  id: json['id'] as String,
-  gameCode: json['gameCode'] as String,
-  name: json['name'] as String,
-  gameType: json['gameType'] as String,
-  setName: json['setName'] as String?,
+  id: json['id'] as String?,
+  gameCode: json['game_code'] as String?,
+  name: json['name'] as String?,
+  gameType: json['game_type'] as String?,
+  version: json['version'] as String?,
+  setName: json['set_name'] as String?,
   rarity: json['rarity'] as String?,
-  imageRefSmall: json['imageRefSmall'] as String?,
-  imageRefLarge: json['imageRefLarge'] as String?,
-  lastUpdated: json['lastUpdated'] == null
-      ? null
-      : DateTime.parse(json['lastUpdated'] as String),
-  imageEmbedding: (json['imageEmbedding'] as List<dynamic>?)
+  imageRefSmall: json['image_ref_small'] as String?,
+  imageRefLarge: json['image_ref_large'] as String?,
+  imageEmbedding: (json['image_embedding'] as List<dynamic>?)
       ?.map((e) => (e as num).toDouble())
       .toList(),
-  textEmbedding: (json['textEmbedding'] as List<dynamic>?)
+  textEmbedding: (json['text_embedding'] as List<dynamic>?)
       ?.map((e) => (e as num).toDouble())
       .toList(),
-  gameSpecificData: json['gameSpecificData'] as Map<String, dynamic>?,
+  gameSpecificData: json['game_specific_data'] as Map<String, dynamic>?,
 );
 
 Map<String, dynamic> _$TCGCardToJson(_TCGCard instance) => <String, dynamic>{
   'id': instance.id,
-  'gameCode': instance.gameCode,
+  'game_code': instance.gameCode,
   'name': instance.name,
-  'gameType': instance.gameType,
-  'setName': instance.setName,
+  'game_type': instance.gameType,
+  'version': instance.version,
+  'set_name': instance.setName,
   'rarity': instance.rarity,
-  'imageRefSmall': instance.imageRefSmall,
-  'imageRefLarge': instance.imageRefLarge,
-  'lastUpdated': instance.lastUpdated?.toIso8601String(),
-  'imageEmbedding': instance.imageEmbedding,
-  'textEmbedding': instance.textEmbedding,
-  'gameSpecificData': instance.gameSpecificData,
+  'image_ref_small': instance.imageRefSmall,
+  'image_ref_large': instance.imageRefLarge,
+  'image_embedding': instance.imageEmbedding,
+  'text_embedding': instance.textEmbedding,
+  'game_specific_data': instance.gameSpecificData,
 };

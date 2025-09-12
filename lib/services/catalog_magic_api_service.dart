@@ -82,7 +82,6 @@ class MagicTcgService {
               imageRefSmall:
                   cardJson['imageUrl'], // Use same URL until Supabase upload
               imageRefLarge: cardJson['imageUrl'],
-              lastUpdated: DateTime.now(),
               imageEmbedding: null, // Defer generation
               textEmbedding: null, // Defer generation
               gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,
@@ -168,7 +167,6 @@ class MagicTcgService {
             rarity: cardJson['rarity'],
             imageRefSmall: cardJson['imageUrl'],
             imageRefLarge: cardJson['imageUrl'],
-            lastUpdated: DateTime.now(),
             imageEmbedding: null,
             textEmbedding: null,
             gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,

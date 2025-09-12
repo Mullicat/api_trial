@@ -1,0 +1,362 @@
+[
+  {
+    "id": "FS09-01",
+    "code": "FS09-01",
+    "rarity": "L",
+    "name": "Shallot",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-01_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-01_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan\n                  Saiyan",
+    "effect": "[Activate Main](4)(Switch the specified number of energy to Rest Mode) : Play up to 1 Battle Card with 10000 combo power and 《Saiyan》 in its special traits from your hand.<br>[Awaken] (Can be activated during [Activate Main/Battle] if the conditions are met.) When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-02",
+    "code": "FS09-02",
+    "rarity": "C",
+    "name": "Kinkanman",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-02.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-02.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saibamen",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-03",
+    "code": "FS09-03",
+    "rarity": "C",
+    "name": "Zahha",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-03.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-03.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "15000",
+    "comboPower": "5000",
+    "features": "-",
+    "effect": "[When Attacking] If there is a Battle Card with a cost of 6 in your Battle Area, look at 2 cards from the top of your deck and use up to 1 Battle Card in a combo. Place the rest at the top of its owner's deck in any order.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-04",
+    "code": "FS09-04",
+    "rarity": "C",
+    "name": "Jaco",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-04.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-04.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "-",
+    "features": "Alien",
+    "effect": "[Blocker] (After an opponent's attack, you may switch this card to Rest Mode and change the target of the attack to this card.)<br>[On Play] If your Leader is &lt;Shallot&gt;, draw 1 card.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-05",
+    "code": "FS09-05",
+    "rarity": "C",
+    "name": "Shallot",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-05.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-05.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main][Once per turn] Place 1 card from your hand on top of its owner's deck : If your Leader is &lt;Shallot&gt; and there is a Battle Card with a cost of 6 in your Battle Area, this card in a Battle Area gains [Double Strike] for the turn.<br>([Double Strike] : This card inflicts 2 damage instead of 1 when attacking.)",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-06",
+    "code": "FS09-06",
+    "rarity": "C",
+    "name": "Son Goku",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-06.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-06.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "B",
+    "power": "40000",
+    "comboPower": "10000",
+    "features": "Saiyan/Planet Namek",
+    "effect": "-",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-07",
+    "code": "FS09-07",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-07.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-07.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "BB",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Universe 7",
+    "effect": "[On Play] Place 1 card from your hand on top of its owner's deck : If you don't have an energy marker, you place 1 energy marker.<br>[When Attacking] Reveal the top card of your deck and add it to your hand. If the revealed card's cost is 6, draw 1 card.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-08",
+    "code": "FS09-08",
+    "rarity": "SR",
+    "name": "Son Goku/Bardock",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-08.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-08.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "BB",
+    "power": "35000",
+    "comboPower": "10000",
+    "features": "Saiyan/Bardock's Crew",
+    "effect": "[When Attacking][Once per turn] Choose up to 1 Battle Card with a cost of 2 or less in your opponent's Battle Area and KO it.<br>[Activate Main][Once per turn] Discard 1 card from your hand : Reveal the top card of your deck and add it to your hand. If the revealed card's cost is 6, switch this card in a Battle Area to Active Mode.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-09",
+    "code": "FS09-09",
+    "rarity": "C",
+    "name": "Son Goku : Childhood",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-09.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-09.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "10000",
+    "comboPower": "5000",
+    "features": "Saiyan",
+    "effect": "[Activate Main][Once per turn] If your Leader is &lt;Shallot&gt;, draw 1 card. Then, place 1 card from your hand on top of its owner's deck.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-10",
+    "code": "FS09-10",
+    "rarity": "SR",
+    "name": "Son Gohan : Childhood",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-10.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-10.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "BB",
+    "power": "35000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[On Play] Reveal the top card of your deck and add it to your hand. If the revealed card's cost is 6, choose up to 1 Battle Card in your opponent's Battle Area and KO it.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-11",
+    "code": "FS09-11",
+    "rarity": "C",
+    "name": "Trunks : Future",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-11.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-11.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Saiyan/Earthling",
+    "effect": "[Activate Main][Once per turn](1)(Switch the specified number of energy to Rest Mode), place 1 card from your hand on top of its owner's deck : If you don't have an energy marker, you place 1 energy marker.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-12",
+    "code": "FS09-12",
+    "rarity": "C",
+    "name": "Nappa",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-12.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-12.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Saiyan",
+    "effect": "[On Play] If your Leader is &lt;Shallot&gt;, add up to 1 card from your life to your hand. Then, look at 3 cards from the top of your deck and place them at the top of their owner's deck in any order.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-13",
+    "code": "FS09-13",
+    "rarity": "C",
+    "name": "Beerus",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-13.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-13.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "B",
+    "power": "20000",
+    "comboPower": "-",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[On Play] If your Leader is &lt;Shallot&gt;, add up to 1 card from your life to your hand. Then, look at 3 cards from the top of your deck and place them at the top of their owner's deck in any order.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-14",
+    "code": "FS09-14",
+    "rarity": "C",
+    "name": "Bulma",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-14.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-14.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling",
+    "effect": "[On Play] If your Leader is &lt;Shallot&gt;, look at 4 cards from the top of your deck, reveal up to 1 Battle Card with a cost of 6 or less and 10000 combo power and add it to your hand. Place the rest at the bottom of their owner's deck in a random order.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-15",
+    "code": "FS09-15",
+    "rarity": "C",
+    "name": "Vegeta",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-15.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-15.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "6",
+    "specifiedCost": "B",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Saiyan/Wicked Soul",
+    "effect": "[Activate Main] KO this card in a Battle Area : Choose up to 2 Battle Cards with costs of 4 or less in your opponent's Battle Area and KO them.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-16",
+    "code": "FS09-16",
+    "rarity": "SR",
+    "name": "Vegito",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-16.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-16.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "BB",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "Saiyan/Potara",
+    "effect": "[Permanent] Increase the cost of this card in a deck or Battle Area by 4.<br>[On Play] Place 1 card from your hand on top of its owner's deck : If your Leader is &lt;Shallot&gt; and you don't have an energy marker, you place 1 energy marker.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-17",
+    "code": "FS09-17",
+    "rarity": "C",
+    "name": "Burning Power of Instinct",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-17.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-17.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Main] If there is a Battle Card with a cost of 6 in your Battle Area, choose up to 2 Battle Cards with costs of 3 or less in your opponent's Battle Area and KO them.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  },
+  {
+    "id": "FS09-18",
+    "code": "FS09-18",
+    "rarity": "C",
+    "name": "I'm gonna end you!",
+    "color": "Black",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-18.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS09-18.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "B",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Battle] Your cards that are in a battle get +15000 power for the battle. Then, if there is a Battle Card with a cost of 6 in your Battle Area, draw 1 card.",
+    "getIt": "STARTER DECK EX SHALLOT [FS09]",
+    "set": { "id": "fs09", "name": "STARTER DECK EX SHALLOT [FS09]" }
+  }
+]

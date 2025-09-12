@@ -49,7 +49,6 @@ List<TCGCard> parseCards(String body) {
               (cardJson['card_images'] as List<dynamic>?)?.isNotEmpty == true
               ? cardJson['card_images'][0]['image_url']
               : null,
-          lastUpdated: DateTime.now(),
           imageEmbedding: null, // Defer generation
           textEmbedding: null, // Defer generation
           gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,

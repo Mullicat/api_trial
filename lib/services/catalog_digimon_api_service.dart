@@ -152,7 +152,6 @@ class DigimonTcgService {
       rarity: json['rarity'],
       imageRefSmall: json['images']?['small'],
       imageRefLarge: json['images']?['large'],
-      lastUpdated: DateTime.now(),
       imageEmbedding: null,
       textEmbedding: null,
       gameSpecificData: gameSpecificData.isEmpty ? null : gameSpecificData,

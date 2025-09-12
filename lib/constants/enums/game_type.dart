@@ -11,3 +11,12 @@ enum GameType {
   final String apiPath;
   const GameType(this.apiPath);
 }
+
+enum GetCardType {
+  fromAPI('fromAPI'),
+  fromSupabase('fromSupabase'),
+  fromAPICards('fromAPICards');
+
+  final String value;
+  const GetCardType(this.value);
+}

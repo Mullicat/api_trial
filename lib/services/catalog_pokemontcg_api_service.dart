@@ -113,7 +113,6 @@ class PokemonTcgService {
             rarity: cardJson['rarity'],
             imageRefSmall: cardJson['images']?['small'],
             imageRefLarge: cardJson['images']?['large'],
-            lastUpdated: DateTime.now(),
             imageEmbedding: null, // Defer generation
             textEmbedding: null, // Defer generation
             gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,
@@ -185,7 +184,6 @@ class PokemonTcgService {
           rarity: cardJson['rarity'],
           imageRefSmall: cardJson['images']?['small'],
           imageRefLarge: cardJson['images']?['large'],
-          lastUpdated: DateTime.now(),
           imageEmbedding: null,
           textEmbedding: null,
           gameSpecificData: cardJson.isEmpty ? null : gameSpecificData,

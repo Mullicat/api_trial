@@ -1,0 +1,322 @@
+[
+  {
+    "id": "FS01-01",
+    "code": "FS01-01",
+    "rarity": "L",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-01_f.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-01_f.webp"
+    },
+    "cardType": "LEADER",
+    "cost": "-",
+    "specifiedCost": "-",
+    "power": "15000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[When Attacking] Draw 1 card.<br>[Awaken] When your life is at 4 or less, draw 1 card. Then, flip this card over.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-02",
+    "code": "FS01-02",
+    "rarity": "C",
+    "name": "Whis",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-02.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-02.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "10000",
+    "features": "Angel/Universe 7",
+    "effect": "[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -5000 power for the turn.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-03",
+    "code": "FS01-03",
+    "rarity": "C",
+    "name": "Master Roshi",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-03.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-03.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "5000",
+    "comboPower": "5000",
+    "features": "Earthling/Universe 7",
+    "effect": "[On Play] Draw 1 card.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-04",
+    "code": "FS01-04",
+    "rarity": "C",
+    "name": "Krillin",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-04.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-04.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling/Universe 7",
+    "effect": "[Permanent][Your Turn] This card gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-05",
+    "code": "FS01-05",
+    "rarity": "C",
+    "name": "Shin",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-05.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-05.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "7",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Supreme Kai/Universe 7",
+    "effect": "[Super Combo] (A maximum of 4 cards with [Super Combo] can be placed in a deck.)<br>[Auto][Opponent's Turn] When you use this card in a combo from your hand, this card gets +10000 combo power.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-06",
+    "code": "FS01-06",
+    "rarity": "C",
+    "name": "Android 17",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-06.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-06.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Android/Universe 7",
+    "effect": "[Permanent][Opponent's Turn] This card gets +5000 power.<br>[On Play] Add up to 1 card from your life to your hand.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-07",
+    "code": "FS01-07",
+    "rarity": "C",
+    "name": "Android 18",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-07.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-07.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "10000",
+    "features": "Android/Universe 7",
+    "effect": "-",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-08",
+    "code": "FS01-08",
+    "rarity": "SR",
+    "name": "Son Goku",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-08.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-08.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "5",
+    "specifiedCost": "RR",
+    "power": "35000",
+    "comboPower": "-",
+    "features": "Saiyan/Universe 7",
+    "effect": "[Double Strike] (This card inflicts 2 damage instead of 1 when attacking.)<br>[On Play] Choose up to 1 of your opponent's Battle Cards and it gets -20000 power for the turn.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-09",
+    "code": "FS01-09",
+    "rarity": "SR",
+    "name": "Son Gohan : Adolescence",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-09.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-09.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "RR",
+    "power": "25000",
+    "comboPower": "5000",
+    "features": "Saiyan/Earthling/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[When Attacking] Choose up to 1 of your opponent's Battle Cards and it gets -10000 power for the turn.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-10",
+    "code": "FS01-10",
+    "rarity": "C",
+    "name": "Tien Shinhan",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-10.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-10.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Earthling/Universe 7",
+    "effect": "-",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-11",
+    "code": "FS01-11",
+    "rarity": "C",
+    "name": "Piccolo",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-11.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-11.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "25000",
+    "comboPower": "10000",
+    "features": "Namekian/God/Universe 7",
+    "effect": "-",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-12",
+    "code": "FS01-12",
+    "rarity": "C",
+    "name": "Beerus",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-12.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-12.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "3",
+    "specifiedCost": "R",
+    "power": "20000",
+    "comboPower": "5000",
+    "features": "God of Destruction/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)<br>[When Attacking] Choose up to 1 of your other Battle Cards and it gets +5000 for the turn.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-13",
+    "code": "FS01-13",
+    "rarity": "C",
+    "name": "Frieza",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-13.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-13.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "4",
+    "specifiedCost": "R",
+    "power": "30000",
+    "comboPower": "10000",
+    "features": "Frieza Clan/Universe 7",
+    "effect": "-",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-14",
+    "code": "FS01-14",
+    "rarity": "C",
+    "name": "Vegeta",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-14.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-14.webp"
+    },
+    "cardType": "BATTLE",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "15000",
+    "comboPower": "10000",
+    "features": "Saiyan/Universe 7",
+    "effect": "[Critical] (When this card inflicts damage with an attack, the life is placed in the Drop.)",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-15",
+    "code": "FS01-15",
+    "rarity": "C",
+    "name": "Kamehameha",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-15.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-15.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "1",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Activate Battle] Choose your Leader or up to 1 of your Battle Cards and it gets +15000 power for the battle. Then, choose up to 1 of your opponent's Battle Cards and it gets -5000 power for the turn.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  },
+  {
+    "id": "FS01-16",
+    "code": "FS01-16",
+    "rarity": "C",
+    "name": "God Kamehameha",
+    "color": "Red",
+    "images": {
+      "small": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-16.webp",
+      "large": "https://www.dbs-cardgame.com/fw/images/cards/card/en/FS01-16.webp"
+    },
+    "cardType": "EXTRA",
+    "cost": "2",
+    "specifiedCost": "R",
+    "power": "-",
+    "comboPower": "-",
+    "features": "Saiyan",
+    "effect": "[Permanent] If you have no Battle Cards, reduce the cost of this card in your hand by 1.<br>[Activate Main] Choose up to 1 of your opponent's Battle Cards with 30000 power or less and KO it.",
+    "getIt": "STARTER DECK -SON GOKU- [FS01]",
+    "set": { "id": "fs01", "name": "Starter Deck -Son Goku-" }
+  }
+]

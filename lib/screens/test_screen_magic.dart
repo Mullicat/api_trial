@@ -1,7 +1,5 @@
-// lib/screens/test_screen_magic.dart
-
 import 'package:api_trial/constants/enums/game_type.dart';
-import 'package:api_trial/models/card.dart'; // Updated to use new Card model
+import 'package:api_trial/models/card.dart';
 import 'package:api_trial/services/catalog_magic_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -71,12 +69,12 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
     }
   }
 
-  Future<void> _fetchSingleCard(String gameCode) async {
-    if (gameCode.isEmpty) {
+  Future<void> _fetchSingleCard(String? gameCode) async {
+    if (gameCode == null || gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: gameCode is empty');
+      developer.log('Error: gameCode is null or empty');
       return;
     }
 
@@ -277,7 +275,6 @@ class _TestScreenMagicState extends State<TestScreenMagic> {
                     ),
                   );
                 }).toList(),
-
                 ..._freeTextParams.map((param) {
                   final isActive =
                       _filters.containsKey(param) &&
