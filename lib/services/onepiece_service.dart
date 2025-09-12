@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer' as developer;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:api_trial/models/card.dart';
 import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/constants/enums/onepiece_filters.dart';
@@ -33,9 +34,9 @@ class OnePieceTcgService {
     }
   }
 
+  // Build API params (NOTE: 'set' handled specially; see getCardsFromAPI)
   Map<String, String> _buildAPIQueryParams({
     String? word,
-    SetName? setName,
     Rarity? rarity,
     Cost? cost,
     Type? type,
@@ -43,12 +44,10 @@ class OnePieceTcgService {
     Power? power,
     List<Family>? families,
     Counter? counter,
-    Trigger? trigger,
     Ability? ability,
   }) {
     final queryParams = <String, String>{};
     if (word != null && word.isNotEmpty) queryParams['name'] = word;
-    if (setName != null) queryParams['set'] = setName.value;
     if (rarity != null) queryParams['rarity'] = rarity.value;
     if (cost != null) queryParams['cost'] = cost.value;
     if (type != null) queryParams['type'] = type.value;
@@ -58,10 +57,47 @@ class OnePieceTcgService {
       queryParams['family'] = families.map((f) => f.value).join(',');
     }
     if (counter != null) queryParams['counter'] = counter.value;
-    if (trigger != null)
-      queryParams['trigger'] = trigger == Trigger.hasTrigger ? '*' : '';
     if (ability != null) queryParams['ability'] = ability.value;
     return queryParams;
+  }
+
+  // Single API call
+  Future<List<dynamic>> _requestCardsOnce(
+    Map<String, String> params, {
+    required String apiKey,
+  }) async {
+    final uri = Uri.parse(
+      '$_baseUrl/$_gamePath/cards',
+    ).replace(queryParameters: params);
+    developer.log('API Request One Piece: $uri');
+    final response = await http.get(uri, headers: {'x-api-key': apiKey});
+    if (response.statusCode != 200) {
+      // Keep logs readable
+      String msg = 'Failed: ${response.statusCode} - ${response.body}';
+      try {
+        final err = jsonDecode(response.body) as Map<String, dynamic>;
+        msg =
+            'Failed: ${response.statusCode} - ${err['message'] ?? response.body}';
+      } catch (_) {}
+      developer.log(msg);
+      return const [];
+    }
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    return (json['data'] as List<dynamic>?) ?? const [];
+  }
+
+  // Extract code from enum display: e.g., "[OP03]" or "[OP-11]" -> "OP03"/"OP11"
+  String? _extractNormalizedSetPrefix(String raw) {
+    final m = RegExp(r'\[([A-Za-z0-9\-]+)\]').firstMatch(raw);
+    if (m == null) return null;
+    var code = m.group(1)!.toUpperCase().replaceAll('-', '');
+    // Normalize "OP3" -> "OP03"
+    final op = RegExp(r'^OP(\d+)$').firstMatch(code);
+    if (op != null) {
+      final digits = op.group(1)!;
+      if (digits.length == 1) code = 'OP0$digits';
+    }
+    return code;
   }
 
   Future<List<TCGCard>> getCardsFromAPI({
@@ -87,9 +123,9 @@ class OnePieceTcgService {
         throw Exception('API_TCG_KEY not found in assets/.env');
       }
 
-      final queryParams = _buildAPIQueryParams(
+      // Base query (no set here; set handled with code prefix variants)
+      final base = _buildAPIQueryParams(
         word: word,
-        setName: setName,
         rarity: rarity,
         cost: cost,
         type: type,
@@ -97,36 +133,92 @@ class OnePieceTcgService {
         power: power,
         families: families,
         counter: counter,
-        trigger: trigger,
         ability: ability,
       );
-      queryParams['page'] = page.toString();
-      queryParams['limit'] = (pageSize > 100 ? 100 : pageSize).toString();
+      base['page'] = page.toString();
+      base['limit'] = (pageSize > 100 ? 100 : pageSize).toString();
 
-      final uri = Uri.parse(
-        '$_baseUrl/$_gamePath/cards',
-      ).replace(queryParameters: queryParams);
-      final response = await http.get(uri, headers: {'x-api-key': apiKey});
-      developer.log('API Request for One Piece getCardsFromAPI: $uri');
-
-      if (response.statusCode == 200) {
-        final json = jsonDecode(response.body) as Map<String, dynamic>;
-        final cardsJson = (json['data'] as List<dynamic>?) ?? [];
-        developer.log('Cards returned for One Piece: ${cardsJson.length}');
-        _cachedCards = cardsJson
-            .map((card) => _parseCard(card as Map<String, dynamic>))
-            .toList();
-        return _cachedCards;
+      // Build variants for set filtering
+      final variants = <Map<String, String>>[];
+      if (setName != null) {
+        final full = setName.value; // enum display string
+        final prefix = _extractNormalizedSetPrefix(
+          full,
+        ); // e.g., "OP03", "OP11", "PRB01"
+        if (prefix != null) {
+          // Primary: filter by card code prefix = set
+          final byCode = Map<String, String>.from(base)..['code'] = prefix;
+          variants.add(byCode);
+        }
+        // Fallback: some backends might accept set name keys
+        final vSet = Map<String, String>.from(base)..['set'] = full;
+        final vSetName = Map<String, String>.from(base)..['setName'] = full;
+        final vSetUnderscore = Map<String, String>.from(base)
+          ..['set_name'] = full;
+        variants.addAll([vSet, vSetName, vSetUnderscore]);
       } else {
-        String errorMessage =
-            'Failed to load One Piece cards: ${response.statusCode} - ${response.body}';
-        try {
-          final errorJson = jsonDecode(response.body) as Map<String, dynamic>;
-          errorMessage =
-              'Failed to load One Piece cards: ${response.statusCode} - ${errorJson['message'] ?? response.body}';
-        } catch (_) {}
-        throw Exception(errorMessage);
+        variants.add(base);
       }
+
+      // Add trigger server-side where possible:
+      // - noTrigger => trigger="" (empty string)
+      // - hasTrigger => trigger="*" (try wildcard). If no results, fallback later.
+      if (trigger == Trigger.noTrigger) {
+        for (final p in variants) {
+          p['trigger'] = '';
+        }
+      } else if (trigger == Trigger.hasTrigger) {
+        for (final p in variants) {
+          p['trigger'] = '*';
+        }
+      }
+
+      // Try the variants in order
+      List<dynamic> cardsJson = const [];
+      for (final params in variants) {
+        cardsJson = await _requestCardsOnce(params, apiKey: apiKey);
+        if (cardsJson.isNotEmpty) break;
+      }
+
+      // If hasTrigger yielded nothing with wildcard, retry once without trigger and filter client-side
+      bool appliedClientTrigger = false;
+      if (cardsJson.isEmpty && trigger == Trigger.hasTrigger) {
+        final variantsNoTrigger = variants.map((p) {
+          final q = Map<String, String>.from(p);
+          q.remove('trigger');
+          return q;
+        }).toList();
+        for (final params in variantsNoTrigger) {
+          cardsJson = await _requestCardsOnce(params, apiKey: apiKey);
+          if (cardsJson.isNotEmpty) {
+            appliedClientTrigger = true;
+            break;
+          }
+        }
+      }
+
+      developer.log('Cards returned (pre-filter): ${cardsJson.length}');
+      final parsed = cardsJson
+          .map((c) => _parseCard(c as Map<String, dynamic>))
+          .toList();
+
+      // Cache raw API batch for "fromAPICards"
+      _cachedCards = parsed;
+
+      // Post-filter if needed:
+      List<TCGCard> result = parsed;
+
+      // If we had to fallback for hasTrigger, filter here
+      if (appliedClientTrigger && trigger == Trigger.hasTrigger) {
+        result = parsed.where((card) {
+          final t = card.gameSpecificData?['trigger'];
+          final s = (t == null) ? '' : t.toString().trim();
+          return s.isNotEmpty;
+        }).toList();
+      }
+
+      developer.log('Cards returned (post-filter): ${result.length}');
+      return result;
     } catch (e) {
       developer.log('Error fetching One Piece cards from API: $e');
       throw Exception('Error fetching One Piece cards: $e');
@@ -185,9 +277,9 @@ class OnePieceTcgService {
         if (power != null)
           query = query.eq('game_specific_data->>power', power.value);
 
-        // FAMILY (JSONB array 'contains' using cs operator)
         if (families != null && families.isNotEmpty) {
           final fam = families.map((f) => f.value).toList();
+          // JSONB array contains (cs = contains)
           query = query.filter(
             'game_specific_data->family',
             'cs',
@@ -285,7 +377,7 @@ class OnePieceTcgService {
           for (var card in apiCards) {
             final normalizedImageRefSmall =
                 card.imageRefSmall?.split('?').first ?? '';
-            final existing = await _supabaseDataSource.getCardsByGameCode(
+            final existingCards = await _supabaseDataSource.getCardsByGameCode(
               gameCode: card.gameCode!.split('-').first,
               gameType: 'onepiece',
               imageRefSmall: normalizedImageRefSmall,
@@ -294,28 +386,28 @@ class OnePieceTcgService {
             bool shouldUpsert = true;
             String newGameCode = card.gameCode!;
 
-            if (existing.isNotEmpty) {
-              for (var ex in existing) {
-                if (ex['set_name'] == card.setName &&
-                    ex['image_ref_small'] == card.imageRefSmall) {
+            if (existingCards.isNotEmpty) {
+              for (var existing in existingCards) {
+                if (existing['set_name'] == card.setName &&
+                    existing['image_ref_small'] == card.imageRefSmall) {
                   shouldUpsert = false;
                   break;
                 }
               }
               if (shouldUpsert) {
                 final baseGameCode = card.gameCode!.split('-').first;
-                final versioned = await _supabaseDataSource.supabase
+                final versionedCards = await _supabaseDataSource.supabase
                     .from('cards')
                     .select('game_code')
                     .eq('game_type', 'onepiece')
                     .like('game_code', '$baseGameCode%');
                 int maxVersion = 1;
-                for (var vc in versioned) {
+                for (var vc in versionedCards) {
                   final gc = vc['game_code'] as String;
                   final match = RegExp(r'version(\d+)$').firstMatch(gc);
                   if (match != null) {
-                    final v = int.parse(match.group(1)!);
-                    if (v > maxVersion) maxVersion = v;
+                    final version = int.parse(match.group(1)!);
+                    maxVersion = version > maxVersion ? version : maxVersion;
                   }
                 }
                 newGameCode = '$baseGameCode-version${maxVersion + 1}';
@@ -323,14 +415,16 @@ class OnePieceTcgService {
             }
 
             if (shouldUpsert) {
-              final gsd = Map<String, dynamic>.from(
+              final gameSpecificData = Map<String, dynamic>.from(
                 card.gameSpecificData ?? {},
               );
-              if (gsd['family'] != null && gsd['family'] is String) {
-                gsd['family'] = (gsd['family'] as String)
-                    .split('/')
-                    .map((f) => f.trim())
-                    .toList();
+              if (gameSpecificData['family'] != null &&
+                  gameSpecificData['family'] is String) {
+                gameSpecificData['family'] =
+                    (gameSpecificData['family'] as String)
+                        .split('/')
+                        .map((f) => f.trim())
+                        .toList();
               }
 
               cardsToUpsert.add({
@@ -341,7 +435,7 @@ class OnePieceTcgService {
                 'rarity': card.rarity,
                 'image_ref_small': card.imageRefSmall?.split('?').first,
                 'image_ref_large': card.imageRefLarge?.split('?').first,
-                'game_specific_data': gsd,
+                'game_specific_data': gameSpecificData,
               });
             }
           }
@@ -416,7 +510,6 @@ class OnePieceTcgService {
 
   Future<TCGCard?> getCardFromSupabase({required String idOrGameCode}) async {
     try {
-      // UUID?
       final isUuid = RegExp(
         r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
       ).hasMatch(idOrGameCode);
@@ -431,7 +524,6 @@ class OnePieceTcgService {
             .eq('game_type', 'onepiece')
             .maybeSingle();
       } else {
-        // Treat input as a game code; normalize base (e.g., OP05-119 from OP05-119_p7/onepiece-OP05-119_p7)
         final base = _baseGameCode(idOrGameCode);
         final list = await _supabaseDataSource.supabase
             .from('cards')
