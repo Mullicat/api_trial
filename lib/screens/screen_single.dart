@@ -1,3 +1,4 @@
+import 'package:api_trial/screens/screen_onepiece.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
@@ -7,7 +8,7 @@ import '../services/onepiece_service.dart';
 import '../constants/enums/onepiece_filters.dart';
 
 class ScreenSingle extends StatefulWidget {
-  final String id;
+  final String id; // UUID for Supabase flow, API id/game_code for API flow
   final GameType gameType;
   final OnePieceTcgService service;
   final GetCardType getCardType;
@@ -33,7 +34,7 @@ class _ScreenSingleState extends State<ScreenSingle> {
   void initState() {
     super.initState();
     developer.log(
-      'ScreenSingle initState: id=${widget.id}, gameType=${widget.gameType.name}, getCardType=${widget.getCardType.value}',
+      'ScreenSingle initState: id=${widget.id}, gameType=${widget.gameType.name}, getCardType=${widget.getCardType}',
     );
     _fetchCard();
   }
@@ -49,13 +50,16 @@ class _ScreenSingleState extends State<ScreenSingle> {
       TCGCard? card;
       switch (widget.getCardType) {
         case GetCardType.fromAPI:
-          card = await widget.service.getCardFromAPI(id: widget.id);
+          card = await widget.service.getCardFromAPI(idOrGameCode: widget.id);
           break;
         case GetCardType.fromSupabase:
-          card = await widget.service.getCardFromSupabase(id: widget.id);
+          // Accept UUID primarily; if a game code slipped through, service will resolve it
+          card = await widget.service.getCardFromSupabase(
+            idOrGameCode: widget.id,
+          );
           break;
         case GetCardType.fromAPICards:
-          card = widget.service.getCardFromAPICards(id: widget.id);
+          card = widget.service.getCardFromAPICards(idOrGameCode: widget.id);
           break;
       }
 
@@ -159,7 +163,7 @@ class _ScreenSingleState extends State<ScreenSingle> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Type: ${_card!.gameSpecificData?['type'] ?? _card!.gameSpecificData?['cardType'] ?? (_card!.gameSpecificData?['types'] is List ? (_card!.gameSpecificData!['types'] as List).join(', ') : 'Unknown')}',
+                    'Type: ${_card!.gameSpecificData?['type'] ?? _card!.gameSpecificData?['cardType'] ?? (_card!.gameSpecificData?['types'] is List ? (_card!.gameSpecificData!['types'] as List).join(', ') : _card!.gameSpecificData?['types']?.toString() ?? 'Unknown')}',
                     style: const TextStyle(fontSize: 16),
                   ),
                   Text(
@@ -190,20 +194,17 @@ class _ScreenSingleState extends State<ScreenSingle> {
                       'Family: ${_card!.gameSpecificData!['family'] is List<dynamic> ? (_card!.gameSpecificData!['family'] as List<dynamic>).join(', ') : _card!.gameSpecificData!['family'].toString()}',
                       style: const TextStyle(fontSize: 16),
                     ),
-                  if (_card!.gameSpecificData?['counter'] != null &&
-                      _card!.gameSpecificData!['counter'] != '')
+                  if (_card!.gameSpecificData?['counter'] != null)
                     Text(
                       'Counter: ${_card!.gameSpecificData!['counter']}',
                       style: const TextStyle(fontSize: 16),
                     ),
-                  if (_card!.gameSpecificData?['trigger'] != null &&
-                      _card!.gameSpecificData!['trigger'] != '')
+                  if (_card!.gameSpecificData?['trigger'] != null)
                     Text(
                       'Trigger: ${_card!.gameSpecificData!['trigger']}',
                       style: const TextStyle(fontSize: 16),
                     ),
-                  if (_card!.gameSpecificData?['ability'] != null &&
-                      _card!.gameSpecificData!['ability'] != '')
+                  if (_card!.gameSpecificData?['ability'] != null)
                     Text(
                       'Ability: ${_card!.gameSpecificData!['ability']}',
                       style: const TextStyle(fontSize: 16),

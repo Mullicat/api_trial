@@ -89,7 +89,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     await _fetchCards();
   }
 
-  // Helper methods to safely convert filter strings to enums
+  // --- enum helpers ----------------------------------------------------------
+
   SetName? _getSetName(String? value) {
     if (value == null ||
         value == 'None' ||
@@ -171,6 +172,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     return Ability.values.firstWhere((e) => e.value == value);
   }
 
+  // --- fetch cards -----------------------------------------------------------
+
   Future<void> _fetchCards() async {
     if (_service == null) {
       setState(() {
@@ -228,6 +231,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                 : null,
             counter: _getCounter(_filters['counter'] as String?),
             trigger: _getTrigger(_filters['trigger'] as String?),
+            ability: _getAbility(_filters['ability'] as String?),
             page: _page,
             pageSize: _pageSize,
           );
@@ -270,30 +274,33 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     }
   }
 
-  Future<void> _fetchSingleCard(String? id) async {
+  // --- single card nav (use gameCode!) --------------------------------------
+
+  Future<void> _fetchSingleCard(String? gameCode) async {
     if (_service == null) {
       setState(() {
         _errorMessage = 'Service not initialized';
       });
       return;
     }
-    if (id == null || id.isEmpty) {
+    if (gameCode == null || gameCode.isEmpty) {
       setState(() {
         _errorMessage = 'Invalid card ID';
       });
-      developer.log('Error: cardId is null or empty');
+      developer.log('Error: gameCode is null or empty');
       return;
     }
 
     try {
       developer.log(
-        'Navigating to ScreenSingle with cardId: $id, gameType: ${widget.gameType.name}, getCardType: $_selectedGetCardType',
+        'Navigating to ScreenSingle with gameCode: $gameCode, gameType: ${widget.gameType.name}, getCardType: $_selectedGetCardType',
       );
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => ScreenSingle(
-            id: id,
+            // IMPORTANT: pass the gameCode; service methods interpret per getCardType
+            id: gameCode,
             gameType: widget.gameType,
             service: _service!,
             getCardType: _selectedGetCardType,
@@ -758,7 +765,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                                 subtitle: Text(
                                   'Type: ${card.gameSpecificData?['type'] ?? 'Unknown'}',
                                 ),
-                                onTap: () => _fetchSingleCard(card.id),
+                                // IMPORTANT: pass gameCode to detail
+                                onTap: () => _fetchSingleCard(card.gameCode),
                               ),
                             );
                           },
