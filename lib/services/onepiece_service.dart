@@ -272,9 +272,10 @@ class OnePieceTcgService {
           }
         }
         if (ability != null) {
-          query = query.contains('game_specific_data->ability', [
-            ability.value,
-          ]);
+          query = query.ilike(
+            'game_specific_data->>ability',
+            '%${ability.value}%',
+          );
         }
 
         final offset = (page - 1) * pageSize;
