@@ -67,7 +67,7 @@ class OcrService {
         }
       }
       return 'Latin';
-    } catch (e) {
+    } catch (_) {
       return 'Latin';
     } finally {
       await languageIdentifier.close();
@@ -111,9 +111,7 @@ class OcrService {
     for (var script in scripts) {
       final scriptName = script['name'] as String?;
       final recognizer = script['recognizer'] as TextRecognizer?;
-      if (scriptName == null || recognizer == null) {
-        continue;
-      }
+      if (scriptName == null || recognizer == null) continue;
 
       try {
         final recognizedText = await recognizer.processImage(inputImage);
@@ -122,7 +120,7 @@ class OcrService {
             .join(' ');
         final symbolCount = countScriptSymbols(joinedText, scriptName);
 
-        List<Map<String, dynamic>> blocks = recognizedText.blocks
+        final blocks = recognizedText.blocks
             .map(
               (block) => ({
                 'script': scriptName,
@@ -240,4 +238,60 @@ class OcrService {
       await textRecognizer.close();
     }
   }
+
+  /// Extract One Piece game code (OP##-###, ST##-###, or P-###) from recognized text.
+  /// - Tolerates spaces/hyphens around tokens.
+  /// - Pads OP/ST set number to 2 digits if it’s a single digit.
+  /// Returns the normalized code (e.g., "OP05-119", "ST10-004", "P-001") or null.
+  String? extractOnePieceGameCode({
+    required List<Map<String, dynamic>> textBlocks,
+    String? joinedText,
+  }) {
+    final combined = (joinedText != null && joinedText.trim().isNotEmpty)
+        ? joinedText
+        : textBlocks.map((b) => b['text']?.toString() ?? '').join(' ');
+    final upper = combined.toUpperCase();
+
+    // Find all potential matches with their indices so we can pick the earliest.
+    final matches = <_FoundMatch>[];
+
+    // OP pattern
+    final opRe = RegExp(r'OP\s*-?\s*(\d{1,3})\s*-\s*(\d{3})');
+    for (final m in opRe.allMatches(upper)) {
+      final setDigits = m.group(1)!; // 1-3 digits
+      final cardDigits = m.group(2)!; // 3 digits
+      final normalizedSet = setDigits.length == 1
+          ? '0$setDigits'
+          : setDigits.padLeft(2, '0');
+      matches.add(_FoundMatch(m.start, 'OP$normalizedSet-$cardDigits'));
+    }
+
+    // ST pattern
+    final stRe = RegExp(r'ST\s*-?\s*(\d{1,3})\s*-\s*(\d{3})');
+    for (final m in stRe.allMatches(upper)) {
+      final setDigits = m.group(1)!;
+      final cardDigits = m.group(2)!;
+      final normalizedSet = setDigits.length == 1
+          ? '0$setDigits'
+          : setDigits.padLeft(2, '0');
+      matches.add(_FoundMatch(m.start, 'ST$normalizedSet-$cardDigits'));
+    }
+
+    // Promo pattern P-###
+    final pRe = RegExp(r'\bP\s*-\s*(\d{3})\b');
+    for (final m in pRe.allMatches(upper)) {
+      final cardDigits = m.group(1)!;
+      matches.add(_FoundMatch(m.start, 'P-$cardDigits'));
+    }
+
+    if (matches.isEmpty) return null;
+    matches.sort((a, b) => a.index.compareTo(b.index));
+    return matches.first.normalized;
+  }
+}
+
+class _FoundMatch {
+  final int index;
+  final String normalized;
+  _FoundMatch(this.index, this.normalized);
 }

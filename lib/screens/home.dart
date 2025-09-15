@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage>
     "🎴 Draw an extra card!",
     "🔥 Critical hit, but you survive!",
     "🌟 Luck is on your side today!",
-    "🥷🏿 A NUGGET is behing you!",
+    "🥷🏿 A NINJA is behing you!",
   ];
 
   String? currentSurprise;

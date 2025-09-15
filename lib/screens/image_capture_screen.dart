@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/image_capture_viewmodel.dart';
+import '../services/onepiece_service.dart';
+import '../screens/screen_single.dart';
+import '../constants/enums/game_type.dart';
+import '../constants/enums/onepiece_filters.dart';
+import 'scan_results.dart';
+import '../models/card.dart';
 
 class ImageCaptureScreen extends StatelessWidget {
   const ImageCaptureScreen({super.key});
+
+  bool _isOnePieceDetected(String detectedGame) {
+    // Be tolerant to variations like "One Piece" / "One Piece TCG"
+    return detectedGame.toLowerCase().contains('one piece');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +29,79 @@ class ImageCaptureScreen extends StatelessWidget {
               viewModel.recognizedTextBlocks.any(
                 (block) =>
                     block['script'] == 'Latin' ||
-                    block['script'].startsWith('Language detected:'),
+                    block['script'].toString().startsWith('Language detected:'),
               );
+
+          Future<void> _scanAndDetectById() async {
+            if (viewModel.isLoading) return;
+            ScaffoldMessenger.of(context).clearSnackBars();
+
+            await viewModel.scanSingle();
+
+            if (!_isOnePieceDetected(viewModel.detectedGame)) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    '${viewModel.detectedGame} detection is still under development.',
+                  ),
+                ),
+              );
+              return;
+            }
+
+            // Extract game code (OP##-###, ST##-###, P-###)
+            final code = viewModel.extractOnePieceGameCode();
+            if (code == null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('No game code found. Please rescan.'),
+                ),
+              );
+              return;
+            }
+
+            // Query Supabase by game code and navigate accordingly
+            final service = await OnePieceTcgService.create();
+            late final List<TCGCard> cards;
+            try {
+              cards = await service.getCardsByGameCodeFromDatabase(
+                gameCode: code,
+              );
+            } catch (e) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('Search error: $e')));
+              return;
+            }
+
+            if (cards.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('No cards found. Please rescan.')),
+              );
+            } else if (cards.length == 1) {
+              final card = cards.first;
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => ScreenSingle(
+                    id: card.id!, // Supabase UUID
+                    gameType: GameType.onePiece,
+                    service: service,
+                    getCardType: GetCardType.fromSupabase,
+                  ),
+                ),
+              );
+            } else {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => ScanResultsScreen(
+                    title: 'Scan Results ($code)',
+                    cards: cards,
+                    service: service,
+                  ),
+                ),
+              );
+            }
+          }
 
           return Scaffold(
             body: SingleChildScrollView(
@@ -28,7 +110,6 @@ class ImageCaptureScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Display confirmed image from Supabase
                     if (viewModel.confirmedImage != null)
                       Image.network(
                         viewModel.confirmedImage!.url ?? '',
@@ -36,7 +117,6 @@ class ImageCaptureScreen extends StatelessWidget {
                         errorBuilder: (context, error, stackTrace) =>
                             const Icon(Icons.error, size: 50),
                       ),
-                    // Display current image file
                     if (viewModel.imageFile != null)
                       Image.file(
                         viewModel.imageFile!,
@@ -48,7 +128,6 @@ class ImageCaptureScreen extends StatelessWidget {
                         viewModel.confirmedImage == null)
                       const Text('No image uploaded yet.'),
                     const SizedBox(height: 20),
-                    // Detected game display
                     Text(
                       'Detected Game: ${viewModel.detectedGame}',
                       style: const TextStyle(
@@ -57,7 +136,6 @@ class ImageCaptureScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // Detection options dropdown menu
                     SizedBox(
                       width: double.infinity,
                       child: ExpansionTile(
@@ -96,7 +174,6 @@ class ImageCaptureScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    // Card's game dropdown (visible when TCG auto-detect is OFF)
                     if (!viewModel.tcgAutoDetectEnabled &&
                         viewModel.imageFile != null)
                       Row(
@@ -137,7 +214,6 @@ class ImageCaptureScreen extends StatelessWidget {
                         ],
                       ),
                     const SizedBox(height: 20),
-                    // Display OCR results
                     if (viewModel.recognizedTextBlocks.isNotEmpty)
                       SizedBox(
                         width: double.infinity,
@@ -153,8 +229,7 @@ class ImageCaptureScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 8),
                             SizedBox(
-                              height:
-                                  200, // Constrain height for scrollable list
+                              height: 200,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
@@ -189,7 +264,6 @@ class ImageCaptureScreen extends StatelessWidget {
                         ),
                       ),
                     const SizedBox(height: 20),
-                    // Loading and error indicators
                     if (viewModel.isLoading) const CircularProgressIndicator(),
                     if (viewModel.errorMessage != null)
                       Text(
@@ -197,7 +271,6 @@ class ImageCaptureScreen extends StatelessWidget {
                         style: const TextStyle(color: Colors.red),
                       ),
                     const SizedBox(height: 20),
-                    // Action buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -238,7 +311,14 @@ class ImageCaptureScreen extends StatelessWidget {
                           : viewModel.scanSingle,
                       child: const Text('Scan Card'),
                     ),
-                    // Uploaded images list
+                    const SizedBox(height: 10),
+                    // NEW: Scan & Detect Card (by ID)
+                    ElevatedButton(
+                      onPressed: viewModel.isLoading
+                          ? null
+                          : _scanAndDetectById,
+                      child: const Text('Scan & Detect Card (by ID)'),
+                    ),
                     if (viewModel.showUploadedImages)
                       SizedBox(
                         height: 200,
@@ -274,9 +354,7 @@ class ImageCaptureScreen extends StatelessWidget {
                             : viewModel.confirmSelectedImage,
                         child: const Text('Confirm'),
                       ),
-                    const SizedBox(
-                      height: 20,
-                    ), // Extra padding for scrollability
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

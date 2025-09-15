@@ -121,7 +121,6 @@ class OnePieceTcgService {
         throw Exception('API_TCG_KEY not found in assets/.env');
       }
 
-      // Base query (no set here; set handled with code prefix variants)
       final base = _buildAPIQueryParams(
         word: word,
         rarity: rarity,
@@ -136,11 +135,10 @@ class OnePieceTcgService {
       base['page'] = page.toString();
       base['limit'] = (pageSize > 100 ? 100 : pageSize).toString();
 
-      // Build variants for set filtering
       final variants = <Map<String, String>>[];
       if (setName != null) {
-        final full = setName.value; // enum display string
-        final prefix = _extractNormalizedSetPrefix(full); // "OP03", "OP11"...
+        final full = setName.value;
+        final prefix = _extractNormalizedSetPrefix(full);
         if (prefix != null) {
           final byCode = Map<String, String>.from(base)..['code'] = prefix;
           variants.add(byCode);
@@ -154,7 +152,6 @@ class OnePieceTcgService {
         variants.add(base);
       }
 
-      // Server-side trigger when possible
       if (trigger == Trigger.noTrigger) {
         for (final p in variants) {
           p['trigger'] = '';
@@ -165,14 +162,12 @@ class OnePieceTcgService {
         }
       }
 
-      // Try variants
       List<dynamic> cardsJson = const [];
       for (final params in variants) {
         cardsJson = await _requestCardsOnce(params, apiKey: apiKey);
         if (cardsJson.isNotEmpty) break;
       }
 
-      // Fallback: client-side filter for hasTrigger if wildcard yields nothing
       bool appliedClientTrigger = false;
       if (cardsJson.isEmpty && trigger == Trigger.hasTrigger) {
         final variantsNoTrigger = variants.map((p) {
@@ -231,42 +226,24 @@ class OnePieceTcgService {
     try {
       List<Map<String, dynamic>> response;
 
-      // If there's a search term, call the RPC that already applies all filters server-side,
-      // and pass families as text[] (enum values) so JSONB @> works reliably.
       if (word != null && word.isNotEmpty) {
-        final famValues = (families == null || families.isEmpty)
-            ? null
-            : families.map((f) => f.value).toList();
-        final bool? hasTrigger = (trigger == null)
-            ? null
-            : (trigger == Trigger.hasTrigger);
-
-        final params = <String, dynamic>{
-          'search_term': word,
-          'p_set_name': setName?.value,
-          'p_rarity': rarity?.value,
-          'p_cost': cost?.value,
-          'p_type': type?.value,
-          'p_color': color?.value,
-          'p_power': power?.value,
-          'p_families': famValues, // text[] or null
-          'p_counter': counter?.value,
-          'has_trigger': hasTrigger,
-          'p_ability': ability?.value,
-          'p_page': page,
-          'p_page_size': (pageSize > 100 ? 100 : pageSize),
-        };
-
-        final list = await _supabaseDataSource.supabase.rpc(
-          'search_onepiece_cards_filtered',
-          params: params,
+        response = await _supabaseDataSource.searchCardsByTerm(
+          searchTerm: word,
+          gameType: 'onepiece',
+          setName: setName,
+          rarity: rarity,
+          cost: cost,
+          type: type,
+          color: color,
+          power: power,
+          families: families,
+          counter: counter,
+          trigger: trigger,
+          ability: ability,
+          page: page,
+          pageSize: pageSize,
         );
-
-        response = (list as List<dynamic>)
-            .map((e) => Map<String, dynamic>.from(e as Map))
-            .toList();
       } else {
-        // No search term: direct PostgREST with JSONB filters
         var query = _supabaseDataSource.supabase
             .from('cards')
             .select()
@@ -285,7 +262,6 @@ class OnePieceTcgService {
 
         if (families != null && families.isNotEmpty) {
           final fam = families.map((f) => f.value).toList();
-          // JSONB array contains-all (cs)
           query = query.filter(
             'game_specific_data->family',
             'cs',
@@ -325,7 +301,6 @@ class OnePieceTcgService {
 
       developer.log('Fetched ${response.length} cards from Supabase');
 
-      // Normalize possible stringified JSON in game_specific_data
       final normalized = response.map((row) {
         final m = Map<String, dynamic>.from(row);
         final gsd = m['game_specific_data'];
@@ -341,6 +316,33 @@ class OnePieceTcgService {
     } catch (e) {
       developer.log('Error fetching One Piece cards from Supabase: $e');
       throw Exception('Error fetching One Piece cards from Supabase: $e');
+    }
+  }
+
+  /// NEW: Search by game_code in Supabase (One Piece), using the base code (ignores any local "_version" suffixes).
+  Future<List<TCGCard>> getCardsByGameCodeFromDatabase({
+    required String gameCode,
+  }) async {
+    try {
+      final base = _baseGameCode(gameCode);
+      final rows = await _supabaseDataSource.fetchOnePieceCardsByGameCode(base);
+      final normalized = rows.map((row) {
+        final m = Map<String, dynamic>.from(row);
+        final gsd = m['game_specific_data'];
+        if (gsd is String) {
+          try {
+            m['game_specific_data'] = jsonDecode(gsd);
+          } catch (_) {}
+        }
+        return TCGCard.fromJson(m);
+      }).toList();
+      developer.log(
+        'Fetched ${normalized.length} One Piece cards by game_code "$base"',
+      );
+      return normalized;
+    } catch (e) {
+      developer.log('Error fetching by game code from Supabase: $e');
+      throw Exception('Error fetching by game code: $e');
     }
   }
 

@@ -215,6 +215,7 @@ class SupabaseDataSource {
     }
   }
 
+  // Search cards by (fuzzy) name with filters
   Future<List<Map<String, dynamic>>> searchCardsByTerm({
     required String searchTerm,
     required String gameType,
@@ -248,12 +249,15 @@ class SupabaseDataSource {
         query = query.eq('game_specific_data->>color', color.value);
       if (power != null)
         query = query.eq('game_specific_data->>power', power.value);
+
       if (families != null && families.isNotEmpty) {
         final familyValues = families.map((f) => f.value).toList();
         query = query.contains('game_specific_data->family', familyValues);
       }
+
       if (counter != null)
         query = query.eq('game_specific_data->>counter', counter.value);
+
       if (trigger != null) {
         if (trigger == Trigger.hasTrigger) {
           query = query
@@ -265,6 +269,7 @@ class SupabaseDataSource {
           );
         }
       }
+
       if (ability != null) {
         query = query.ilike(
           'game_specific_data->>ability',
@@ -280,6 +285,26 @@ class SupabaseDataSource {
       return response as List<Map<String, dynamic>>;
     } catch (e) {
       throw Exception('Error searching cards: $e');
+    }
+  }
+
+  /// NEW: fetch One Piece cards by exact game_code (base), returning all versions/prints
+  Future<List<Map<String, dynamic>>> fetchOnePieceCardsByGameCode(
+    String gameCodeBase,
+  ) async {
+    try {
+      final response = await supabase
+          .from('cards')
+          .select()
+          .eq('game_type', 'onepiece')
+          .eq('game_code', gameCodeBase)
+          .order('version', ascending: true, nullsFirst: false)
+          .order('updated_at', ascending: false);
+      return (response as List)
+          .map((e) => Map<String, dynamic>.from(e))
+          .toList();
+    } catch (e) {
+      throw Exception('Error fetching One Piece cards by code: $e');
     }
   }
 }

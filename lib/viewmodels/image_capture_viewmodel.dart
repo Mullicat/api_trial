@@ -273,4 +273,17 @@ class ImageCaptureViewModel with ChangeNotifier {
       _setLoading(false);
     }
   }
+
+  /// Returns a normalized One Piece game code (e.g., OP05-119, ST10-004, P-001) if present in OCR,
+  /// otherwise returns null.
+  String? extractOnePieceGameCode() {
+    return _ocrService.extractOnePieceGameCode(
+      textBlocks: _recognizedTextBlocks,
+      joinedText: _recognizedTextBlocks.isEmpty
+          ? null
+          : _recognizedTextBlocks
+                .map((b) => b['text']?.toString() ?? '')
+                .join(' '),
+    );
+  }
 }
