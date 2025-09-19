@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="002543f4-007d-4b0a-a7f1-04c203a1e598" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../lib/data/datasources/supabase_datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/data/datasources/supabase_datasource.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/data/repositories/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/data/repositories/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/image_capture_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/image_capture_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/scan_results.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/scan_results.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/screen_onepiece.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/screen_onepiece.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/screen_single.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/screen_single.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/test_screen_apitcg.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/test_screen_apitcg.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/test_screen_magic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/test_screen_magic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/test_screen_pokemon.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/test_screen_pokemon.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screens/verify_email_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screens/verify_email_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/catalog_digimon_api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/catalog_digimon_api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/catalog_dragonball_api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/catalog_dragonball_api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/catalog_gundam_api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/catalog_gundam_api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/catalog_onepiece_api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/catalog_onepiece_api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/catalog_unionarena_api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/catalog_unionarena_api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/image_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/image_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/services/onepiece_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/services/onepiece_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/viewmodels/auth_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/viewmodels/auth_viewmodel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/viewmodels/image_capture_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/viewmodels/image_capture_viewmodel.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Sinis16"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Mullicat/api_trial.git",
+    "accountId": "80e5d31d-5e26-4b8d-a01b-70b1ad90e430"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="32vTKE5KeaXv6fmXrZOQuzUoOrZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "sinis/APITest",
+    "settings.editor.selected.configurable": "language.cpp"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="002543f4-007d-4b0a-a7f1-04c203a1e598" name="Changes" comment="" />
+      <created>1758299982236</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758299982236</updated>
+    </task>
+    <servers />
+  </component>
+</project>

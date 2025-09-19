@@ -5,6 +5,7 @@ import '../services/image_service.dart';
 import '../services/ocr_service.dart';
 import '../services/game_detection_service.dart';
 import '../models/image_model.dart';
+import '../models/card.dart';
 
 // View model for managing image capture, OCR, and game detection UI state.
 class ImageCaptureViewModel with ChangeNotifier {
@@ -26,6 +27,7 @@ class ImageCaptureViewModel with ChangeNotifier {
   bool _tcgAutoDetectEnabled = true;
   String _detectedGame = 'Other Game';
   String _selectedGame = 'YuGiOh';
+  List<TCGCard> _multiScannedCards = [];
 
   // Getters for UI state
   File? get imageFile => _imageFile;
@@ -42,6 +44,7 @@ class ImageCaptureViewModel with ChangeNotifier {
   bool get tcgAutoDetectEnabled => _tcgAutoDetectEnabled;
   String get detectedGame => _detectedGame;
   String get selectedGame => _selectedGame;
+  List<TCGCard> get multiScannedCards => _multiScannedCards;
 
   // Sets the error message and notifies listeners.
   void _setErrorMessage(String? message) {
@@ -120,6 +123,16 @@ class ImageCaptureViewModel with ChangeNotifier {
   // Selects an uploaded image.
   void selectImage(UploadedImage image) {
     _selectedImage = image;
+    notifyListeners();
+  }
+
+  void setMultiScannedCards(List<TCGCard> cards) {
+  _multiScannedCards = List<TCGCard>.from(cards);
+  notifyListeners();
+  }
+
+  void clearMultiScannedCards() {
+    _multiScannedCards.clear();
     notifyListeners();
   }
 
