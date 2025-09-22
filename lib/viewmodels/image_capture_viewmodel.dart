@@ -127,8 +127,10 @@ class ImageCaptureViewModel with ChangeNotifier {
   }
 
   void setMultiScannedCards(List<TCGCard> cards) {
-  _multiScannedCards = List<TCGCard>.from(cards);
-  notifyListeners();
+    _multiScannedCards
+      ..clear()
+      ..addAll(cards);
+    notifyListeners();
   }
 
   void clearMultiScannedCards() {

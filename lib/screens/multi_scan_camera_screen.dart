@@ -1,12 +1,21 @@
+// lib/screens/multi_scan_camera_screen.dart
+import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
+import 'dart:typed_data';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/services.dart';
+import 'package:opencv_dart/opencv_dart.dart' as cv;
 
-import 'package:api_trial/services/ocr_service.dart';
-import 'package:api_trial/services/game_detection_service.dart';
-import 'package:api_trial/services/onepiece_service.dart';
-import 'package:api_trial/models/card.dart';
+import '../models/card.dart';
+import '../services/edge_detect_service.dart';
+import '../services/ocr_service.dart';
+import '../services/game_detection_service.dart';
+import '../services/onepiece_service.dart';
+
+enum _DetectState { searching, stable, capturedCooldown, waitingChange }
 
 class MultiScanCameraScreen extends StatefulWidget {
   const MultiScanCameraScreen({super.key});
@@ -18,13 +27,29 @@ class MultiScanCameraScreen extends StatefulWidget {
 class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
   CameraController? _controller;
   bool _ready = false;
-  bool _busy = false;
+  bool _takingShot = false;
 
-  final OcrService _ocr = OcrService();
-  final GameDetectionService _gameDetector = GameDetectionService();
-  OnePieceTcgService? _onePieceService;
+  final _edge = EdgeDetectService();
+  final _ocr = OcrService();
+  final _gameDetect = GameDetectionService();
+  late OnePieceTcgService _onePiece;
 
-  final List<TCGCard> _selectedCards = [];
+  final List<TCGCard> _picked = [];
+
+  // FSM
+  _DetectState _state = _DetectState.searching;
+  List<List<double>>? _stableQuadPrev; // last stable quad (preview space)
+  int _stableCount = 0;
+  int _cooldownFrames = 0;
+  int _changedFrames = 0;
+
+  // motion baseline
+  Uint8List? _prevY; // previous Y plane, downsampled
+  int _frameSkip = 0;
+
+  // current preview meta (for mapping preview→still)
+  int _pvWidth = 0;
+  int _pvHeight = 0;
 
   @override
   void initState() {
@@ -34,29 +59,42 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
 
   Future<void> _initAsync() async {
     try {
+      _onePiece = await OnePieceTcgService.create();
       final cams = await availableCameras();
       if (cams.isEmpty) {
-        if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No camera available')),
-        );
-        Navigator.pop(context);
+        if (mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('No camera available')));
+          Navigator.pop(context);
+        }
         return;
       }
-      _controller = CameraController(
-        cams.first,
-        ResolutionPreset.medium,
-        imageFormatGroup: ImageFormatGroup.jpeg,
-        enableAudio: false,
+
+      // prefer back camera
+      final CameraDescription cam = cams.firstWhere(
+        (c) => c.lensDirection == CameraLensDirection.back,
+        orElse: () => cams.first,
       );
+
+      _controller = CameraController(
+        cam,
+        ResolutionPreset.medium,
+        enableAudio: false,
+        imageFormatGroup: ImageFormatGroup.yuv420, // we’ll use Y
+      );
+
       await _controller!.initialize();
-      _onePieceService = await OnePieceTcgService.create();
       if (!mounted) return;
+
+      // Start stream
+      _controller!.startImageStream(_onPreviewFrame);
+
       setState(() => _ready = true);
-    } catch (e) {
+    } on CameraException catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Camera init error: $e')),
+        SnackBar(content: Text('Camera error: ${e.code} ${e.description}')),
       );
       Navigator.pop(context);
     }
@@ -68,42 +106,175 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     super.dispose();
   }
 
-  bool _isOnePiece(String game) => game.toLowerCase().contains('one piece');
+  // == Preview processing ==
+  Future<void> _onPreviewFrame(CameraImage img) async {
+    if (_takingShot) return; // pause detection while capturing/processing
+    // throttle to ~10–12 fps
+    if ((_frameSkip++ % 2) != 0) return;
 
-  Future<void> _captureAndProcess() async {
-    if (!_ready || _busy) return;
-    setState(() => _busy = true);
+    // Y plane only (grayscale)
+    final yPlane = img.planes.first;
+    final yBytes = yPlane.bytes;
+    final pvW = img.width;
+    final pvH = img.height;
+    _pvWidth = pvW;
+    _pvHeight = pvH;
+
+    // Detect quad on Y
+    final quad = _edge.detectCardQuadOnGrayU8(
+      gray: yBytes,
+      width: pvW,
+      height: pvH,
+    );
+
+    // Compute motion outside of the last ROI (cheap global diff)
+    final moved = _detectMotion(yBytes);
+
+    switch (_state) {
+      case _DetectState.searching:
+        if (quad != null) {
+          // If similar to last frame quad, increment stableCount, else reset
+          if (_isSameQuad(quad, _stableQuadPrev)) {
+            _stableCount++;
+          } else {
+            _stableCount = 1;
+            _stableQuadPrev = _toDoubleQuad(quad);
+          }
+          // Require persistence
+          if (_stableCount >= 8) {
+            _state = _DetectState.stable;
+          }
+        } else {
+          _stableCount = 0;
+          _stableQuadPrev = null;
+        }
+        break;
+
+      case _DetectState.stable:
+        // Immediately capture once when stable (and sharp enough ideally).
+        // To keep it simple here, we trigger right away.
+        _triggerCaptureWithQuad(_stableQuadPrev!);
+        _state = _DetectState.capturedCooldown;
+        _cooldownFrames = 10; // ~0.3–0.5s depending on throttle
+        break;
+
+      case _DetectState.capturedCooldown:
+        _cooldownFrames--;
+        if (_cooldownFrames <= 0) {
+          _state = _DetectState.waitingChange;
+          _changedFrames = 0;
+        }
+        break;
+
+      case _DetectState.waitingChange:
+        // Wait for scene change (hand replaces card)
+        if (moved) {
+          _changedFrames++;
+          if (_changedFrames >= 4) {
+            _state = _DetectState.searching;
+            _stableCount = 0;
+            _stableQuadPrev = null;
+          }
+        } else {
+          _changedFrames = 0;
+        }
+        break;
+    }
+  }
+
+  bool _isSameQuad(List<cv.Point2f> q, List<List<double>>? prev) {
+    if (prev == null) return false;
+    if (prev.length != 4) return false;
+    double sum = 0;
+    for (var i = 0; i < 4; i++) {
+      final dx = q[i].x - prev[i][0];
+      final dy = q[i].y - prev[i][1];
+      sum += (dx * dx + dy * dy);
+    }
+    // threshold in preview pixels
+    return sum < 200.0;
+  }
+
+  List<List<double>> _toDoubleQuad(List<cv.Point2f> q) =>
+      q.map((p) => [p.x.toDouble(), p.y.toDouble()]).toList();
+
+  bool _detectMotion(Uint8List y) {
+    if (_prevY == null || _prevY!.length != y.length) {
+      _prevY = Uint8List.fromList(y);
+      return false;
+    }
+    // quick MSE on subsampled pixels
+    const step = 16;
+    int count = 0;
+    double acc = 0;
+    for (int i = 0; i < y.length; i += step) {
+      final d = (y[i] - _prevY![i]).abs();
+      acc += d.toDouble();
+      count++;
+    }
+    _prevY!.setAll(0, y);
+    final avg = acc / count; // ~0–255
+    return avg > 3.5; // small threshold
+  }
+
+  Future<void> _triggerCaptureWithQuad(List<List<double>> quadPreview) async {
+    if (_takingShot || _controller == null) return;
+    setState(() => _takingShot = true);
 
     try {
-      final xFile = await _controller!.takePicture();
-      final file = File(xFile.path);
-      if (!await file.exists()) {
-        _toast('Capture failed, please try again.');
-        return;
-      }
+      // 1) Take full-res still
+      final x = await _controller!.takePicture();
+      final still = File(x.path);
 
-      // OCR (Latin auto-detect on, same defaults as your flow)
-      final ocrResult = await _ocr.processImageWithAutoDetect(file, true);
-      final blocks = (ocrResult['textBlocks'] as List?)?.cast<Map<String, dynamic>>() ?? [];
-      final joined = (ocrResult['joinedText'] as String?) ?? '';
+      // 2) Map preview quad → still coordinates.
+      //    Simple scale by ratios (works if aspect matches).
+      //    If you see drift, you can refine via view transforms.
+      final pvW = _pvWidth.toDouble();
+      final pvH = _pvHeight.toDouble();
 
-      // Game detection (reuse your service logic)
-      final detectedGame = _gameDetector.detectGame(
-        blocks,
-        joined,
-        true,   // tcgAutoDetectEnabled
-        'YuGiOh', // default fallback
+      // get still size to compute scale
+      final decoded = await still.readAsBytes();
+      // Lazy parse JPEG size: load with opencv (fast) to get width/height
+      final mat = cv.imdecode(decoded, cv.IMREAD_GRAYSCALE);
+      final stW = mat.cols.toDouble();
+      final stH = mat.rows.toDouble();
+      mat.dispose();
+
+      final sx = stW / pvW;
+      final sy = stH / pvH;
+
+      final quadStill = quadPreview
+          .map((p) => cv.Point2f((p[0] * sx), (p[1] * sy)))
+          .toList();
+
+      // 3) Warp to rectified card JPEG for OCR
+      final warped = await _edge.warpAndWriteJpeg(
+        srcJpeg: still,
+        quad: quadStill,
+        outWidth: 700,
+        outHeight: 980,
       );
 
-      if (!_isOnePiece(detectedGame)) {
-        _toast('Detected $detectedGame — support in progress.');
+      final cardFile = warped ?? still;
+
+      // 4) OCR + game detect
+      final ocr = await _ocr.processImageWithAutoDetect(cardFile, true);
+      final blocks =
+          (ocr['textBlocks'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+      final joined =
+          (ocr['joinedText'] as String?) ??
+          blocks.map((b) => b['text']?.toString() ?? '').join(' ');
+
+      final game = _gameDetect.detectGame(blocks, joined, true, 'YuGiOh');
+      if (!game.toLowerCase().contains('one piece')) {
+        _toast('Detected $game — not supported yet.');
         return;
       }
 
-      // Extract One Piece code
+      // 5) Extract code + Supabase lookup
       final code = _ocr.extractOnePieceGameCode(
         textBlocks: blocks,
-        joinedText: joined.isEmpty ? null : joined,
+        joinedText: joined,
       );
 
       if (code == null) {
@@ -111,48 +282,80 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
         return;
       }
 
-      // Query Supabase for One Piece cards by code
-      final service = _onePieceService!;
-      final results = await service.getCardsByGameCodeFromDatabase(gameCode: code);
-
-      if (results.isEmpty) {
-        _toast('No cards for $code. Try again.');
-        return;
-      }
-
-      if (results.length == 1) {
-        _addCard(results.first);
-        _banner(results.first);
-        return;
-      }
-
-      // Multiple – let user pick from a bottom sheet
-      if (!mounted) return;
-      final chosen = await showModalBottomSheet<TCGCard>(
-        context: context,
-        isScrollControlled: true,
-        builder: (_) => _PickCardSheet(cards: results),
+      final matches = await _onePiece.getCardsByGameCodeFromDatabase(
+        gameCode: code,
       );
-
-      if (chosen != null) {
-        _addCard(chosen);
-        _banner(chosen);
+      if (matches.isEmpty) {
+        _toast('No cards for $code. Try again.');
+      } else if (matches.length == 1) {
+        _addPicked(matches.first);
+        _banner(matches.first);
+      } else {
+        final chosen = await _pickFromMany(matches, code);
+        if (chosen != null) {
+          _addPicked(chosen);
+          _banner(chosen);
+        }
       }
     } catch (e) {
-      _toast('Scan error: $e');
+      _toast('Capture error: $e');
     } finally {
-      if (mounted) setState(() => _busy = false);
+      if (mounted) setState(() => _takingShot = false);
     }
   }
 
-  void _addCard(TCGCard card) {
-    // Avoid duplicates by id (or gameCode fallback)
-    final idKey = card.id ?? card.gameCode;
-    final exists = _selectedCards.any((c) => (c.id ?? c.gameCode) == idKey);
-    if (!exists) {
-      _selectedCards.add(card);
-      setState(() {}); // refresh counter
-    }
+  void _addPicked(TCGCard c) {
+    final key = c.id ?? c.gameCode ?? '';
+    if (_picked.any((x) => (x.id ?? x.gameCode) == key)) return;
+    _picked.add(c);
+    setState(() {});
+  }
+
+  Future<TCGCard?> _pickFromMany(List<TCGCard> cards, String code) async {
+    return showModalBottomSheet<TCGCard>(
+      context: context,
+      isScrollControlled: true,
+      builder: (_) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 12),
+            Text(
+              'Multiple matches for $code',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Flexible(
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemCount: cards.length,
+                separatorBuilder: (_, __) => const Divider(height: 1),
+                itemBuilder: (_, i) {
+                  final c = cards[i];
+                  return ListTile(
+                    leading: (c.imageRefSmall?.isNotEmpty ?? false)
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: Image.network(
+                              c.imageRefSmall!,
+                              width: 48,
+                              height: 48,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : const Icon(Icons.image_not_supported),
+                    title: Text(c.name ?? 'Unknown'),
+                    subtitle: Text(c.setName ?? ''),
+                    onTap: () => Navigator.pop<TCGCard>(context, c),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 12),
+          ],
+        ),
+      ),
+    );
   }
 
   void _toast(String msg) {
@@ -162,28 +365,30 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
 
   void _banner(TCGCard card) {
     if (!mounted) return;
-    final image = card.imageRefSmall;
-    final text = card.name ?? 'Unknown';
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(12),
         content: Row(
           children: [
-            if (image != null && image.isNotEmpty)
+            if (card.imageRefSmall?.isNotEmpty ?? false)
               ClipRRect(
                 borderRadius: BorderRadius.circular(6),
-                child: CachedNetworkImage(
-                  imageUrl: image,
+                child: Image.network(
+                  card.imageRefSmall!,
                   width: 48,
                   height: 48,
                   fit: BoxFit.cover,
                 ),
               ),
             const SizedBox(width: 12),
-            Expanded(child: Text(text, maxLines: 2, overflow: TextOverflow.ellipsis)),
-            const SizedBox(width: 8),
-            Text('+${_selectedCards.length}'),
+            Expanded(
+              child: Text(
+                '${card.name ?? 'Unknown'} saved  •  total ${_picked.length}',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
         duration: const Duration(seconds: 2),
@@ -202,117 +407,64 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
 
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        title: const Text('Scan, Detect & Save'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop<List<TCGCard>>(
+              context,
+              List<TCGCard>.from(_picked),
+            ),
+            child: const Text('Done', style: TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
-          // Preview
           Positioned.fill(child: CameraPreview(_controller!)),
-
-          // Top bar – count + close
-          SafeArea(
-            child: Row(
-              children: [
-                const SizedBox(width: 12),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Saved: ${_selectedCards.length}',
-                    style: const TextStyle(color: Colors.white),
-                  ),
+          // simple guide
+          IgnorePointer(
+            child: Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.85,
+                height: MediaQuery.of(context).size.height * 0.45,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white70, width: 2),
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                const Spacer(),
-                IconButton(
-                  icon: const Icon(Icons.close, color: Colors.white),
-                  onPressed: _busy ? null : () => Navigator.pop(context),
-                ),
-                const SizedBox(width: 8),
-              ],
+              ),
             ),
           ),
-
-          // Bottom controls
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SafeArea(
-              minimum: const EdgeInsets.only(bottom: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Capture button
-                  GestureDetector(
-                    onTap: _busy ? null : _captureAndProcess,
-                    child: Container(
-                      width: 76,
-                      height: 76,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _busy ? Colors.white24 : Colors.white,
-                        border: Border.all(width: 4, color: Colors.black54),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 24),
-                  // Done button
-                  ElevatedButton.icon(
-                    onPressed: _busy
-                        ? null
-                        : () => Navigator.pop<List<TCGCard>>(context, List<TCGCard>.from(_selectedCards)),
-                    icon: const Icon(Icons.check),
-                    label: const Text('Done'),
-                  ),
-                ],
+          // bottom hint
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 18,
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  _state == _DetectState.searching
+                      ? 'Place card in frame'
+                      : _state == _DetectState.stable
+                      ? 'Capturing...'
+                      : _state == _DetectState.capturedCooldown
+                      ? 'Processing...'
+                      : 'Replace card to continue',
+                  style: const TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _PickCardSheet extends StatelessWidget {
-  final List<TCGCard> cards;
-  const _PickCardSheet({required this.cards});
-
-  @override
-  Widget build(BuildContext context) {
-    return DraggableScrollableSheet(
-      expand: false,
-      initialChildSize: 0.6,
-      maxChildSize: 0.92,
-      minChildSize: 0.4,
-      builder: (context, scroll) => Material(
-        color: Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        child: ListView.separated(
-          controller: scroll,
-          padding: const EdgeInsets.all(12),
-          itemCount: cards.length,
-          separatorBuilder: (_, __) => const Divider(height: 1),
-          itemBuilder: (_, i) {
-            final c = cards[i];
-            return ListTile(
-              leading: (c.imageRefSmall?.isNotEmpty ?? false)
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: CachedNetworkImage(
-                        imageUrl: c.imageRefSmall!,
-                        width: 48,
-                        height: 48,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  : const Icon(Icons.image_not_supported),
-              title: Text(c.name ?? 'Unknown'),
-              subtitle: Text(c.setName ?? ''),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () => Navigator.pop<TCGCard>(context, c),
-            );
-          },
-        ),
       ),
     );
   }
