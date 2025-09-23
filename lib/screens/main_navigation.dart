@@ -92,66 +92,65 @@ class _MainNavigationState extends State<MainNavigation> {
         return true;
       },
       child: Scaffold(
-        extendBodyBehindAppBar: true, // content can go to the very top
-        appBar: AppBar(
-          // No title — only the logout button
-          title: const SizedBox.shrink(),
-          automaticallyImplyLeading: false,
-          centerTitle: false,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: AppBar(
+            toolbarHeight: 120,
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            foregroundColor: Theme.of(context).colorScheme.onSurface,
+            surfaceTintColor: Theme.of(context).colorScheme.surface,
+            elevation: 2,
+            scrolledUnderElevation: 2,
 
-          // fully transparent header
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          surfaceTintColor: Colors.transparent,
-
-          // readable icons over any bg
-          foregroundColor: Colors.white,
-          iconTheme: const IconThemeData(color: Color.fromARGB(255, 0, 0, 0)),
-
-          // transparent status bar
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.light, // Android
-            statusBarBrightness: Brightness.dark, // iOS
-          ),
-
-          // Right-side logout menu stays visible
-          actions: [
-            Selector<AuthViewModel, String?>(
-              selector: (_, vm) => vm.currentUser?.email,
-              builder: (context, email, _) {
-                return PopupMenuButton<String>(
-                  icon: const Icon(Icons.account_circle),
-                  itemBuilder: (context) => [
-                    PopupMenuItem<String>(
-                      enabled: false,
-                      child: Text(
-                        'Signed in as:\n${email ?? 'Unknown'}',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const PopupMenuDivider(),
-                    const PopupMenuItem<String>(
-                      value: 'logout',
-                      child: Row(
-                        children: [
-                          Icon(Icons.logout, color: Colors.red),
-                          SizedBox(width: 8),
-                          Text('Cerrar sesión'),
-                        ],
-                      ),
-                    ),
-                  ],
-                  onSelected: (value) {
-                    if (value == 'logout') _confirmLogout();
-                  },
-                );
-              },
+            automaticallyImplyLeading: false,
+            leadingWidth: 180,
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Image.asset(
+                  'assets/logos/mullicat_logo.png',
+                  height: 48,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
-          ],
+
+            actions: [
+              Selector<AuthViewModel, String?>(
+                selector: (_, vm) => vm.currentUser?.email,
+                builder: (context, email, _) {
+                  return PopupMenuButton<String>(
+                    icon: const Icon(Icons.account_circle, size: 32),
+                    itemBuilder: (context) => [
+                      PopupMenuItem<String>(
+                        enabled: false,
+                        child: Text(
+                          'Signed in as:\n${email ?? 'Unknown'}',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const PopupMenuDivider(),
+                      const PopupMenuItem<String>(
+                        value: 'logout',
+                        child: Row(
+                          children: [
+                            Icon(Icons.logout, color: Colors.red),
+                            SizedBox(width: 8),
+                            Text('Logout'),
+                          ],
+                        ),
+                      ),
+                    ],
+                    onSelected: (value) {
+                      if (value == 'logout') _confirmLogout();
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
         ),
-        // No top padding — your screen content can reach the top
         body: PageStorage(
           bucket: _bucket,
           child: Row(
