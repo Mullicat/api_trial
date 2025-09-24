@@ -274,12 +274,11 @@ packages:
     source: hosted
     version: "3.1.2"
   dartcv4:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: dartcv4
-      sha256: bafdc00c76b376a52924db27bc4c6f6c33600e1ec2f51f71d878343e592cdc78
-      url: "https://pub.dev"
-    source: hosted
+      path: "third_party/dartcv4-1.1.6"
+      relative: true
+    source: path
     version: "1.1.6"
   device_info_plus:
     dependency: "direct main"
@@ -715,10 +714,9 @@ packages:
   opencv_dart:
     dependency: "direct main"
     description:
-      name: opencv_dart
-      sha256: fed512728e358915d6916333cbaf1c46536cb9caaf6daf86c75d080e14b0d03f
-      url: "https://pub.dev"
-    source: hosted
+      path: "third_party/opencv_dart-1.4.3"
+      relative: true
+    source: path
     version: "1.4.3"
   package_config:
     dependency: transitive
