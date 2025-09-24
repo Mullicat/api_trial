@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "C:\\WorkFiles\\MulliCat\\API_Trial\\api_trial\\third_party\\opencv_dart-1.4.3\\src\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\Sinis\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\WorkFiles\\MulliCat\\API_Trial\\api_trial\\third_party\\opencv_dart-1.4.3\\android\\.cxx\\Debug\\4ss3u3w2\\x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\Sinis\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\WorkFiles\\MulliCat\\API_Trial\\api_trial\\third_party\\opencv_dart-1.4.3\\android\\.cxx\\Debug\\4ss3u3w2\\x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

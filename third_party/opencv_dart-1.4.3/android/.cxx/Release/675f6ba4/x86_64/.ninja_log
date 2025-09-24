@@ -1,0 +1,27 @@
+# ninja log v5
+9	1524	7803726897496444	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/exception.cpp.o	ada0ff27a73ed085
+23	1535	7803726897591589	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/version.cpp.o	9636fb13c4a686a3
+16	1550	7803726897702558	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/svd.cpp.o	93ab40eeb22bf52e
+12	1551	7803726897752562	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/logging.cpp.o	9df33f4c71da1d91
+19	1608	7803726898387672	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/utils.cpp.o	b1d4942f9d4ba01c
+63	1628	7803726898568558	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/contrib/xobjdetect.cpp.o	60484329a7a44566
+69	1652	7803726898839807	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/imgcodecs/imgcodecs.cpp.o	ea9322ee43a74029
+35	1723	7803726899537220	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/contrib/aruco.cpp.o	1e3083e51f9483ad
+113	1740	7803726899678941	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/videoio/videoio.cpp.o	5aeee8ccfc828ce
+43	1741	7803726899715553	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/contrib/img_hash.cpp.o	847a99395db1990e
+39	1749	7803726899775555	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/contrib/wechat_qrcode.cpp.o	764dd3b2e15972b
+94	1767	7803726899985582	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/photo/photo.cpp.o	86fe0bbdf02f1f3f
+48	1864	7803726900938222	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/contrib/quality.cpp.o	d44531448170b86d
+101	2062	7803726902920703	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/video/video.cpp.o	d749659e08b6d71e
+107	2085	7803726903160047	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/stitching/stitching.cpp.o	fc96485b281bfd88
+89	2149	7803726903806412	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/objdetect/objdetect.cpp.o	a1f7192e7e9ed6be
+57	2220	7803726904515864	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/contrib/ximgproc.cpp.o	221aa7b2e07bc8e
+31	2225	7803726904531775	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/calib3d/calib3d.cpp.o	82adcb4ffb532eb8
+76	2250	7803726904798743	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/features2d/features2d.cpp.o	a585db354bddf6ab
+52	2334	7803726905644667	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/dnn/dnn.cpp.o	42a2d27b89eb2f85
+5	2470	7803726906937069	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/mat.cpp.o	d0d1502b874bcdbe
+1	2489	7803726907153225	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/core.cpp.o	b093d6726a674816
+81	2791	7803726910173290	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/imgproc/imgproc.cpp.o	8e67e78d0045f03c
+27	5954	7803726941637099	_deps/libdartcv-build/dartcv/CMakeFiles/dartcv.dir/core/stdvec.cpp.o	db7cd736ef1d00d9
+5955	6253	7803726944651821	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/build/intermediates/cxx/Release/675f6ba4/obj/x86_64/libdartcv.so	21a4362b2cbc88c5
+0	10	0	clean	728aa3a1ddcb46f0

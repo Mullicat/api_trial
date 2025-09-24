@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import '../viewmodels/image_capture_viewmodel.dart';
-import '../services/onepiece_service.dart';
-import '../screens/screen_single.dart';
-import '../constants/enums/game_type.dart';
-import '../constants/enums/onepiece_filters.dart';
-import 'scan_results.dart';
-import '../models/card.dart';
+
+import 'package:api_trial/viewmodels/image_capture_viewmodel.dart';
+import 'package:api_trial/services/onepiece_service.dart';
+import 'package:api_trial/screens/screen_single.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
+// import 'package:api_trial/constants/enums/onepiece_filters.dart'; // not used here; safe to remove
+import 'package:api_trial/screens/scan_results.dart';
+import 'package:api_trial/models/card.dart';
+import 'package:api_trial/screens/multi_scan_camera_screen.dart';
 
 class ImageCaptureScreen extends StatelessWidget {
   const ImageCaptureScreen({super.key});
@@ -68,9 +70,8 @@ class ImageCaptureScreen extends StatelessWidget {
                 gameCode: code,
               );
             } catch (e) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text('Search error: $e')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('Search error: $e')));
               return;
             }
 
@@ -161,7 +162,7 @@ class ImageCaptureScreen extends StatelessWidget {
                               onChanged: viewModel.isLoading
                                   ? null
                                   : (value) => viewModel
-                                        .toggleLatinLanguageAutoDetect(value),
+                                      .toggleLatinLanguageAutoDetect(value),
                             ),
                           SwitchListTile(
                             title: const Text('TCG auto-detect'),
@@ -169,7 +170,7 @@ class ImageCaptureScreen extends StatelessWidget {
                             onChanged: viewModel.isLoading
                                 ? null
                                 : (value) =>
-                                      viewModel.toggleTcgAutoDetect(value),
+                                    viewModel.toggleTcgAutoDetect(value),
                           ),
                         ],
                       ),
@@ -189,20 +190,19 @@ class ImageCaptureScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           DropdownButton<String>(
                             value: viewModel.selectedGame,
-                            items:
-                                [
-                                      'YuGiOh',
-                                      'Pokemon TCG',
-                                      'Magic The Gathering',
-                                      'One Piece TCG',
-                                    ]
-                                    .map(
-                                      (game) => DropdownMenuItem(
-                                        value: game,
-                                        child: Text(game),
-                                      ),
-                                    )
-                                    .toList(),
+                            items: [
+                              'YuGiOh',
+                              'Pokemon TCG',
+                              'Magic The Gathering',
+                              'One Piece TCG',
+                            ]
+                                .map(
+                                  (game) => DropdownMenuItem(
+                                    value: game,
+                                    child: Text(game),
+                                  ),
+                                )
+                                .toList(),
                             onChanged: viewModel.isLoading
                                 ? null
                                 : (value) {
@@ -291,8 +291,8 @@ class ImageCaptureScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     ElevatedButton(
-                      onPressed:
-                          viewModel.isLoading || viewModel.imageFile == null
+                      onPressed: viewModel.isLoading ||
+                              viewModel.imageFile == null
                           ? null
                           : viewModel.uploadCurrentImage,
                       child: const Text('Upload Photo'),
@@ -312,13 +312,92 @@ class ImageCaptureScreen extends StatelessWidget {
                       child: const Text('Scan Card'),
                     ),
                     const SizedBox(height: 10),
-                    // NEW: Scan & Detect Card (by ID)
+                    ElevatedButton(
+                      onPressed: viewModel.isLoading ? null : _scanAndDetectById,
+                      child: const Text('Scan & Detect Card (by ID)'),
+                    ),
                     ElevatedButton(
                       onPressed: viewModel.isLoading
                           ? null
-                          : _scanAndDetectById,
-                      child: const Text('Scan & Detect Card (by ID)'),
+                          : () async {
+                              final result =
+                                  await Navigator.push<List<TCGCard>>(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const MultiScanCameraScreen(),
+                                ),
+                              );
+                              if (result != null && result.isNotEmpty) {
+                                // Store results in the VM so they render below
+                                viewModel.setMultiScannedCards(result);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Saved ${result.length} card(s)',
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                      child: const Text('Scan, Detect & Save (multi)'),
                     ),
+                    if (viewModel.multiScannedCards.isNotEmpty)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Multi-Scan Saved Cards:',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 8),
+                          ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: viewModel.multiScannedCards.length,
+                            separatorBuilder: (_, __) =>
+                                const Divider(height: 1),
+                            itemBuilder: (context, i) {
+                              final c = viewModel.multiScannedCards[i];
+                              return ListTile(
+                                leading:
+                                    (c.imageRefSmall?.isNotEmpty ?? false)
+                                        ? ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                            child: Image.network(
+                                              c.imageRefSmall!,
+                                              width: 48,
+                                              height: 48,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )
+                                        : const Icon(
+                                            Icons.image_not_supported),
+                                title: Text(c.name ?? 'Unknown'),
+                                subtitle: Text(c.setName ?? ''),
+                                onTap: () async {
+                                  // Open details using Supabase ID (preferred) or fallback to gameCode
+                                  final service =
+                                      await OnePieceTcgService.create();
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => ScreenSingle(
+                                        id: (c.id ?? c.gameCode)!,
+                                        gameType: GameType.onePiece,
+                                        service: service,
+                                        getCardType:
+                                            GetCardType.fromSupabase,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     if (viewModel.showUploadedImages)
                       SizedBox(
                         height: 200,
@@ -327,7 +406,8 @@ class ImageCaptureScreen extends StatelessWidget {
                           itemCount: viewModel.uploadedImages.length,
                           itemBuilder: (context, index) {
                             final image = viewModel.uploadedImages[index];
-                            final isSelected = viewModel.selectedImage == image;
+                            final isSelected =
+                                viewModel.selectedImage == image;
                             return ListTile(
                               title: Text(image.name ?? 'Unknown'),
                               leading: Image.network(

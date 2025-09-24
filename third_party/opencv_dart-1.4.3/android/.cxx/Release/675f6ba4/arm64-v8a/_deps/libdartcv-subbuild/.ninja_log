@@ -1,0 +1,21 @@
+# ninja log v5
+0	125	7803726468041442	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-mkdir	114de7da399b9587
+0	125	7803726468041442	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-mkdir	114de7da399b9587
+125	2233	7803726489127227	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-download	ee9db065670a115
+125	2233	7803726489127227	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-download	ee9db065670a115
+2235	2326	0	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-update	4ce037f30693399d
+2235	2326	0	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-update	4ce037f30693399d
+2326	2359	7803726490399218	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-patch	28633975621fdad6
+2326	2359	7803726490399218	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-patch	28633975621fdad6
+2360	2394	7803726490742216	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-configure	ffe2e68027db796
+2360	2394	7803726490742216	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-configure	ffe2e68027db796
+2394	2428	7803726491077134	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-build	bbe6caf060c1a88e
+2394	2428	7803726491077134	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-build	bbe6caf060c1a88e
+2428	2460	7803726491407479	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-install	7dc3cd5834f9a8ab
+2428	2460	7803726491407479	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-install	7dc3cd5834f9a8ab
+2461	2493	7803726491727625	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-test	5725c6ba61ebdcdf
+2461	2493	7803726491727625	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-test	5725c6ba61ebdcdf
+2493	2538	7803726492178668	CMakeFiles/libdartcv-populate-complete	183cc12bc100924
+2493	2538	7803726492178668	libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-done	183cc12bc100924
+2493	2538	7803726492178668	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/CMakeFiles/libdartcv-populate-complete	183cc12bc100924
+2493	2538	7803726492178668	C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/arm64-v8a/_deps/libdartcv-subbuild/libdartcv-populate-prefix/src/libdartcv-populate-stamp/libdartcv-populate-done	183cc12bc100924

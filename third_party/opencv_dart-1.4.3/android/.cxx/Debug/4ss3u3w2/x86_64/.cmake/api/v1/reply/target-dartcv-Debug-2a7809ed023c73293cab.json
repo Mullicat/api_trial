@@ -1,0 +1,759 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/build/intermediates/cxx/Debug/4ss3u3w2/obj/x86_64/libdartcv.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_options",
+			"target_link_libraries",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 158,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 172,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 170,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 191,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 159,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -fvisibility=default"
+				},
+				{
+					"fragment" : "-std=gnu++20"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "DART_SHARED_LIB"
+				},
+				{
+					"define" : "dartcv_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libopencv-src/sdk/native/jni/include"
+				},
+				{
+					"backtrace" : 3,
+					"isSystem" : true,
+					"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libopencv-src/ffmpeg/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					3
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23
+			],
+			"sysroot" : 
+			{
+				"path" : "C:/Users/Sinis/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+			}
+		}
+	],
+	"id" : "dartcv::@f637654dea39b816c1ca",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--no-undefined-version -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-Wl,-z,max-page-size=16384",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_core.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_calib3d.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_aruco.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_img_hash.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_quality.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_wechat_qrcode.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_ximgproc.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_xobjdetect.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_dnn.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_features2d.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_imgcodecs.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_imgproc.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_video.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_objdetect.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_photo.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_stitching.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_videoio.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lcamera2ndk",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lmediandk",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-landroid",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_dnn.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\liblibprotobuf.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-llog",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\libquirc.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_xfeatures2d.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_ml.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_shape.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_calib3d.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_features2d.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_flann.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_imgcodecs.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\liblibjpeg-turbo.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\liblibwebp.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\liblibpng.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\liblibtiff.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\liblibopenjp2.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-pthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\libIlmImf.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_imgproc.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\staticlibs\\x86_64\\libopencv_core.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\libzlib.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "_deps\\libopencv-src\\sdk\\native\\3rdparty\\libs\\x86_64\\libcpufeatures.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lm",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-llog",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\ffmpeg\\lib\\libavcodec.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\ffmpeg\\lib\\libavformat.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\ffmpeg\\lib\\libavutil.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\ffmpeg\\lib\\libswscale.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\ffmpeg\\lib\\libavfilter.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "_deps\\libopencv-src\\ffmpeg\\lib\\libswresample.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-landroid -llog -lmediandk",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-landroid -llog -lcamera2ndk",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-landroid",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-latomic -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "C:/Users/Sinis/AppData/Local/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/windows-x86_64/sysroot"
+		}
+	},
+	"name" : "dartcv",
+	"nameOnDisk" : "libdartcv.so",
+	"paths" : 
+	{
+		"build" : "_deps/libdartcv-build/dartcv",
+		"source" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/core.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/mat.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/exception.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/logging.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/svd.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/utils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/version.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/stdvec.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/calib3d/calib3d.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/aruco.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/img_hash.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/quality.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/wechat_qrcode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/ximgproc.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/xobjdetect.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/dnn/dnn.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/features2d/features2d.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/imgcodecs/imgcodecs.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/imgproc/imgproc.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/video/video.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/objdetect/objdetect.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/photo/photo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/stitching/stitching.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/videoio/videoio.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/core.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/mat.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/exception.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/logging.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/svd.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/utils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/version.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/core/stdvec.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/calib3d/calib3d.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/aruco.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/img_hash.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/quality.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/wechat_qrcode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/ximgproc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/contrib/xobjdetect.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/dnn/dnn.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/features2d/features2d.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/imgcodecs/imgcodecs.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/imgproc/imgproc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/video/video.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/objdetect/objdetect.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/photo/photo.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/stitching/stitching.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Debug/4ss3u3w2/x86_64/_deps/libdartcv-src/dartcv/videoio/videoio.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

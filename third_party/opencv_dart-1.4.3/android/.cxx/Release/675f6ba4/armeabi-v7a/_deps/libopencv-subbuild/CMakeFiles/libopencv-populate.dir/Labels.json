@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/CMakeFiles/libopencv-populate"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/CMakeFiles/libopencv-populate.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/CMakeFiles/libopencv-populate-complete.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-build.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-configure.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-download.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-install.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-patch.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-test.rule"
+		},
+		{
+			"file" : "C:/WorkFiles/MulliCat/API_Trial/api_trial/third_party/opencv_dart-1.4.3/android/.cxx/Release/675f6ba4/armeabi-v7a/_deps/libopencv-subbuild/libopencv-populate-prefix/src/libopencv-populate-stamp/libopencv-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"libopencv-populate"
+		],
+		"name" : "libopencv-populate"
+	}
+}
