@@ -10,213 +10,232 @@ class ApiCardsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        toolbarHeight: 30,
-        title: const Padding(
-          padding: EdgeInsets.only(bottom: 10),
-          child: Text(
-            'Trading Card Games',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFF667eea), Color(0xFF764ba2)],
-            ),
-          ),
-        ),
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Choose your card game',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey[600],
-                  fontWeight: FontWeight.w500,
+      backgroundColor: theme.colorScheme.surface,
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final width = constraints.maxWidth;
+            final crossAxisCount = _columnsForWidth(width);
+            final horizontalPadding = width >= 1000 ? 24.0 : 16.0;
+
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Center(
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 1200),
+                      padding: EdgeInsets.fromLTRB(
+                        horizontalPadding,
+                        24,
+                        horizontalPadding,
+                        12,
+                      ),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Choose your card game',
+                        style: theme.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 0.80,
-                children: [
-                  _buildEnhancedApiCard(
-                    context: context,
-                    title: 'Pokémon TCG',
-                    subtitle: 'Gotta catch \'em all!',
-                    icon: Icons.catching_pokemon,
-                    color: const Color(0xFF2A75BB),
-                    onTap: () => _navigateToScreen(context, const TestScreen()),
+                SliverPadding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
+                    vertical: 8,
                   ),
-                  _buildEnhancedApiCard(
-                    context: context,
-                    title: 'Magic: The Gathering',
-                    subtitle: 'Planeswalker\'s choice',
-                    icon: Icons.auto_fix_high,
-                    color: const Color(0xFFF26722),
-                    onTap: () =>
-                        _navigateToScreen(context, const TestScreenMagic()),
+                  sliver: SliverToBoxAdapter(
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 1200),
+                        child: _CardsGrid(crossAxisCount: crossAxisCount),
+                      ),
+                    ),
                   ),
-                  _buildEnhancedApiCard(
-                    context: context,
-                    title: 'Yu-Gi-Oh!',
-                    subtitle: 'It\'s time to duel!',
-                    icon: Icons.style,
-                    color: const Color(0xFF991B1B),
-                    onTap: () =>
-                        _navigateToScreen(context, const TestScreenYuGiOh()),
-                  ),
-                  _buildEnhancedApiCard(
-                    context: context,
-                    title: 'One Piece TCG',
-                    subtitle: 'Set sail for adventure!',
-                    icon: Icons.directions_boat,
-                    color: const Color(0xFF2F4F4F),
-                    onTap: () =>
-                        _navigateToScreen(context, const ScreenOnePiece()),
-                  ),
-                  _buildEnhancedApiCard(
-                    context: context,
-                    title: 'TCG API',
-                    subtitle: 'All cards in one',
-                    icon: Icons.api,
-                    color: const Color(0xFF3742fa),
-                    onTap: () =>
-                        _navigateToScreen(context, const TestScreenApiTcg()),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget _buildEnhancedApiCard({
-    required BuildContext context,
-    required String title,
-    required String subtitle,
-    required IconData icon,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+  int _columnsForWidth(double w) {
+    if (w >= 1400) return 4;
+    if (w >= 900) return 3;
+    return 2;
+  }
+}
+
+class _CardsGrid extends StatelessWidget {
+  const _CardsGrid({required this.crossAxisCount});
+  final int crossAxisCount;
+
+  @override
+  Widget build(BuildContext context) {
+    final items = [
+      _GameCardData(
+        title: 'Pokémon TCG',
+        icon: Icons.catching_pokemon,
+        color: const Color(0xFF2A75BB),
+        onTap: () => _navigateTo(context, const TestScreen()),
+      ),
+      _GameCardData(
+        title: 'Magic: The Gathering',
+        icon: Icons.auto_fix_high,
+        color: const Color(0xFFF26722),
+        onTap: () => _navigateTo(context, const TestScreenMagic()),
+      ),
+      _GameCardData(
+        title: 'Yu-Gi-Oh!',
+        icon: Icons.style,
+        color: const Color(0xFF991B1B),
+        onTap: () => _navigateTo(context, const TestScreenYuGiOh()),
+      ),
+      _GameCardData(
+        title: 'One Piece TCG',
+        icon: Icons.directions_boat,
+        color: const Color(0xFF2F4F4F),
+        onTap: () => _navigateTo(context, const ScreenOnePiece()),
+      ),
+      _GameCardData(
+        title: 'TCG API',
+        icon: Icons.api,
+        color: const Color(0xFF3742FA),
+        onTap: () => _navigateTo(context, const TestScreenApiTcg()),
+      ),
+    ];
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: items.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+        childAspectRatio: 0.85,
+      ),
+      itemBuilder: (context, i) => _GameCard(item: items[i]),
+    );
+  }
+
+  static void _navigateTo(BuildContext context, Widget screen) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder: (_, a, __) => screen,
+        transitionDuration: const Duration(milliseconds: 280),
+        transitionsBuilder: (_, a, __, child) {
+          final tween = Tween(
+            begin: const Offset(0.06, 0),
+            end: Offset.zero,
+          ).chain(CurveTween(curve: Curves.easeOutCubic));
+          return SlideTransition(position: a.drive(tween), child: child);
+        },
+      ),
+    );
+  }
+}
+
+class _GameCardData {
+  final String title;
+  final IconData icon;
+  final Color color;
+  final VoidCallback onTap;
+  _GameCardData({
+    required this.title,
+    required this.icon,
+    required this.color,
+    required this.onTap,
+  });
+}
+
+class _GameCard extends StatefulWidget {
+  const _GameCard({required this.item});
+  final _GameCardData item;
+
+  @override
+  State<_GameCard> createState() => _GameCardState();
+}
+
+class _GameCardState extends State<_GameCard> {
+  bool _hovered = false;
+  bool _pressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final item = widget.item;
+
+    final scale = _pressed ? 0.98 : (_hovered ? 1.02 : 1.0);
+    final elevation = _hovered ? 10.0 : 6.0;
+
+    return Semantics(
+      button: true,
+      label: '${item.title}.',
+      child: AnimatedScale(
+        duration: const Duration(milliseconds: 120),
+        scale: scale,
         child: Card(
-          elevation: 8,
-          shadowColor: color.withOpacity(0.3),
+          clipBehavior: Clip.antiAlias, // ripple respects radius
+          elevation: elevation,
+          shadowColor: item.color.withOpacity(0.25),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Container(
+          child: Ink(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: color,
+              gradient: LinearGradient(
+                colors: [item.color, item.color.withOpacity(0.85)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
             ),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: onTap,
-                borderRadius: BorderRadius.circular(20),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(icon, size: 40, color: Colors.white),
+            child: InkWell(
+              onTap: item.onTap,
+              onHover: (h) => setState(() => _hovered = h),
+              onTapDown: (_) => setState(() => _pressed = true),
+              onTapCancel: () => setState(() => _pressed = false),
+              onTapUp: (_) => setState(() => _pressed = false),
+              borderRadius: BorderRadius.circular(20),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.18),
+                        shape: BoxShape.circle,
                       ),
-                      const SizedBox(height: 16),
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      child: Icon(item.icon, size: 40, color: Colors.white),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      item.title,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        subtitle,
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.white.withOpacity(0.8),
-                          fontWeight: FontWeight.w400,
-                        ),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 4,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 6),
+
+                    const SizedBox(height: 10),
+                  ],
                 ),
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  void _navigateToScreen(BuildContext context, Widget screen) {
-    Navigator.of(context).push(
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => screen,
-        transitionDuration: const Duration(milliseconds: 300),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const begin = Offset(1.0, 0.0);
-          const end = Offset.zero;
-          const curve = Curves.easeInOut;
-
-          var tween = Tween(
-            begin: begin,
-            end: end,
-          ).chain(CurveTween(curve: curve));
-
-          return SlideTransition(
-            position: animation.drive(tween),
-            child: child,
-          );
-        },
       ),
     );
   }
