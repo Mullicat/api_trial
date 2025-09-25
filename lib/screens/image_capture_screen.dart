@@ -21,6 +21,7 @@ import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/screens/scan_results.dart';
 import 'package:api_trial/models/card.dart';
 import 'package:api_trial/screens/multi_scan_camera_screen.dart';
+import 'package:api_trial/screens/camera_testing_screen.dart';
 
 // ============================================================================
 // WIDGET: ImageCaptureScreen
@@ -438,6 +439,36 @@ class ImageCaptureScreen extends StatelessWidget {
                                   );
                               if (result != null && result.isNotEmpty) {
                                 viewModel.setMultiScannedCards(result);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Saved ${result.length} card(s)',
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                      child: const Text('Scan, Detect & Save (multi)'),
+                    ),
+
+                    // ------------------------------------------------------------
+                    // TEST-CAM (live camera) — navigates to TestCameraScreen
+                    // Returns a list of TCGCard, which we then store in VM.
+                    // ------------------------------------------------------------
+                    ElevatedButton(
+                      onPressed: viewModel.isLoading
+                          ? null
+                          : () async {
+                              final result =
+                                  await Navigator.push<List<TCGCard>>(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          const CameraTestingScreen(),
+                                    ),
+                                  );
+                              if (result != null && result.isNotEmpty) {
+                                viewModel.setCameraTestingCards(result);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(

@@ -1,3 +1,4 @@
+# lib/scripts/populate_supabase.py
 import os
 import json
 from supabase import create_client, Client
