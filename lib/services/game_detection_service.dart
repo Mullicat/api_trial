@@ -1,8 +1,9 @@
+// lib/services/game_detection.dart
 import '../constants/game_detection_constants.dart';
 
 // Service for detecting trading card games based on OCR text and bounding boxes.
 class GameDetectionService {
-  // Detects the trading card game from recognized text blocks and joined text.
+  // FUNC 1: Detects the trading card game from recognized text blocks and joined text.
   String detectGame(
     List<Map<String, dynamic>> textBlocks,
     String? joinedText,
@@ -13,7 +14,7 @@ class GameDetectionService {
       return selectedGame;
     }
 
-    // One Piece TCG detection
+    // STEP 1: One Piece TCG detection (Search for the words of onePieceKeywords in the expected range)
     for (final block in textBlocks) {
       final text = block['text'].toString().toUpperCase();
       final box = block['normalizedBoundingBox'] as Map<String, dynamic>;
@@ -47,14 +48,14 @@ class GameDetectionService {
 
     final upperText = joinedText.toUpperCase();
 
-    // YuGiOh detection (specific keywords)
+    // STEP 2: YuGiOh detection (Search for specific words in the joined text)
     if (GameDetectionConstants.yugiohKeywords.any(
       (keyword) => upperText.contains(keyword),
     )) {
       return 'YuGiOh';
     }
 
-    // Pokémon TCG detection
+    // STEP 3: Pokémon TCG detection (Detects Weakness && Resistance / Trainer / Trainer Type / Energy (Multiple) in joined text)
     bool hasWeakness = GameDetectionConstants.pokemonWeaknessKeywords.any(
       (keyword) => upperText.contains(keyword),
     );
@@ -91,7 +92,7 @@ class GameDetectionService {
       return 'Pokemon TCG';
     }
 
-    // Magic: The Gathering detection
+    // Magic: The Gathering detection (Detects the card type in specific location)
     for (final block in textBlocks) {
       final text = block['text'].toString();
       final upperBlockText = text.toUpperCase();

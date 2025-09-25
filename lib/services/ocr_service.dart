@@ -1,3 +1,4 @@
+// lib/services/ocr_services.dart
 import 'dart:io';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:google_mlkit_language_id/google_mlkit_language_id.dart';
@@ -7,7 +8,7 @@ import 'image_service.dart';
 class OcrService {
   final ImageService _imageService = ImageService();
 
-  // Counts symbols in a text string for a specific script.
+  // COMP 1: Counts symbols in a text string for a specific script.
   int countScriptSymbols(String text, String script) {
     int count = 0;
     for (var char in text.runes) {
@@ -37,15 +38,16 @@ class OcrService {
     return count;
   }
 
-  // Detects the language of a Latin-based text.
+  // COMP 2: Detects the language of a Latin-based text.
   Future<String> detectLatinLanguage(String joinedText) async {
     if (joinedText.isEmpty) {
-      return 'Latin';
+      return 'Text not recognized';
     }
     final languageIdentifier = LanguageIdentifier(confidenceThreshold: 0.5);
     try {
       final possibleLanguages = await languageIdentifier
           .identifyPossibleLanguages(joinedText);
+
       if (possibleLanguages.isNotEmpty &&
           possibleLanguages.first.confidence > 0.5) {
         final code = possibleLanguages.first.languageTag;
@@ -63,27 +65,29 @@ class OcrService {
           case 'pt':
             return 'Language detected: Portuguese';
           default:
-            return 'Latin';
+            return 'Language detected: Latin derivative';
         }
       }
-      return 'Latin';
+      return 'Language detected: Latin derivative2';
     } catch (_) {
-      return 'Latin';
+      return 'Language detected: Latin derivative3';
     } finally {
       await languageIdentifier.close();
     }
   }
 
-  // Processes an image for text recognition with automatic script detection.
+  // FUNC 1: Processes an image for text recognition with automatic script detection.
   Future<Map<String, dynamic>> processImageWithAutoDetect(
     File imageFile,
     bool latinLanguageAutoDetectEnabled,
   ) async {
+    // Step 1: Get dimensions
     final inputImage = InputImage.fromFilePath(imageFile.path);
     final dimensions = await _imageService.getImageDimensions(imageFile);
     final imageWidth = dimensions['width']!.toDouble();
     final imageHeight = dimensions['height']!.toDouble();
 
+    // Step 2: Define scripts for language recognition (TODO: Define outside of the function)
     final scripts = [
       {
         'name': 'Latin',
@@ -103,23 +107,28 @@ class OcrService {
       },
     ];
 
+    // Step 3: Define variables to detect
     String selectedScript = 'Latin';
     int maxNonLatinSymbolCount = -1;
     List<Map<String, dynamic>> selectedBlocks = [];
     String? latinJoinedText;
 
+    // Step 4: Try to detect symbols for all scripts
     for (var script in scripts) {
       final scriptName = script['name'] as String?;
       final recognizer = script['recognizer'] as TextRecognizer?;
       if (scriptName == null || recognizer == null) continue;
 
       try {
+        // Step 5: Detect text
         final recognizedText = await recognizer.processImage(inputImage);
+        // Step 6: Join text
         final joinedText = recognizedText.blocks
             .map((block) => block.text)
             .join(' ');
+        // Step 7: Count symbols
         final symbolCount = countScriptSymbols(joinedText, scriptName);
-
+        // Step 8: Define blocks of texts and identified positions
         final blocks = recognizedText.blocks
             .map(
               (block) => ({
@@ -143,13 +152,14 @@ class OcrService {
               }),
             )
             .toList();
-
+        // Step 9: Define variables when non latin language found
         if (scriptName != 'Latin' && symbolCount > 7) {
           if (symbolCount > maxNonLatinSymbolCount) {
             maxNonLatinSymbolCount = symbolCount;
             selectedScript = scriptName;
             selectedBlocks = blocks;
           }
+          // Step 10: Define variables when latin language found
         } else if (scriptName == 'Latin' && maxNonLatinSymbolCount == -1) {
           selectedBlocks = blocks;
           latinJoinedText = joinedText;
@@ -158,7 +168,7 @@ class OcrService {
         await recognizer.close();
       }
     }
-
+    // Step 11: If detect language available, save identified langage
     if (selectedScript == 'Latin' &&
         latinLanguageAutoDetectEnabled &&
         latinJoinedText != null) {
@@ -172,7 +182,7 @@ class OcrService {
     return {'textBlocks': selectedBlocks, 'joinedText': latinJoinedText};
   }
 
-  // Processes an image for text recognition with a specific script.
+  // FUNC 1.a: Processes an image for text recognition with a specific script. (Same process as previous, less steps)
   Future<Map<String, dynamic>> processImageWithScript(
     File imageFile,
     String script,
@@ -239,7 +249,7 @@ class OcrService {
     }
   }
 
-  /// Extract One Piece game code (OP##-###, ST##-###, or P-###) from recognized text.
+  /// FUNC 2: Extract One Piece game code (OP##-###, ST##-###, or P-###) from recognized text.
   /// - Tolerates spaces/hyphens around tokens.
   /// - Pads OP/ST set number to 2 digits if it’s a single digit.
   /// Returns the normalized code (e.g., "OP05-119", "ST10-004", "P-001") or null.
@@ -247,15 +257,16 @@ class OcrService {
     required List<Map<String, dynamic>> textBlocks,
     String? joinedText,
   }) {
+    // Step 1: Combine joinedText & textBlocks to ensure it's found (TODO: Use only one, probably joined text)
     final combined = (joinedText != null && joinedText.trim().isNotEmpty)
         ? joinedText
         : textBlocks.map((b) => b['text']?.toString() ?? '').join(' ');
     final upper = combined.toUpperCase();
 
-    // Find all potential matches with their indices so we can pick the earliest.
+    // Step 2: Find all potential matches with their indices so we can pick the earliest.
     final matches = <_FoundMatch>[];
 
-    // OP pattern
+    // Step 3: OP pattern Identification
     final opRe = RegExp(r'OP\s*-?\s*(\d{1,3})\s*-\s*(\d{3})');
     for (final m in opRe.allMatches(upper)) {
       final setDigits = m.group(1)!; // 1-3 digits
@@ -266,7 +277,7 @@ class OcrService {
       matches.add(_FoundMatch(m.start, 'OP$normalizedSet-$cardDigits'));
     }
 
-    // ST pattern
+    // Step 4: ST pattern Identification
     final stRe = RegExp(r'ST\s*-?\s*(\d{1,3})\s*-\s*(\d{3})');
     for (final m in stRe.allMatches(upper)) {
       final setDigits = m.group(1)!;
@@ -277,13 +288,14 @@ class OcrService {
       matches.add(_FoundMatch(m.start, 'ST$normalizedSet-$cardDigits'));
     }
 
-    // Promo pattern P-###
+    // Step 5: Promo pattern P-### Identification
     final pRe = RegExp(r'\bP\s*-\s*(\d{3})\b');
     for (final m in pRe.allMatches(upper)) {
       final cardDigits = m.group(1)!;
       matches.add(_FoundMatch(m.start, 'P-$cardDigits'));
     }
 
+    // Step 6: Not found match for ID
     if (matches.isEmpty) return null;
     matches.sort((a, b) => a.index.compareTo(b.index));
     return matches.first.normalized;

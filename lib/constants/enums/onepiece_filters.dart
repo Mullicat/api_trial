@@ -167,7 +167,6 @@ enum Rarity {
 
 enum Cost {
   cost1('1'),
-  cost10('10'),
   cost2('2'),
   cost3('3'),
   cost4('4'),
@@ -175,7 +174,8 @@ enum Cost {
   cost6('6'),
   cost7('7'),
   cost8('8'),
-  cost9('9');
+  cost9('9'),
+  cost10('10');
 
   final String value;
   const Cost(this.value);
@@ -220,10 +220,6 @@ enum Color {
 
 enum Power {
   power1000('1000'),
-  power10000('10000'),
-  power11000('11000'),
-  power12000('12000'),
-  power13000('13000'),
   power2000('2000'),
   power3000('3000'),
   power4000('4000'),
@@ -231,7 +227,11 @@ enum Power {
   power6000('6000'),
   power7000('7000'),
   power8000('8000'),
-  power9000('9000');
+  power9000('9000'),
+  power10000('10000'),
+  power11000('11000'),
+  power12000('12000'),
+  power13000('13000');
 
   final String value;
   const Power(this.value);
@@ -394,9 +394,9 @@ enum Family {
 }
 
 enum Counter {
+  none('None'),
   counter1000('1000'),
-  counter2000('2000'),
-  none('None');
+  counter2000('2000');
 
   final String value;
   const Counter(this.value);

@@ -1,4 +1,27 @@
-// lib/screens/multi_scan_camera_screen.dart
+// ============================================================================
+// FILE: multi_scan_camera_screen.dart
+// PURPOSE: Live camera-based multi-scan workflow.
+//          1) Continuously detect a card-shaped quadrilateral (doc-scanner style)
+//          2) Show a translucent silhouette overlay for UX
+//          3) When stable, capture → warp → OCR → detect game → find One Piece card
+//          4) Collect chosen cards and return to caller
+//
+// MAIN PIECES:
+//   - MultiScanCameraScreen (Stateful): camera + detection FSM + UX
+//   - _QuadPainter: draws the detected quad & a visual guide (card aspect)
+//
+// DEPENDENCIES:
+//   - camera: live preview + still capture
+//   - opencv_dart: edge detection + perspective warp
+//   - ML/OCR services (OcrService, GameDetectionService, OnePieceTcgService)
+//
+// FSM STATES:
+//   - searching        : no stable quad yet; look for edges
+//   - stable           : quad persisted ~8 frames; trigger capture
+//   - capturedCooldown : brief pause after capture to avoid duplicates
+//   - waitingChange    : wait for scene motion (user replaces card)
+// ============================================================================
+
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
@@ -15,8 +38,14 @@ import '../services/ocr_service.dart';
 import '../services/game_detection_service.dart';
 import '../services/onepiece_service.dart';
 
+// ----------------------------------------------------------------------------
+// FSM enum
+// ----------------------------------------------------------------------------
 enum _DetectState { searching, stable, capturedCooldown, waitingChange }
 
+// ----------------------------------------------------------------------------
+// WIDGET: MultiScanCameraScreen
+// ----------------------------------------------------------------------------
 class MultiScanCameraScreen extends StatefulWidget {
   const MultiScanCameraScreen({super.key});
 
@@ -24,37 +53,54 @@ class MultiScanCameraScreen extends StatefulWidget {
   State<MultiScanCameraScreen> createState() => _MultiScanCameraScreenState();
 }
 
+// ----------------------------------------------------------------------------
+// STATE: _MultiScanCameraScreenState
+// STATE VARS (groups):
+//   Camera: _controller, _ready, _takingShot
+//   Services: _edge, _ocr, _gameDetect, _onePiece
+//   Results: _picked (accumulated cards)
+//   FSM: _state, _stableQuadPrev, counters (_stableCount/_cooldownFrames/_changedFrames)
+//   Motion: _prevY (Y-plane baseline), _frameSkip (throttling)
+//   Preview meta: _pvWidth/_pvHeight
+//   Overlay: _lastQuadPreview (for painter), _flashOverlay (flash effect)
+// ----------------------------------------------------------------------------
 class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
+  // --- camera lifecycle ---
   CameraController? _controller;
   bool _ready = false;
   bool _takingShot = false;
 
+  // --- services ---
   final _edge = EdgeDetectService();
   final _ocr = OcrService();
   final _gameDetect = GameDetectionService();
   late OnePieceTcgService _onePiece;
 
+  // --- results / collected cards ---
   final List<TCGCard> _picked = [];
 
-  // FSM
+  // --- FSM ---
   _DetectState _state = _DetectState.searching;
-  List<List<double>>? _stableQuadPrev;
+  List<List<double>>? _stableQuadPrev; // last stable quad in PREVIEW space
   int _stableCount = 0;
   int _cooldownFrames = 0;
   int _changedFrames = 0;
 
-  // motion baseline
-  Uint8List? _prevY;
-  int _frameSkip = 0;
+  // --- motion baseline ---
+  Uint8List? _prevY; // previous Y plane for simple diff
+  int _frameSkip = 0; // throttle factor
 
-  // preview meta
+  // --- preview meta (mapping preview → still) ---
   int _pvWidth = 0;
   int _pvHeight = 0;
 
-  // overlay
-  List<cv.Point2f>? _lastQuadPreview;
+  // --- overlay state ---
+  List<cv.Point2f>? _lastQuadPreview; // painter input (preview coords)
   bool _flashOverlay = false;
 
+  // --------------------------------------------------------------------------
+  // LIFECYCLE: init / dispose
+  // --------------------------------------------------------------------------
   @override
   void initState() {
     super.initState();
@@ -63,7 +109,10 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
 
   Future<void> _initAsync() async {
     try {
+      // 1) services ready
       _onePiece = await OnePieceTcgService.create();
+
+      // 2) choose a camera (prefer back)
       final cams = await availableCameras();
       if (cams.isEmpty) {
         if (mounted) {
@@ -74,19 +123,18 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
         }
         return;
       }
-
       final CameraDescription cam = cams.firstWhere(
         (c) => c.lensDirection == CameraLensDirection.back,
         orElse: () => cams.first,
       );
 
+      // 3) controller + init + stream
       _controller = CameraController(
         cam,
         ResolutionPreset.medium,
         enableAudio: false,
-        imageFormatGroup: ImageFormatGroup.yuv420,
+        imageFormatGroup: ImageFormatGroup.yuv420, // we use Y plane
       );
-
       await _controller!.initialize();
       if (!mounted) return;
 
@@ -104,36 +152,44 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
   @override
   void dispose() {
     _controller?.dispose();
-    // clean up preview points
     _lastQuadPreview?.forEach((p) => p.dispose());
     super.dispose();
   }
 
-  // == Preview processing ==
+  // --------------------------------------------------------------------------
+  // STREAM: _onPreviewFrame
+  // - Consume preview frames (YUV420), detect card-like quad on Y plane.
+  // - Update FSM & overlay silhouette + UX hints.
+  // --------------------------------------------------------------------------
   Future<void> _onPreviewFrame(CameraImage img) async {
     if (_takingShot) return;
-    // gentle throttle
+    // Optional throttle (every Nth frame)
     if ((_frameSkip++ % 1) != 0) return;
 
+    // Cache preview dims for mapping
     final pvW = img.width;
     final pvH = img.height;
     _pvWidth = pvW;
     _pvHeight = pvH;
 
+    // Gray (Y) plane
     final yBytes = img.planes.first.bytes;
 
-    // Let the detector scan the whole frame (no ROI) to behave like a doc scanner.
+    // Edge detection on full frame (doc scanner-like)
     final quad = _edge.detectCardQuadOnGrayU8(
       gray: yBytes,
       width: pvW,
       height: pvH,
-      // roi: null  // intentionally not set
+      // roi: null
     );
 
+    // Update overlay points (painter)
     _maybeUpdateOverlay(quad);
 
+    // Global motion (simple absolute diff)
     final moved = _detectMotion(yBytes);
 
+    // ---------- FSM ----------
     switch (_state) {
       case _DetectState.searching:
         if (quad != null) {
@@ -159,11 +215,12 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
         break;
 
       case _DetectState.stable:
+        // Fire capture once when stable
         if (_stableQuadPrev != null) {
           _triggerCaptureWithQuad(_stableQuadPrev!);
         }
         _state = _DetectState.capturedCooldown;
-        _cooldownFrames = 10;
+        _cooldownFrames = 10; // brief pause
         setState(() {});
         break;
 
@@ -177,6 +234,7 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
         break;
 
       case _DetectState.waitingChange:
+        // Wait for scene to change (user removes/replaces card)
         if (moved) {
           _changedFrames++;
           if (_changedFrames >= 4) {
@@ -195,13 +253,16 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     }
   }
 
+  // --------------------------------------------------------------------------
+  // GEOMETRY/UTILITY: quad comparisons & conversions
+  // --------------------------------------------------------------------------
   bool _isSameQuad(List<cv.Point2f> q, List<List<double>>? prev) {
     if (prev == null || prev.length != 4) return false;
     double sum = 0;
     for (var i = 0; i < 4; i++) {
       final dx = q[i].x - prev[i][0];
       final dy = q[i].y - prev[i][1];
-      sum += (dx * dx + dy * dy);
+      sum += dx * dx + dy * dy;
     }
     return sum < 200.0; // preview-pixel threshold
   }
@@ -209,6 +270,9 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
   List<List<double>> _toDoubleQuad(List<cv.Point2f> q) =>
       q.map((p) => [p.x.toDouble(), p.y.toDouble()]).toList();
 
+  // --------------------------------------------------------------------------
+  // MOTION: simple mean absolute difference over subsampled Y bytes
+  // --------------------------------------------------------------------------
   bool _detectMotion(Uint8List y) {
     if (_prevY == null || _prevY!.length != y.length) {
       _prevY = Uint8List.fromList(y);
@@ -227,20 +291,23 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     return avg > 3.5;
   }
 
+  // --------------------------------------------------------------------------
+  // CAPTURE: takePicture → map preview→still → warp → OCR → OnePiece lookup
+  // --------------------------------------------------------------------------
   Future<void> _triggerCaptureWithQuad(List<List<double>> quadPreview) async {
     if (_takingShot || _controller == null) return;
     setState(() => _takingShot = true);
 
-    _flash();
+    _flash(); // quick visual confirmation
 
     try {
+      // 1) High-res still
       final x = await _controller!.takePicture();
       final still = File(x.path);
 
-      // preview->still map
+      // 2) Preview→still mapping factors
       final pvW = _pvWidth.toDouble();
       final pvH = _pvHeight.toDouble();
-
       final decoded = await still.readAsBytes();
       final mat = cv.imdecode(decoded, cv.IMREAD_GRAYSCALE);
       final stW = mat.cols.toDouble();
@@ -254,16 +321,16 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
           .map((p) => cv.Point2f(p[0] * sx, p[1] * sy))
           .toList();
 
+      // 3) Perspective warp (rectified card)
       final warped = await _edge.warpAndWriteJpeg(
         srcJpeg: still,
         quad: quadStill,
         outWidth: 700,
         outHeight: 980,
       );
-
       final cardFile = warped ?? still;
 
-      // OCR + game detect
+      // 4) OCR + game detect
       final ocr = await _ocr.processImageWithAutoDetect(cardFile, true);
       final blocks =
           (ocr['textBlocks'] as List?)?.cast<Map<String, dynamic>>() ?? [];
@@ -277,11 +344,11 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
         return;
       }
 
+      // 5) Extract code → Supabase search
       final code = _ocr.extractOnePieceGameCode(
         textBlocks: blocks,
         joinedText: joined,
       );
-
       if (code == null) {
         _toast('No One Piece code found. Try again.');
         return;
@@ -310,6 +377,9 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     }
   }
 
+  // --------------------------------------------------------------------------
+  // UX HELPERS: flash, toasts, picker for multi-matches, banner confirmation
+  // --------------------------------------------------------------------------
   void _flash() async {
     if (!mounted) return;
     setState(() => _flashOverlay = true);
@@ -410,7 +480,9 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     );
   }
 
-  // === overlay plumbing ===
+  // --------------------------------------------------------------------------
+  // OVERLAY: maintain last preview-quad for painter, with cheap change check
+  // --------------------------------------------------------------------------
   void _maybeUpdateOverlay(List<cv.Point2f>? quad) {
     final changed = !_sameQuadPoints(_lastQuadPreview, quad);
     if (changed) {
@@ -432,6 +504,9 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     return sum < 1e-2;
   }
 
+  // --------------------------------------------------------------------------
+  // STATUS CHIP CONTENT
+  // --------------------------------------------------------------------------
   String get _statusText {
     switch (_state) {
       case _DetectState.searching:
@@ -460,6 +535,9 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
     }
   }
 
+  // --------------------------------------------------------------------------
+  // BUILD: camera preview + overlay + chip + bottom hint + "Done" action
+  // --------------------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
     if (!_ready || _controller == null) {
@@ -491,9 +569,10 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
 
           return Stack(
             children: [
+              // Camera feed
               Positioned.fill(child: CameraPreview(_controller!)),
 
-              // Overlay: detected quad + guide hint
+              // Overlay (quad + guide)
               Positioned.fill(
                 child: CustomPaint(
                   painter: _QuadPainter(
@@ -503,18 +582,18 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
                     canvasH: screenH,
                     quadPreview: _lastQuadPreview,
                     state: _state,
-                    drawGuideBox: true, // purely visual hint
+                    drawGuideBox: true, // visual guidance with card aspect
                   ),
                 ),
               ),
 
-              // Flash overlay on capture
+              // Flash overlay
               if (_flashOverlay)
                 Positioned.fill(
                   child: Container(color: Colors.white.withOpacity(0.35)),
                 ),
 
-              // Status chip (top-center)
+              // Status chip (top-center, inside safe area)
               Positioned(
                 top: 12,
                 left: 0,
@@ -559,7 +638,7 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
                 ),
               ),
 
-              // Bottom hint (SafeArea so it's not glued to the bottom edge)
+              // Bottom hint (safe area spacing)
               Positioned(
                 left: 0,
                 right: 0,
@@ -594,7 +673,19 @@ class _MultiScanCameraScreenState extends State<MultiScanCameraScreen> {
   }
 }
 
-// === Painter for overlay & guide box ===
+// ============================================================================
+// PAINTER: _QuadPainter
+// DRAWS:
+//   - Visual guide box with true card aspect (~63x88mm ≈ 0.716)
+//   - Semi-transparent silhouette of detected quad
+//   - Outline & corner dots for clarity
+// INPUTS:
+//   - pvW/pvH: preview dimensions for coordinate mapping
+//   - canvasW/canvasH: paint area size
+//   - quadPreview: 4 points in PREVIEW space
+//   - state: FSM (for color)
+//   - drawGuideBox: toggle guide
+// ============================================================================
 class _QuadPainter extends CustomPainter {
   final int pvW, pvH;
   final double canvasW, canvasH;
@@ -614,11 +705,12 @@ class _QuadPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Visual guide box with true card aspect (63x88mm => 0.7159)
+    // --- Guide box (card aspect 63:88) --------------------------------------
     if (drawGuideBox) {
-      const aspect = 63.0 / 88.0; // width / height
+      const aspect = 63.0 / 88.0; // width / height ≈ 0.716
       final maxW = canvasW * 0.8;
       final maxH = canvasH * 0.8;
+
       double gw = maxW;
       double gh = gw / aspect;
       if (gh > maxH) {
@@ -632,23 +724,26 @@ class _QuadPainter extends CustomPainter {
         ui.Rect.fromLTWH(cx - gw / 2, cy - gh / 2, gw, gh),
         const Radius.circular(12),
       );
-      // dashed border look
+
       final guide = Paint()
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2
         ..color = Colors.white70;
+
       canvas.drawRRect(guideRect, guide);
     }
 
+    // --- Nothing to draw yet ------------------------------------------------
     if (quadPreview == null || pvW == 0 || pvH == 0) return;
 
-    // Convert preview-space quad → canvas space
+    // --- Map preview → canvas ----------------------------------------------
     final sx = canvasW / pvW;
     final sy = canvasH / pvH;
     final pts = quadPreview!
         .map((p) => Offset(p.x * sx, p.y * sy))
         .toList(growable: false);
 
+    // Quad path
     final path = Path()
       ..moveTo(pts[0].dx, pts[0].dy)
       ..lineTo(pts[1].dx, pts[1].dy)
@@ -656,10 +751,12 @@ class _QuadPainter extends CustomPainter {
       ..lineTo(pts[3].dx, pts[3].dy)
       ..close();
 
-    // Semi-transparent fill (silhouette)
+    // Fill color depends on stability for quick feedback
     final baseColor = state == _DetectState.stable
         ? Colors.lightGreenAccent
         : Colors.orangeAccent;
+
+    // Semi-transparent silhouette
     final fill = Paint()
       ..style = PaintingStyle.fill
       ..color = baseColor.withOpacity(0.16);
