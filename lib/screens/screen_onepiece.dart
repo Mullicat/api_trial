@@ -1,3 +1,18 @@
+// ============================================================================
+// FILE: screen_onepiece.dart
+// PURPOSE: Browse/search One Piece TCG cards with filters and pagination.
+// ARCHITECTURE:
+//   - Stateful widget; initializes OnePieceTcgService asynchronously.
+//   - Can fetch from API, Supabase DB, or API (then upsert) based on mode.
+//   - Filter chips (dropdown popups), family multi-select dialog, pagination.
+//   - Opens ScreenSingle for per-card detail (passing gameCode/id + source).
+// UX NOTES:
+//   - Top search box filters by name.
+//   - Two drop-downs to choose "GetCards" source and "GetCard" source.
+//   - Horizontal filter bar for game-specific params (set/rarity/etc).
+//   - Bottom sticky pagination (page + page size).
+// ============================================================================
+
 import 'package:flutter/material.dart';
 import 'package:api_trial/models/card.dart';
 import 'package:api_trial/services/onepiece_service.dart';
@@ -7,8 +22,21 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:api_trial/screens/screen_single.dart';
 import 'dart:developer' as developer;
 
+// -----------------------------------------------------------------------------
+// ENUM: GetCardsType
+// ROLE: Selects which "bulk source" we fetch cards from.
+//   - fromAPI       : live REST (apitcg)
+//   - fromDatabase  : Supabase
+//   - uploadCards   : fetch from API AND background upsert to DB
+// -----------------------------------------------------------------------------
 enum GetCardsType { fromAPI, fromDatabase, uploadCards }
 
+// ============================================================================
+// WIDGET: ScreenOnePiece
+// ROLE: Container screen for listing/searching One Piece cards.
+// INPUTS:
+//   - gameType: present for future extensibility (defaults to onePiece).
+// ============================================================================
 class ScreenOnePiece extends StatefulWidget {
   final GameType gameType;
 
@@ -18,20 +46,37 @@ class ScreenOnePiece extends StatefulWidget {
   State<ScreenOnePiece> createState() => _ScreenOnePieceState();
 }
 
+// ============================================================================
+// STATE: _ScreenOnePieceState
+// CORE STATE:
+//   - _service: lazy-initialized service instance
+//   - _selectedGetCardsType: bulk source (API/DB/Upload)
+//   - _selectedGetCardType : detail source for ScreenSingle
+//   - _cards               : current page of cards
+//   - _filters             : selected filter values (stringy map + families)
+//   - _page/_pageSize      : pagination
+//   - _isLoading/_errorMessage
+// ============================================================================
 class _ScreenOnePieceState extends State<ScreenOnePiece> {
-  OnePieceTcgService? _service; // Nullable to handle async initialization
+  OnePieceTcgService? _service;
   GetCardsType _selectedGetCardsType = GetCardsType.fromAPI;
   GetCardType _selectedGetCardType = GetCardType.fromAPI;
+
   List<TCGCard>? _cards;
   bool _isLoading = false;
   String? _errorMessage;
+
   final TextEditingController _searchController = TextEditingController();
   final Map<String, dynamic> _filters = {};
+
   int _page = 1;
   int _pageSize = 100;
-  int _totalCards = 0; // To be updated from response if available
+  int _totalCards = 0; // If upstream exposes total, plug it here.
 
-  // Game-specific filter options
+  // ---------------------------------------------------------------------------
+  // GAME PARAM OPTIONS: For One Piece, map parameter->allowed values.
+  // Display "None" at index 0 to clear a filter.
+  // ---------------------------------------------------------------------------
   final Map<GameType, Map<String, List<String>>> _parameterOptions = {
     GameType.onePiece: {
       'set_name': ['None', ...SetName.values.map((e) => e.value)],
@@ -46,9 +91,12 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     },
   };
 
-  // Game-specific free-text parameters (removed ability)
+  // (Kept for parity; not used now but useful if we add free text params later.)
   final Map<GameType, List<String>> _freeTextParams = {GameType.onePiece: []};
 
+  // ---------------------------------------------------------------------------
+  // LIFECYCLE: init -> create service -> fetch first page
+  // ---------------------------------------------------------------------------
   @override
   void initState() {
     super.initState();
@@ -56,6 +104,16 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     _initializeService();
   }
 
+  // Clean up controllers
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  // ---------------------------------------------------------------------------
+  // INIT SERVICE: Create service instance, then fetch initial data.
+  // ---------------------------------------------------------------------------
   Future<void> _initializeService() async {
     try {
       _service = await OnePieceTcgService.create();
@@ -69,12 +127,9 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     }
   }
 
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
+  // ---------------------------------------------------------------------------
+  // FETCH INITIAL DATA: clears UI state and fetches first page.
+  // ---------------------------------------------------------------------------
   Future<void> _fetchInitialData() async {
     if (_service == null) return;
     developer.log('Fetching initial data');
@@ -89,91 +144,86 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     await _fetchCards();
   }
 
-  // --- enum helpers ----------------------------------------------------------
-
+  // ===========================================================================
+  // HELPERS: map string filter values -> enum types (or null for "None")
+  // ===========================================================================
   SetName? _getSetName(String? value) {
     if (value == null ||
         value == 'None' ||
-        !SetName.values.any((e) => e.value == value)) {
+        !SetName.values.any((e) => e.value == value))
       return null;
-    }
     return SetName.values.firstWhere((e) => e.value == value);
   }
 
   Rarity? _getRarity(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Rarity.values.any((e) => e.value == value)) {
+        !Rarity.values.any((e) => e.value == value))
       return null;
-    }
     return Rarity.values.firstWhere((e) => e.value == value);
   }
 
   Cost? _getCost(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Cost.values.any((e) => e.value == value)) {
+        !Cost.values.any((e) => e.value == value))
       return null;
-    }
     return Cost.values.firstWhere((e) => e.value == value);
   }
 
   Type? _getType(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Type.values.any((e) => e.value == value)) {
+        !Type.values.any((e) => e.value == value))
       return null;
-    }
     return Type.values.firstWhere((e) => e.value == value);
   }
 
   Color? _getColor(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Color.values.any((e) => e.value == value)) {
+        !Color.values.any((e) => e.value == value))
       return null;
-    }
     return Color.values.firstWhere((e) => e.value == value);
   }
 
   Power? _getPower(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Power.values.any((e) => e.value == value)) {
+        !Power.values.any((e) => e.value == value))
       return null;
-    }
     return Power.values.firstWhere((e) => e.value == value);
   }
 
   Counter? _getCounter(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Counter.values.any((e) => e.value == value)) {
+        !Counter.values.any((e) => e.value == value))
       return null;
-    }
     return Counter.values.firstWhere((e) => e.value == value);
   }
 
   Trigger? _getTrigger(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Trigger.values.any((e) => e.displayName == value)) {
+        !Trigger.values.any((e) => e.displayName == value))
       return null;
-    }
     return Trigger.values.firstWhere((e) => e.displayName == value);
   }
 
   Ability? _getAbility(String? value) {
     if (value == null ||
         value == 'None' ||
-        !Ability.values.any((e) => e.value == value)) {
+        !Ability.values.any((e) => e.value == value))
       return null;
-    }
     return Ability.values.firstWhere((e) => e.value == value);
   }
 
-  // --- fetch cards -----------------------------------------------------------
-
+  // ===========================================================================
+  // FETCH CARDS (main entry): honors _selectedGetCardsType
+  //   - Reads filters & pagination, calls the appropriate service method,
+  //     sets _cards, handles _isLoading/_errorMessage.
+  // ===========================================================================
   Future<void> _fetchCards() async {
     if (_service == null) {
       setState(() {
@@ -192,6 +242,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       developer.log(
         'Fetching cards with filters: $_filters, page: $_page, pageSize: $_pageSize',
       );
+
       List<TCGCard> cards;
       switch (_selectedGetCardsType) {
         case GetCardsType.fromAPI:
@@ -215,6 +266,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
             pageSize: _pageSize,
           );
           break;
+
         case GetCardsType.fromDatabase:
           cards = await _service!.getCardsFromDatabase(
             word: _searchController.text.isNotEmpty
@@ -236,6 +288,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
             pageSize: _pageSize,
           );
           break;
+
         case GetCardsType.uploadCards:
           cards = await _service!.getCardsUploadCards(
             word: _searchController.text.isNotEmpty
@@ -257,12 +310,15 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
           );
           break;
       }
+
       developer.log('Cards fetched: ${cards.length}');
       if (!mounted) return;
+
       setState(() {
         _cards = cards;
         _isLoading = false;
-        _totalCards = 1000; // Replace with actual total if available
+        _totalCards =
+            1000; // TODO: replace with real total if API/DB returns it
       });
     } catch (e) {
       if (!mounted) return;
@@ -274,19 +330,17 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     }
   }
 
-  // --- single card nav (use gameCode!) --------------------------------------
-
+  // ===========================================================================
+  // OPEN SINGLE CARD: navigates to ScreenSingle using the chosen GetCardType.
+  // Passes gameCode as the "id" argument; ScreenSingle+service interpret it.
+  // ===========================================================================
   Future<void> _fetchSingleCard(String? gameCode) async {
     if (_service == null) {
-      setState(() {
-        _errorMessage = 'Service not initialized';
-      });
+      setState(() => _errorMessage = 'Service not initialized');
       return;
     }
     if (gameCode == null || gameCode.isEmpty) {
-      setState(() {
-        _errorMessage = 'Invalid card ID';
-      });
+      setState(() => _errorMessage = 'Invalid card ID');
       developer.log('Error: gameCode is null or empty');
       return;
     }
@@ -295,11 +349,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       developer.log(
         'Navigating to ScreenSingle with gameCode: $gameCode, gameType: ${widget.gameType.name}, getCardType: $_selectedGetCardType',
       );
+
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => ScreenSingle(
-            // IMPORTANT: pass the gameCode; service methods interpret per getCardType
             id: gameCode,
             gameType: widget.gameType,
             service: _service!,
@@ -316,6 +370,10 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     }
   }
 
+  // ===========================================================================
+  // MODE SWITCHING: bulk (GetCardsType) and detail (GetCardType)
+  // - Resets filters + page on bulk mode change.
+  // ===========================================================================
   void _onGetCardsTypeSelected(GetCardsType type) {
     setState(() {
       _selectedGetCardsType = type;
@@ -332,11 +390,13 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
   }
 
   void _onGetCardTypeSelected(GetCardType type) {
-    setState(() {
-      _selectedGetCardType = type;
-    });
+    setState(() => _selectedGetCardType = type);
   }
 
+  // ===========================================================================
+  // FAMILY FILTER DIALOG: searchable, multi-select, returns List<Family>.
+  // Stores selection into _filters['family'] and triggers fetch.
+  // ===========================================================================
   Future<void> _showFamilyFilterDialog() async {
     final TextEditingController searchController = TextEditingController();
     List<Family> selectedFamilies = _filters['family'] != null
@@ -356,6 +416,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    // Search box
                     TextField(
                       controller: searchController,
                       decoration: const InputDecoration(
@@ -375,6 +436,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                       },
                     ),
                     const SizedBox(height: 8),
+                    // List of checkboxes
                     Expanded(
                       child: ListView(
                         shrinkWrap: true,
@@ -428,14 +490,21 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     }
   }
 
+  // ===========================================================================
+  // UI: FILTER BAR
+  //  - First row: mode (GetCardsType) and detail source (GetCardType).
+  //  - Second row: clickable filter chips (popup menus) + Family dialog + Clear.
+  // ===========================================================================
   Widget _buildFilterBar() {
     final params = _parameterOptions[widget.gameType] ?? {};
     return Column(
       children: [
+        // --- Row 1: Mode selectors ------------------------------------------------
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
+              // GetCardsType mode
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: DropdownButton<GetCardsType>(
@@ -449,12 +518,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                       )
                       .toList(),
                   onChanged: (value) {
-                    if (value != null) {
-                      _onGetCardsTypeSelected(value);
-                    }
+                    if (value != null) _onGetCardsTypeSelected(value);
                   },
                 ),
               ),
+              // GetCardType source for detail page
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: DropdownButton<GetCardType>(
@@ -468,19 +536,20 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                       )
                       .toList(),
                   onChanged: (value) {
-                    if (value != null) {
-                      _onGetCardTypeSelected(value);
-                    }
+                    if (value != null) _onGetCardTypeSelected(value);
                   },
                 ),
               ),
             ],
           ),
         ),
+
+        // --- Row 2: Filter chips --------------------------------------------------
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
+              // All simple dropdown filters (except family)
               ...params.keys.where((param) => param != 'family').map((param) {
                 final isActive =
                     _filters.containsKey(param) && _filters[param] != 'None';
@@ -528,6 +597,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                   ),
                 );
               }).toList(),
+
+              // Family multi-select dialog chip
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: GestureDetector(
@@ -566,6 +637,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                   ),
                 ),
               ),
+
+              // Clear all filters
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextButton(
@@ -587,6 +660,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     );
   }
 
+  // ===========================================================================
+  // UI: PAGINATION BAR (bottomNavigationBar)
+  // - Shows page left/right and page size selector.
+  // - hasNext uses a crude _totalCards; replace with real total when available.
+  // ===========================================================================
   Widget _buildPaginationBar() {
     final bool hasPrevious = _page > 1;
     final bool hasNext = _totalCards > _page * _pageSize;
@@ -602,6 +680,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // Page selectors
           Row(
             children: [
               IconButton(
@@ -625,6 +704,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
               ),
             ],
           ),
+
+          // Page size dropdown
           DropdownButton<int>(
             value: _pageSize,
             items: [25, 50, 100]
@@ -648,9 +729,13 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     );
   }
 
+  // ===========================================================================
+  // BUILD: overall UI (AppBar, search, filters, list, pagination)
+  // ===========================================================================
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // --- AppBar --------------------------------------------------------------
       appBar: AppBar(
         title: const Text(
           'One Piece TCG',
@@ -664,8 +749,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
           ),
         ],
       ),
+
+      // --- Body ---------------------------------------------------------------
       body: Column(
         children: [
+          // Search by name
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -681,13 +769,18 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
               onSubmitted: (value) => _fetchCards(),
             ),
           ),
+
+          // Filter bar: modes + chips
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: _buildFilterBar(),
           ),
+
+          // Results (loading / error / empty / list)
           Expanded(
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
+                // Error state
                 : _errorMessage != null
                 ? Center(
                     child: Column(
@@ -716,6 +809,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                       ],
                     ),
                   )
+                // Empty state
                 : _cards == null || _cards!.isEmpty
                 ? const Center(
                     child: Text(
@@ -723,9 +817,11 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                       style: TextStyle(fontSize: 16),
                     ),
                   )
+                // Results list
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Count header
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -736,6 +832,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                           ),
                         ),
                       ),
+
+                      // Cards list
                       Expanded(
                         child: ListView.builder(
                           itemCount: _cards!.length,
@@ -765,7 +863,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                                 subtitle: Text(
                                   'Type: ${card.gameSpecificData?['type'] ?? 'Unknown'}',
                                 ),
-                                // IMPORTANT: pass gameCode to detail
+                                // IMPORTANT: pass gameCode into detail nav
                                 onTap: () => _fetchSingleCard(card.gameCode),
                               ),
                             );
@@ -777,6 +875,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
           ),
         ],
       ),
+
+      // --- Pagination ----------------------------------------------------------
       bottomNavigationBar: _buildPaginationBar(),
     );
   }

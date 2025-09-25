@@ -13,20 +13,30 @@ class ImageCaptureViewModel with ChangeNotifier {
   final OcrService _ocrService = OcrService();
   final GameDetectionService _gameDetectionService = GameDetectionService();
 
+  // Image variables
   File? _imageFile;
   UploadedImage? _uploadedImage;
   List<UploadedImage> _uploadedImages = [];
   UploadedImage? _selectedImage;
   UploadedImage? _confirmedImage;
+
+  // State variables
   bool _isLoading = false;
-  bool _showUploadedImages = false;
   String? _errorMessage;
-  List<Map<String, dynamic>> _recognizedTextBlocks = [];
+  bool _showUploadedImages = false;
+
+  // Auto detection variables
   bool _autoDetectEnabled = true;
   bool _latinLanguageAutoDetectEnabled = true;
+
   bool _tcgAutoDetectEnabled = true;
   String _detectedGame = 'Other Game';
   String _selectedGame = 'YuGiOh';
+
+  // Text blocks variables
+  List<Map<String, dynamic>> _recognizedTextBlocks = [];
+
+  // Multi variables
   List<TCGCard> _multiScannedCards = [];
 
   // Getters for UI state
@@ -161,7 +171,7 @@ class ImageCaptureViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  // Fetches uploaded images from Supabase.
+  // FUNC 1: Fetches uploaded images from Supabase.
   Future<void> fetchUploadedImages() async {
     _setLoading(true);
     try {
@@ -174,7 +184,7 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
-  // Picks an image from camera or gallery.
+  // FUNC 2: Picks an image from camera or gallery.
   Future<void> pickImage(ImageSource source) async {
     _setLoading(true);
     try {
@@ -191,7 +201,7 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
-  // Uploads the current image to Supabase.
+  // FUNC 3: Uploads the current image to Supabase.
   Future<void> uploadCurrentImage() async {
     if (_imageFile == null) {
       _setErrorMessage('Please select an image first');
@@ -212,10 +222,11 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
-  // Scans a single card and processes it for OCR and game detection.
+  // FUNC 4: Scans a single card and processes it for OCR and game detection.
   Future<void> scanSingle() async {
     _setLoading(true);
     try {
+      // STEP 1: Scans with library
       _imageFile = await _imageService.scanSingle();
       _recognizedTextBlocks = [];
       _detectedGame = 'Other Game';
@@ -226,6 +237,7 @@ class ImageCaptureViewModel with ChangeNotifier {
         return;
       }
 
+      // STEP 2: Processes Image for language
       Map<String, dynamic> ocrResult;
       if (_autoDetectEnabled) {
         ocrResult = await _ocrService.processImageWithAutoDetect(
@@ -240,6 +252,7 @@ class ImageCaptureViewModel with ChangeNotifier {
         );
       }
 
+      // STEP 3: Define text blocks and Identifygame
       _recognizedTextBlocks = ocrResult['textBlocks'];
       _detectedGame = _gameDetectionService.detectGame(
         _recognizedTextBlocks,
@@ -258,7 +271,7 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
-  // Reprocesses the current image with a specific script.
+  // FUNC 5: Reprocesses the current image with a specific script.
   Future<void> reprocessWithScript(String script) async {
     if (_imageFile == null) {
       _setErrorMessage('No image available to reprocess');
@@ -289,6 +302,7 @@ class ImageCaptureViewModel with ChangeNotifier {
     }
   }
 
+  /// FUNC6: Identify One Piece Card
   /// Returns a normalized One Piece game code (e.g., OP05-119, ST10-004, P-001) if present in OCR,
   /// otherwise returns null.
   String? extractOnePieceGameCode() {

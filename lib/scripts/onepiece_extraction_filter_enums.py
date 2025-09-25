@@ -1,3 +1,4 @@
+# lib/scripts/onepiece_extraction_filter_enums.py
 import os
 import json
 from supabase import create_client, Client
