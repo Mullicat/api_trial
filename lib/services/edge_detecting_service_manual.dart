@@ -8,6 +8,7 @@
 //   - Quad detection prefers a near-rect using minAreaRect/boxPoints,
 //     which is robust to rounded corners on trading cards.
 // ============================================================================
+
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'dart:math' as math;
@@ -204,24 +205,30 @@ class EdgeDetectServiceManual {
         for (int i = 0; i < box.length; i++)
           cv.Point2f(box[i].x.toDouble(), box[i].y.toDouble()),
       ];
-      // Order the quad
+
+      // Order the quad (orientation-agnostic)
       final ordered = _orderQuad(boxList);
 
-      // Aspect check: trading card ≈ 63×88 → ~0.716 (width/height)
-      final widthLen = _dist(ordered[0], ordered[1]);
-      final heightLen = _dist(ordered[1], ordered[2]);
-      if (widthLen <= 1 || heightLen <= 1) continue;
-      final aspect = widthLen / heightLen;
-      // Allow tilt/crop sleeves etc.
-      if (aspect < 0.58 || aspect > 0.85) continue;
+      // Edge lengths of ordered rect
+      final e01 = _dist(ordered[0], ordered[1]);
+      final e12 = _dist(ordered[1], ordered[2]);
+      if (e01 <= 1 || e12 <= 1) continue;
+
+      // ✔ aspect normalized (portrait & landscape both map to ≤ 1.0)
+      final shortSide = math.min(e01, e12);
+      final longSide = math.max(e01, e12);
+      final aspectNorm = shortSide / longSide; // ~0.716 for 63x88 card
+
+      // Allow a bit looser tolerance to cope with perspective/rounding
+      // (previously 0.58–0.85 on width/height; now normalized)
+      if (aspectNorm < 0.60 || aspectNorm > 0.84) continue;
 
       // Rectangularity proxy: contour area vs. rect area (rounded edges reduce slightly)
       final rectangularity = (area / rectArea).clamp(0.0, 1.0);
 
       // Score: prefer large + rectangular + aspect near card
-      final aspectTarget = 63.0 / 88.0;
-      final aspectPenalty = (1.0 - (1.0 - ((aspect - aspectTarget).abs())))
-          .clamp(0.0, 1.0);
+      const aspectTarget = 63.0 / 88.0; // ≈ 0.716
+      final aspectPenalty = (aspectNorm - aspectTarget).abs(); // 0 is best
       final score = area * rectangularity * (1.0 - 0.5 * aspectPenalty);
 
       if (score > bestScore) {
