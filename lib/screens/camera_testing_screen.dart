@@ -1,18 +1,18 @@
 // ============================================================================
 // FILE: camera_testing_screen.dart
-// PURPOSE: Minimal live camera processing (OpenCV) with accumulating filters.
+// PURPOSE: Live OpenCV preview + capture flow (manual/auto, single/multi).
 //   • Pipeline: Gray (Y) → [GaussianBlur] → [Morph Close] → [Dilate] → [Canny]
-//   • All stages are tunable from a collapsible on-screen menu.
-//   • Preview + processed overlay aligned 1:1 (same fit & rotation).
-//   • Portrait-only for this screen. "Fill screen (crop)" toggle included.
-//   • Stream watchdog + "Restart stream" button if frames stall.
-//   • OpenCV logic moved to EdgeDetectServiceManual.
-//   • 2nd overlay draws a detected card-like quad (if found).
-//   • Camera/overlays stretched to fill the screen (no crop), widths match.
+//   • Portrait-only, overlays aligned 1:1 with preview (stretched fill).
+//   • Auto-capture: fires when a detected card-like quad is stable N frames.
+//   • Manual-capture: button.
+//   • Single/Multi toggle. Finish returns List<File> (captured JPEGs).
+//   • Stream watchdog + restart.
+//   • Uses EdgeDetectServiceManual for overlay + quad.
 // ============================================================================
 
 import 'dart:async';
 import 'dart:ffi' hide Size;
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' hide Size;
 
@@ -21,6 +21,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' hide Size;
 import 'package:ffi/ffi.dart' as ffi;
+import 'package:path_provider/path_provider.dart';
 
 class CameraTestingScreen extends StatefulWidget {
   const CameraTestingScreen({super.key});
@@ -44,6 +45,20 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
   // second overlay: detected quad in SOURCE coordinates
   List<Offset>? _quadOverlay;
 
+  // capture state
+  bool _autoCapture = false;
+  bool _multiCapture = true;
+  bool _captureBusy = false;
+  List<File> _captures = [];
+
+  // auto-capture stability
+  static const int _stableNeeded = 10; // frames
+  static const double _maxCornerDelta = 8.0; // px per corner avg
+  int _stableCount = 0;
+  List<Offset>? _lastQuad;
+  DateTime _lastAutoShot = DateTime.fromMillisecondsSinceEpoch(0);
+  Duration _autoCooldown = const Duration(seconds: 2);
+
   // params
   bool _useBlur = true;
   int _blurKernel = 5;
@@ -59,6 +74,9 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
   bool _cannyAuto = true;
   double _cannyLow = 50;
   double _cannyHigh = 150;
+
+  bool _exiting = false;
+  final List<File> _capturedFiles = [];
 
   // layout
   bool _fillScreenCrop = false;
@@ -208,6 +226,26 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
     }
   }
 
+  Future<void> _finishAndReturn() async {
+    if (_exiting) return;
+    _exiting = true;
+    try {
+      _watchdog?.cancel();
+      _watchdog = null;
+
+      // Stop stream first, then dispose controller to unstick overlays.
+      try {
+        await _controller?.stopImageStream();
+      } catch (_) {}
+      await _controller?.dispose();
+      _controller = null;
+    } finally {
+      if (mounted) {
+        Navigator.of(context).pop<List<File>>(_capturedFiles);
+      }
+    }
+  }
+
   // === Processing ============================================================
 
   Uint8List _packYPlane(CameraImage img) {
@@ -227,6 +265,15 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
       si += rowStride;
     }
     return out;
+  }
+
+  double _avgCornerDelta(List<Offset> a, List<Offset> b) {
+    if (a.length != 4 || b.length != 4) return 1e9;
+    double d = 0;
+    for (int i = 0; i < 4; i++) {
+      d += (a[i] - b[i]).distance;
+    }
+    return d / 4.0;
   }
 
   Future<void> _onPreviewFrame(CameraImage img) async {
@@ -270,6 +317,34 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
             .toList(growable: false);
       }
 
+      // auto-capture stability tracking
+      if (_autoCapture && !_captureBusy && quad != null) {
+        final now = DateTime.now();
+        final cooldownOk = now.difference(_lastAutoShot) >= _autoCooldown;
+
+        if (_lastQuad != null) {
+          final delta = _avgCornerDelta(_lastQuad!, quad);
+          if (delta <= _maxCornerDelta) {
+            _stableCount++;
+          } else {
+            _stableCount = 0;
+          }
+        } else {
+          _stableCount = 0;
+        }
+        _lastQuad = quad;
+
+        // fire
+        if (cooldownOk && _stableCount >= _stableNeeded) {
+          _stableCount = 0;
+          _lastAutoShot = now;
+          unawaited(_captureStill());
+        }
+      } else {
+        _stableCount = 0;
+        _lastQuad = quad;
+      }
+
       if (mounted) {
         setState(() {
           _overlayBytes = bytes;
@@ -283,6 +358,51 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
     }
   }
 
+  // === Capture ===============================================================
+
+  Future<void> _captureStill() async {
+    if (_controller == null || _captureBusy) return;
+    if (!_multiCapture && _captures.isNotEmpty) {
+      // single mode: replace the previous capture
+      _captures.clear();
+    }
+
+    _captureBusy = true;
+    try {
+      // Stop the stream → takePicture → restart stream for reliability.
+      try {
+        await _controller!.stopImageStream();
+      } catch (_) {}
+
+      final XFile shot = await _controller!.takePicture();
+
+      // Copy into our temp area with timestamped name.
+      final dir = await getTemporaryDirectory();
+      final out = File(
+        '${dir.path}/shot_${DateTime.now().millisecondsSinceEpoch}.jpg',
+      );
+      await File(shot.path).copy(out.path);
+
+      _captures.add(out);
+      if (mounted) setState(() {});
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Capture failed: $e')));
+      }
+    } finally {
+      // Restart stream
+      try {
+        await _controller!.startImageStream(_onPreviewFrame);
+        _startWatchdog();
+      } catch (e) {
+        setState(() => _lastError = 'Stream restart failed: $e');
+      }
+      _captureBusy = false;
+    }
+  }
+
   // === View helpers ==========================================================
 
   int _overlayQuarterTurns() {
@@ -291,20 +411,6 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
     return ((deg ~/ 90) % 4);
   }
 
-  // Camera preview “fit box” (reference frame)
-  Widget _fitBox(Widget child, {required BoxFit fit}) {
-    final ps = _controller!.value.previewSize!;
-    final w = ps.width;
-    final h = ps.height;
-    return FittedBox(
-      fit: fit,
-      alignment: Alignment.center,
-      clipBehavior: Clip.hardEdge,
-      child: SizedBox(width: w, height: h, child: child),
-    );
-  }
-
-  // When source size not yet known, fall back to preview size
   Size _currentSourceSize() {
     if (_srcW > 0 && _srcH > 0) {
       return Size(_srcW.toDouble(), _srcH.toDouble());
@@ -394,83 +500,32 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
                   ),
                   const Divider(height: 12, color: Colors.white24),
 
+                  // Capture mode controls
                   Wrap(
-                    spacing: 12,
+                    spacing: 8,
                     runSpacing: 8,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            'Stride',
-                            style: TextStyle(color: Colors.white70),
-                          ),
-                          const SizedBox(width: 8),
-                          DropdownButton<int>(
-                            dropdownColor: Colors.grey[900],
-                            value: _frameStride,
-                            items: const [
-                              DropdownMenuItem(
-                                value: 1,
-                                child: Text('1 (max FPS)'),
-                              ),
-                              DropdownMenuItem(value: 2, child: Text('2')),
-                              DropdownMenuItem(value: 3, child: Text('3')),
-                              DropdownMenuItem(value: 4, child: Text('4')),
-                            ],
-                            onChanged: (v) =>
-                                setState(() => _frameStride = v ?? 2),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            'Resolution',
-                            style: TextStyle(color: Colors.white70),
-                          ),
-                          const SizedBox(width: 8),
-                          DropdownButton<ResolutionPreset>(
-                            dropdownColor: Colors.grey[900],
-                            value: _preset,
-                            items: const [
-                              DropdownMenuItem(
-                                value: ResolutionPreset.low,
-                                child: Text('Low'),
-                              ),
-                              DropdownMenuItem(
-                                value: ResolutionPreset.medium,
-                                child: Text('Medium'),
-                              ),
-                              DropdownMenuItem(
-                                value: ResolutionPreset.high,
-                                child: Text('High'),
-                              ),
-                              DropdownMenuItem(
-                                value: ResolutionPreset.veryHigh,
-                                child: Text('Very High'),
-                              ),
-                              DropdownMenuItem(
-                                value: ResolutionPreset.ultraHigh,
-                                child: Text('Ultra High'),
-                              ),
-                              DropdownMenuItem(
-                                value: ResolutionPreset.max,
-                                child: Text('Max'),
-                              ),
-                            ],
-                            onChanged: _reconfiguring
-                                ? null
-                                : (p) => _changeResolution(p!),
-                          ),
-                        ],
+                      FilterChip(
+                        label: Text(
+                          _autoCapture
+                              ? 'Auto-capture: ON'
+                              : 'Auto-capture: OFF',
+                        ),
+                        selected: _autoCapture,
+                        onSelected: (v) => setState(() => _autoCapture = v),
                       ),
                       FilterChip(
-                        label: Text('Fill screen: $fitText'),
-                        selected: _fillScreenCrop,
-                        onSelected: (v) => setState(() => _fillScreenCrop = v),
+                        label: Text(
+                          _multiCapture ? 'Mode: Multiple' : 'Mode: Single',
+                        ),
+                        selected: _multiCapture,
+                        onSelected: (v) => setState(() => _multiCapture = v),
+                      ),
+                      Text(
+                        'Captured: ${_captures.length}'
+                        '${_autoCapture ? '  •  Stable: $_stableCount/$_stableNeeded' : ''}',
+                        style: const TextStyle(color: Colors.white70),
                       ),
                       if (_lastError != null)
                         TextButton.icon(
@@ -673,81 +728,161 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
       );
     }
 
-    // We stretch everything to fill; no cropping.
     final srcSize = _currentSourceSize();
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-        title: const Text('Camera Testing (OpenCV)'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.maybePop(context),
-        ),
-        actions: [
-          IconButton(
-            tooltip: _showMenu ? 'Hide menu' : 'Show menu',
-            icon: Icon(_showMenu ? Icons.expand_less : Icons.tune),
-            onPressed: () => setState(() => _showMenu = !_showMenu),
+    return WillPopScope(
+      onWillPop: () async {
+        await _finishAndReturn();
+        // We handled the pop ourselves
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          title: const Text('Camera Testing (OpenCV)'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: _finishAndReturn,
           ),
-        ],
-      ),
-      body: SafeArea(
-        bottom: true,
-        child: Stack(
-          children: [
-            // Camera stretched to full screen (no rotation here)
-            Positioned.fill(
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: SizedBox(
-                  width: srcSize.width,
-                  height: srcSize.height,
-                  child: CameraPreview(_controller!),
+          actions: [
+            IconButton(
+              tooltip: 'Manual Capture',
+              icon: const Icon(Icons.camera),
+              onPressed: _captureBusy ? null : _captureStill,
+            ),
+            IconButton(
+              tooltip: _showMenu ? 'Hide menu' : 'Show menu',
+              icon: Icon(_showMenu ? Icons.expand_less : Icons.tune),
+              onPressed: () => setState(() => _showMenu = !_showMenu),
+            ),
+          ],
+        ),
+        body: SafeArea(
+          bottom: true,
+          child: Stack(
+            children: [
+              // Camera stretched to full screen (no rotation here)
+              Positioned.fill(
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: SizedBox(
+                    width: srcSize.width,
+                    height: srcSize.height,
+                    child: CameraPreview(_controller!),
+                  ),
                 ),
               ),
-            ),
 
-            // Overlays stretched to full screen with ONE rotation applied to both
-            if (_srcW > 0 && _srcH > 0)
-              Positioned.fill(
-                child: IgnorePointer(
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: RotatedBox(
-                      quarterTurns: _overlayQuarterTurns(),
-                      child: SizedBox(
-                        width: _srcW.toDouble(),
-                        height: _srcH.toDouble(),
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            if (_overlayBytes != null)
-                              Image.memory(
-                                _overlayBytes!,
-                                fit: BoxFit.fill,
-                                gaplessPlayback: true,
-                                opacity: const AlwaysStoppedAnimation(0.75),
-                              )
-                            else
-                              const Center(child: CircularProgressIndicator()),
-                            if (_quadOverlay != null)
-                              CustomPaint(
-                                size: Size(_srcW.toDouble(), _srcH.toDouble()),
-                                painter: _QuadPainter(_quadOverlay!),
-                              ),
-                          ],
+              // Overlays stretched to full screen with ONE rotation applied to both
+              if (_srcW > 0 && _srcH > 0)
+                Positioned.fill(
+                  child: IgnorePointer(
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: RotatedBox(
+                        quarterTurns: _overlayQuarterTurns(),
+                        child: SizedBox(
+                          width: _srcW.toDouble(),
+                          height: _srcH.toDouble(),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              if (_overlayBytes != null)
+                                Image.memory(
+                                  _overlayBytes!,
+                                  fit: BoxFit.fill,
+                                  gaplessPlayback: true,
+                                  opacity: const AlwaysStoppedAnimation(0.75),
+                                )
+                              else
+                                const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              if (_quadOverlay != null)
+                                CustomPaint(
+                                  size: Size(
+                                    _srcW.toDouble(),
+                                    _srcH.toDouble(),
+                                  ),
+                                  painter: _QuadPainter(_quadOverlay!),
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
+
+              // Bottom capture bar
+              Positioned(
+                left: 12,
+                right: 12,
+                bottom: 12,
+                child: Card(
+                  color: Colors.black.withOpacity(0.5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: _captureBusy ? null : _captureStill,
+                          icon: const Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                          ),
+                          tooltip: 'Capture',
+                        ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            _autoCapture
+                                ? 'Auto: waiting for stable card…'
+                                : 'Manual: tap to capture',
+                            style: const TextStyle(color: Colors.white70),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          '${_captures.length}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        TextButton(
+                          onPressed: _captures.isEmpty
+                              ? null
+                              : () => setState(() => _captures.clear()),
+                          child: const Text(
+                            'Clear',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        ElevatedButton(
+                          onPressed: _finishAndReturn,
+                          child: const Text('Finish'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
 
-            // Collapsible menu panel (top overlay)
-            Positioned(left: 0, right: 0, top: 0, child: _menuPanel()),
-          ],
+              // Collapsible menu panel (top overlay)
+              Positioned(left: 0, right: 0, top: 0, child: _menuPanel()),
+            ],
+          ),
         ),
       ),
     );

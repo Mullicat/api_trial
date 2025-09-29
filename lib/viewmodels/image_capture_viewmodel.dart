@@ -20,6 +20,8 @@ class ImageCaptureViewModel with ChangeNotifier {
   UploadedImage? _selectedImage;
   UploadedImage? _confirmedImage;
 
+  List<File> _capturedPhotos = [];
+
   // State variables
   bool _isLoading = false;
   String? _errorMessage;
@@ -55,6 +57,7 @@ class ImageCaptureViewModel with ChangeNotifier {
   String get detectedGame => _detectedGame;
   String get selectedGame => _selectedGame;
   List<TCGCard> get multiScannedCards => _multiScannedCards;
+  List<File> get capturedPhotos => _capturedPhotos;
 
   // Sets the error message and notifies listeners.
   void _setErrorMessage(String? message) {
@@ -65,6 +68,13 @@ class ImageCaptureViewModel with ChangeNotifier {
   // Sets the loading state and notifies listeners.
   void _setLoading(bool loading) {
     _isLoading = loading;
+    notifyListeners();
+  }
+
+  void setCapturedPhotos(List<File> files) {
+    _capturedPhotos
+      ..clear()
+      ..addAll(files);
     notifyListeners();
   }
 

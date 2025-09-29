@@ -9,6 +9,8 @@
 // - Code is unchanged; only documentation and section markers are added.
 // ============================================================================
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -453,27 +455,31 @@ class ImageCaptureScreen extends StatelessWidget {
 
                     // ------------------------------------------------------------
                     // TEST-CAM (live camera) — navigates to TestCameraScreen
-                    // Returns a list of TCGCard, which we then store in VM.
+                    // Returns a list of File images, which we then store in VM.
                     // ------------------------------------------------------------
                     ElevatedButton(
                       onPressed: viewModel.isLoading
                           ? null
                           : () async {
-                              final result =
-                                  await Navigator.push<List<TCGCard>>(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) =>
-                                          const CameraTestingScreen(),
-                                    ),
-                                  );
-                              if (result != null && result.isNotEmpty) {
-                                viewModel.setCameraTestingCards(result);
+                              final photos = await Navigator.push<List<File>>(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const CameraTestingScreen(),
+                                ),
+                              );
+                              if (photos != null && photos.isNotEmpty) {
+                                viewModel.setCapturedPhotos(photos);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Saved ${result.length} card(s)',
+                                      'Saved ${photos.length} photo(s)',
                                     ),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('No photos captured.'),
                                   ),
                                 );
                               }
@@ -582,6 +588,44 @@ class ImageCaptureScreen extends StatelessWidget {
                       ),
 
                     const SizedBox(height: 20),
+
+                    // CapturedPhotos
+                    if (viewModel.capturedPhotos.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Captured photos:',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 6,
+                              crossAxisSpacing: 6,
+                            ),
+                        itemCount: viewModel.capturedPhotos.length,
+                        itemBuilder: (_, i) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.file(
+                            viewModel.capturedPhotos[i],
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => const ColoredBox(
+                              color: Colors.black12,
+                              child: Center(child: Icon(Icons.broken_image)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
