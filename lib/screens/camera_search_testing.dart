@@ -4,13 +4,14 @@
 //   • Pipeline: Gray (Y) → [GaussianBlur] → [Morph Close] → [Dilate] → [Canny]
 //   • Portrait-only, overlays aligned 1:1 with preview (stretched fill).
 //   • Auto-capture: fires when a detected card-like quad is stable N frames.
-//   • Manual-capture: button.
+//   • Manual-capture: centered FAB button.
 //   • Single/Multi toggle. Finish returns {'files': List<File>, 'cards': List<TCGCard>} (captured JPEGs and found cards).
 //   • Stream watchdog + restart.
 //   • Uses EdgeDetectServiceManual for overlay + quad.
 //   • On capture, performs OCR + search for card via One Piece game code.
 //   • Notifications: Top-positioned SnackBar with card image, name, game code, rarity.
 //   • Multiple Results: Shows a modal dialog with a list of cards for user selection.
+//   • Scanned Cards Dialog: Shows unique cards (by UUID), with -/+ count, delete, and clear options.
 // ============================================================================
 
 import 'dart:async';
@@ -95,7 +96,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
 
   // layout
   bool _fillScreenCrop = false;
-  bool _showMenu = true;
+  bool _showMenu = false;
 
   // watchdog
   Timer? _watchdog;
@@ -890,31 +891,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
       secondCurve: Curves.easeIn,
       sizeCurve: Curves.easeInOut,
       firstChild: _buildMenuCard(),
-      secondChild: _collapsedHandle(),
-    );
-  }
-
-  Widget _collapsedHandle() {
-    return GestureDetector(
-      onTap: () => setState(() => _showMenu = true),
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.45),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white24),
-          ),
-          child: const Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.tune, size: 16, color: Colors.white70),
-              SizedBox(width: 6),
-              Text('Show menu', style: TextStyle(color: Colors.white70)),
-            ],
-          ),
-        ),
-      ),
+      secondChild: const SizedBox.shrink(), // No collapsed handle
     );
   }
 
@@ -1175,6 +1152,211 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   int _odd(int v) => v.isOdd ? v : (v + 1);
   int _clampOdd(int v, int min, int max) => _odd(v.clamp(min, max));
 
+  // === Scanned Cards Dialog ==================================================
+
+  Future<void> _showScannedCardsDialog() async {
+    // Group by unique ID (UUID)
+    final Map<String, List<int>> groups = {};
+    for (int i = 0; i < _foundCards.length; i++) {
+      final c = _foundCards[i];
+      if (c != null) {
+        final key = c.id ?? 'unknown_${i}'; // Unique ID, fallback if no ID
+        groups.putIfAbsent(key, () => []).add(i);
+      }
+    }
+
+    if (groups.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('No cards scanned yet')));
+      return;
+    }
+
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (dialogContext) => Dialog(
+        insetPadding: const EdgeInsets.all(16),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(dialogContext).size.height * 0.7,
+            maxWidth: MediaQuery.of(dialogContext).size.width * 0.9,
+          ),
+          child: StatefulBuilder(
+            builder: (context, setDialogState) => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+                  child: Text(
+                    'Scanned Cards',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Flexible(
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: groups.length,
+                    separatorBuilder: (_, __) => const Divider(height: 1),
+                    itemBuilder: (context, groupIndex) {
+                      final entry = groups.entries.elementAt(groupIndex);
+                      final key = entry.key;
+                      final indices = entry.value;
+                      final card = _foundCards[indices.first]!;
+                      final count = indices.length;
+
+                      final subtitle = [
+                        if (card.setName != null && card.setName!.isNotEmpty)
+                          card.setName!,
+                        if (card.rarity != null && card.rarity!.isNotEmpty)
+                          card.rarity!,
+                        if (card.gameCode != null && card.gameCode!.isNotEmpty)
+                          card.gameCode!,
+                      ].join(' • ');
+
+                      return ListTile(
+                        leading:
+                            (card.imageRefSmall != null &&
+                                card.imageRefSmall!.isNotEmpty)
+                            ? CachedNetworkImage(
+                                imageUrl: card.imageRefSmall!,
+                                width: 56,
+                                height: 56,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => const SizedBox(
+                                  width: 24,
+                                  height: 24,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.broken_image),
+                              )
+                            : const Icon(Icons.image_not_supported),
+                        title: Text(card.name ?? 'Unknown'),
+                        subtitle: Text(subtitle),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.remove),
+                              onPressed: count > 0
+                                  ? () {
+                                      _adjustCount(key, -1);
+                                      setDialogState(() {});
+                                    }
+                                  : null,
+                            ),
+                            Text('$count'),
+                            IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed: () {
+                                _adjustCount(key, 1);
+                                setDialogState(() {});
+                              },
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.delete),
+                              onPressed: () {
+                                _deleteCard(key);
+                                setDialogState(() {});
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () {
+                      _clearAll();
+                      setDialogState(() {});
+                      Navigator.of(context).pop(); // Close dialog
+                    },
+                    child: const Text('Clear'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Adjust count for a card: +1 duplicates last entry, -1 removes last entry
+  void _adjustCount(String key, int delta) {
+    final indices = _getGroupIndices(key);
+    if (indices.isEmpty) return;
+
+    setState(() async {
+      if (delta > 0) {
+        // Duplicate last entry
+        final lastIndex = indices.last;
+        final card = _foundCards[lastIndex]!;
+        final file = _captures[lastIndex];
+        final dir = await getTemporaryDirectory();
+        final newFilePath =
+            '${dir.path}/dupe_${DateTime.now().millisecondsSinceEpoch}.jpg';
+        file.copySync(newFilePath);
+        final newFile = File(newFilePath);
+        _foundCards.add(card);
+        _captures.add(newFile);
+      } else if (delta < 0 && indices.length > 1) {
+        // Remove last entry
+        final lastIndex = indices.last;
+        _foundCards.removeAt(lastIndex);
+        final file = _captures.removeAt(lastIndex);
+        file.deleteSync();
+      }
+    });
+  }
+
+  // Delete all entries for a card
+  void _deleteCard(String key) {
+    final indices = _getGroupIndices(key);
+    if (indices.isEmpty) return;
+
+    indices.sort(
+      (a, b) => b.compareTo(a),
+    ); // Descending to remove without shifting indices
+
+    setState(() {
+      for (final index in indices) {
+        _foundCards.removeAt(index);
+        final file = _captures.removeAt(index);
+        file.deleteSync();
+      }
+    });
+  }
+
+  // Clear all captures and cards
+  void _clearAll() {
+    setState(() {
+      for (final file in _captures) {
+        file.deleteSync();
+      }
+      _captures.clear();
+      _foundCards.clear();
+    });
+  }
+
+  // Helper to get indices for a group
+  List<int> _getGroupIndices(String key) {
+    final List<int> indices = [];
+    for (int i = 0; i < _foundCards.length; i++) {
+      final c = _foundCards[i];
+      if (c != null && (c.id ?? 'unknown_$i') == key) {
+        indices.add(i);
+      }
+    }
+    return indices;
+  }
+
   // === Build ================================================================
 
   @override
@@ -1317,199 +1499,6 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
         ),
       ),
     );
-  }
-
-  // New method for showing scanned cards dialog
-  Future<void> _showScannedCardsDialog() async {
-    // Group by gameCode
-    final Map<String, List<int>> groups = {};
-    for (int i = 0; i < _foundCards.length; i++) {
-      final c = _foundCards[i];
-      if (c != null) {
-        final key = c.gameCode ?? 'unknown_${i}'; // Fallback for no gameCode
-        groups.putIfAbsent(key, () => []).add(i);
-      }
-    }
-
-    if (groups.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('No cards scanned yet')));
-      return;
-    }
-
-    await showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (context) => Dialog(
-        insetPadding: const EdgeInsets.all(16),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.7,
-            maxWidth: MediaQuery.of(context).size.width * 0.9,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: Text(
-                  'Scanned Cards',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Flexible(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: groups.length,
-                  separatorBuilder: (_, __) => const Divider(height: 1),
-                  itemBuilder: (context, groupIndex) {
-                    final entry = groups.entries.elementAt(groupIndex);
-                    final key = entry.key;
-                    final indices = entry.value;
-                    final card = _foundCards[indices.first]!;
-                    final count = indices.length;
-
-                    final subtitle = [
-                      if (card.setName != null && card.setName!.isNotEmpty)
-                        card.setName!,
-                      if (card.rarity != null && card.rarity!.isNotEmpty)
-                        card.rarity!,
-                      if (card.gameCode != null && card.gameCode!.isNotEmpty)
-                        card.gameCode!,
-                    ].join(' • ');
-
-                    return ListTile(
-                      leading:
-                          (card.imageRefSmall != null &&
-                              card.imageRefSmall!.isNotEmpty)
-                          ? CachedNetworkImage(
-                              imageUrl: card.imageRefSmall!,
-                              width: 56,
-                              height: 56,
-                              fit: BoxFit.cover,
-                              placeholder: (context, url) => const SizedBox(
-                                width: 24,
-                                height: 24,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.broken_image),
-                            )
-                          : const Icon(Icons.image_not_supported),
-                      title: Text(card.name ?? 'Unknown'),
-                      subtitle: Text(subtitle),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: count > 0
-                                ? () async => await _adjustCount(key, -1)
-                                : null,
-                          ),
-                          Text('$count'),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () async => await _adjustCount(key, 1),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () => _deleteCard(key),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextButton(
-                  onPressed: _clearAll,
-                  child: const Text('Clear'),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Adjust count for a card: +1 duplicates last entry, -1 removes last entry
-  Future<void> _adjustCount(String key, int delta) async {
-    final indices = _getGroupIndices(key);
-    if (indices.isEmpty) return;
-
-    if (delta > 0) {
-      // Duplicate last entry
-      final lastIndex = indices.last;
-      final card = _foundCards[lastIndex]!;
-      final file = _captures[lastIndex];
-      final dir = await getTemporaryDirectory();
-      final newFilePath =
-          '${dir.path}/dupe_${DateTime.now().millisecondsSinceEpoch}.jpg';
-      await file.copy(newFilePath);
-      final newFile = File(newFilePath);
-      setState(() {
-        _foundCards.add(card);
-        _captures.add(newFile);
-      });
-    } else if (delta < 0 && indices.length > 1) {
-      // Remove last entry
-      final lastIndex = indices.last;
-      final file = _captures[lastIndex];
-      await file.delete();
-      setState(() {
-        _foundCards.removeAt(lastIndex);
-        _captures.removeAt(lastIndex);
-      });
-    }
-  }
-
-  // Delete all entries for a card
-  void _deleteCard(String key) {
-    final indices = _getGroupIndices(key);
-    if (indices.isEmpty) return;
-
-    indices.sort(
-      (a, b) => b.compareTo(a),
-    ); // Descending to remove without shifting indices
-
-    setState(() {
-      for (final index in indices) {
-        _foundCards.removeAt(index);
-        final file = _captures.removeAt(index);
-        file.deleteSync();
-      }
-    });
-  }
-
-  // Clear all captures and cards
-  void _clearAll() {
-    setState(() {
-      for (final file in _captures) {
-        file.deleteSync();
-      }
-      _captures.clear();
-      _foundCards.clear();
-    });
-    Navigator.of(context).pop(); // Close dialog
-  }
-
-  // Helper to get indices for a group
-  List<int> _getGroupIndices(String key) {
-    final List<int> indices = [];
-    for (int i = 0; i < _foundCards.length; i++) {
-      final c = _foundCards[i];
-      if (c != null && (c.gameCode ?? 'unknown_$i') == key) {
-        indices.add(i);
-      }
-    }
-    return indices;
   }
 }
 
