@@ -1187,11 +1187,11 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
     }
 
     final srcSize = _currentSourceSize();
+    final int cardCount = _foundCards.where((c) => c != null).length;
 
     return WillPopScope(
       onWillPop: () async {
         await _finishAndReturn();
-        // We handled the pop ourselves
         return false;
       },
       child: Scaffold(
@@ -1205,11 +1205,6 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
           ),
           actions: [
             IconButton(
-              tooltip: 'Manual Capture',
-              icon: const Icon(Icons.camera),
-              onPressed: _captureBusy ? null : _captureStill,
-            ),
-            IconButton(
               tooltip: _showMenu ? 'Hide menu' : 'Show menu',
               icon: Icon(_showMenu ? Icons.expand_less : Icons.tune),
               onPressed: () => setState(() => _showMenu = !_showMenu),
@@ -1220,7 +1215,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
           bottom: true,
           child: Stack(
             children: [
-              // Camera stretched to full screen (no rotation here)
+              // Camera preview
               Positioned.fill(
                 child: FittedBox(
                   fit: BoxFit.fill,
@@ -1232,7 +1227,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                 ),
               ),
 
-              // Overlays stretched to full screen with ONE rotation applied to both
+              // Overlays
               if (_srcW > 0 && _srcH > 0)
                 Positioned.fill(
                   child: IgnorePointer(
@@ -1273,66 +1268,41 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                   ),
                 ),
 
-              // Bottom capture bar
+              // Bottom controls
               Positioned(
-                left: 12,
-                right: 12,
-                bottom: 12,
-                child: Card(
-                  color: Colors.black.withOpacity(0.5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        IconButton(
-                          onPressed: _captureBusy ? null : _captureStill,
-                          icon: const Icon(
-                            Icons.camera_alt,
-                            color: Colors.white,
-                          ),
-                          tooltip: 'Capture',
-                        ),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            _autoCapture
-                                ? 'Auto: waiting for stable card…'
-                                : 'Manual: tap to capture',
-                            style: const TextStyle(color: Colors.white70),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          '${_captures.length}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
                         TextButton(
-                          onPressed: _captures.isEmpty
-                              ? null
-                              : () => setState(() {
-                                  _captures.clear();
-                                  _foundCards.clear();
-                                }),
-                          child: const Text(
-                            'Clear',
-                            style: TextStyle(color: Colors.white),
+                          onPressed: () => _showScannedCardsDialog(),
+                          child: Text(
+                            'Cards: $cardCount',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 4),
-                        ElevatedButton(
+                        FloatingActionButton(
+                          onPressed: _captureBusy ? null : _captureStill,
+                          backgroundColor: Colors.white,
+                          child: const Icon(
+                            Icons.camera_alt,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextButton(
                           onPressed: _finishAndReturn,
-                          child: const Text('Finish'),
+                          child: const Text(
+                            'Finish',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
                         ),
                       ],
                     ),
@@ -1347,6 +1317,199 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
         ),
       ),
     );
+  }
+
+  // New method for showing scanned cards dialog
+  Future<void> _showScannedCardsDialog() async {
+    // Group by gameCode
+    final Map<String, List<int>> groups = {};
+    for (int i = 0; i < _foundCards.length; i++) {
+      final c = _foundCards[i];
+      if (c != null) {
+        final key = c.gameCode ?? 'unknown_${i}'; // Fallback for no gameCode
+        groups.putIfAbsent(key, () => []).add(i);
+      }
+    }
+
+    if (groups.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('No cards scanned yet')));
+      return;
+    }
+
+    await showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => Dialog(
+        insetPadding: const EdgeInsets.all(16),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.7,
+            maxWidth: MediaQuery.of(context).size.width * 0.9,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Padding(
+                padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Text(
+                  'Scanned Cards',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Flexible(
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: groups.length,
+                  separatorBuilder: (_, __) => const Divider(height: 1),
+                  itemBuilder: (context, groupIndex) {
+                    final entry = groups.entries.elementAt(groupIndex);
+                    final key = entry.key;
+                    final indices = entry.value;
+                    final card = _foundCards[indices.first]!;
+                    final count = indices.length;
+
+                    final subtitle = [
+                      if (card.setName != null && card.setName!.isNotEmpty)
+                        card.setName!,
+                      if (card.rarity != null && card.rarity!.isNotEmpty)
+                        card.rarity!,
+                      if (card.gameCode != null && card.gameCode!.isNotEmpty)
+                        card.gameCode!,
+                    ].join(' • ');
+
+                    return ListTile(
+                      leading:
+                          (card.imageRefSmall != null &&
+                              card.imageRefSmall!.isNotEmpty)
+                          ? CachedNetworkImage(
+                              imageUrl: card.imageRefSmall!,
+                              width: 56,
+                              height: 56,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => const SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.broken_image),
+                            )
+                          : const Icon(Icons.image_not_supported),
+                      title: Text(card.name ?? 'Unknown'),
+                      subtitle: Text(subtitle),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: count > 0
+                                ? () async => await _adjustCount(key, -1)
+                                : null,
+                          ),
+                          Text('$count'),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () async => await _adjustCount(key, 1),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () => _deleteCard(key),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextButton(
+                  onPressed: _clearAll,
+                  child: const Text('Clear'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Adjust count for a card: +1 duplicates last entry, -1 removes last entry
+  Future<void> _adjustCount(String key, int delta) async {
+    final indices = _getGroupIndices(key);
+    if (indices.isEmpty) return;
+
+    if (delta > 0) {
+      // Duplicate last entry
+      final lastIndex = indices.last;
+      final card = _foundCards[lastIndex]!;
+      final file = _captures[lastIndex];
+      final dir = await getTemporaryDirectory();
+      final newFilePath =
+          '${dir.path}/dupe_${DateTime.now().millisecondsSinceEpoch}.jpg';
+      await file.copy(newFilePath);
+      final newFile = File(newFilePath);
+      setState(() {
+        _foundCards.add(card);
+        _captures.add(newFile);
+      });
+    } else if (delta < 0 && indices.length > 1) {
+      // Remove last entry
+      final lastIndex = indices.last;
+      final file = _captures[lastIndex];
+      await file.delete();
+      setState(() {
+        _foundCards.removeAt(lastIndex);
+        _captures.removeAt(lastIndex);
+      });
+    }
+  }
+
+  // Delete all entries for a card
+  void _deleteCard(String key) {
+    final indices = _getGroupIndices(key);
+    if (indices.isEmpty) return;
+
+    indices.sort(
+      (a, b) => b.compareTo(a),
+    ); // Descending to remove without shifting indices
+
+    setState(() {
+      for (final index in indices) {
+        _foundCards.removeAt(index);
+        final file = _captures.removeAt(index);
+        file.deleteSync();
+      }
+    });
+  }
+
+  // Clear all captures and cards
+  void _clearAll() {
+    setState(() {
+      for (final file in _captures) {
+        file.deleteSync();
+      }
+      _captures.clear();
+      _foundCards.clear();
+    });
+    Navigator.of(context).pop(); // Close dialog
+  }
+
+  // Helper to get indices for a group
+  List<int> _getGroupIndices(String key) {
+    final List<int> indices = [];
+    for (int i = 0; i < _foundCards.length; i++) {
+      final c = _foundCards[i];
+      if (c != null && (c.gameCode ?? 'unknown_$i') == key) {
+        indices.add(i);
+      }
+    }
+    return indices;
   }
 }
 
