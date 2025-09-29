@@ -3,7 +3,7 @@
 // PURPOSE: UI to pick/scan/upload images and perform OCR + TCG detection.
 // ARCHITECTURE: MVVM with Provider. UI binds to ImageCaptureViewModel state.
 // NAVIGATION: Can open ScreenSingle (card detail), ScanResultsScreen (multi),
-//             and MultiScanCameraScreen (live multi-scan).
+//             and CameraSearchTestingScreen (live multi-scan with search).
 // NOTES:
 // - Comments are organized in big, skimmable sections so anyone can orient fast.
 // - Code is unchanged; only documentation and section markers are added.
@@ -22,7 +22,7 @@ import 'package:api_trial/screens/screen_single.dart';
 import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/screens/scan_results.dart';
 import 'package:api_trial/models/card.dart';
-import 'package:api_trial/screens/camera_testing_screen.dart';
+import 'package:api_trial/screens/camera_search_testing.dart';
 
 // ============================================================================
 // WIDGET: ImageCaptureScreen
@@ -423,59 +423,32 @@ class ImageCaptureScreen extends StatelessWidget {
                     ),
 
                     // ------------------------------------------------------------
-                    // TEST-CAM (live camera) — navigates to TestCameraScreen
-                    // Returns a list of File images, which we then store in VM.
+                    // CAMERA SEARCH TESTING (live camera with search) — navigates to CameraSearchTestingScreen
+                    // Returns a map {'files': List<File>, 'cards': List<TCGCard>}
                     // ------------------------------------------------------------
                     ElevatedButton(
                       onPressed: viewModel.isLoading
                           ? null
                           : () async {
-                              final photos = await Navigator.push<List<File>>(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const CameraTestingScreen(),
-                                ),
-                              );
-                              if (photos != null && photos.isNotEmpty) {
-                                viewModel.setCapturedPhotos(photos);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Saved ${photos.length} photo(s)',
+                              final result =
+                                  await Navigator.push<Map<String, dynamic>>(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          const CameraSearchTestingScreen(),
                                     ),
-                                  ),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('No photos captured.'),
-                                  ),
-                                );
-                              }
-                            },
-                      child: const Text('Scan, Detect & Save (multi)'),
-                    ),
-
-                    // ------------------------------------------------------------
-                    // TEST-CAM (live camera) — navigates to TestCameraScreen
-                    // Returns a list of File images, which we then store in VM.
-                    // ------------------------------------------------------------
-                    ElevatedButton(
-                      onPressed: viewModel.isLoading
-                          ? null
-                          : () async {
-                              final photos = await Navigator.push<List<File>>(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const CameraTestingScreen(),
-                                ),
-                              );
-                              if (photos != null && photos.isNotEmpty) {
-                                viewModel.setCapturedPhotos(photos);
+                                  );
+                              if (result != null) {
+                                final files =
+                                    result['files'] as List<File>? ?? [];
+                                final cards =
+                                    result['cards'] as List<TCGCard>? ?? [];
+                                viewModel.setCapturedPhotos(files);
+                                viewModel.setMultiScannedCards(cards);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Saved ${photos.length} photo(s)',
+                                      'Saved ${files.length} photo(s) and ${cards.length} card(s)',
                                     ),
                                   ),
                                 );
