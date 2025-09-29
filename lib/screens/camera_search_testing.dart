@@ -10,6 +10,7 @@
 //   • Uses EdgeDetectServiceManual for overlay + quad.
 //   • On capture, performs OCR + search for card via One Piece game code.
 //   • Notifications: Top-positioned SnackBar with card image, name, game code, rarity.
+//   • Multiple Results: Shows a modal dialog with a list of cards for user selection.
 // ============================================================================
 
 import 'dart:async';
@@ -292,7 +293,6 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
         print(
           'Popping result: ${_captures.length} files, ${_foundCards.length} cards',
         );
-        // Safely cast List<TCGCard?> to List<TCGCard> after filtering nulls
         final nonNullCards = _foundCards
             .where((c) => c != null)
             .cast<TCGCard>()
@@ -308,7 +308,6 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Error exiting: $e')));
-        // Fallback pop
         final nonNullCards = _foundCards
             .where((c) => c != null)
             .cast<TCGCard>()
@@ -625,7 +624,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
             duration: const Duration(seconds: 3),
           ),
         );
-      } else {
+      } else if (cards.length == 1) {
         final card = cards.first;
         _foundCards.add(card);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -679,15 +678,6 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                         'Rarity: ${card.rarity ?? 'N/A'}',
                         style: const TextStyle(color: Colors.white70),
                       ),
-                      if (cards.length > 1)
-                        const Text(
-                          '(Multiple found, showing first)',
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 12,
-                          ),
-                        ),
                     ],
                   ),
                 ),
@@ -697,6 +687,155 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
             duration: const Duration(seconds: 3),
           ),
         );
+      } else {
+        // Multiple cards found, show selection dialog
+        if (mounted) {
+          final selectedCard = await showDialog<TCGCard>(
+            context: context,
+            barrierDismissible: true,
+            builder: (context) => Dialog(
+              insetPadding: const EdgeInsets.all(16),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.7,
+                  maxWidth: MediaQuery.of(context).size.width * 0.9,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                      child: Text(
+                        'Multiple Cards Found (${cards.length})',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        itemCount: cards.length,
+                        separatorBuilder: (_, __) => const Divider(height: 1),
+                        itemBuilder: (context, index) {
+                          final c = cards[index];
+                          final subtitle = [
+                            if (c.setName != null && c.setName!.isNotEmpty)
+                              c.setName!,
+                            if (c.rarity != null && c.rarity!.isNotEmpty)
+                              c.rarity!,
+                            if (c.gameCode != null && c.gameCode!.isNotEmpty)
+                              c.gameCode!,
+                          ].join(' • ');
+                          return ListTile(
+                            leading:
+                                (c.imageRefSmall != null &&
+                                    c.imageRefSmall!.isNotEmpty)
+                                ? CachedNetworkImage(
+                                    imageUrl: c.imageRefSmall!,
+                                    width: 56,
+                                    height: 56,
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) =>
+                                        const SizedBox(
+                                          width: 24,
+                                          height: 24,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                          ),
+                                        ),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.broken_image),
+                                  )
+                                : const Icon(Icons.image_not_supported),
+                            title: Text(c.name ?? 'Unknown'),
+                            subtitle: Text(subtitle),
+                            onTap: () => Navigator.of(context).pop(c),
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextButton(
+                        onPressed: () => Navigator.of(context).pop(null),
+                        child: const Text('Cancel'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+
+          if (selectedCard != null) {
+            _foundCards.add(selectedCard);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                behavior: SnackBarBehavior.floating,
+                margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                content: Row(
+                  children: [
+                    if (selectedCard.imageRefSmall != null &&
+                        selectedCard.imageRefSmall!.isNotEmpty)
+                      CachedNetworkImage(
+                        imageUrl: selectedCard.imageRefSmall!,
+                        width: 40,
+                        height: 56,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => const SizedBox(
+                          width: 40,
+                          height: 56,
+                          child: CircularProgressIndicator(),
+                        ),
+                        errorWidget: (context, url, error) => const Icon(
+                          Icons.image_not_supported,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      )
+                    else
+                      const Icon(
+                        Icons.image_not_supported,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            selectedCard.name ?? 'Unknown',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Code: ${selectedCard.gameCode ?? 'N/A'}',
+                            style: const TextStyle(color: Colors.white70),
+                          ),
+                          Text(
+                            'Rarity: ${selectedCard.rarity ?? 'N/A'}',
+                            style: const TextStyle(color: Colors.white70),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                backgroundColor: Colors.blueGrey,
+                duration: const Duration(seconds: 3),
+              ),
+            );
+          } else {
+            // User canceled, add null
+            _foundCards.add(null);
+          }
+        }
       }
     } catch (e) {
       _foundCards.add(null);
