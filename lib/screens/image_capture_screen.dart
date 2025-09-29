@@ -22,7 +22,6 @@ import 'package:api_trial/screens/screen_single.dart';
 import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/screens/scan_results.dart';
 import 'package:api_trial/models/card.dart';
-import 'package:api_trial/screens/multi_scan_camera_screen.dart';
 import 'package:api_trial/screens/camera_testing_screen.dart';
 
 // ============================================================================
@@ -424,28 +423,32 @@ class ImageCaptureScreen extends StatelessWidget {
                     ),
 
                     // ------------------------------------------------------------
-                    // MULTI-SCAN (live camera) — navigates to MultiScanCameraScreen
-                    // Returns a list of TCGCard, which we then store in VM.
+                    // TEST-CAM (live camera) — navigates to TestCameraScreen
+                    // Returns a list of File images, which we then store in VM.
                     // ------------------------------------------------------------
                     ElevatedButton(
                       onPressed: viewModel.isLoading
                           ? null
                           : () async {
-                              final result =
-                                  await Navigator.push<List<TCGCard>>(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) =>
-                                          const MultiScanCameraScreen(),
-                                    ),
-                                  );
-                              if (result != null && result.isNotEmpty) {
-                                viewModel.setMultiScannedCards(result);
+                              final photos = await Navigator.push<List<File>>(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const CameraTestingScreen(),
+                                ),
+                              );
+                              if (photos != null && photos.isNotEmpty) {
+                                viewModel.setCapturedPhotos(photos);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Saved ${result.length} card(s)',
+                                      'Saved ${photos.length} photo(s)',
                                     ),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('No photos captured.'),
                                   ),
                                 );
                               }
