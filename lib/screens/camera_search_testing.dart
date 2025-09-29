@@ -9,6 +9,7 @@
 //   • Stream watchdog + restart.
 //   • Uses EdgeDetectServiceManual for overlay + quad.
 //   • On capture, performs OCR + search for card via One Piece game code.
+//   • Notifications: Top-positioned SnackBar with card image, name, game code, rarity.
 // ============================================================================
 
 import 'dart:async';
@@ -27,6 +28,7 @@ import 'package:flutter/services.dart' hide Size;
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:opencv_dart/opencv_dart.dart' as cv;
 import 'package:path_provider/path_provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CameraSearchTestingScreen extends StatefulWidget {
   const CameraSearchTestingScreen({super.key});
@@ -59,14 +61,14 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   List<TCGCard?> _foundCards = []; // New: found cards from search
 
   // auto-capture stability
-  static const int _stableNeeded = 10; // frames
+  static const int _stableNeeded = 20; // ~1s at 20fps
   static const double _maxCornerDelta = 8.0; // px per corner avg
   int _stableCount = 0;
   List<Offset>? _lastQuad;
   DateTime _lastAutoShot = DateTime.fromMillisecondsSinceEpoch(0);
   Duration _autoCooldown = const Duration(seconds: 2);
 
-  // New for quad loss detection
+  // quad loss detection
   bool _requireQuadLoss = false; // After capture, require quad loss before next
   int _quadLostCount = 0; // Consecutive frames without quad
   static const int _quadLossThreshold =
@@ -103,7 +105,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   ResolutionPreset _preset = ResolutionPreset.medium;
   bool _reconfiguring = false;
 
-  // service
+  // services
   final _edge = EdgeDetectServiceManual();
   final _ocr = OcrService();
   late final OnePieceTcgService _service;
@@ -248,22 +250,72 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   Future<void> _finishAndReturn() async {
     if (_exiting) return;
     _exiting = true;
+
     try {
+      print('Starting _finishAndReturn');
       _watchdog?.cancel();
       _watchdog = null;
 
-      // Stop stream first, then dispose controller to unstick overlays.
-      try {
-        await _controller?.stopImageStream();
-      } catch (_) {}
-      await _controller?.dispose();
-      _controller = null;
-    } finally {
+      // Stop stream with timeout
+      if (_controller != null) {
+        try {
+          await _controller!.stopImageStream().timeout(
+            const Duration(seconds: 2),
+            onTimeout: () {
+              print('Stream stop timed out');
+              return;
+            },
+          );
+        } catch (e) {
+          print('Error stopping stream: $e');
+        }
+      }
+
+      // Dispose controller with timeout
+      if (_controller != null) {
+        try {
+          await _controller!.dispose().timeout(
+            const Duration(seconds: 2),
+            onTimeout: () {
+              print('Controller dispose timed out');
+              return;
+            },
+          );
+        } catch (e) {
+          print('Error disposing controller: $e');
+        }
+        _controller = null;
+      }
+
+      // Ensure state is updated before pop
       if (mounted) {
+        print(
+          'Popping result: ${_captures.length} files, ${_foundCards.length} cards',
+        );
+        // Safely cast List<TCGCard?> to List<TCGCard> after filtering nulls
+        final nonNullCards = _foundCards
+            .where((c) => c != null)
+            .cast<TCGCard>()
+            .toList();
         Navigator.of(context).pop<Map<String, dynamic>>({
           'files': _captures,
-          'cards':
-              _foundCards.where((c) => c != null).toList() as List<TCGCard>,
+          'cards': nonNullCards,
+        });
+      }
+    } catch (e) {
+      print('Error in _finishAndReturn: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error exiting: $e')));
+        // Fallback pop
+        final nonNullCards = _foundCards
+            .where((c) => c != null)
+            .cast<TCGCard>()
+            .toList();
+        Navigator.of(context).pop<Map<String, dynamic>>({
+          'files': _captures,
+          'cards': nonNullCards,
         });
       }
     }
@@ -340,7 +392,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
             .toList(growable: false);
       }
 
-      // auto-capture stability tracking
+      // Auto-capture stability tracking
       if (_autoCapture && !_captureBusy && quad != null) {
         if (_requireQuadLoss) {
           // Quad is present, but we need loss first - do nothing
@@ -524,7 +576,24 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
       if (code == null) {
         _foundCards.add(null);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No game code found, try again')),
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            content: const Row(
+              children: [
+                Icon(Icons.image_not_supported, size: 40, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'No game code found, try again',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
+          ),
         );
         return;
       }
@@ -537,23 +606,120 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
       if (cards.isEmpty) {
         _foundCards.add(null);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No card found, try again')),
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            content: const Row(
+              children: [
+                Icon(Icons.image_not_supported, size: 40, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'No card found, try again',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
+          ),
         );
       } else {
         final card = cards.first;
         _foundCards.add(card);
-        final message = cards.length > 1
-            ? 'Detected: ${card.name ?? card.gameCode} (multiple found)'
-            : 'Detected: ${card.name ?? card.gameCode}';
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(message)));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            content: Row(
+              children: [
+                if (card.imageRefSmall != null &&
+                    card.imageRefSmall!.isNotEmpty)
+                  CachedNetworkImage(
+                    imageUrl: card.imageRefSmall!,
+                    width: 40,
+                    height: 56,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const SizedBox(
+                      width: 40,
+                      height: 56,
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.image_not_supported,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                  )
+                else
+                  const Icon(
+                    Icons.image_not_supported,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        card.name ?? 'Unknown',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Code: ${card.gameCode ?? 'N/A'}',
+                        style: const TextStyle(color: Colors.white70),
+                      ),
+                      Text(
+                        'Rarity: ${card.rarity ?? 'N/A'}',
+                        style: const TextStyle(color: Colors.white70),
+                      ),
+                      if (cards.length > 1)
+                        const Text(
+                          '(Multiple found, showing first)',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 12,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Colors.blueGrey,
+            duration: const Duration(seconds: 3),
+          ),
+        );
       }
     } catch (e) {
       _foundCards.add(null);
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Search failed: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.only(top: 16, left: 16, right: 16),
+          content: Row(
+            children: [
+              const Icon(Icons.error, size: 40, color: Colors.white),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Search failed: $e',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: Colors.red,
+          duration: const Duration(seconds: 3),
+        ),
+      );
     }
   }
 
