@@ -21,6 +21,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' hide Size;
 import 'package:ffi/ffi.dart' as ffi;
+import 'package:opencv_dart/opencv_dart.dart' as cv;
 import 'package:path_provider/path_provider.dart';
 
 class CameraTestingScreen extends StatefulWidget {
@@ -58,6 +59,11 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
   List<Offset>? _lastQuad;
   DateTime _lastAutoShot = DateTime.fromMillisecondsSinceEpoch(0);
   Duration _autoCooldown = const Duration(seconds: 2);
+  // New for quad loss detection
+  bool _requireQuadLoss = false; // After capture, require quad loss before next
+  int _quadLostCount = 0; // Consecutive frames without quad
+  static const int _quadLossThreshold =
+      5; // Frames to confirm loss (~0.25s at 20fps)
 
   // params
   bool _useBlur = true;
@@ -76,7 +82,6 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
   double _cannyHigh = 150;
 
   bool _exiting = false;
-  final List<File> _capturedFiles = [];
 
   // layout
   bool _fillScreenCrop = false;
@@ -241,7 +246,7 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
       _controller = null;
     } finally {
       if (mounted) {
-        Navigator.of(context).pop<List<File>>(_capturedFiles);
+        Navigator.of(context).pop<List<File>>(_captures);
       }
     }
   }
@@ -281,14 +286,11 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
     if ((_frameCount++ % _frameStride) != 0) return;
     if (_inProcess) return;
     _inProcess = true;
-
     try {
       _srcW = img.width;
       _srcH = img.height;
-
       final y = _packYPlane(img);
       if (y.isEmpty) return;
-
       final params = EdgeParams(
         useBlur: _useBlur,
         blurKernel: _blurKernel,
@@ -302,49 +304,57 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
         cannyLow: _cannyLow,
         cannyHigh: _cannyHigh,
       );
-
       final (bytes, quadD) = await _edge.processForOverlayAndQuad(
         gray: y,
         width: _srcW,
         height: _srcH,
         params: params,
       );
-
       List<Offset>? quad;
       if (quadD != null && quadD.length == 4) {
         quad = quadD
             .map((p) => Offset(p[0].toDouble(), p[1].toDouble()))
             .toList(growable: false);
       }
-
-      // auto-capture stability tracking
+      // Auto-capture stability tracking
       if (_autoCapture && !_captureBusy && quad != null) {
-        final now = DateTime.now();
-        final cooldownOk = now.difference(_lastAutoShot) >= _autoCooldown;
-
-        if (_lastQuad != null) {
-          final delta = _avgCornerDelta(_lastQuad!, quad);
-          if (delta <= _maxCornerDelta) {
-            _stableCount++;
+        if (_requireQuadLoss) {
+          // Quad is present, but we need loss first - do nothing
+          _quadLostCount = 0; // Reset loss if quad seen
+        } else {
+          final now = DateTime.now();
+          final cooldownOk = now.difference(_lastAutoShot) >= _autoCooldown;
+          if (_lastQuad != null) {
+            final delta = _avgCornerDelta(_lastQuad!, quad);
+            if (delta <= _maxCornerDelta) {
+              _stableCount++;
+            } else {
+              _stableCount = 0;
+            }
           } else {
             _stableCount = 0;
           }
-        } else {
-          _stableCount = 0;
-        }
-        _lastQuad = quad;
-
-        // fire
-        if (cooldownOk && _stableCount >= _stableNeeded) {
-          _stableCount = 0;
-          _lastAutoShot = now;
-          unawaited(_captureStill());
+          _lastQuad = quad;
+          // Fire
+          if (cooldownOk && _stableCount >= _stableNeeded) {
+            _stableCount = 0;
+            _lastAutoShot = now;
+            unawaited(_captureStill());
+            _requireQuadLoss = true; // After capture, require loss
+          }
         }
       } else {
+        // No quad
         _stableCount = 0;
-        _lastQuad = quad;
+        _lastQuad = null;
+        if (_requireQuadLoss) {
+          _quadLostCount++;
+          if (_quadLostCount >= _quadLossThreshold) {
+            _requireQuadLoss = false; // Loss confirmed, re-arm
+            _quadLostCount = 0;
+          }
+        }
       }
-
       if (mounted) {
         setState(() {
           _overlayBytes = bytes;
@@ -369,35 +379,102 @@ class _CameraTestingScreenState extends State<CameraTestingScreen> {
 
     _captureBusy = true;
     try {
-      // Stop the stream → takePicture → restart stream for reliability.
+      // Capture full still (stop stream for reliability)
       try {
         await _controller!.stopImageStream();
       } catch (_) {}
 
       final XFile shot = await _controller!.takePicture();
 
-      // Copy into our temp area with timestamped name.
-      final dir = await getTemporaryDirectory();
-      final out = File(
-        '${dir.path}/shot_${DateTime.now().millisecondsSinceEpoch}.jpg',
-      );
-      await File(shot.path).copy(out.path);
+      // Load captured bytes and process with OpenCV
+      final Uint8List bytes = await File(shot.path).readAsBytes();
+      cv.Mat? src;
+      File? processedFile;
+      try {
+        src = cv.imdecode(bytes, cv.IMREAD_COLOR);
+        final int capW = src.cols;
+        final int capH = src.rows;
 
-      _captures.add(out);
-      if (mounted) setState(() {});
+        if (_quadOverlay != null && _quadOverlay!.length == 4) {
+          // Scale quad from preview to capture resolution
+          final double sx = capW / _srcW.toDouble();
+          final double sy = capH / _srcH.toDouble();
+          final List<cv.Point2f> srcPtsList = _quadOverlay!
+              .map((o) => cv.Point2f(o.dx * sx, o.dy * sy))
+              .toList();
+          final cv.VecPoint2f srcPts = cv.VecPoint2f.fromList(srcPtsList);
+
+          // Target rectangle (card aspect 63:88)
+          const double cardAspect = 63.0 / 88.0;
+          const int tgtW = 700;
+          final int tgtH = (tgtW / cardAspect).round();
+          final cv.VecPoint2f dstPts = cv.VecPoint2f.fromList([
+            cv.Point2f(0, 0),
+            cv.Point2f(tgtW.toDouble(), 0),
+            cv.Point2f(tgtW.toDouble(), tgtH.toDouble()),
+            cv.Point2f(0, tgtH.toDouble()),
+          ]);
+
+          // Get transform and warp
+          final cv.Mat m = cv.getPerspectiveTransform2f(
+            srcPts,
+            dstPts,
+          ); // Remove `as cv.VecPoint`
+          final cv.Mat warped = cv.warpPerspective(src, m, (tgtW, tgtH));
+
+          // Encode to JPEG
+          final (bool ok, Uint8List jpg) = cv.imencode('.jpg', warped);
+          if (ok) {
+            // Temp dir for output
+            final dir = await getTemporaryDirectory();
+            final String outPath =
+                '${dir.path}/warped_${DateTime.now().millisecondsSinceEpoch}.jpg';
+            processedFile = await File(outPath).writeAsBytes(jpg);
+          }
+
+          // Cleanup
+          m.dispose();
+          warped.dispose();
+        } else {
+          // Fallback: no quad, use full image
+          processedFile = File(shot.path);
+        }
+
+        if (processedFile != null) {
+          // Copy to final temp path (or use directly)
+          final dir = await getTemporaryDirectory();
+          final out = File(
+            '${dir.path}/shot_${DateTime.now().millisecondsSinceEpoch}.jpg',
+          );
+          await processedFile.copy(out.path);
+          _captures.add(out);
+          if (mounted) setState(() {});
+        } else {
+          throw Exception('Processing failed');
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Capture process failed: $e')));
+        }
+      } finally {
+        src?.dispose();
+
+        // Restart stream
+        try {
+          await _controller!.startImageStream(_onPreviewFrame);
+          _startWatchdog();
+        } catch (e) {
+          setState(() => _lastError = 'Stream restart failed: $e');
+        }
+        _captureBusy = false;
+      }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('Capture failed: $e')));
-      }
-    } finally {
-      // Restart stream
-      try {
-        await _controller!.startImageStream(_onPreviewFrame);
-        _startWatchdog();
-      } catch (e) {
-        setState(() => _lastError = 'Stream restart failed: $e');
       }
       _captureBusy = false;
     }
