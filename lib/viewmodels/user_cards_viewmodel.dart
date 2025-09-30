@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:developer' as developer;
 import 'package:api_trial/services/onepiece_service.dart';
 import 'package:api_trial/models/card.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 
 // ============================================================================
 // CLASS: UserCardsViewModel
@@ -11,18 +12,23 @@ import 'package:api_trial/models/card.dart';
 // ARCHITECTURE:
 //   - Uses ChangeNotifier for reactive UI updates.
 //   - Handles fetching, adding, updating, and removing user cards.
-//   - Tracks loading state and errors for UI feedback.
+//   - Caches all cards for seamless gameType filtering.
+//   - Tracks loading state, errors, and gameType filter for UI feedback.
 // ============================================================================
 class UserCardsViewModel with ChangeNotifier {
   final OnePieceTcgService _service;
-  List<TCGCard> _cards = [];
+  List<TCGCard> _allCards = []; // Cache all cards
   bool _isLoading = false;
   String? _errorMessage;
+  GameType? _selectedGameType; // Null means "All"
 
   // Getters for UI
-  List<TCGCard> get cards => _cards;
+  List<TCGCard> get cards => _selectedGameType == null
+      ? _allCards
+      : _allCards.where((card) => card.gameType == _selectedGameType).toList();
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
+  GameType? get selectedGameType => _selectedGameType;
 
   // Constructor: Takes OnePieceTcgService instance
   UserCardsViewModel(this._service) {
@@ -41,7 +47,7 @@ class UserCardsViewModel with ChangeNotifier {
     try {
       _setLoading(true);
       final cards = await _service.getUserCards();
-      _cards = cards;
+      _allCards = cards;
       _setLoading(false);
       _errorMessage = null;
       notifyListeners();
@@ -80,9 +86,10 @@ class UserCardsViewModel with ChangeNotifier {
   // --------------------------------------------------------------------------
   // METHOD: Update card quantity, favorite, or labels
   // STEPS:
-  //   1. Call service to update card with new values
-  //   2. Refresh card list on success
-  //   3. Handle errors if they occur
+  //   1. Update local state optimistically
+  //   2. Call service to update card with new values
+  //   3. Refresh card list on success or revert on failure
+  //   4. Handle errors if they occur
   // --------------------------------------------------------------------------
   Future<void> updateCard(
     String cardId,
@@ -91,11 +98,31 @@ class UserCardsViewModel with ChangeNotifier {
     List<String> labels,
   ) async {
     try {
-      _setLoading(true);
+      // Optimistic update
+      final index = _allCards.indexWhere((card) => card.id == cardId);
+      if (index != -1) {
+        final updatedCard = TCGCard(
+          id: _allCards[index].id,
+          gameCode: _allCards[index].gameCode,
+          name: _allCards[index].name,
+          setName: _allCards[index].setName,
+          rarity: _allCards[index].rarity,
+          imageRefSmall: _allCards[index].imageRefSmall,
+          gameType: _allCards[index].gameType,
+          gameSpecificData: {
+            ...?_allCards[index].gameSpecificData,
+            'quantity': quantity,
+            'favorite': favorite,
+            'labels': labels,
+          },
+        );
+        _allCards[index] = updatedCard;
+        notifyListeners(); // Update UI immediately
+      }
+
       await _service.updateUserCardQuantity(cardId, quantity, favorite, labels);
-      await _fetchUserCards(); // Refresh collection
+      await _fetchUserCards(); // Refresh to ensure consistency
       _errorMessage = null;
-      notifyListeners();
       developer.log(
         'Updated card $cardId: quantity=$quantity, favorite=$favorite',
       );
@@ -104,19 +131,24 @@ class UserCardsViewModel with ChangeNotifier {
       _errorMessage = 'Failed to update card: $e';
       notifyListeners();
       developer.log('Error updating card $cardId: $e');
+      await _fetchUserCards(); // Revert to server state on error
     }
   }
 
   // --------------------------------------------------------------------------
   // METHOD: Remove card from collection
   // STEPS:
-  //   1. Call service to delete card
-  //   2. Refresh card list on success
-  //   3. Handle errors if they occur
+  //   1. Remove card locally
+  //   2. Call service to delete card
+  //   3. Refresh card list on success or revert on failure
+  //   4. Handle errors if they occur
   // --------------------------------------------------------------------------
   Future<void> removeCard(String cardId) async {
     try {
-      _setLoading(true);
+      // Optimistic update
+      _allCards.removeWhere((card) => card.id == cardId);
+      notifyListeners(); // Update UI immediately
+
       await _service.removeUserCard(cardId);
       await _fetchUserCards(); // Refresh collection
       _errorMessage = null;
@@ -127,7 +159,20 @@ class UserCardsViewModel with ChangeNotifier {
       _errorMessage = 'Failed to remove card: $e';
       notifyListeners();
       developer.log('Error removing card $cardId: $e');
+      await _fetchUserCards(); // Revert to server state on error
     }
+  }
+
+  // --------------------------------------------------------------------------
+  // METHOD: Set gameType filter
+  // STEPS:
+  //   1. Update selected gameType
+  //   2. Notify listeners to refresh UI with filtered cards
+  // --------------------------------------------------------------------------
+  void setGameTypeFilter(GameType? gameType) {
+    _selectedGameType = gameType;
+    notifyListeners();
+    developer.log('Set gameType filter: ${gameType?.name ?? "All"}');
   }
 
   // --------------------------------------------------------------------------

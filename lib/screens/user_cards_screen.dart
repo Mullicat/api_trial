@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:api_trial/viewmodels/user_cards_viewmodel.dart';
 import 'package:api_trial/models/card.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 import 'dart:developer' as developer;
 
 // ============================================================================
@@ -14,9 +15,24 @@ import 'dart:developer' as developer;
 //   - Uses Provider to access UserCardsViewModel for state.
 //   - Shows a list of cards with images, names, and quantity controls.
 //   - Handles loading, error, and empty states.
+//   - Includes GameType filter dropdown.
 // ============================================================================
-class UserCardsScreen extends StatelessWidget {
+class UserCardsScreen extends StatefulWidget {
   const UserCardsScreen({super.key});
+
+  @override
+  State<UserCardsScreen> createState() => _UserCardsScreenState();
+}
+
+class _UserCardsScreenState extends State<UserCardsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Refresh collection when screen is entered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<UserCardsViewModel>().refresh();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +60,31 @@ class UserCardsScreen extends StatelessWidget {
       // --- Body ---------------------------------------------------------------
       body: Column(
         children: [
+          // GameType filter
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<GameType?>(
+              value: viewModel.selectedGameType,
+              hint: const Text('Filter by Game'),
+              isExpanded: true,
+              items: [
+                const DropdownMenuItem<GameType?>(
+                  value: null,
+                  child: Text('All Games'),
+                ),
+                ...GameType.values.map(
+                  (gameType) => DropdownMenuItem<GameType?>(
+                    value: gameType,
+                    child: Text(gameType.name),
+                  ),
+                ),
+              ],
+              onChanged: (value) {
+                viewModel.setGameTypeFilter(value);
+              },
+            ),
+          ),
+
           // Results (loading / error / empty / list)
           Expanded(
             child: isLoading
@@ -76,108 +117,82 @@ class UserCardsScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 16),
                     ),
                   )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Count header
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          'Cards (${cards.length}):',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                : ListView.builder(
+                    itemCount: cards.length,
+                    itemBuilder: (context, index) {
+                      final card = cards[index];
+                      final currentQuantity =
+                          card.gameSpecificData?['quantity'] ?? 1;
+                      return Card(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        child: ListTile(
+                          leading: card.imageRefSmall != null
+                              ? CachedNetworkImage(
+                                  imageUrl: card.imageRefSmall!,
+                                  width: 50,
+                                  fit: BoxFit.contain,
+                                  placeholder: (context, url) =>
+                                      const CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.broken_image, size: 50),
+                                )
+                              : null,
+                          title: Text(card.name ?? 'Unknown'),
+                          subtitle: Text(
+                            'Type: ${card.gameSpecificData?['type'] ?? 'Unknown'}\nRarity: ${card.rarity ?? 'Unknown'}',
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              // Quantity controls
+                              IconButton(
+                                icon: const Icon(Icons.remove),
+                                onPressed: currentQuantity > 1
+                                    ? () {
+                                        viewModel.updateCard(
+                                          card.id!,
+                                          currentQuantity - 1,
+                                          card.gameSpecificData?['favorite'] ??
+                                              false,
+                                          card.gameSpecificData?['labels'] ??
+                                              [],
+                                        );
+                                      }
+                                    : () {
+                                        viewModel.removeCard(card.id!);
+                                      },
+                              ),
+                              Text(
+                                '$currentQuantity',
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  viewModel.updateCard(
+                                    card.id!,
+                                    currentQuantity + 1,
+                                    card.gameSpecificData?['favorite'] ?? false,
+                                    card.gameSpecificData?['labels'] ?? [],
+                                  );
+                                },
+                              ),
+                              // Remove button
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () => viewModel.removeCard(card.id!),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      // Cards list
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: cards.length,
-                          itemBuilder: (context, index) {
-                            final card = cards[index];
-                            return Card(
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              child: ListTile(
-                                leading: card.imageRefSmall != null
-                                    ? CachedNetworkImage(
-                                        imageUrl: card.imageRefSmall!,
-                                        width: 50,
-                                        fit: BoxFit.contain,
-                                        placeholder: (context, url) =>
-                                            const CircularProgressIndicator(),
-                                        errorWidget: (context, url, error) =>
-                                            const Icon(
-                                              Icons.broken_image,
-                                              size: 50,
-                                            ),
-                                      )
-                                    : null,
-                                title: Text(card.name ?? 'Unknown'),
-                                subtitle: Text(
-                                  'Type: ${card.gameSpecificData?['type'] ?? 'Unknown'}\nRarity: ${card.rarity ?? 'Unknown'}',
-                                ),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    // Quantity controls
-                                    IconButton(
-                                      icon: const Icon(Icons.remove),
-                                      onPressed: () {
-                                        final newQuantity =
-                                            (card.gameSpecificData?['quantity'] ??
-                                                1) -
-                                            1;
-                                        if (newQuantity > 0) {
-                                          viewModel.updateCard(
-                                            card.id!,
-                                            newQuantity,
-                                            card.gameSpecificData?['favorite'] ??
-                                                false,
-                                            card.gameSpecificData?['labels'] ??
-                                                [],
-                                          );
-                                        } else {
-                                          viewModel.removeCard(card.id!);
-                                        }
-                                      },
-                                    ),
-                                    Text(
-                                      '${card.gameSpecificData?['quantity'] ?? 1}',
-                                      style: const TextStyle(fontSize: 16),
-                                    ),
-                                    IconButton(
-                                      icon: const Icon(Icons.add),
-                                      onPressed: () => viewModel.updateCard(
-                                        card.id!,
-                                        (card.gameSpecificData?['quantity'] ??
-                                                1) +
-                                            1,
-                                        card.gameSpecificData?['favorite'] ??
-                                            false,
-                                        card.gameSpecificData?['labels'] ?? [],
-                                      ),
-                                    ),
-                                    // Remove button
-                                    IconButton(
-                                      icon: const Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      ),
-                                      onPressed: () =>
-                                          viewModel.removeCard(card.id!),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
           ),
         ],

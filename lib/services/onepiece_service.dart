@@ -734,12 +734,7 @@ class OnePieceTcgService {
     bool favorite,
     List<String> labels,
   ) async {
-    try {
-      await _repository.updateUserCard(cardId, quantity, favorite, labels);
-    } catch (e) {
-      developer.log('Error updating user card: $e');
-      throw Exception('Error updating user card: $e');
-    }
+    await _repository.updateUserCard(cardId, quantity, favorite, labels);
   }
 
   // Remove a card from user's collection
