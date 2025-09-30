@@ -1,16 +1,19 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
+import 'package:api_trial/data/repositories/supabase_repository.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:api_trial/models/card.dart';
 import 'package:api_trial/constants/enums/onepiece_filters.dart';
 import 'package:api_trial/data/datasources/supabase_datasource.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 
 class OnePieceTcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
   static const String _gamePath = 'one-piece';
   final SupabaseDataSource _supabaseDataSource;
+  final SupabaseRepository _repository = SupabaseRepository();
   List<TCGCard> _cachedCards = []; // Cache for getCardFromAPICards
 
   // Private constructor with Supabase data source
@@ -700,5 +703,86 @@ class OnePieceTcgService {
       textEmbedding: null,
       gameSpecificData: gameSpecificData.isEmpty ? null : gameSpecificData,
     );
+  }
+
+  // Fetch current user's cards
+  Future<List<TCGCard>> getUserCards({GameType? gameType}) async {
+    try {
+      var query = _supabaseDataSource.supabase
+          .from('user_cards')
+          .select('*, cards(*)')
+          .eq('user_id', _supabaseDataSource.supabase.auth.currentUser!.id);
+      if (gameType != null) {
+        query = query.eq(
+          'cards.game_type',
+          gameType.apiPath.replaceAll('-', ''),
+        );
+      }
+      final response = await query;
+      final cards = response.map((row) {
+        final cardData = row['cards'] as Map<String, dynamic>;
+        final gsd = cardData['game_specific_data'];
+        if (gsd is String) {
+          try {
+            cardData['game_specific_data'] = jsonDecode(gsd);
+          } catch (_) {}
+        }
+        return TCGCard(
+          id: cardData['id'],
+          gameCode: cardData['game_code'],
+          name: cardData['name'],
+          setName: cardData['set_name'],
+          rarity: cardData['rarity'],
+          imageRefSmall: cardData['image_ref_small'],
+          imageRefLarge: cardData['image_ref_large'],
+          gameType: cardData['game_type'],
+          imageEmbedding: null,
+          textEmbedding: null,
+          gameSpecificData: {
+            ...?cardData['game_specific_data'],
+            'quantity': row['quantity'],
+            'favorite': row['favorite'],
+            'labels': List<String>.from(row['labels'] ?? []),
+          },
+        );
+      }).toList();
+      developer.log(
+        'Fetched ${cards.length} user cards${gameType != null ? ' for gameType ${gameType.apiPath}' : ''}',
+      );
+      return cards;
+    } catch (e) {
+      developer.log('Error fetching user cards: $e');
+      throw Exception('Error fetching user cards: $e');
+    }
+  }
+
+  // Add card to current user's collection
+  Future<void> addCardToUserCollection(String cardId, int quantity) async {
+    try {
+      await _repository.addUserCard(cardId, quantity);
+    } catch (e) {
+      developer.log('Error adding card to collection: $e');
+      throw Exception('Error adding card to collection: $e');
+    }
+  }
+
+  // Update a user card's quantity, favorite, or labels
+  Future<void> updateUserCardQuantity(
+    String cardId,
+    int quantity,
+    bool favorite,
+    List<String> labels,
+  ) async {
+    await _repository.updateUserCard(cardId, quantity, favorite, labels);
+  }
+
+  // Remove a card from user's collection
+  Future<void> removeUserCard(String cardId) async {
+    try {
+      await _repository.deleteUserCard(cardId);
+    } catch (e) {
+      developer.log('Error removing user card: $e');
+      throw Exception('Error removing user card: $e');
+    }
   }
 }

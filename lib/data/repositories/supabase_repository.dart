@@ -92,4 +92,55 @@ class SupabaseRepository {
       return null;
     }
   }
+
+  // Fetch current user's cards
+  Future<List<Map<String, dynamic>>> getUserCards() async {
+    await _ensureInitialized();
+    final user = _dataSource.getCurrentUser();
+    if (user == null) {
+      throw Exception('User must be authenticated to fetch cards');
+    }
+    return await _dataSource.getUserCards(user.id);
+  }
+
+  // Add card to current user's collection
+  Future<void> addUserCard(String cardId, int quantity) async {
+    await _ensureInitialized();
+    final user = _dataSource.getCurrentUser();
+    if (user == null) {
+      throw Exception('User must be authenticated to add card');
+    }
+    await _dataSource.addUserCard(user.id, cardId, quantity);
+  }
+
+  // Update a user card's quantity, favorite, or labels
+  Future<void> updateUserCard(
+    String cardId,
+    int quantity,
+    bool favorite,
+    List<String> labels,
+  ) async {
+    await _ensureInitialized();
+    final user = _dataSource.getCurrentUser();
+    if (user == null) {
+      throw Exception('User must be authenticated to update card');
+    }
+    await _dataSource.updateUserCard(
+      user.id,
+      cardId,
+      quantity,
+      favorite,
+      labels,
+    );
+  }
+
+  // Delete a user card
+  Future<void> deleteUserCard(String cardId) async {
+    await _ensureInitialized();
+    final user = _dataSource.getCurrentUser();
+    if (user == null) {
+      throw Exception('User must be authenticated to delete card');
+    }
+    await _dataSource.deleteUserCard(user.id, cardId);
+  }
 }

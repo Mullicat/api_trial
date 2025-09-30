@@ -1,10 +1,13 @@
+// lib/main_navigation.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/auth_viewmodel.dart';
-import 'home.dart';
+import '../viewmodels/user_cards_viewmodel.dart';
+import '../services/onepiece_service.dart';
 import 'image_capture_screen.dart';
 import 'api_cards_screen.dart';
+import 'user_cards_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -19,10 +22,24 @@ class _MainNavigationState extends State<MainNavigation> {
 
   late final List<_Tab> _tabs = [
     _Tab(
-      title: 'Home',
-      icon: Icons.home,
-      child: const HomePage(),
-      storageKey: const PageStorageKey('home'),
+      title: 'Collection',
+      icon: Icons.collections,
+      child: FutureBuilder<OnePieceTcgService>(
+        future: OnePieceTcgService.create(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+          return ChangeNotifierProvider(
+            create: (_) => UserCardsViewModel(snapshot.data!),
+            child: const UserCardsScreen(),
+          );
+        },
+      ),
+      storageKey: const PageStorageKey('collection'),
     ),
     _Tab(
       title: 'Cámara',
@@ -101,7 +118,6 @@ class _MainNavigationState extends State<MainNavigation> {
             surfaceTintColor: Theme.of(context).colorScheme.surface,
             elevation: 2,
             scrolledUnderElevation: 2,
-
             automaticallyImplyLeading: false,
             leadingWidth: 180,
             leading: Padding(
@@ -115,7 +131,6 @@ class _MainNavigationState extends State<MainNavigation> {
                 ),
               ),
             ),
-
             actions: [
               Selector<AuthViewModel, String?>(
                 selector: (_, vm) => vm.currentUser?.email,

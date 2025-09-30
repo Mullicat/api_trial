@@ -15,6 +15,7 @@
 // ============================================================================
 
 import 'dart:async';
+import 'dart:developer' as developer;
 import 'dart:ffi' hide Size;
 import 'dart:io';
 import 'dart:typed_data';
@@ -93,6 +94,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   double _cannyHigh = 150;
 
   bool _exiting = false;
+  bool _isSaving = false; // Track saving state
 
   // layout
   bool _fillScreenCrop = false;
@@ -317,6 +319,62 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
           'files': _captures,
           'cards': nonNullCards,
         });
+      }
+    }
+  }
+
+  // ===========================================================================
+  // METHOD: Save cards to collection and return
+  // STEPS:
+  //   1. Group cards by ID to calculate quantities
+  //   2. Save each unique card with its quantity
+  //   3. Show feedback and navigate back
+  // ===========================================================================
+  Future<void> _saveAndReturn() async {
+    if (_isSaving || _exiting) return;
+    setState(() => _isSaving = true);
+
+    try {
+      // Group by unique ID (UUID)
+      final Map<String, int> cardQuantities = {};
+      for (final card in _foundCards.where((c) => c != null).cast<TCGCard>()) {
+        final key = card.id ?? 'unknown_${card.hashCode}';
+        cardQuantities[key] = (cardQuantities[key] ?? 0) + 1;
+      }
+
+      if (cardQuantities.isEmpty) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('No valid cards to save')));
+        await _finishAndReturn();
+        return;
+      }
+
+      // Save each unique card
+      for (final entry in cardQuantities.entries) {
+        final card = _foundCards.firstWhere(
+          (c) => c != null && (c!.id ?? 'unknown_${c.hashCode}') == entry.key,
+        )!;
+        await _service.addCardToUserCollection(card.id!, entry.value);
+      }
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Saved ${cardQuantities.length} card(s) to collection'),
+        ),
+      );
+      await _finishAndReturn();
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error saving cards: $e')));
+      developer.log('Error saving cards: $e');
+      await _finishAndReturn();
+    } finally {
+      if (mounted) {
+        setState(() => _isSaving = false);
       }
     }
   }
@@ -1504,11 +1562,18 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: _finishAndReturn,
-                          child: const Text(
-                            'Finish',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
+                          onPressed: (_isSaving || _exiting)
+                              ? null
+                              : _saveAndReturn,
+                          child: _isSaving
+                              ? const SizedBox(
+                                  width: 16,
+                                  height: 16,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              : const Text('Save Cards'),
                         ),
                       ],
                     ),
