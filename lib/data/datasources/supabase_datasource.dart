@@ -1,4 +1,5 @@
 //lib/data/datasources/supabase_datasource.dart
+import 'dart:developer' as developer;
 import 'dart:io';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -306,6 +307,75 @@ class SupabaseDataSource {
           .toList();
     } catch (e) {
       throw Exception('Error fetching One Piece cards by code: $e');
+    }
+  }
+
+  // Fetch all cards owned by a user (joins with cards table)
+  Future<List<Map<String, dynamic>>> getUserCards(String userId) async {
+    try {
+      return await supabase
+          .from('user_cards')
+          .select('*, card:card_id(*)')
+          .eq('user_id', userId)
+          .order('created_at', ascending: false);
+    } catch (e) {
+      developer.log('Error fetching user cards: $e');
+      throw e;
+    }
+  }
+
+  // Add or upsert a card to a user's collection (increments quantity if exists)
+  Future<void> addUserCard(String userId, String cardId, int quantity) async {
+    try {
+      await supabase.rpc(
+        'add_user_card',
+        params: {
+          'p_user_id': userId,
+          'p_card_id': cardId,
+          'p_quantity': quantity,
+        },
+      );
+    } catch (e) {
+      developer.log('Error adding user card: $e');
+      throw e;
+    }
+  }
+
+  // Update a user card's quantity, favorite, or labels
+  Future<void> updateUserCard(
+    String userId,
+    String cardId,
+    int quantity,
+    bool favorite,
+    List<String> labels,
+  ) async {
+    try {
+      await supabase
+          .from('user_cards')
+          .update({
+            'quantity': quantity,
+            'favorite': favorite,
+            'labels': labels,
+          })
+          .eq('user_id', userId)
+          .eq('card_id', cardId);
+    } catch (e) {
+      developer.log('Error updating user card: $e');
+      throw e;
+    }
+  }
+
+  // Delete a user card
+  Future<void> deleteUserCard(String userId, String cardId) async {
+    try {
+      await supabase
+          .from('user_cards')
+          .delete()
+          .eq('user_id', userId)
+          .eq('card_id', cardId);
+    } catch (e) {
+      developer.log('Error deleting user card: $e');
+      throw e;
     }
   }
 }

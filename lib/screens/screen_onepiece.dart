@@ -11,6 +11,7 @@
 //   - Two drop-downs to choose "GetCards" source and "GetCard" source.
 //   - Horizontal filter bar for game-specific params (set/rarity/etc).
 //   - Bottom sticky pagination (page + page size).
+//   - Add to Collection button (+) on each card, turns to green checkmark on success.
 // ============================================================================
 
 import 'package:flutter/material.dart';
@@ -56,6 +57,7 @@ class ScreenOnePiece extends StatefulWidget {
 //   - _filters             : selected filter values (stringy map + families)
 //   - _page/_pageSize      : pagination
 //   - _isLoading/_errorMessage
+//   - _addedCardIds        : tracks cards added to collection for UI feedback
 // ============================================================================
 class _ScreenOnePieceState extends State<ScreenOnePiece> {
   OnePieceTcgService? _service;
@@ -65,6 +67,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
   List<TCGCard>? _cards;
   bool _isLoading = false;
   String? _errorMessage;
+  final Set<String> _addedCardIds = {}; // Tracks cards added to collection
 
   final TextEditingController _searchController = TextEditingController();
   final Map<String, dynamic> _filters = {};
@@ -140,6 +143,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       _filters.clear();
       _searchController.clear();
       _page = 1;
+      _addedCardIds.clear(); // Reset added state
     });
     await _fetchCards();
   }
@@ -217,6 +221,32 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
         !Ability.values.any((e) => e.value == value))
       return null;
     return Ability.values.firstWhere((e) => e.value == value);
+  }
+
+  // ===========================================================================
+  // METHOD: Add card to collection
+  // STEPS:
+  //   1. Call service to add card with quantity 1
+  //   2. Update addedCardIds on success
+  //   3. Show SnackBar feedback
+  //   4. Handle errors with SnackBar
+  // ===========================================================================
+  Future<void> _addCardToCollection(String cardId) async {
+    try {
+      await _service!.addCardToUserCollection(cardId, 1);
+      setState(() {
+        _addedCardIds.add(cardId);
+      });
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Card added to collection')));
+      developer.log('Added card $cardId to collection');
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error adding card: $e')));
+      developer.log('Error adding card $cardId: $e');
+    }
   }
 
   // ===========================================================================
@@ -385,6 +415,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       _page = 1;
       _filters.clear();
       _searchController.clear();
+      _addedCardIds.clear(); // Reset added state
     });
     _fetchCards();
   }
@@ -647,6 +678,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                       _filters.clear();
                       _searchController.clear();
                       _page = 1;
+                      _addedCardIds.clear(); // Reset added state
                     });
                     _fetchCards();
                   },
@@ -801,6 +833,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                               _filters.clear();
                               _searchController.clear();
                               _page = 1;
+                              _addedCardIds.clear(); // Reset added state
                             });
                             _fetchCards();
                           },
@@ -862,6 +895,20 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                                 title: Text(card.name ?? 'Unknown'),
                                 subtitle: Text(
                                   'Type: ${card.gameSpecificData?['type'] ?? 'Unknown'}',
+                                ),
+                                trailing: IconButton(
+                                  icon: _addedCardIds.contains(card.id)
+                                      ? const Icon(
+                                          Icons.check_circle,
+                                          color: Colors.green,
+                                        )
+                                      : const Icon(
+                                          Icons.add_circle,
+                                          color: Colors.blue,
+                                        ),
+                                  onPressed: _addedCardIds.contains(card.id)
+                                      ? null // Disable if already added
+                                      : () => _addCardToCollection(card.id!),
                                 ),
                                 // IMPORTANT: pass gameCode into detail nav
                                 onTap: () => _fetchSingleCard(card.gameCode),
