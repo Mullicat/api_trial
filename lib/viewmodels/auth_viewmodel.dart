@@ -1,3 +1,4 @@
+// lib/viewmodels/auth_viewmodel.dart
 /**
  * AuthViewModel - MVVM Pattern Implementation for Authentication
  * 

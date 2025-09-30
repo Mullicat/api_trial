@@ -1,3 +1,4 @@
+// lib/constants/game_detection_constants.dart
 // Constants for trading card game detection, including keywords and bounding box ranges.
 class GameDetectionConstants {
   // Keywords for One Piece TCG detection

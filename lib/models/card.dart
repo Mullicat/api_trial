@@ -1,3 +1,4 @@
+// lib/models/card.dart
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'card.freezed.dart';

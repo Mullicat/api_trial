@@ -1,13 +1,17 @@
 // lib/data/repositories/supabase_repository.dart
 import 'dart:io';
-/* import 'package:image_picker/image_picker.dart'; */
 import '../datasources/supabase_datasource.dart';
 import '../../models/image_model.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class SupabaseRepository {
+  // DataSource instance for actual Supabase operations
   late SupabaseDataSource _dataSource;
+
+  // Initialization tracking to ensure dataSource is ready before use
   bool _initialized = false;
 
+  // Initialize SupabaseDataSource if not already done
   Future<void> _ensureInitialized() async {
     if (!_initialized) {
       _dataSource = await SupabaseDataSource.getInstance();
@@ -15,6 +19,7 @@ class SupabaseRepository {
     }
   }
 
+  // Upload image file to Supabase, returns UploadedImage or null
   Future<UploadedImage?> uploadImage(File file, String path) async {
     await _ensureInitialized();
     try {
@@ -33,6 +38,7 @@ class SupabaseRepository {
     }
   }
 
+  // Fetch list of uploaded images from Supabase
   Future<List<UploadedImage>> getUploadedImages() async {
     await _ensureInitialized();
     try {
@@ -45,6 +51,7 @@ class SupabaseRepository {
     }
   }
 
+  // Save image metadata to Supabase, returns saved UploadedImage or null
   Future<UploadedImage?> saveImageMetadata(UploadedImage image) async {
     await _ensureInitialized();
     try {
@@ -71,6 +78,7 @@ class SupabaseRepository {
     }
   }
 
+  // Fetch single image by ID from Supabase, returns UploadedImage or null
   Future<UploadedImage?> getImage(String id) async {
     await _ensureInitialized();
     try {

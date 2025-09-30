@@ -3,11 +3,13 @@
 // PURPOSE: UI to pick/scan/upload images and perform OCR + TCG detection.
 // ARCHITECTURE: MVVM with Provider. UI binds to ImageCaptureViewModel state.
 // NAVIGATION: Can open ScreenSingle (card detail), ScanResultsScreen (multi),
-//             and MultiScanCameraScreen (live multi-scan).
+//             and CameraSearchTestingScreen (live multi-scan with search).
 // NOTES:
 // - Comments are organized in big, skimmable sections so anyone can orient fast.
 // - Code is unchanged; only documentation and section markers are added.
 // ============================================================================
+
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,7 +22,7 @@ import 'package:api_trial/screens/screen_single.dart';
 import 'package:api_trial/constants/enums/game_type.dart';
 import 'package:api_trial/screens/scan_results.dart';
 import 'package:api_trial/models/card.dart';
-import 'package:api_trial/screens/multi_scan_camera_screen.dart';
+import 'package:api_trial/screens/camera_search_testing.dart';
 
 // ============================================================================
 // WIDGET: ImageCaptureScreen
@@ -421,28 +423,39 @@ class ImageCaptureScreen extends StatelessWidget {
                     ),
 
                     // ------------------------------------------------------------
-                    // MULTI-SCAN (live camera) — navigates to MultiScanCameraScreen
-                    // Returns a list of TCGCard, which we then store in VM.
+                    // CAMERA SEARCH TESTING (live camera with search) — navigates to CameraSearchTestingScreen
+                    // Returns a map {'files': List<File>, 'cards': List<TCGCard>}
                     // ------------------------------------------------------------
                     ElevatedButton(
                       onPressed: viewModel.isLoading
                           ? null
                           : () async {
                               final result =
-                                  await Navigator.push<List<TCGCard>>(
+                                  await Navigator.push<Map<String, dynamic>>(
                                     context,
                                     MaterialPageRoute(
                                       builder: (_) =>
-                                          const MultiScanCameraScreen(),
+                                          const CameraSearchTestingScreen(),
                                     ),
                                   );
-                              if (result != null && result.isNotEmpty) {
-                                viewModel.setMultiScannedCards(result);
+                              if (result != null) {
+                                final files =
+                                    result['files'] as List<File>? ?? [];
+                                final cards =
+                                    result['cards'] as List<TCGCard>? ?? [];
+                                viewModel.setCapturedPhotos(files);
+                                viewModel.setMultiScannedCards(cards);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Saved ${result.length} card(s)',
+                                      'Saved ${files.length} photo(s) and ${cards.length} card(s)',
                                     ),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('No photos captured.'),
                                   ),
                                 );
                               }
@@ -551,6 +564,44 @@ class ImageCaptureScreen extends StatelessWidget {
                       ),
 
                     const SizedBox(height: 20),
+
+                    // CapturedPhotos
+                    if (viewModel.capturedPhotos.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Captured photos:',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 6,
+                              crossAxisSpacing: 6,
+                            ),
+                        itemCount: viewModel.capturedPhotos.length,
+                        itemBuilder: (_, i) => ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.file(
+                            viewModel.capturedPhotos[i],
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => const ColoredBox(
+                              color: Colors.black12,
+                              child: Center(child: Icon(Icons.broken_image)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
