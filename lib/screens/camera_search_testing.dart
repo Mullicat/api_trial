@@ -56,7 +56,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   List<Offset>? _quadOverlay;
 
   // capture state
-  bool _autoCapture = false;
+  bool _autoCapture = true; // ON by default
   bool _multiCapture = true;
   bool _captureBusy = false;
   List<File> _captures = [];
@@ -998,7 +998,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                       ),
                       child: Column(
                         children: [
-                          _LabeledSlider(
+                          LabeledSlider(
                             label: 'Kernel (odd)',
                             value: _blurKernel.toDouble(),
                             min: 1,
@@ -1008,7 +1008,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                             onChanged: (v) =>
                                 setState(() => _blurKernel = v.round()),
                           ),
-                          _LabeledSlider(
+                          LabeledSlider(
                             label: 'Sigma',
                             value: _blurSigma,
                             min: 0,
@@ -1035,7 +1035,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                   if (_useMorphClose)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: _LabeledSlider(
+                      child: LabeledSlider(
                         label: 'Close Kernel (odd)',
                         value: _closeKernel.toDouble(),
                         min: 1,
@@ -1048,10 +1048,10 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                     ),
                   SwitchListTile(
                     dense: true,
-                    value: _useMorphDilate,
-                    onChanged: (v) => setState(() => _useMorphDilate = v),
+                    value: _useMorphClose,
+                    onChanged: (v) => setState(() => _useMorphClose = v),
                     title: const Text(
-                      'Dilate',
+                      'Close',
                       style: TextStyle(color: Colors.white),
                     ),
                     contentPadding: EdgeInsets.zero,
@@ -1059,7 +1059,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                   if (_useMorphDilate)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: _LabeledSlider(
+                      child: LabeledSlider(
                         label: 'Dilate Kernel (odd)',
                         value: _dilateKernel.toDouble(),
                         min: 1,
@@ -1102,7 +1102,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                             onChanged: (v) => setState(() => _cannyAuto = v),
                           ),
                           if (!_cannyAuto) ...[
-                            _LabeledSlider(
+                            LabeledSlider(
                               label: 'Low',
                               value: _cannyLow,
                               min: 0,
@@ -1111,7 +1111,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
                               display: _cannyLow.toStringAsFixed(0),
                               onChanged: (v) => setState(() => _cannyLow = v),
                             ),
-                            _LabeledSlider(
+                            LabeledSlider(
                               label: 'High',
                               value: _cannyHigh,
                               min: 1,
@@ -1183,105 +1183,127 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
             maxWidth: MediaQuery.of(dialogContext).size.width * 0.9,
           ),
           child: StatefulBuilder(
-            builder: (context, setDialogState) => Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
-                  child: Text(
-                    'Scanned Cards',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            builder: (context, setDialogState) {
+              // Rebuild groups for dialog state
+              final Map<String, List<int>> dialogGroups = {};
+              for (int i = 0; i < _foundCards.length; i++) {
+                final c = _foundCards[i];
+                if (c != null) {
+                  final key = c.id ?? 'unknown_${i}';
+                  dialogGroups.putIfAbsent(key, () => []).add(i);
+                }
+              }
+
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+                    child: Text(
+                      'Scanned Cards',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    itemCount: groups.length,
-                    separatorBuilder: (_, __) => const Divider(height: 1),
-                    itemBuilder: (context, groupIndex) {
-                      final entry = groups.entries.elementAt(groupIndex);
-                      final key = entry.key;
-                      final indices = entry.value;
-                      final card = _foundCards[indices.first]!;
-                      final count = indices.length;
+                  Flexible(
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      itemCount: dialogGroups.length,
+                      separatorBuilder: (_, __) => const Divider(height: 1),
+                      itemBuilder: (context, groupIndex) {
+                        final entry = dialogGroups.entries.elementAt(
+                          groupIndex,
+                        );
+                        final key = entry.key;
+                        final indices = entry.value;
+                        final card = _foundCards[indices.first]!;
+                        final count = indices.length;
 
-                      final subtitle = [
-                        if (card.setName != null && card.setName!.isNotEmpty)
-                          card.setName!,
-                        if (card.rarity != null && card.rarity!.isNotEmpty)
-                          card.rarity!,
-                        if (card.gameCode != null && card.gameCode!.isNotEmpty)
-                          card.gameCode!,
-                      ].join(' • ');
+                        final subtitle = [
+                          if (card.setName != null && card.setName!.isNotEmpty)
+                            card.setName!,
+                          if (card.rarity != null && card.rarity!.isNotEmpty)
+                            card.rarity!,
+                          if (card.gameCode != null &&
+                              card.gameCode!.isNotEmpty)
+                            card.gameCode!,
+                        ].join(' • ');
 
-                      return ListTile(
-                        leading:
-                            (card.imageRefSmall != null &&
-                                card.imageRefSmall!.isNotEmpty)
-                            ? CachedNetworkImage(
-                                imageUrl: card.imageRefSmall!,
-                                width: 56,
-                                height: 56,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => const SizedBox(
-                                  width: 24,
-                                  height: 24,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 2,
+                        return ListTile(
+                          leading:
+                              (card.imageRefSmall != null &&
+                                  card.imageRefSmall!.isNotEmpty)
+                              ? CachedNetworkImage(
+                                  imageUrl: card.imageRefSmall!,
+                                  width: 56,
+                                  height: 56,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => const SizedBox(
+                                    width: 24,
+                                    height: 24,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
                                   ),
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.broken_image),
-                              )
-                            : const Icon(Icons.image_not_supported),
-                        title: Text(card.name ?? 'Unknown'),
-                        subtitle: Text(subtitle),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.remove),
-                              onPressed: count > 0
-                                  ? () {
-                                      _adjustCount(key, -1);
-                                      setDialogState(() {});
-                                    }
-                                  : null,
-                            ),
-                            Text('$count'),
-                            IconButton(
-                              icon: const Icon(Icons.add),
-                              onPressed: () {
-                                _adjustCount(key, 1);
-                                setDialogState(() {});
-                              },
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.delete),
-                              onPressed: () {
-                                _deleteCard(key);
-                                setDialogState(() {});
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.broken_image),
+                                )
+                              : const Icon(Icons.image_not_supported),
+                          title: Text(card.name ?? 'Unknown'),
+                          subtitle: Text(subtitle),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.remove),
+                                onPressed: count > 1
+                                    ? () {
+                                        _adjustCount(key, -1);
+                                        setDialogState(() {});
+                                        setState(() {}); // Update main UI
+                                      }
+                                    : null,
+                              ),
+                              Text('$count'),
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  _adjustCount(key, 1);
+                                  setDialogState(() {});
+                                  setState(() {}); // Update main UI
+                                },
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.delete),
+                                onPressed: () {
+                                  _deleteCard(key);
+                                  setDialogState(() {});
+                                  setState(() {}); // Update main UI
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                    onPressed: () {
-                      _clearAll();
-                      setDialogState(() {});
-                      Navigator.of(context).pop(); // Close dialog
-                    },
-                    child: const Text('Clear'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      onPressed: () {
+                        _clearAll();
+                        setDialogState(() {});
+                        setState(() {}); // Update main UI
+                        Navigator.of(context).pop(); // Close dialog
+                      },
+                      child: const Text('Clear'),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              );
+            },
           ),
         ),
       ),
@@ -1289,31 +1311,33 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
   }
 
   // Adjust count for a card: +1 duplicates last entry, -1 removes last entry
-  void _adjustCount(String key, int delta) {
+  Future<void> _adjustCount(String key, int delta) async {
     final indices = _getGroupIndices(key);
     if (indices.isEmpty) return;
 
-    setState(() async {
-      if (delta > 0) {
-        // Duplicate last entry
-        final lastIndex = indices.last;
-        final card = _foundCards[lastIndex]!;
-        final file = _captures[lastIndex];
-        final dir = await getTemporaryDirectory();
-        final newFilePath =
-            '${dir.path}/dupe_${DateTime.now().millisecondsSinceEpoch}.jpg';
-        file.copySync(newFilePath);
-        final newFile = File(newFilePath);
+    if (delta > 0) {
+      // Duplicate last entry
+      final lastIndex = indices.last;
+      final card = _foundCards[lastIndex]!;
+      final file = _captures[lastIndex];
+      final dir = await getTemporaryDirectory();
+      final newFilePath =
+          '${dir.path}/dupe_${DateTime.now().millisecondsSinceEpoch}.jpg';
+      await file.copy(newFilePath);
+      final newFile = File(newFilePath);
+      setState(() {
         _foundCards.add(card);
         _captures.add(newFile);
-      } else if (delta < 0 && indices.length > 1) {
-        // Remove last entry
-        final lastIndex = indices.last;
+      });
+    } else if (delta < 0 && indices.length > 1) {
+      // Remove last entry
+      final lastIndex = indices.last;
+      setState(() {
         _foundCards.removeAt(lastIndex);
         final file = _captures.removeAt(lastIndex);
         file.deleteSync();
-      }
-    });
+      });
+    }
   }
 
   // Delete all entries for a card
@@ -1503,7 +1527,7 @@ class _CameraSearchTestingScreenState extends State<CameraSearchTestingScreen> {
 }
 
 // Small labeled slider helper
-class _LabeledSlider extends StatelessWidget {
+class LabeledSlider extends StatelessWidget {
   final String label;
   final double value;
   final double min;
@@ -1512,7 +1536,7 @@ class _LabeledSlider extends StatelessWidget {
   final String display;
   final ValueChanged<double> onChanged;
 
-  const _LabeledSlider({
+  const LabeledSlider({
     required this.label,
     required this.value,
     required this.min,
@@ -1520,6 +1544,7 @@ class _LabeledSlider extends StatelessWidget {
     required this.display,
     required this.onChanged,
     this.divisions,
+    super.key,
   });
 
   @override
