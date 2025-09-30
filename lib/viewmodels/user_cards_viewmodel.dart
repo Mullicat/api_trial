@@ -12,20 +12,46 @@ import 'package:api_trial/constants/enums/game_type.dart';
 // ARCHITECTURE:
 //   - Uses ChangeNotifier for reactive UI updates.
 //   - Handles fetching, adding, updating, and removing user cards.
-//   - Caches all cards for seamless gameType filtering.
+//   - Supports gameType filtering with custom mapping for Supabase game_type.
 //   - Tracks loading state, errors, and gameType filter for UI feedback.
 // ============================================================================
 class UserCardsViewModel with ChangeNotifier {
   final OnePieceTcgService _service;
-  List<TCGCard> _allCards = []; // Cache all cards
+  List<TCGCard> _allCards = [];
   bool _isLoading = false;
   String? _errorMessage;
   GameType? _selectedGameType; // Null means "All"
 
+  // Map Supabase game_type to GameType
+  GameType? _mapGameTypeToEnum(String gameType) {
+    final gameTypeMap = {
+      'onepiece': GameType.onePiece,
+      'pokemon': GameType.pokemon,
+      'dragonball': GameType.dragonBall, // Special case for dragon-ball-fusion
+      'digimon': GameType.digimon,
+      'unionarena': GameType.unionArena,
+      'gundam': GameType.gundam,
+      'magic': GameType.magic,
+      'yugioh': GameType.yugioh,
+    };
+    return gameTypeMap[gameType];
+  }
+
+  // Map GameType to Supabase game_type
+  String? _mapEnumToGameType(GameType? gameType) {
+    if (gameType == null) return null;
+    if (gameType == GameType.dragonBall) return 'dragonball';
+    return gameType.apiPath.replaceAll('-', '');
+  }
+
   // Getters for UI
   List<TCGCard> get cards => _selectedGameType == null
       ? _allCards
-      : _allCards.where((card) => card.gameType == _selectedGameType).toList();
+      : _allCards
+            .where(
+              (card) => _mapGameTypeToEnum(card.gameType!) == _selectedGameType,
+            )
+            .toList();
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
   GameType? get selectedGameType => _selectedGameType;
@@ -39,14 +65,14 @@ class UserCardsViewModel with ChangeNotifier {
   // METHOD: Fetch user's cards
   // STEPS:
   //   1. Set loading state and clear error
-  //   2. Call service to get user cards
+  //   2. Call service to get user cards with optional gameType filter
   //   3. Update cards list and notify listeners
   //   4. Handle errors if they occur
   // --------------------------------------------------------------------------
   Future<void> _fetchUserCards() async {
     try {
       _setLoading(true);
-      final cards = await _service.getUserCards();
+      final cards = await _service.getUserCards(gameType: _selectedGameType);
       _allCards = cards;
       _setLoading(false);
       _errorMessage = null;
@@ -108,7 +134,10 @@ class UserCardsViewModel with ChangeNotifier {
           setName: _allCards[index].setName,
           rarity: _allCards[index].rarity,
           imageRefSmall: _allCards[index].imageRefSmall,
+          imageRefLarge: _allCards[index].imageRefLarge,
           gameType: _allCards[index].gameType,
+          imageEmbedding: _allCards[index].imageEmbedding,
+          textEmbedding: _allCards[index].textEmbedding,
           gameSpecificData: {
             ...?_allCards[index].gameSpecificData,
             'quantity': quantity,
@@ -158,7 +187,7 @@ class UserCardsViewModel with ChangeNotifier {
       _setLoading(false);
       _errorMessage = 'Failed to remove card: $e';
       notifyListeners();
-      developer.log('Error removing card $cardId: $e');
+      developer.log('Error removing user card $cardId: $e');
       await _fetchUserCards(); // Revert to server state on error
     }
   }
@@ -167,12 +196,15 @@ class UserCardsViewModel with ChangeNotifier {
   // METHOD: Set gameType filter
   // STEPS:
   //   1. Update selected gameType
-  //   2. Notify listeners to refresh UI with filtered cards
+  //   2. Fetch cards with new filter
+  //   3. Notify listeners to refresh UI with filtered cards
   // --------------------------------------------------------------------------
   void setGameTypeFilter(GameType? gameType) {
     _selectedGameType = gameType;
-    notifyListeners();
-    developer.log('Set gameType filter: ${gameType?.name ?? "All"}');
+    _fetchUserCards(); // Refresh with new filter
+    developer.log(
+      'Set gameType filter: ${_mapEnumToGameType(gameType) ?? "All"}',
+    );
   }
 
   // --------------------------------------------------------------------------

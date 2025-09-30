@@ -10,12 +10,12 @@ import 'dart:developer' as developer;
 // ============================================================================
 // WIDGET: UserCardsScreen
 // PURPOSE: Displays the user's card collection with options to add, update, or
-//          remove cards.
+//          remove cards, toggle favorite status, and filter by game type.
 // ARCHITECTURE:
+//   - StatefulWidget to trigger refresh on init.
 //   - Uses Provider to access UserCardsViewModel for state.
-//   - Shows a list of cards with images, names, and quantity controls.
-//   - Handles loading, error, and empty states.
-//   - Includes GameType filter dropdown.
+//   - Shows a list of cards with images, names, quantity controls, and favorite toggle.
+//   - Includes GameType filter dropdown and keyboard quantity input.
 // ============================================================================
 class UserCardsScreen extends StatefulWidget {
   const UserCardsScreen({super.key});
@@ -123,6 +123,9 @@ class _UserCardsScreenState extends State<UserCardsScreen> {
                       final card = cards[index];
                       final currentQuantity =
                           card.gameSpecificData?['quantity'] ?? 1;
+                      final isFavorite =
+                          card.gameSpecificData?['favorite'] ?? false;
+
                       return Card(
                         margin: const EdgeInsets.symmetric(
                           horizontal: 8,
@@ -147,27 +150,69 @@ class _UserCardsScreenState extends State<UserCardsScreen> {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              // Favorite toggle
+                              IconButton(
+                                icon: Icon(
+                                  isFavorite ? Icons.star : Icons.star_border,
+                                  color: isFavorite ? Colors.yellow : null,
+                                ),
+                                onPressed: () {
+                                  viewModel.updateCard(
+                                    card.id!,
+                                    currentQuantity,
+                                    !isFavorite,
+                                    card.gameSpecificData?['labels'] ?? [],
+                                  );
+                                },
+                                tooltip: isFavorite
+                                    ? 'Remove from Favorites'
+                                    : 'Add to Favorites',
+                              ),
                               // Quantity controls
                               IconButton(
                                 icon: const Icon(Icons.remove),
-                                onPressed: currentQuantity > 1
-                                    ? () {
-                                        viewModel.updateCard(
-                                          card.id!,
-                                          currentQuantity - 1,
-                                          card.gameSpecificData?['favorite'] ??
-                                              false,
-                                          card.gameSpecificData?['labels'] ??
-                                              [],
-                                        );
-                                      }
-                                    : () {
-                                        viewModel.removeCard(card.id!);
-                                      },
+                                onPressed: () {
+                                  if (currentQuantity > 1) {
+                                    viewModel.updateCard(
+                                      card.id!,
+                                      currentQuantity - 1,
+                                      isFavorite,
+                                      card.gameSpecificData?['labels'] ?? [],
+                                    );
+                                  } else {
+                                    viewModel.removeCard(card.id!);
+                                  }
+                                },
                               ),
-                              Text(
-                                '$currentQuantity',
-                                style: const TextStyle(fontSize: 16),
+                              SizedBox(
+                                width: 40,
+                                child: TextField(
+                                  controller: TextEditingController(
+                                    text: currentQuantity.toString(),
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8,
+                                    ),
+                                  ),
+                                  onSubmitted: (value) {
+                                    final newQuantity =
+                                        int.tryParse(value) ?? currentQuantity;
+                                    if (newQuantity >= 1) {
+                                      viewModel.updateCard(
+                                        card.id!,
+                                        newQuantity,
+                                        isFavorite,
+                                        card.gameSpecificData?['labels'] ?? [],
+                                      );
+                                    } else {
+                                      viewModel.removeCard(card.id!);
+                                    }
+                                  },
+                                ),
                               ),
                               IconButton(
                                 icon: const Icon(Icons.add),
@@ -175,7 +220,7 @@ class _UserCardsScreenState extends State<UserCardsScreen> {
                                   viewModel.updateCard(
                                     card.id!,
                                     currentQuantity + 1,
-                                    card.gameSpecificData?['favorite'] ?? false,
+                                    isFavorite,
                                     card.gameSpecificData?['labels'] ?? [],
                                   );
                                 },

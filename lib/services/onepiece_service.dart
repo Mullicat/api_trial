@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:api_trial/models/card.dart';
 import 'package:api_trial/constants/enums/onepiece_filters.dart';
 import 'package:api_trial/data/datasources/supabase_datasource.dart';
+import 'package:api_trial/constants/enums/game_type.dart';
 
 class OnePieceTcgService {
   static const String _baseUrl = 'https://apitcg.com/api';
@@ -705,12 +706,50 @@ class OnePieceTcgService {
   }
 
   // Fetch current user's cards
-  Future<List<TCGCard>> getUserCards() async {
+  Future<List<TCGCard>> getUserCards({GameType? gameType}) async {
     try {
-      final rows = await _repository.getUserCards();
-      return rows
-          .map((row) => TCGCard.fromJson(row['card'] as Map<String, dynamic>))
-          .toList();
+      var query = _supabaseDataSource.supabase
+          .from('user_cards')
+          .select('*, cards(*)')
+          .eq('user_id', _supabaseDataSource.supabase.auth.currentUser!.id);
+      if (gameType != null) {
+        query = query.eq(
+          'cards.game_type',
+          gameType.apiPath.replaceAll('-', ''),
+        );
+      }
+      final response = await query;
+      final cards = response.map((row) {
+        final cardData = row['cards'] as Map<String, dynamic>;
+        final gsd = cardData['game_specific_data'];
+        if (gsd is String) {
+          try {
+            cardData['game_specific_data'] = jsonDecode(gsd);
+          } catch (_) {}
+        }
+        return TCGCard(
+          id: cardData['id'],
+          gameCode: cardData['game_code'],
+          name: cardData['name'],
+          setName: cardData['set_name'],
+          rarity: cardData['rarity'],
+          imageRefSmall: cardData['image_ref_small'],
+          imageRefLarge: cardData['image_ref_large'],
+          gameType: cardData['game_type'],
+          imageEmbedding: null,
+          textEmbedding: null,
+          gameSpecificData: {
+            ...?cardData['game_specific_data'],
+            'quantity': row['quantity'],
+            'favorite': row['favorite'],
+            'labels': List<String>.from(row['labels'] ?? []),
+          },
+        );
+      }).toList();
+      developer.log(
+        'Fetched ${cards.length} user cards${gameType != null ? ' for gameType ${gameType.apiPath}' : ''}',
+      );
+      return cards;
     } catch (e) {
       developer.log('Error fetching user cards: $e');
       throw Exception('Error fetching user cards: $e');
