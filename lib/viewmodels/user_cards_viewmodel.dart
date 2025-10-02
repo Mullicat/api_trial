@@ -1,4 +1,3 @@
-// lib/viewmodels/user_cards_viewmodel.dart
 import 'package:flutter/foundation.dart';
 import 'dart:developer' as developer;
 import 'package:api_trial/services/onepiece_service.dart';
@@ -12,8 +11,8 @@ import 'package:api_trial/constants/enums/game_type.dart';
 // ARCHITECTURE:
 //   - Uses ChangeNotifier for reactive UI updates.
 //   - Handles fetching, adding, updating, and removing user cards.
-//   - Supports gameType filtering with custom mapping for Supabase game_type.
-//   - Tracks loading state, errors, and gameType filter for UI feedback.
+//   - Supports gameType and label filtering with custom mapping for Supabase.
+//   - Tracks loading state, errors, and filters for UI feedback.
 // ============================================================================
 class UserCardsViewModel with ChangeNotifier {
   final OnePieceTcgService _service;
@@ -21,9 +20,11 @@ class UserCardsViewModel with ChangeNotifier {
   bool _isLoading = false;
   String? _errorMessage;
   GameType? _selectedGameType; // Null means "All"
+  String? _selectedLabel; // Null means no label filter
 
   // Map Supabase game_type to GameType
-  GameType? _mapGameTypeToEnum(String gameType) {
+  GameType? _mapGameTypeToEnum(String? gameType) {
+    if (gameType == null) return null;
     final gameTypeMap = {
       'onepiece': GameType.onePiece,
       'pokemon': GameType.pokemon,
@@ -45,16 +46,33 @@ class UserCardsViewModel with ChangeNotifier {
   }
 
   // Getters for UI
-  List<TCGCard> get cards => _selectedGameType == null
-      ? _allCards
-      : _allCards
-            .where(
-              (card) => _mapGameTypeToEnum(card.gameType!) == _selectedGameType,
-            )
-            .toList();
+  List<TCGCard> get cards {
+    var filteredCards = _allCards;
+    if (_selectedGameType != null) {
+      filteredCards = filteredCards
+          .where(
+            (card) => _mapGameTypeToEnum(card.gameType) == _selectedGameType,
+          )
+          .toList();
+    }
+    if (_selectedLabel != null && _selectedLabel!.isNotEmpty) {
+      filteredCards = filteredCards
+          .where(
+            (card) =>
+                (card.gameSpecificData?['labels'] as List<dynamic>?)?.contains(
+                  _selectedLabel,
+                ) ??
+                false,
+          )
+          .toList();
+    }
+    return filteredCards;
+  }
+
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
   GameType? get selectedGameType => _selectedGameType;
+  String? get selectedLabel => _selectedLabel;
 
   // Constructor: Takes OnePieceTcgService instance
   UserCardsViewModel(this._service) {
@@ -76,6 +94,12 @@ class UserCardsViewModel with ChangeNotifier {
       _allCards = cards;
       _setLoading(false);
       _errorMessage = null;
+      // Log labels for debugging
+      for (var card in cards) {
+        developer.log(
+          'Card ${card.id}: labels=${card.gameSpecificData?['labels'] ?? []}',
+        );
+      }
       notifyListeners();
       developer.log('Fetched ${cards.length} user cards');
     } catch (e) {
@@ -153,7 +177,7 @@ class UserCardsViewModel with ChangeNotifier {
       await _fetchUserCards(); // Refresh to ensure consistency
       _errorMessage = null;
       developer.log(
-        'Updated card $cardId: quantity=$quantity, favorite=$favorite',
+        'Updated card $cardId: quantity=$quantity, favorite=$favorite, labels=$labels',
       );
     } catch (e) {
       _setLoading(false);
@@ -205,6 +229,18 @@ class UserCardsViewModel with ChangeNotifier {
     developer.log(
       'Set gameType filter: ${_mapEnumToGameType(gameType) ?? "All"}',
     );
+  }
+
+  // --------------------------------------------------------------------------
+  // METHOD: Set label filter
+  // STEPS:
+  //   1. Update selected label
+  //   2. Notify listeners to refresh UI with filtered cards
+  // --------------------------------------------------------------------------
+  void setLabelFilter(String? label) {
+    _selectedLabel = label;
+    notifyListeners();
+    developer.log('Set label filter: ${label ?? "None"}');
   }
 
   // --------------------------------------------------------------------------
