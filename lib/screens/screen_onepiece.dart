@@ -364,12 +364,12 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
   // OPEN SINGLE CARD: navigates to ScreenSingle using the chosen GetCardType.
   // Passes gameCode as the "id" argument; ScreenSingle+service interpret it.
   // ===========================================================================
-  Future<void> _fetchSingleCard(String? gameCode) async {
+  Future<void> _fetchSingleCard(TCGCard card) async {
     if (_service == null) {
       setState(() => _errorMessage = 'Service not initialized');
       return;
     }
-    if (gameCode == null || gameCode.isEmpty) {
+    if (card.gameCode == null || card.gameCode!.isEmpty) {
       setState(() => _errorMessage = 'Invalid card ID');
       developer.log('Error: gameCode is null or empty');
       return;
@@ -377,14 +377,15 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
 
     try {
       developer.log(
-        'Navigating to ScreenSingle with gameCode: $gameCode, gameType: ${widget.gameType.name}, getCardType: $_selectedGetCardType',
+        'Navigating to ScreenSingle with gameCode: ${card.gameCode}, version: ${card.version}, gameType: ${widget.gameType.name}, getCardType: $_selectedGetCardType',
       );
 
       await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => ScreenSingle(
-            id: gameCode,
+            id: card.gameCode!,
+            version: card.version, // Pass version
             gameType: widget.gameType,
             service: _service!,
             getCardType: _selectedGetCardType,
@@ -911,7 +912,7 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
                                       : () => _addCardToCollection(card.id!),
                                 ),
                                 // IMPORTANT: pass gameCode into detail nav
-                                onTap: () => _fetchSingleCard(card.gameCode),
+                                onTap: () => _fetchSingleCard(card),
                               ),
                             );
                           },

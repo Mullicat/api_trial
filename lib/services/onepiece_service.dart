@@ -557,7 +557,10 @@ class OnePieceTcgService {
   }
 
   // FUNC 6: Fetch single card from Supabase by ID or game code
-  Future<TCGCard?> getCardFromSupabase({required String idOrGameCode}) async {
+  Future<TCGCard?> getCardFromSupabase({
+    required String idOrGameCode,
+    String? version,
+  }) async {
     try {
       // Step 1: Check if input is UUID
       final isUuid = RegExp(
@@ -577,27 +580,34 @@ class OnePieceTcgService {
       } else {
         // Step 4: Normalize game code and query by game code
         final base = _baseGameCode(idOrGameCode);
-        final list = await _supabaseDataSource.supabase
+        var query = _supabaseDataSource.supabase
             .from('cards')
             .select()
             .eq('game_type', 'onepiece')
-            .eq('game_code', base)
+            .eq('game_code', base);
+        // Step 5: Apply version filter if provided
+        if (version != null && version.isNotEmpty) {
+          query = query.eq('version', version);
+        } else {
+          // Fallback: sort by version and updated_at if no version specified
+          // Chain .order() calls directly without reassigning to query
+        }
+        final list = await query
             .order('version', ascending: true, nullsFirst: false)
             .order('updated_at', ascending: false)
             .limit(1);
-
         if (list is List && list.isNotEmpty) {
           row = Map<String, dynamic>.from(list.first);
         }
       }
-      // Step 5: Return null if no row found
+      // Step 6: Return null if no row found
       if (row == null) {
         developer.log(
-          'No One Piece card found in Supabase for key: $idOrGameCode',
+          'No One Piece card found in Supabase for key: $idOrGameCode, version: ${version ?? 'not specified'}',
         );
         return null;
       }
-      // Step 6: Normalize game-specific data
+      // Step 7: Normalize game-specific data
       final data = Map<String, dynamic>.from(row);
       final gsd = data['game_specific_data'];
       if (gsd is String) {
@@ -605,15 +615,19 @@ class OnePieceTcgService {
           data['game_specific_data'] = jsonDecode(gsd);
         } catch (_) {}
       }
-      // Step 7: Parse and return card
-      return TCGCard.fromJson(data);
+      // Step 8: Parse and return card
+      final card = TCGCard.fromJson(data);
+      developer.log(
+        'Fetched card from Supabase: ${card.name}, version: ${card.version}, image_ref_large: ${card.imageRefLarge}',
+      );
+      return card;
     } catch (e) {
       developer.log('Error fetching One Piece card from Supabase: $e');
       return null;
     }
   }
 
-  // FUNC 7: Retrieve card from cached API cards (TODO: Revisar para uso de cartas API o SUPABASE)
+  // FUNC 7: Retrieve card from cached API cards
   TCGCard? getCardFromAPICards({
     String? idOrGameCode,
     String? gameCode,

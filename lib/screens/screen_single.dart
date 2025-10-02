@@ -1,40 +1,16 @@
-// ============================================================================
-// FILE: screen_single.dart
-// PURPOSE: Show the details for a single TCG card (image + fields).
-// CONTEXT:
-//   - This screen is navigated to from listings (e.g., ScreenOnePiece,
-//     ScanResultsScreen) and needs to support multiple data sources.
-// DATA SOURCES:
-//   - getCardType controls where to fetch the card from:
-//       * GetCardType.fromAPI       -> live REST by id/game_code
-//       * GetCardType.fromSupabase  -> Supabase by UUID or game_code
-//       * GetCardType.fromAPICards  -> already-fetched API cache in service
-// UX:
-//   - AppBar with Refresh.
-//   - Loading, error and empty states.
-//   - Card large image + core metadata (set, rarity, stats, etc.).
-// ============================================================================
-
+// lib/screens/screen_single.dart
 import 'package:api_trial/screens/screen_onepiece.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
-
 import '../constants/enums/game_type.dart';
 import '../models/card.dart';
 import '../services/onepiece_service.dart';
 import '../constants/enums/onepiece_filters.dart';
 
-// ============================================================================
-// WIDGET: ScreenSingle
-// PROPS:
-//   - id         : UUID (DB path) or API id/game_code (API path)
-//   - gameType   : which game (currently One Piece supported in this screen)
-//   - service    : OnePieceTcgService instance (pre-created by caller)
-//   - getCardType: source where this screen will fetch the card from
-// ============================================================================
 class ScreenSingle extends StatefulWidget {
-  final String id; // UUID for Supabase flow, API id/game_code for API flow
+  final String id; // UUID for Supabase, game_code for API
+  final String? version; // Optional version (e.g., "p7")
   final GameType gameType;
   final OnePieceTcgService service;
   final GetCardType getCardType;
@@ -42,6 +18,7 @@ class ScreenSingle extends StatefulWidget {
   const ScreenSingle({
     super.key,
     required this.id,
+    this.version,
     required this.gameType,
     required this.service,
     required this.getCardType,
@@ -51,15 +28,6 @@ class ScreenSingle extends StatefulWidget {
   State<ScreenSingle> createState() => _ScreenSingleState();
 }
 
-// ============================================================================
-// STATE: _ScreenSingleState
-// STATE VARS:
-//   - _card        : loaded card (null until loaded)
-//   - _isLoading   : loading flag for initial fetch / refresh
-//   - _errorMessage: human-readable error if fetch fails
-// LIFECYCLE:
-//   - initState() -> _fetchCard()
-// ============================================================================
 class _ScreenSingleState extends State<ScreenSingle> {
   TCGCard? _card;
   bool _isLoading = true;
@@ -69,15 +37,11 @@ class _ScreenSingleState extends State<ScreenSingle> {
   void initState() {
     super.initState();
     developer.log(
-      'ScreenSingle initState: id=${widget.id}, gameType=${widget.gameType.name}, getCardType=${widget.getCardType}',
+      'ScreenSingle initState: id=${widget.id}, version=${widget.version}, gameType=${widget.gameType.name}, getCardType=${widget.getCardType}',
     );
     _fetchCard();
   }
 
-  // --------------------------------------------------------------------------
-  // ACTION: _fetchCard
-  // Loads the card according to getCardType. Sets loading / error / data.
-  // --------------------------------------------------------------------------
   Future<void> _fetchCard() async {
     setState(() {
       _isLoading = true;
@@ -89,19 +53,15 @@ class _ScreenSingleState extends State<ScreenSingle> {
       TCGCard? card;
       switch (widget.getCardType) {
         case GetCardType.fromAPI:
-          // Expect API id (or game_code) in widget.id
           card = await widget.service.getCardFromAPI(idOrGameCode: widget.id);
           break;
-
         case GetCardType.fromSupabase:
-          // Accept UUID, or game_code (service will resolve)
           card = await widget.service.getCardFromSupabase(
             idOrGameCode: widget.id,
+            version: widget.version,
           );
           break;
-
         case GetCardType.fromAPICards:
-          // Look up from the service's in-memory cache
           card = widget.service.getCardFromAPICards(idOrGameCode: widget.id);
           break;
       }
@@ -111,9 +71,12 @@ class _ScreenSingleState extends State<ScreenSingle> {
       if (card == null) {
         setState(() {
           _isLoading = false;
-          _errorMessage = 'Card not found for ID: ${widget.id}';
+          _errorMessage =
+              'Card not found for ID: ${widget.id}${widget.version != null ? ", version: ${widget.version}" : ""}';
         });
-        developer.log('Card not found for ID: ${widget.id}');
+        developer.log(
+          'Card not found for ID: ${widget.id}, version: ${widget.version}',
+        );
         return;
       }
 
@@ -121,7 +84,7 @@ class _ScreenSingleState extends State<ScreenSingle> {
         _card = card;
         _isLoading = false;
       });
-      developer.log('Fetched card: ${_card!.name}');
+      developer.log('Fetched card: ${_card!.name}, version: ${_card!.version}');
     } catch (e) {
       if (!mounted) return;
       setState(() {
@@ -132,16 +95,9 @@ class _ScreenSingleState extends State<ScreenSingle> {
     }
   }
 
-  // --------------------------------------------------------------------------
-  // BUILD
-  // Renders:
-  //   - AppBar: shows name (if loaded) + refresh
-  //   - Body  : loading OR error OR empty OR details
-  // --------------------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // ===== APP BAR ==========================================================
       appBar: AppBar(
         title: Text(
           _card?.name ?? 'Card Details',
@@ -155,12 +111,8 @@ class _ScreenSingleState extends State<ScreenSingle> {
           ),
         ],
       ),
-
-      // ===== BODY =============================================================
       body: _isLoading
-          // --- Loading state
           ? const Center(child: CircularProgressIndicator())
-          // --- Error state
           : _errorMessage != null
           ? Center(
               child: Column(
@@ -179,7 +131,6 @@ class _ScreenSingleState extends State<ScreenSingle> {
                 ],
               ),
             )
-          // --- Guard (shouldn’t happen after successful fetch)
           : _card == null
           ? const Center(
               child: Text(
@@ -187,13 +138,11 @@ class _ScreenSingleState extends State<ScreenSingle> {
                 style: TextStyle(fontSize: 16),
               ),
             )
-          // --- Details
           : SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // === IMAGE =====================================================
                   if (_card!.imageRefLarge != null)
                     Center(
                       child: CachedNetworkImage(
@@ -210,10 +159,7 @@ class _ScreenSingleState extends State<ScreenSingle> {
                     const Center(
                       child: Icon(Icons.image_not_supported, size: 100),
                     ),
-
                   const SizedBox(height: 16),
-
-                  // === TITLE =====================================================
                   Text(
                     _card!.name ?? 'No Name',
                     style: const TextStyle(
@@ -221,10 +167,11 @@ class _ScreenSingleState extends State<ScreenSingle> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   const SizedBox(height: 8),
-
-                  // === BASIC FIELDS =============================================
+                  Text(
+                    'Version: ${_card!.version ?? 'Unknown'}', // Display version
+                    style: const TextStyle(fontSize: 16),
+                  ),
                   Text(
                     'Type: ${_card!.gameSpecificData?['type'] ?? _card!.gameSpecificData?['cardType'] ?? (_card!.gameSpecificData?['types'] is List ? (_card!.gameSpecificData!['types'] as List).join(', ') : _card!.gameSpecificData?['types']?.toString() ?? 'Unknown')}',
                     style: const TextStyle(fontSize: 16),
@@ -237,8 +184,6 @@ class _ScreenSingleState extends State<ScreenSingle> {
                     'Set: ${_card!.setName ?? 'Unknown'}',
                     style: const TextStyle(fontSize: 16),
                   ),
-
-                  // === CONDITIONAL FIELDS ========================================
                   if (_card!.gameSpecificData?['cost'] != null)
                     Text(
                       'Cost: ${_card!.gameSpecificData!['cost']}',
