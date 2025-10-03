@@ -217,7 +217,7 @@ class SupabaseDataSource {
     }
   }
 
-  // Search cards by (fuzzy) name with filters
+  // Search cards by (fuzzy) name or game_code with filters
   Future<List<Map<String, dynamic>>> searchCardsByTerm({
     required String searchTerm,
     required String gameType,
@@ -239,7 +239,9 @@ class SupabaseDataSource {
           .from('cards')
           .select()
           .eq('game_type', gameType)
-          .ilike('name', '%$searchTerm%');
+          .or(
+            'name.ilike.%$searchTerm%,game_code.ilike.%$searchTerm%',
+          ); // Fuzzy search on name AND game_code
 
       if (setName != null) query = query.eq('set_name', setName.value);
       if (rarity != null) query = query.eq('rarity', rarity.value);
