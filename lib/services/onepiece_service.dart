@@ -247,21 +247,26 @@ class OnePieceTcgService {
       List<Map<String, dynamic>> response;
       // Step 2a: Search by term if word provided
       if (word != null && word.isNotEmpty) {
-        response = await _supabaseDataSource.searchCardsByTerm(
-          searchTerm: word,
-          gameType: 'onepiece',
-          setName: setName,
-          rarity: rarity,
-          cost: cost,
-          type: type,
-          color: color,
-          power: power,
-          families: families,
-          counter: counter,
-          trigger: trigger,
-          ability: ability,
-          page: page,
-          pageSize: pageSize,
+        // Use RPC for One Piece-specific fuzzy search (including game_code)
+        response = await _supabaseDataSource.supabase.rpc(
+          'search_onepiece_cards_filtered',
+          params: {
+            'search_term': word,
+            'p_set_name': setName?.value,
+            'p_rarity': rarity?.value,
+            'p_cost': cost?.value,
+            'p_type': type?.value,
+            'p_color': color?.value,
+            'p_power': power?.value,
+            'p_families': families?.map((f) => f.value).toList(),
+            'p_counter': counter?.value,
+            'has_trigger': trigger == Trigger.hasTrigger
+                ? true
+                : (trigger == Trigger.noTrigger ? false : null),
+            'p_ability': ability?.value,
+            'p_page': page,
+            'p_page_size': pageSize,
+          },
         );
       } else {
         // Step 2b: Build query without search term
