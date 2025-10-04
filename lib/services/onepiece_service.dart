@@ -245,9 +245,7 @@ class OnePieceTcgService {
   }) async {
     try {
       List<Map<String, dynamic>> response;
-      // Step 2a: Search by term if word provided
       if (word != null && word.isNotEmpty) {
-        // Use RPC for One Piece-specific fuzzy search (including game_code)
         response = await _supabaseDataSource.supabase.rpc(
           'search_onepiece_cards_filtered',
           params: {
@@ -257,9 +255,9 @@ class OnePieceTcgService {
             'p_cost': cost?.value,
             'p_type': type?.value,
             'p_color': color?.value,
-            'p_power': power?.value,
+            'p_power': power == Power.powernone ? '' : power?.value,
             'p_families': families?.map((f) => f.value).toList(),
-            'p_counter': counter?.value,
+            'p_counter': counter == Counter.none ? '' : counter?.value,
             'has_trigger': trigger == Trigger.hasTrigger
                 ? true
                 : (trigger == Trigger.noTrigger ? false : null),
@@ -269,12 +267,10 @@ class OnePieceTcgService {
           },
         );
       } else {
-        // Step 2b: Build query without search term
         var query = _supabaseDataSource.supabase
             .from('cards')
             .select()
             .eq('game_type', 'onepiece');
-        // Step 3b: Apply filters
         if (setName != null) query = query.eq('set_name', setName.value);
         if (rarity != null) query = query.eq('rarity', rarity.value);
         if (cost != null)
@@ -283,9 +279,15 @@ class OnePieceTcgService {
           query = query.eq('game_specific_data->>type', type.value);
         if (color != null)
           query = query.eq('game_specific_data->>color', color.value);
-        if (power != null)
-          query = query.eq('game_specific_data->>power', power.value);
-
+        if (power != null) {
+          if (power == Power.powernone) {
+            query = query.or(
+              'game_specific_data->>power.eq.,game_specific_data->>power.is.null',
+            );
+          } else {
+            query = query.eq('game_specific_data->>power', power.value);
+          }
+        }
         if (families != null && families.isNotEmpty) {
           final fam = families.map((f) => f.value).toList();
           query = query.filter(
@@ -294,11 +296,15 @@ class OnePieceTcgService {
             jsonEncode(fam),
           );
         }
-
         if (counter != null) {
-          query = query.eq('game_specific_data->>counter', counter.value);
+          if (counter == Counter.none) {
+            query = query.or(
+              'game_specific_data->>counter.eq.,game_specific_data->>counter.is.null',
+            );
+          } else {
+            query = query.eq('game_specific_data->>counter', counter.value);
+          }
         }
-
         if (trigger != null) {
           if (trigger == Trigger.hasTrigger) {
             query = query
@@ -310,23 +316,19 @@ class OnePieceTcgService {
             );
           }
         }
-
         if (ability != null) {
           query = query.ilike(
             'game_specific_data->>ability',
             '%${ability.value}%',
           );
         }
-
         final offset = (page - 1) * pageSize;
         response = await query.range(
           offset,
           offset + (pageSize > 100 ? 100 : pageSize) - 1,
         );
       }
-
       developer.log('Fetched ${response.length} cards from Supabase');
-      // Step 4: Normalize and parse response to TCGCard
       final normalized = response.map((row) {
         final m = Map<String, dynamic>.from(row);
         final gsd = m['game_specific_data'];
@@ -337,7 +339,6 @@ class OnePieceTcgService {
         }
         return TCGCard.fromJson(m);
       }).toList();
-      // Step 5: Return parsed cards
       return normalized;
     } catch (e) {
       developer.log('Error fetching One Piece cards from Supabase: $e');

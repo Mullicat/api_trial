@@ -219,22 +219,25 @@ enum Color {
 }
 
 enum Power {
-  power1000('1000'),
-  power2000('2000'),
-  power3000('3000'),
-  power4000('4000'),
-  power5000('5000'),
-  power6000('6000'),
-  power7000('7000'),
-  power8000('8000'),
-  power9000('9000'),
-  power10000('10000'),
-  power11000('11000'),
-  power12000('12000'),
-  power13000('13000');
+  powernone('', 'No Power'),
+  power0('0', '0'),
+  power1000('1000', '1000'),
+  power2000('2000', '2000'),
+  power3000('3000', '3000'),
+  power4000('4000', '4000'),
+  power5000('5000', '5000'),
+  power6000('6000', '6000'),
+  power7000('7000', '7000'),
+  power8000('8000', '8000'),
+  power9000('9000', '9000'),
+  power10000('10000', '10000'),
+  power11000('11000', '11000'),
+  power12000('12000', '12000'),
+  power13000('13000', '13000');
 
   final String value;
-  const Power(this.value);
+  final String displayName;
+  const Power(this.value, this.displayName);
 }
 
 enum Family {
@@ -394,7 +397,7 @@ enum Family {
 }
 
 enum Counter {
-  none('None'),
+  none(''),
   counter1000('1000'),
   counter2000('2000');
 
@@ -402,12 +405,12 @@ enum Counter {
   const Counter(this.value);
   String get displayName {
     switch (this) {
+      case Counter.none:
+        return '0';
       case Counter.counter1000:
         return value;
       case Counter.counter2000:
         return value;
-      case Counter.none:
-        return 'None';
     }
   }
 }

@@ -239,9 +239,7 @@ class SupabaseDataSource {
           .from('cards')
           .select()
           .eq('game_type', gameType)
-          .or(
-            'name.ilike.%$searchTerm%,game_code.ilike.%$searchTerm%',
-          ); // Fuzzy search on name AND game_code
+          .or('name.ilike.%$searchTerm%,game_code.ilike.%$searchTerm%');
 
       if (setName != null) query = query.eq('set_name', setName.value);
       if (rarity != null) query = query.eq('rarity', rarity.value);
@@ -259,8 +257,15 @@ class SupabaseDataSource {
         query = query.contains('game_specific_data->family', familyValues);
       }
 
-      if (counter != null)
-        query = query.eq('game_specific_data->>counter', counter.value);
+      if (counter != null) {
+        if (counter == Counter.none) {
+          query = query.or(
+            'game_specific_data->>counter.eq.,game_specific_data->>counter.is.null',
+          );
+        } else {
+          query = query.eq('game_specific_data->>counter', counter.value);
+        }
+      }
 
       if (trigger != null) {
         if (trigger == Trigger.hasTrigger) {

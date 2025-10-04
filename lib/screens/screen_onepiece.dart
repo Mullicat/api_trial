@@ -87,8 +87,8 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
       'cost': ['None', ...Cost.values.map((e) => e.value)],
       'type': ['None', ...Type.values.map((e) => e.value)],
       'color': ['None', ...Color.values.map((e) => e.value)],
-      'power': ['None', ...Power.values.map((e) => e.value)],
-      'counter': ['None', ...Counter.values.map((e) => e.value)],
+      'power': ['None', ...Power.values.map((e) => e.displayName)],
+      'counter': ['None', ...Counter.values.map((e) => e.displayName)],
       'trigger': ['None', ...Trigger.values.map((e) => e.displayName)],
       'ability': ['None', ...Ability.values.map((e) => e.value)],
     },
@@ -191,21 +191,18 @@ class _ScreenOnePieceState extends State<ScreenOnePiece> {
     return Color.values.firstWhere((e) => e.value == value);
   }
 
-  Power? _getPower(String? value) {
-    if (value == null ||
-        value == 'None' ||
-        !Power.values.any((e) => e.value == value))
-      return null;
-    return Power.values.firstWhere((e) => e.value == value);
-  }
+  Power? _getPower(String? power) => power == null || power == 'None'
+      ? null
+      : Power.values.firstWhere(
+          (e) => e.displayName == power,
+          orElse: () => Power.values.firstWhere((e) => e.value == power),
+        );
 
-  Counter? _getCounter(String? value) {
-    if (value == null ||
-        value == 'None' ||
-        !Counter.values.any((e) => e.value == value))
-      return null;
-    return Counter.values.firstWhere((e) => e.value == value);
-  }
+  Counter? _getCounter(String? counter) => counter == null || counter == 'None'
+      ? null
+      : (counter == '0'
+            ? Counter.none
+            : Counter.values.firstWhere((e) => e.value == counter));
 
   Trigger? _getTrigger(String? value) {
     if (value == null ||
